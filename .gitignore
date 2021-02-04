@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+# Vim 
+Session.vim
+.vimrc
