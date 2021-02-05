@@ -13,7 +13,17 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 add_executable(DrumPi 
     "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp")
 
+add_executable(SPITest
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/spi.cpp")
+
+target_link_libraries(SPITest 
+        bcm2835)
 # Set the output directory for executables
 set_target_properties(DrumPi
+    PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/bin")
+
+
+set_target_properties(SPITest
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/bin")
