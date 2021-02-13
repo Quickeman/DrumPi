@@ -1,17 +1,33 @@
 # DrumPi
-Drum machine for use with a Raspberry Pi 4B
+A drum machine made using a Raspberry Pi.
 
-## Project Scope
-The product must:
-- Output monophonic drum sounds at line level
-- Provide useful visual feedback
-- Respond to trigger inputs in real time
-- Have two modes: 'Live Performance' and 'Sequencer'
+## About
+DrumPi is a small, affordable, open-source drum machine, giving you all the percussive power you need in a pocket-sized package.
 
-## Tools for Implementation
-- Raspberry Pi 4B, for processing and audio playback
-- ZeroSeg 7-segment display, for displaying visual feedback
-- Computer keyboard, for triggering sounds
+### Functionality
+- 'Live Performance' and 'Sequencer' modes
+- Visual feedback provided via an 8-digit 7-segment display
+- Standard USB keyboard control interface
+
+### Components
+- Raspberry Pi (designed on RPI 4B)
+- ZeroSeg 8-digit 7-segment display
+- Standard USB keyboard
+- USB audio interface (recommended)
+
+## Getting Started 
+To download and install DrumPi's software on your Raspberry Pi, run the following in a terminal:
+```
+git clone https://github.com/Quickeman/DrumPi.git
+TODO
+```
+
+## Usage
+To start DrumPi, enter:
+```
+(DrumPi) $ ./DrumPi
+```
+in the terminal.
 
 ## Stretch Goals
 - External clocking
