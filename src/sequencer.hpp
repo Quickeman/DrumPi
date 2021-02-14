@@ -1,6 +1,7 @@
 // File: sequencer.hpp
 #pragma once
 #include <vector>
+#include "clock.hpp"
 
 namespace sequencer {
 
@@ -77,6 +78,8 @@ class Sequencer {
 
         /*! Updates both the active step ID and pointer. */
         void updateStep();
+
+        Clock clock;
 };
 
 #endif // define sequencer_h
