@@ -45,8 +45,6 @@ class Sequencer {
         Sequencer();
         /*! Sequencer constructor. */
         Sequencer(const int numSteps);
-        /*! Sequencer destructor. */
-        ~Sequencer();
 
         /*! Advance the sequencer by one step.
         Updates tracking and sends relevant samples to output. */
