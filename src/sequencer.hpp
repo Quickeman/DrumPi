@@ -29,6 +29,9 @@ class Step {
 
         /*! Returns the number of active samples in step. */
         int numActive();
+
+        /*! Returns a vector of the active drums' IDs. */
+        std::vector<int> getActive();
     
     private:
         /*! Container for drum trigger switches. */
@@ -38,6 +41,8 @@ class Step {
 
 class Sequencer {
     public:
+        /*! Defualt constructor. */
+        Sequencer();
         /*! Sequencer constructor. */
         Sequencer(const int numSteps);
         /*! Sequencer destructor. */
