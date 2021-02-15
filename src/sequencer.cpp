@@ -4,11 +4,21 @@
 
 namespace sequencer {
 
+// Sequencer class
+
 Sequencer::Sequencer(const int numSteps) {
     this->numSteps = numSteps;
     steps.resize(this->numSteps);
     stepNum = -1;
     updateStep();
+}
+
+void Sequencer::advance() {
+    // Update Sequencer state
+    updateStep();
+
+    // Instruct Sampler to output sounds
+    //TODO
 }
 
 void Sequencer::_updateStepID() {
@@ -28,5 +38,8 @@ void Sequencer::updateStep() {
 int Sequencer::getCurrentStep() {
     return stepNum;
 }
+
+
+// Step class
 
 } // namespace sequencer
