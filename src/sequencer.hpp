@@ -1,7 +1,6 @@
 // File: sequencer.hpp
 #pragma once
 #include <vector>
-#include "clock.hpp"
 
 namespace sequencer {
 
@@ -63,17 +62,6 @@ class Sequencer {
         \return The current step number. */
         int getStepNum();
 
-        /*! Starts the sequencer.
-        If already running, resets playhead to beginning of sequence. */
-        void start();
-
-        /*! Sets the clock rate in BPM.
-        \param bpm the desired clocking rate in beats per minute (BPM). */
-        void setRate_bpm(int bpm);
-        /*! Sets the clock rate in miliseconds.
-        \param ms the desired clocking rate in miliseconds. */
-        void setRate_ms(int ms);
-
         /*! Clear sequence pattern. */
         void clear();
 
@@ -100,12 +88,6 @@ class Sequencer {
 
         /*! Updates both the active step ID and pointer. */
         void updateStep();
-
-        /*! Clock object to trigger the sequencer. */
-        Clock clock;
-
-        /*! True if sequencer is running. */
-        bool running;
 };
 
 #endif // define SEQUENCER_H

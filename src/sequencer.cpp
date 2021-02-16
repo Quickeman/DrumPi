@@ -53,7 +53,6 @@ Sequencer::Sequencer(const int numSteps) {
     this->numSteps = numSteps;
     steps.resize(this->numSteps);
     reset();
-    running = false;
 }
 
 void Sequencer::advance() {
@@ -66,26 +65,6 @@ void Sequencer::advance() {
 
 int Sequencer::getStepNum() {
     return stepNum;
-}
-
-void Sequencer::start() {
-    if (!running) {
-        // clock.start()
-        running = true;
-    } else {
-        // clock.stop() ?
-        reset(false);
-        // clock.start() ?
-    }
-}
-
-void Sequencer::setRate_bpm(int bpm) {
-    setRate_ms(bpmToMs(bpm));
-}
-
-void Sequencer::setRate_ms(int ms) {
-    // clock.stop()
-    // clock.start(ms)
 }
 
 void Sequencer::clear() {
