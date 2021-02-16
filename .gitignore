@@ -49,3 +49,6 @@ test/testBin
 
 # Compile commands
 compile_commands.json
+
+#cache
+.cache/
