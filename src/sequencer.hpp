@@ -5,8 +5,8 @@
 
 namespace sequencer {
 
-#ifndef sequencer_h
-#define sequencer_h
+#ifndef SEQUENCER_H
+#define SEQUENCER_H
 
 #ifndef NUM_DRUMS
 #define NUM_DRUMS 8
@@ -18,20 +18,28 @@ class Step {
         /*! Step constructor. */
         Step();
 
-        /*! Adds the sample with the passed ID to the step. */
+        /*! Adds the sample with the passed ID to the step.
+        \param id ID of the drum to be added. */
         void addToStep(int id);
 
-        /*! Removes the sample with the passed ID from the step. */
+        /*! Removes the sample with the passed ID from the step.
+        \param id ID of the drum to be removed. */
         void removeFromStep(int id);
 
-        /*! Returns true if the sample with the passed ID is active in the step. */
+        /*! Returns true if the sample with the passed ID is active in the step.
+        \param id ID of the drum to be tested. */
         bool isActive(int id);
 
-        /*! Returns the number of active samples in step. */
+        /*! Get the number of active drums in the step.
+        \return The number of active drums. */
         int numActive();
 
-        /*! Returns a vector of the active drums' IDs. */
+        /*! Returns a vector of the active drums' IDs.
+        \return A vector containing the IDs of the active drums. */
         std::vector<int> getActive();
+
+        /*! Removes all drums from the Step. */
+        void clear();
     
     private:
         /*! Container for drum trigger switches. */
@@ -43,24 +51,35 @@ class Sequencer {
     public:
         /*! Defualt constructor. */
         Sequencer();
-        /*! Sequencer constructor. */
+        /*! Sequencer constructor.
+        \param numSteps the number of steps in the sequence. */
         Sequencer(const int numSteps);
 
         /*! Advance the sequencer by one step.
         Updates tracking and sends relevant samples to output. */
         void advance();
 
-        /*! Returns the current step number. */
-        int getCurrentStep();
+        /*! Get the current step number.
+        \return The current step number. */
+        int getStepNum();
 
         /*! Starts the sequencer.
         If already running, resets playhead to beginning of sequence. */
         void start();
 
-        /*! Sets the clock rate in BPM. */
+        /*! Sets the clock rate in BPM.
+        \param bpm the desired clocking rate in beats per minute (BPM). */
         void setRate_bpm(int bpm);
-        /*! Sets the clock rate in miliseconds. */
-        void setRate_ms(int time);
+        /*! Sets the clock rate in miliseconds.
+        \param ms the desired clocking rate in miliseconds. */
+        void setRate_ms(int ms);
+
+        /*! Clear sequence pattern. */
+        void clear();
+
+        /*! Resets the sequencer to initial conditions.
+        \param clearSteps whether to clear the sequence pattern. */
+        void reset(bool clearSteps = true);
     
     private:
         /*! Container for step objects. */
@@ -82,9 +101,13 @@ class Sequencer {
         /*! Updates both the active step ID and pointer. */
         void updateStep();
 
+        /*! Clock object to trigger the sequencer. */
         Clock clock;
+
+        /*! True if sequencer is running. */
+        bool running;
 };
 
-#endif // define sequencer_h
+#endif // define SEQUENCER_H
 
 } // namespace sequencer
