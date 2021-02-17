@@ -63,6 +63,24 @@ void Sequencer::advance() {
     // TODO
 }
 
+std::vector<int> Sequencer::getActive() {
+    return currentStep->getActive();
+}
+
+std::vector<std::vector<bool>> Sequencer::getSequence() {
+    std::vector<std::vector<bool>> pattern;
+    pattern.resize(numSteps);
+    for (int i = 0; i < numSteps; i++) {
+        // For each Step...
+        pattern[i].resize(NUM_DRUMS);
+        for (int j = 0; j < NUM_DRUMS; j++) {
+            // For each drum...
+            pattern[i][j] = steps[i].isActive(j);
+        }
+    }
+    return pattern;
+}
+
 int Sequencer::getStepNum() {
     return stepNum;
 }

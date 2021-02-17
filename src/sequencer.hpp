@@ -58,6 +58,14 @@ class Sequencer {
         Updates tracking and sends relevant samples to output. */
         void advance();
 
+        /*! Returns the active samples' IDs for the current step.
+        \return A vector containing the IDs of the active drums. */
+        std::vector<int> getActive();
+
+        /*! Returns the whole sequencer pattern.
+        \return A 2D vector of the Sequencer pattern. */
+        std::vector<std::vector<bool>> getSequence();
+
         /*! Get the current step number.
         \return The current step number. */
         int getStepNum();
