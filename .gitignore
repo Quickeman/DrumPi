@@ -35,9 +35,10 @@
 Session.vim
 .vimrc
 
+# cmake
+*.cmake
 CMakeCache.txt
 CMakeFiles/
 Makefile
-bin/
-cmake_install.cmake
 
+bin/
