@@ -55,8 +55,8 @@ class Sequencer {
         Sequencer(const int numSteps);
 
         /*! Advance the sequencer by one step.
-        Updates tracking and sends relevant samples to output. */
-        void advance();
+        \param n number of step to advance by. */
+        void step(int n = 1);
 
         /*! Returns the active samples' IDs for the current step.
         \return A vector containing the IDs of the active drums. */
@@ -91,11 +91,9 @@ class Sequencer {
 
         /*! Pointer to currently active step object. */
         Step* currentStep;
-        /*! Call to update the active step pointer. */
+        /*! Call to update the active step pointer.
+        Should be called after the active step ID is updated. */
         void _updateStepPtr();
-
-        /*! Updates both the active step ID and pointer. */
-        void updateStep();
 };
 
 #endif // define SEQUENCER_H

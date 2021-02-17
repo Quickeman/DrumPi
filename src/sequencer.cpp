@@ -55,12 +55,11 @@ Sequencer::Sequencer(const int numSteps) {
     reset();
 }
 
-void Sequencer::advance() {
-    // Update Sequencer state
-    updateStep();
-
-    // Instruct Sampler to output sounds
-    // TODO
+void Sequencer::step(int n) {
+    for (int i = 0; i < n; i++) {
+        _updateStepID();
+        _updateStepPtr();
+    }
 }
 
 std::vector<int> Sequencer::getActive() {
@@ -91,9 +90,9 @@ void Sequencer::clear() {
     }
 }
 
-void Sequencer::reset(bool clearSteps = true) {
+void Sequencer::reset(bool clearSteps) {
     stepNum = -1;
-    updateStep();
+    step();
     if (clearSteps) clear();
 }
 
@@ -104,11 +103,6 @@ void Sequencer::_updateStepID() {
 
 void Sequencer::_updateStepPtr() {
     currentStep = &steps[stepNum];
-}
-
-void Sequencer::updateStep() {
-    _updateStepID();
-    _updateStepPtr();
 }
 
 } // namespace sequencer
