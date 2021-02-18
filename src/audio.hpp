@@ -1,36 +1,34 @@
 // File: audio.hpp
-#include <sound/asound.h>
+#ifndef AUDIO_H
+#define AUDIO_H
+
+#include <jack/jack.h>
+#include <vector>
 
 namespace audio {
 
-#ifndef audio_h
-#define audio_h
-
+/*! Audio driver class for interacting with jackd. */
 class AudioDriver {
     public:
-        /** Audio driver class constructor
-         */
+        /*! Audio driver class constructor. */
         AudioDriver();
 
-        /** Audio driver class destructor
-         */
-        ~AudioDriver();
+        /*! Read method to send output buffer to jackd. */
+        int read();
 
-        /** Thread-safe running method
-         */
-        int run();
-
-        /** Audio format
-         */
+        /*! Audio format. */
         struct AudioFormat {
+            /*! Output buffer length in samples. */
             int bufferSize = 64;
+            /*! Driver sample rate. */
             int sampleRate = 48000; //Hz
         } format;
     
     private:
-        bool running = false;
+        /*! Output sample buffer. */
+        std::vector<int> buffer;
 };
 
-#endif // define audio_h
-
 } // namespace audio
+
+#endif // define AUDIO_H
