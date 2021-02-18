@@ -42,3 +42,7 @@ CMakeFiles/
 Makefile
 
 bin/
+
+# Unit testing
+Testing/
+test/testBin
