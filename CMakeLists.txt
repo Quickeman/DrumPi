@@ -22,23 +22,26 @@ set_target_properties(DrumPi PROPERTIES RUNTIME_OUTPUT_DIRECTORY bin)
 
 ### SOURCE CODE ###
 
-# add_library(Sequencer sequencer.cpp sequencer.hpp)
-# target_link_libraries(DrumPi Sequencer)
+# Library of all source code
+add_library(sourceLib src/.dummy.cxx)
+set_target_properties(sourceLib PROPERTIES ARCHIVE_OUTPUT_DIRECTORY lib/src)
 
 # Include source and header files
 file(GLOB SRCS src/*.cpp)
-# file(GLOB HDRS src/*.hpp)
 # Run through each source file
-foreach(fileName ${SRCS})
+foreach(srcName ${SRCS})
     # Get extension-less filename
-    get_filename_component(libName ${fileName} NAME_WE)
+    get_filename_component(libName ${srcName} NAME_WE)
     # Add library
     add_library(${libName} src/${libName}.cpp)
     # Put libraries in /lib/src
     set_target_properties(${libName} PROPERTIES ARCHIVE_OUTPUT_DIRECTORY lib/src)
     # Link library to DrumPi
-    target_link_libraries(DrumPi ${libName})
-endforeach(fileName)
+    target_link_libraries(sourceLib ${libName})
+endforeach(srcName)
+
+# Link source library to DrumPi
+target_link_libraries(DrumPi sourceLib)
 
 
 ### UNIT TESTING ###
@@ -60,7 +63,7 @@ foreach(testSrc ${TEST_SRCS})
     # Add target
     add_executable(${testName} ${testSrc})
     # Link to Boost and deps
-    target_link_libraries(${testName} ${Boost_LIBRARIES} sequencer)
+    target_link_libraries(${testName} ${Boost_LIBRARIES} sourceLib)
     # Put test executables in their own directory
     set_target_properties(${testName} PROPERTIES RUNTIME_OUTPUT_DIRECTORY test/testBin)
     # Add test to execution
