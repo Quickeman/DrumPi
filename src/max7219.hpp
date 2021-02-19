@@ -1,4 +1,3 @@
-
 #include <stdint.h>
 
 extern "C" {
@@ -15,7 +14,7 @@ class Max7219
                 shutdown,
                 displayTest;
         void write(unsigned char* data, unsigned int len);
-        void command(uint8_t reg, uint8_t data);
+        void command(unsigned char reg, unsigned char data);
 
     public:
         Max7219(unsigned char decodeMode = 0x00,
@@ -26,12 +25,12 @@ class Max7219
         ~Max7219();
 
         // Setters
-        void setByte(uint8_t digit, uint8_t value);
-        void setDecodeMode(uint8_t value);
-        void setIntensity(uint8_t value);
-        void setScanLimit(uint8_t value);
-        void setShutdown(uint8_t value);
-        void setDisplayTest(uint8_t value);
+        void setByte(unsigned char digit, unsigned char value);
+        void setDecodeMode(unsigned char value);
+        void setIntensity(unsigned char value);
+        void setScanLimit(unsigned char value);
+        void setShutdown(unsigned char value);
+        void setDisplayTest(unsigned char value);
 
         // Getters
         unsigned char getDigit(unsigned char digit);

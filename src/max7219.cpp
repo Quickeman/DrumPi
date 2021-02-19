@@ -40,6 +40,7 @@ Max7219::Max7219(unsigned char decodeMode,
 Max7219::~Max7219() {
 }
 
+// Getters //
 unsigned char Max7219::getDecodeMode(){
     return decodeMode;
 }
@@ -54,6 +55,29 @@ unsigned char Max7219::getShutdown(){
 }
 unsigned char Max7219::getDisplayTest(){
     return displayTest;
+}
+
+// Setters //
+
+void Max7219::setDecodeMode(unsigned char value){
+    decodeMode = value;
+    command(MAX7219_REG_DECODEMODE, value);
+}
+void Max7219::setIntensity(unsigned char value){
+    intensity = value;
+    command(MAX7219_REG_INTENSITY, value);
+}
+void Max7219::setScanLimit(unsigned char value){
+    scanLimit = value;
+    command(MAX7219_REG_SCANLIMIT, value);
+}
+void Max7219::setShutdown(unsigned char value){
+    shutdown = value;
+    command(MAX7219_REG_SHUTDOWN, value);
+}
+void Max7219::setDisplayTest(unsigned char value){
+    displayTest = value;
+    command(MAX7219_REG_DISPLAYTEST, value);
 }
 
 void Max7219::write(unsigned char* data, unsigned int len) {
