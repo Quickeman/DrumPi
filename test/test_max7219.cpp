@@ -28,3 +28,22 @@ BOOST_AUTO_TEST_CASE(custom_agrs) {
     BOOST_TEST(display.getShutdown() == 0x1);
     BOOST_TEST(display.getDisplayTest() == 0x0);
 }
+
+BOOST_AUTO_TEST_CASE(setters) {
+    // Max7219 object with default params
+    Max7219 display;
+    display.setDecodeMode(0x1);
+    BOOST_TEST(display.getDecodeMode() == 0x1);
+
+    display.setIntensity(0x9);
+    BOOST_TEST(display.getIntensity() == 0x9);
+
+    display.setScanLimit(0x4);
+    BOOST_TEST(display.getScanLimit() == 0x4);
+
+    display.setShutdown(0x0);
+    BOOST_TEST(display.getShutdown() == 0x0);
+
+    display.setDisplayTest(0x1);
+    BOOST_TEST(display.getDisplayTest() == 0x1);
+}
