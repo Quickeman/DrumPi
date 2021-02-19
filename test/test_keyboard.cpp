@@ -5,13 +5,11 @@
 #include <boost/test/unit_test.hpp>
 #include <keyboard.hpp>
 
-//I want a class to open the keyboard input file
-
+//Check the keyboard input file can be successfully opened
 BOOST_AUTO_TEST_CASE(Open_Input_File) {
 	KeyboardInput kbd;
 
-	//check input file has been sucessfully opened
 	BOOST_CHECK(kbd.fd >= 0);
 }
 
-//I want keyboard presses to trigger a function
+//Check keyboard presses can trigger a function
