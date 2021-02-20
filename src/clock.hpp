@@ -47,8 +47,9 @@ class Timer : public CppTimer {
 /*! Trigger repeated actions. */
 class Clock : public CppTimer {
     public:
-        /*! Constructor. */
-        Clock();
+        /*! Constructor.
+        \param tickOnStart whether to call tick() on Clock start */
+        Clock(bool tickOnStart = true);
 
         /*! Set the clock rate.
         \param ms desired clocking rate, in ms. */
@@ -72,6 +73,13 @@ class Clock : public CppTimer {
 
         /*! Clock rate in ms. */
         int rate;
+
+        /*! Whether to call tick() on Clock start. */
+        bool startTick;
+
+    protected:
+        /*! Flag for the clocking rate being changed. */
+        bool rateChangeFlag;
 };
 
 

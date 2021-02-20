@@ -5,34 +5,75 @@
 using namespace drumpi;
 using namespace clock;
 
-Timer::Timer() {}
+Timer::Timer() {
+    setTime(1000);
+}
 
-void Timer::setTime(int ms) {}
+void Timer::setTime(int ms) {
+    time = ms;
+}
 
-int Timer::getTime() {return 0;}
+int Timer::getTime() {
+    return time;
+}
 
-void Timer::start() {};
+void Timer::start() {
+    CppTimer::start(long(time * 1000000), ONESHOT);
+};
 
 void Timer::trigger() {}
 
-void Timer::timerEvent() {};
+void Timer::timerEvent() {
+    trigger();
+};
 
 
-Clock::Clock() {}
+Clock::Clock(bool tickOnStart) {
+    startTick = tickOnStart;
+    setRate(1000);
+    rateChangeFlag = false;
+}
 
-void Clock::setRate(int ms) {}
+void Clock::setRate(int ms) {
+    rate = ms;
+    rateChangeFlag = true;
+}
 
-int Clock::getRate() {return 0;}
+int Clock::getRate() {
+    return rate;
+}
 
-void Clock::start() {}
+void Clock::start() {
+    CppTimer::start(long(rate*1000000));
+    if (startTick) {
+        timerEvent();
+    }
+}
 
 void Clock::tick() {}
 
-void Clock::timerEvent() {}
+void Clock::timerEvent() {
+    if (rateChangeFlag) {
+        bool tempST = startTick;
+        startTick = false;
+        stop();
+        start();
+        startTick = tempST;
+        rateChangeFlag = false;
+    }
+    tick();
+}
 
 
-Metronome::Metronome() {}
+Metronome::Metronome() {
+    setRateBPM(120);
+    rateChangeFlag = false;
+}
 
-void Metronome::setRateBPM(int bpm) {}
+void Metronome::setRateBPM(int bpm) {
+    setRate(bpmToMs(bpm));
+}
 
-int Metronome::getRateBPM() {return 0;}
+int Metronome::getRateBPM() {
+    return bpm;
+}
