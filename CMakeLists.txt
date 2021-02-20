@@ -48,6 +48,7 @@ add_library(library src/.dummy.cxx)
 set_target_properties(library PROPERTIES ARCHIVE_OUTPUT_DIRECTORY lib)
 
 ## Add, include and link each library subdirectory
+# For pre-compiled libraries (e.g. wiringPi) only linking is needed
 # Add
 add_subdirectory(
     lib/cppTimer
