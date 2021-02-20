@@ -46,3 +46,6 @@ bin/
 # Unit testing
 Testing/
 test/testBin
+
+# VS Code
+.vscode/
