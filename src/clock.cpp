@@ -5,11 +5,6 @@
 using namespace drumpi;
 using namespace clock;
 
-inline int bpmToMs(int bpm) {
-    return 60000 / bpm;
-}
-
-
 Timer::Timer() {}
 
 void Timer::setTime(int ms) {}

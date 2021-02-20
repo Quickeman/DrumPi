@@ -8,8 +8,10 @@
 namespace drumpi {
 namespace clock {
 
-/*! Converts BPM to miliseconds. */
-inline int bpmToMs(int bpm);
+/*! Converts BPM to ms. */
+inline int bpmToMs(int bpm) {
+    return 60000 / bpm;
+}
 
 
 /*! Trigger a single delayed action. */
@@ -18,12 +20,12 @@ class Timer : public CppTimer {
         /*! Constructor. */
         Timer();
 
-        /*! Set trigger time in miliseconds.
-        \param ms desired trigger time, in miliseconds. */
+        /*! Set trigger time in ms.
+        \param ms desired trigger time, in ms. */
         void setTime(int ms);
 
-        /*! Returns the trigger time in miliseconds.
-        \return trigger time in miliseconds. */
+        /*! Returns the trigger time in ms.
+        \return trigger time in ms. */
         int getTime();
 
         /*! Start the timer. */
@@ -37,7 +39,7 @@ class Timer : public CppTimer {
         /*! Override event method to call trigger(). */
         void timerEvent() override;
 
-        /*! Trigger time in miliseconds. */
+        /*! Trigger time in ms. */
         int time;
 };
 
@@ -49,11 +51,11 @@ class Clock : public CppTimer {
         Clock();
 
         /*! Set the clock rate.
-        \param ms desired clocking rate, in miliseconds. */
+        \param ms desired clocking rate, in ms. */
         void setRate(int ms);
 
-        /*! Returns the clock rate in miliseconds.
-        \return clock rate in miliseconds. */
+        /*! Returns the clock rate in ms.
+        \return clock rate in ms. */
         int getRate();
 
         /*! Start the clock.
@@ -68,7 +70,7 @@ class Clock : public CppTimer {
         /*! Override event method to call tick(). */
         void timerEvent() override;
 
-        /*! Clock rate in miliseconds. */
+        /*! Clock rate in ms. */
         int rate;
 };
 
@@ -78,7 +80,7 @@ class Metronome : public Clock {
     public:
         /*! Contructor. */
         Metronome();
-        
+
         /*! Sets the clock rate in BPM.
         \param bpm desired clocking rate, in beats per minute (BPM). */
         void setRateBPM(int bpm);
