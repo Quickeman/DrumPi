@@ -71,6 +71,7 @@ Metronome::Metronome() {
 }
 
 void Metronome::setRateBPM(int bpm) {
+    this->bpm = bpm;
     setRate(bpmToMs(bpm));
 }
 

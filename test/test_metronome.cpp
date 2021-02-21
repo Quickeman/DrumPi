@@ -20,13 +20,14 @@ BOOST_AUTO_TEST_CASE(bpmToMsConversion) {
     // Test BPM -> ms conversion
     BOOST_CHECK_EQUAL(500, bpmToMs(120));
     BOOST_CHECK_EQUAL(1000, bpmToMs(60));
+    BOOST_CHECK_EQUAL(666, bpmToMs(90));
 }
 
 BOOST_AUTO_TEST_CASE(setRateBpm) {
     // Test rate setting with BPM
     Metronome m;
     int bpm = 90;
-    int ms = 750;//bpmToMs(bpm);
+    int ms = bpmToMs(bpm);
     m.setRateBPM(bpm);
 
     BOOST_CHECK_EQUAL(bpm, m.getRateBPM());
