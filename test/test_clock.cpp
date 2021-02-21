@@ -71,3 +71,28 @@ BOOST_AUTO_TEST_CASE(stopping) {
 
     BOOST_CHECK_EQUAL(val, c.i);
 }
+
+BOOST_AUTO_TEST_CASE(activeRateSetting) {
+    // Test changing clock rate while Clock is active/ticking
+    TestClock1 c;
+    int r1 = 40; // rate1 = 40ms
+    int r2 = 10; // rate2 = 10ms
+    c.setRate(r1);
+    c.start();
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(r1 + (r1/2)));
+
+    BOOST_CHECK_EQUAL(2, c.i);
+
+    c.setRate(r2);
+
+    BOOST_CHECK_EQUAL(2, c.i);
+
+    std::this_thread::sleep_for(std::chrono::milliseconds((r1/2) + (r2/2)));
+
+    BOOST_CHECK_EQUAL(3, c.i);
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(r2*3));
+
+    BOOST_CHECK_EQUAL(6, c.i);
+}
