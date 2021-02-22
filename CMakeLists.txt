@@ -62,6 +62,7 @@ include_directories(
 # Link
 target_link_libraries(library
     cpptimer
+    jack
 )
 
 # Link sum library to DrumPi
