@@ -3,7 +3,6 @@
 #define SEQUENCER_H
 
 #include <vector>
-#include <memory>
 
 namespace sequencer {
 
