@@ -1,10 +1,11 @@
 // File: sample.hpp
-#ifndef SAMPLE_H
-#define SAMPLE_H
+#ifndef DRUMPI_SAMPLE_H
+#define DRUMPI_SAMPLE_H
 
 #include <string>
 #include <vector>
 
+namespace drumpi {
 namespace audio {
 
 /*! Handler class for drum samples. */
@@ -40,5 +41,6 @@ class Sample {
 };
 
 } // namespace audio
+} // namespace drumpi
 
-#endif
+#endif // define DRUMPI_SAMPLE_H

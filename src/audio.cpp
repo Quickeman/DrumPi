@@ -1,8 +1,12 @@
 // File: audio.cpp
 #include <audio.hpp>
-#include <sound/asound.h>
 
+using namespace drumpi;
 using namespace audio;
+
+JackDriver::JackDriver() {
+
+}
 
 AudioDriver::AudioDriver() {
     
