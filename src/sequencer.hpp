@@ -1,11 +1,10 @@
 // File: sequencer.hpp
-#pragma once
+#ifndef SEQUENCER_H
+#define SEQUENCER_H
+
 #include <vector>
 
 namespace sequencer {
-
-#ifndef SEQUENCER_H
-#define SEQUENCER_H
 
 #ifndef NUM_DRUMS
 #define NUM_DRUMS 8
