@@ -8,15 +8,16 @@ using namespace sequencer;
 int numSteps = 8;
 
 BOOST_AUTO_TEST_CASE(constructors) {
+	// Test for NULL object pointers
 	Sequencer seq1(numSteps);
 	Sequencer seq2(numSteps);
 
-	// Check for non-null objects (pointers)
 	BOOST_CHECK(&seq1);
 	BOOST_CHECK(&seq2);
 }
 
 BOOST_AUTO_TEST_CASE(stepping) {
+	// Test the stepping functionality
 	Sequencer seq(numSteps);
 
 	// Should be on step 0
@@ -37,6 +38,7 @@ BOOST_AUTO_TEST_CASE(stepping) {
 }
 
 BOOST_AUTO_TEST_CASE(addRemoveDrums) {
+	// Test adding, removing and retrieving drums to/from various Steps
 	Sequencer seq(numSteps);
 	int d1 = 3;
 	int d2 = 5;
@@ -70,6 +72,7 @@ BOOST_AUTO_TEST_CASE(addRemoveDrums) {
 }
 
 BOOST_AUTO_TEST_CASE(sequence) {
+	// Test retrieving the sequence pattern
 	Sequencer seq(numSteps);
 
 	std::vector<std::vector<bool>> s;
@@ -96,6 +99,7 @@ BOOST_AUTO_TEST_CASE(sequence) {
 }
 
 BOOST_AUTO_TEST_CASE(resetting) {
+	// Test resetting the Sequencer
 	Sequencer seq(numSteps);
 
 	std::vector<std::vector<bool>> s;
