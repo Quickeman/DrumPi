@@ -11,20 +11,22 @@
 #include <string.h>
 #include <stdio.h>
 
+namespace drumpi {
+namespace kbdinput {
+
 //class for detecting keyboard presses
 class KeyboardInput {
 public:
-    KeyboardInput()	//constructor
-    {
-        const char *input_file = "/dev/input/event3";
-        fd = open(input_file, O_RDONLY);
-    }
+    KeyboardInput();	//constructor
 
     struct input_event ev;
     int fd;
     size_t n;
 
-    void poll_input();
+    void pollInput();
 };
+
+} //namespace kbdinput
+} //namespace drumpi
 
 #endif  //KEYBOARDINPUT_H
