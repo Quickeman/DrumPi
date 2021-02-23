@@ -4,6 +4,7 @@
 
 #include <vector>
 
+namespace drumpi {
 namespace sequencer {
 
 #ifndef NUM_DRUMS
@@ -122,6 +123,7 @@ class Sequencer {
         void _updateStepPtr();
 };
 
-#endif // define SEQUENCER_H
-
 } // namespace sequencer
+} // namespace drumpi
+
+#endif // define SEQUENCER_H

@@ -3,6 +3,7 @@
 #include <boost/test/unit_test.hpp>
 #include <sequencer.hpp>
 
+using namespace drumpi;
 using namespace sequencer;
 
 int numSteps = 8;

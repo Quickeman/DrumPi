@@ -2,7 +2,8 @@
 
 #include "sequencer.hpp"
 
-namespace sequencer {
+using namespace drumpi;
+using namespace sequencer;
 
 // Step class
 
@@ -128,5 +129,3 @@ void Sequencer::_updateStepID() {
 void Sequencer::_updateStepPtr() {
     currentStep = &steps[stepNum];
 }
-
-} // namespace sequencer
