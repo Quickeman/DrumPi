@@ -16,11 +16,11 @@ std::vector<T> PlaybackEngine<T>::getSamples(int nSamples) {
 }
 
 template<typename T>
-void PlaybackEngine<T>::addToOutput(int id) {
+void PlaybackEngine<T>::trigger(drumID_t id) {
 
 }
 
 template<typename T>
-void PlaybackEngine<T>::removeFromOutput(int id) {
+void PlaybackEngine<T>::untrigger(drumID_t id) {
 
 }

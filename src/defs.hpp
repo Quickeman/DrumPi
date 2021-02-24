@@ -9,7 +9,13 @@ DO NOT instantiate any objects, variables etc here. */
 
 namespace drumpi {
 
-#define NUM_DRUMS 8
+typedef enum _DrumIDs {
+    KICK_DRUM = 0,
+    SNARE_DRUM,
+    _NUM_DRUMS
+} drumID_t;
+
+#define NUM_DRUMS (int)_DrumIDs::_NUM_DRUMS
 
 namespace audio {
 

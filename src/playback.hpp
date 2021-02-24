@@ -28,17 +28,20 @@ class PlaybackEngine : public AudioCallback<T> {
 
         /*! Adds the specified drum to the output engine.
         \param id ID of the drum to add. */
-        void addToOutput(int id);
-
-        /*! Removes the specified drum sample from the output.
-        \param id ID of the drum to remove. */
-        void removeFromOutput(int id);
+        void trigger(drumID_t id);
     
     private:
+        /*! Removes the specified drum sample from the output.
+        \param id ID of the drum to remove. */
+        void untrigger(drumID_t id);
+
+        /*! Buffer of samples to allow rapid transfer to JACK. */
+        std::vector<T> buffer;
+
         /*! SampleSource object pointers. */
         std::vector<std::unique_ptr<SampleSource<T>>> sources;
         /*! Switches to store whether each source is being played. */
-        std::vector<bool> switches;
+        std::vector<bool> isTriggered;
         /*! Types of sample retrievers. */
         std::vector<sampleSourceType_t> types;
 

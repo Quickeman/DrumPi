@@ -23,15 +23,15 @@ class SampleSource {
         /*! Returns a buffer of samples.
         \param nSamples number of samples to be returned.
         \return sample buffer of length `nSamples`. */
-        virtual std::vector<T> getSamples(int nSamples) {std::vector<T> b; return b;};
+        virtual std::vector<T> getSamples(int nSamples) = 0;
 
         /*! Resets the source to initial conditions. */
-        virtual void reset() {};
+        virtual void reset() = 0;
 
         /*! Returns the status of the source.
         Sets status to `READY` if currently `FINISHED`.
         \return status code of source. */
-        virtual sampleSourceStatus_t getStatus() {return ERROR;};
+        virtual sampleSourceStatus_t getStatus() = 0;
 
         /*! Returns the type of source represented by the object.
         \return type code of source */
