@@ -29,6 +29,10 @@ class PlaybackEngine : public AudioCallback<T> {
         /*! Adds the specified drum to the output engine.
         \param id ID of the drum to add. */
         void trigger(drumID_t id);
+
+        /*! Returns a vector containing the IDs of the currently active sources.
+        \return IDs of the currently active sources. */
+        std::vector<drumID_t> getActive();
     
     private:
         /*! Removes the specified drum sample from the output.
