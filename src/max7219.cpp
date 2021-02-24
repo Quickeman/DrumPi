@@ -10,37 +10,52 @@
 #define MAX7219_REG_DECODEMODE 0x9
 #define MAX7219_REG_INTENSITY 0xA
 #define MAX7219_REG_SCANLIMIT 0xB
-#define MAX7219_REG_SHUTDOWN 0xC0
+#define MAX7219_REG_SHUTDOWN 0xC
 #define MAX7219_REG_DISPLAYTEST 0xF
 
 #include "max7219.hpp"
-extern "C" {
-#include <wiringPiSPI.h>
-}
+
+using namespace drumpi;
+using namespace display;
 
 Max7219::Max7219(unsigned char decodeMode,
                 unsigned char intensity,
                 unsigned char scanLimit,
                 unsigned char shutdown,
-                unsigned char displayTest):
+                unsigned char displayTest,
+                unsigned int numDigits):
     decodeMode(decodeMode),
     intensity(intensity),
     scanLimit(scanLimit),
     shutdown(shutdown),
-    displayTest(displayTest)
+    displayTest(displayTest),
+    numDigits(numDigits)
 {
-    wiringPiSPISetup(0, 500000);
+    // Allocate digit buffer and init to 0
+    digitBuffer = new unsigned char[numDigits];
+    clear(true);
+
+    // Init SPI
+    wiringPiSPISetup(0, 32000000);
+
+    // Set command regs
     command(MAX7219_REG_DECODEMODE, decodeMode);
-    command(MAX7219_REG_INTENSITY, decodeMode);
-    command(MAX7219_REG_SCANLIMIT, decodeMode);
-    command(MAX7219_REG_SHUTDOWN, decodeMode);
-    command(MAX7219_REG_DISPLAYTEST, decodeMode);
+    command(MAX7219_REG_INTENSITY, intensity);
+    command(MAX7219_REG_SCANLIMIT, scanLimit);
+    command(MAX7219_REG_SHUTDOWN, shutdown);
+    command(MAX7219_REG_DISPLAYTEST, displayTest);
 }
 
 Max7219::~Max7219() {
+    delete digitBuffer;
 }
 
 // Getters //
+
+unsigned char Max7219::getDigit(unsigned char digit) {
+    return digitBuffer[digit];
+}
+
 unsigned char Max7219::getDecodeMode(){
     return decodeMode;
 }
@@ -58,6 +73,11 @@ unsigned char Max7219::getDisplayTest(){
 }
 
 // Setters //
+
+void Max7219::setDigit(unsigned char digit, unsigned char value, bool redraw) {
+    digitBuffer[digit] = value;
+    if(redraw) flush();
+}
 
 void Max7219::setDecodeMode(unsigned char value){
     decodeMode = value;
@@ -80,6 +100,8 @@ void Max7219::setDisplayTest(unsigned char value){
     command(MAX7219_REG_DISPLAYTEST, value);
 }
 
+// Actions //
+
 void Max7219::write(unsigned char* data, unsigned int len) {
     wiringPiSPIDataRW(0, data, len);
 }
@@ -87,4 +109,19 @@ void Max7219::write(unsigned char* data, unsigned int len) {
 void Max7219::command(unsigned char reg, unsigned char data) {
     unsigned char tx[2] = {reg, data};
     write(tx, 2);
+}
+
+void Max7219::flush() {
+    unsigned char tx[2];
+    for (unsigned char digit = 0; digit < numDigits; digit ++) {
+        tx[0] = digit + 1; // digits addresses are 1-8
+        tx[1] = digitBuffer[digit];
+        write(tx,2);
+    }
+}
+
+void Max7219::clear(bool redraw) {
+    for (unsigned int digit = 0; digit < numDigits; digit ++)
+        digitBuffer[digit] = 0x0;
+    if(redraw) flush();
 }

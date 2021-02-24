@@ -1,13 +1,14 @@
 #include <stdint.h>
-
-extern "C" {
 #include <wiringPiSPI.h>
-}
+
+namespace drumpi {
+namespace display {
 
 class Max7219
 {
     private:
-        unsigned char* buffer;
+        unsigned int numDigits;
+        unsigned char* digitBuffer;
         unsigned char decodeMode,
                 intensity,
                 scanLimit,
@@ -17,15 +18,16 @@ class Max7219
         void command(unsigned char reg, unsigned char data);
 
     public:
-        Max7219(unsigned char decodeMode = 0x00,
-                unsigned char intensity = 0x07,
-                unsigned char scanLimit = 0x07,
-                unsigned char shutdown = 0x01,
-                unsigned char displayTest = 0x00);
+        Max7219(unsigned char decodeMode = 0x0,
+                unsigned char intensity = 0x7,
+                unsigned char scanLimit = 0x7,
+                unsigned char shutdown = 0x1,
+                unsigned char displayTest = 0x0,
+                unsigned int numDigits = 8);
         ~Max7219();
 
         // Setters
-        void setByte(unsigned char digit, unsigned char value);
+        void setDigit(unsigned char digit, unsigned char value, bool redraw);
         void setDecodeMode(unsigned char value);
         void setIntensity(unsigned char value);
         void setScanLimit(unsigned char value);
@@ -42,5 +44,7 @@ class Max7219
 
         // Actions
         void flush();
-        void clear();
+        void clear(bool redraw);
 };
+} // namespace display
+} // namespace drumpi
