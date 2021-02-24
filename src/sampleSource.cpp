@@ -10,7 +10,7 @@ SampleSource<T>::SampleSource() {
 
 template<typename T>
 sampleSourceType_t SampleSource<T>::getType() {
-    return GENERALISED;
+    return SOURCE_GENERALISED;
 }
 
 
@@ -32,7 +32,7 @@ void AudioClip<T>::reset() {
 
 template<typename T>
 sampleSourceStatus_t AudioClip<T>::getStatus() {
-    return ERROR;
+    return SOURCE_ERROR;
 }
 
 template<typename T>
