@@ -1,7 +1,7 @@
 #define BOOST_TEST_DYN_LINK
 #define BOOST_TEST_MODULE SequencerTest
 #include <boost/test/unit_test.hpp>
-#include <max7219.hpp>
+#include <display.hpp>
 extern "C" {
 #include <wiringPiSPI.h>
 }

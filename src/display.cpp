@@ -13,7 +13,7 @@
 #define MAX7219_REG_SHUTDOWN 0xC
 #define MAX7219_REG_DISPLAYTEST 0xF
 
-#include "max7219.hpp"
+#include "display.hpp"
 
 using namespace drumpi;
 using namespace display;

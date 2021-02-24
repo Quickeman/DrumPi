@@ -14,7 +14,7 @@ class Max7219
                 scanLimit,
                 shutdown,
                 displayTest;
-        void write(unsigned char* data, unsigned int len);
+        void write(unsigned char *data, unsigned int len);
         void command(unsigned char reg, unsigned char data);
 
     public:

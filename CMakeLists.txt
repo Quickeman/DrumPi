@@ -73,7 +73,7 @@ foreach(testSrc ${TEST_SRCS})
     set_target_properties(${testName} PROPERTIES RUNTIME_OUTPUT_DIRECTORY test/testBin)
 
     # Find wiringPi library
-    target_link_libraries(test_max7219 wiringPi)
+    target_link_libraries(test_display wiringPi)
     # Add test to execution
     add_test(NAME ${testName}
              WORKING_DIRECTORY test/testBin
