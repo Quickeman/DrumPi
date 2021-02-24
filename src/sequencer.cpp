@@ -2,7 +2,8 @@
 
 #include "sequencer.hpp"
 
-namespace sequencer {
+using namespace drumpi;
+using namespace sequencer;
 
 // Step class
 
@@ -62,6 +63,14 @@ void Sequencer::step(int n) {
     }
 }
 
+bool Sequencer::isActive(int drum, int step) {
+    return steps[step].isActive(drum);
+}
+
+bool Sequencer::isActive(int drum) {
+    return isActive(drum, stepNum);
+}
+
 std::vector<int> Sequencer::getActive() {
     return currentStep->getActive();
 }
@@ -96,6 +105,22 @@ void Sequencer::reset(bool clearSteps) {
     if (clearSteps) clear();
 }
 
+void Sequencer::addToStep(int drum, int step) {
+    steps[step].addToStep(drum);
+}
+
+void Sequencer::addToStep(int drum) {
+    addToStep(drum, stepNum);
+}
+
+void Sequencer::removeFromStep(int drum, int step) {
+    steps[step].removeFromStep(drum);
+}
+
+void Sequencer::removeFromStep(int drum) {
+    removeFromStep(drum, stepNum);
+}
+
 void Sequencer::_updateStepID() {
     stepNum++;
     if (stepNum >= numSteps) stepNum = 0;
@@ -104,5 +129,3 @@ void Sequencer::_updateStepID() {
 void Sequencer::_updateStepPtr() {
     currentStep = &steps[stepNum];
 }
-
-} // namespace sequencer
