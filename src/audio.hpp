@@ -37,7 +37,7 @@ class AudioEngine {
         \param clientName requested client name in JACK.
         \param serverName requested server name in JACK. `NULL` by default.
         \return error code, zero means no error. */
-        int setup(AudioCallback<SAMPLE_FORMAT>* callback, std::string clientName, std::string serverName = NULL);
+        int setup(AudioCallback<SAMPLE_FORMAT>& callback, std::string clientName, std::string serverName = NULL);
 
         /*! Informs JACK that the program is ready to go.
         \return error code. */
