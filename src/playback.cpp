@@ -2,6 +2,7 @@
 
 using namespace drumpi;
 using namespace audio;
+using namespace engine;
 
 template<typename T>
 PlaybackEngine<T>::PlaybackEngine() {

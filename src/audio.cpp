@@ -9,7 +9,7 @@ AudioEngine::AudioEngine() {
 
 }
 
-int AudioEngine::setup(PlaybackEngine<SAMPLE_FORMAT>& pbe, std::string clientName, std::string serverName) {
+int AudioEngine::setup(AudioCallback<SAMPLE_FORMAT>* callback, std::string clientName, std::string serverName) {
     return -1;
 }
 

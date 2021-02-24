@@ -3,17 +3,20 @@
 #define DRUMPI_PLAYBACK_H
 
 #include <vector>
+#include <memory>
 
 #include "defs.hpp"
+#include "audio.hpp"
 #include "sampleSource.hpp"
 
 namespace drumpi {
 namespace audio {
+namespace engine {
 
 /*! Sample handling class.
 Manages audio clips for sending to output. */
 template<typename T = SAMPLE_FORMAT>
-class PlaybackEngine {
+class PlaybackEngine : public AudioCallback<T> {
     public:
         /*! Constructor. */
         PlaybackEngine();
@@ -21,7 +24,7 @@ class PlaybackEngine {
         /*! Retrieves samples.
         \param nSamples number of samples to return.
         \return a buffer of samples. */
-        std::vector<T> getSamples(int nSamples);
+        std::vector<T> getSamples(int nSamples) override;
 
         /*! Adds the specified drum to the output engine.
         \param id ID of the drum to add. */
@@ -33,7 +36,7 @@ class PlaybackEngine {
     
     private:
         /*! SampleSource object pointers. */
-        std::vector<SampleSource<T>> sources;
+        std::vector<std::unique_ptr<SampleSource<T>>> sources;
         /*! Switches to store whether each source is being played. */
         std::vector<bool> switches;
         /*! Types of sample retrievers. */
@@ -43,6 +46,7 @@ class PlaybackEngine {
         int numActive;
 };
 
+} // namespace engine
 } // namespace audio
 } // namespace drumpi
 
