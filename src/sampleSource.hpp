@@ -6,25 +6,11 @@
 #include <vector>
 
 // #include <wave/file.h>
-#include <audio.hpp>
+
+#include "defs.hpp"
 
 namespace drumpi {
 namespace audio {
-
-/*! Defines the type of sample source. */
-typedef enum _SampleSourceType {
-    PREGENERATED_CLIP,
-    GENERALISED
-} sampleSourceType_t;
-
-/*! Defines the status of a SampleSource-type object. */
-typedef enum _SampleSourceStatus {
-    LOADING,
-    READY,
-    ACTIVE,
-    FINISHED,
-    ERROR
-} sampleSourceStatus_t;
 
 /*! Abstract class for sample retieval.
 \param T data format of playback samples. */
@@ -37,7 +23,7 @@ class SampleSource {
         /*! Returns a buffer of samples.
         \param nSamples number of samples to be returned.
         \return sample buffer of length `nSamples`. */
-        virtual std::vector<T> getSamples(int nSamples) {};
+        virtual std::vector<T> getSamples(int nSamples) {std::vector<T> b; return b;};
 
         /*! Resets the source to initial conditions. */
         virtual void reset() {};
@@ -45,7 +31,7 @@ class SampleSource {
         /*! Returns the status of the source.
         Sets status to `READY` if currently `FINISHED`.
         \return status code of source. */
-        virtual sampleSourceStatus_t getStatus() {};
+        virtual sampleSourceStatus_t getStatus() {return ERROR;};
 
         /*! Returns the type of source represented by the object.
         \return type code of source */

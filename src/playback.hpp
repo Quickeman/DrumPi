@@ -4,7 +4,7 @@
 
 #include <vector>
 
-#include "audio.hpp"
+#include "defs.hpp"
 #include "sampleSource.hpp"
 
 namespace drumpi {

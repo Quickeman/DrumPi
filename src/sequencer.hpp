@@ -4,11 +4,10 @@
 
 #include <vector>
 
-namespace sequencer {
+#include "defs.hpp"
 
-#ifndef NUM_DRUMS
-#define NUM_DRUMS 8
-#endif // define NUM_DRUMS
+namespace drumpi {
+namespace sequencer {
 
 /*! Step class for a Sequencer object. */
 class Step {
@@ -95,6 +94,7 @@ class Sequencer {
         void _updateStepPtr();
 };
 
-#endif // define SEQUENCER_H
-
 } // namespace sequencer
+} // namespace drumpi
+
+#endif // define SEQUENCER_H
