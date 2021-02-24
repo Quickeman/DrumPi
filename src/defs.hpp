@@ -24,17 +24,17 @@ typedef jack_default_audio_sample_t SAMPLE_FORMAT;
 
 /*! Defines the type of sample source. */
 typedef enum _SampleSourceType {
-    PREGENERATED_CLIP,
-    GENERALISED
+    SOURCE_PREGENERATED,
+    SOURCE_GENERALISED
 } sampleSourceType_t;
 
 /*! Defines the status of a SampleSource-type object. */
 typedef enum _SampleSourceStatus {
-    LOADING,
-    READY,
-    ACTIVE,
-    FINISHED,
-    ERROR
+    SOURCE_LOADING,
+    SOURCE_READY,
+    SOURCE_ACTIVE,
+    SOURCE_FINISHED,
+    SOURCE_ERROR
 } sampleSourceStatus_t;
 
 } // namespace audio
