@@ -15,10 +15,9 @@ namespace audio {
 namespace engine {
 
 /*! Abstract sample retieval callback class. */
-template<typename T = SAMPLE_FORMAT>
 class AudioCallback {
     public:
-        virtual std::vector<T> getSamples(int nSamples) = 0;
+        virtual std::vector<sample_t> getSamples(int nSamples) = 0;
 };
 
 /*! Audio engine class for interacting with the JACK server. */
@@ -37,7 +36,7 @@ class AudioEngine {
         \param clientName requested client name in JACK.
         \param serverName requested server name in JACK. `NULL` by default.
         \return error code, zero means no error. */
-        int setup(AudioCallback<SAMPLE_FORMAT>& callback, std::string clientName, std::string serverName = NULL);
+        int setup(AudioCallback& callback, std::string clientName, std::string serverName = NULL);
 
         /*! Informs JACK that the program is ready to go.
         \return error code. */
@@ -57,7 +56,7 @@ class AudioEngine {
         static void _shutdown(void *arg);
     
     private:
-        AudioCallback<SAMPLE_FORMAT>* callback;
+        AudioCallback* callback;
 
         /*! Pointer to the JACK client. */
         jack_client_t *client;

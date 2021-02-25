@@ -13,7 +13,7 @@ AudioEngine::~AudioEngine() {
     
 }
 
-int AudioEngine::setup(AudioCallback<SAMPLE_FORMAT>& callback, std::string clientName, std::string serverName) {
+int AudioEngine::setup(AudioCallback& callback, std::string clientName, std::string serverName) {
     return -1;
 }
 

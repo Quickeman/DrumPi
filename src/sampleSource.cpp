@@ -3,49 +3,44 @@
 using namespace drumpi;
 using namespace audio;
 
-template<typename T>
-SampleSource<T>::SampleSource() {
+SampleSource::SampleSource() {
 
 }
 
-template<typename T>
-sampleSourceType_t SampleSource<T>::getType() {
+sampleSourceType_t SampleSource::getType() {
     return SOURCE_GENERALISED;
 }
 
 
-template<typename T>
-AudioClip<T>::AudioClip(std::string filepath) {
+AudioClip::AudioClip() {
 
 }
 
-template<typename T>
-std::vector<T> AudioClip<T>::getSamples(int nSamples) {
-    std::vector<T> b;
+AudioClip::AudioClip(std::string filepath) {
+
+}
+
+std::vector<sample_t> AudioClip::getSamples(int nSamples) {
+    std::vector<sample_t> b;
     return b;
 }
 
-template<typename T>
-void AudioClip<T>::reset() {
+void AudioClip::reset() {
 
 }
 
-template<typename T>
-sampleSourceStatus_t AudioClip<T>::getStatus() {
+sampleSourceStatus_t AudioClip::getStatus() {
     return SOURCE_ERROR;
 }
 
-template<typename T>
-void AudioClip<T>::hardReset() {
+void AudioClip::hardReset() {
 
 }
 
-template<typename T>
-void AudioClip<T>::loadFile() {
+void AudioClip::loadFile() {
 
 }
 
-template<typename T>
-int AudioClip<T>::samplesRemaining() {
+int AudioClip::samplesRemaining() {
     return 0;
 }

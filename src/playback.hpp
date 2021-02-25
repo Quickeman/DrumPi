@@ -15,8 +15,7 @@ namespace engine {
 
 /*! Sample handling class.
 Manages audio clips for sending to output. */
-template<typename T = SAMPLE_FORMAT>
-class PlaybackEngine : public AudioCallback<T> {
+class PlaybackEngine : public AudioCallback {
     public:
         /*! Constructor. */
         PlaybackEngine();
@@ -24,7 +23,7 @@ class PlaybackEngine : public AudioCallback<T> {
         /*! Retrieves samples.
         \param nSamples number of samples to return.
         \return a buffer of samples. */
-        std::vector<T> getSamples(int nSamples) override;
+        std::vector<sample_t> getSamples(int nSamples) override;
 
         /*! Adds the specified drum to the output engine.
         \param id ID of the drum to add. */
@@ -40,10 +39,10 @@ class PlaybackEngine : public AudioCallback<T> {
         void untrigger(drumID_t id);
 
         /*! Buffer of samples to allow rapid transfer to JACK. */
-        std::vector<T> buffer;
+        std::vector<sample_t> buffer;
 
         /*! SampleSource object pointers. */
-        std::vector<std::unique_ptr<SampleSource<T>>> sources;
+        std::vector<std::unique_ptr<SampleSource>> sources;
         /*! Switches to store whether each source is being played. */
         std::vector<bool> isTriggered;
         /*! Types of sample retrievers. */

@@ -14,7 +14,6 @@ namespace audio {
 
 /*! Abstract class for sample retieval.
 \param T data format of playback samples. */
-template<typename T = SAMPLE_FORMAT>
 class SampleSource {
     public:
         /*! Constructor. */
@@ -23,15 +22,15 @@ class SampleSource {
         /*! Returns a buffer of samples.
         \param nSamples number of samples to be returned.
         \return sample buffer of length `nSamples`. */
-        virtual std::vector<T> getSamples(int nSamples) = 0;
+        virtual std::vector<sample_t> getSamples(int nSamples) = 0;// {std::vector<T> v; return v;}
 
         /*! Resets the source to initial conditions. */
-        virtual void reset() = 0;
+        virtual void reset() = 0;// {}
 
         /*! Returns the status of the source.
         Sets status to `READY` if currently `FINISHED`.
         \return status code of source. */
-        virtual sampleSourceStatus_t getStatus() = 0;
+        virtual sampleSourceStatus_t getStatus() = 0;// {return SOURCE_ERROR;}
 
         /*! Returns the type of source represented by the object.
         \return type code of source */
@@ -45,9 +44,11 @@ class SampleSource {
 };
 
 /*! Handler class for drum samples. */
-template<typename T = SAMPLE_FORMAT>
-class AudioClip : public SampleSource<T> {
+class AudioClip : public SampleSource {
     public:
+        /*! Default constructor. */
+        AudioClip();
+
         /*! Class constructor.
         \param filepath the file path of an audio file, e.g. "~/DrumPi/samples/kick.wav". */
         AudioClip(std::string filepath);
@@ -55,7 +56,7 @@ class AudioClip : public SampleSource<T> {
         /*! Returns a buffer of samples.
         \param nSamples number of samples to be returned.
         \return sample buffer of length `nSamples`. */
-        std::vector<T> getSamples(int nSamples) override;
+        std::vector<sample_t> getSamples(int nSamples) override;
 
         /*! Halts playback and returns playhead to start of clip. */
         void reset() override;
@@ -75,7 +76,7 @@ class AudioClip : public SampleSource<T> {
         /*! File path of the audio clip to load. */
         std::string filepath;
         /*! Container for the audio clip. */
-        std::vector<T> clip;
+        std::vector<sample_t> clip;
 
         /*! Number of samples in the audio clip. */
         int numSamples;

@@ -4,23 +4,24 @@ using namespace drumpi;
 using namespace audio;
 using namespace engine;
 
-template<typename T>
-PlaybackEngine<T>::PlaybackEngine() {
+PlaybackEngine::PlaybackEngine() {
 
 }
 
-template<typename T>
-std::vector<T> PlaybackEngine<T>::getSamples(int nSamples) {
-    std::vector<T> b;
+std::vector<sample_t> PlaybackEngine::getSamples(int nSamples) {
+    std::vector<sample_t> b;
     return b;
 }
 
-template<typename T>
-void PlaybackEngine<T>::trigger(drumID_t id) {
+void PlaybackEngine::trigger(drumID_t id) {
 
 }
 
-template<typename T>
-void PlaybackEngine<T>::untrigger(drumID_t id) {
+std::vector<drumID_t> PlaybackEngine::getActive() {
+    std::vector<drumID_t> v;
+    return v;
+}
+
+void PlaybackEngine::untrigger(drumID_t id) {
 
 }
