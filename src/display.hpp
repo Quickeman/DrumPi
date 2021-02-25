@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include <vector>
 #include <wiringPiSPI.h>
 
 namespace drumpi {
@@ -45,6 +46,24 @@ class Max7219
         // Actions
         void flush();
         void clear(bool redraw);
+};
+
+class Display: public Max7219 {
+    public:
+        Display();
+        ~Display();
+
+        void showVal(unsigned int value, bool redraw = true);
+
+        void showMode(unsigned int mode);
+
+        void showLevel(float level);
+
+        void showPlaybackSeq(std::vector<bool> activeDrums, unsigned int stepNum);
+
+        void showStopSeq(std::vector<bool> activeDrums, unsigned int page);
+
+        void toggleDPFlash();
 };
 } // namespace display
 } // namespace drumpi
