@@ -19,6 +19,13 @@ BOOST_AUTO_TEST_CASE(constructors) {
     BOOST_CHECK(&c2);
 }
 
+BOOST_AUTO_TEST_CASE(getsType) {
+    // Tests the setting and retrieving of the source type
+    AudioClip c(fp);
+
+    BOOST_CHECK(c.getType() == SOURCE_PREGENERATED);
+}
+
 BOOST_AUTO_TEST_CASE(getsBuffer) {
     // Tests a non-empty buffer is returned
     AudioClip c(fp);
