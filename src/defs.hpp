@@ -20,7 +20,7 @@ typedef enum _DrumIDs {
 namespace audio {
 
 /*! Sample data format used by JACK (`float`). */
-typedef jack_default_audio_sample_t SAMPLE_FORMAT;
+typedef jack_default_audio_sample_t sample_t;
 
 /*! Defines the type of sample source. */
 typedef enum _SampleSourceType {
