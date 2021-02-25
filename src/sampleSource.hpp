@@ -22,15 +22,18 @@ class SampleSource {
         /*! Returns a buffer of samples.
         \param nSamples number of samples to be returned.
         \return sample buffer of length `nSamples`. */
-        virtual std::vector<sample_t> getSamples(int nSamples) = 0;// {std::vector<T> v; return v;}
+        virtual std::vector<sample_t> getSamples(int nSamples) = 0;
 
         /*! Resets the source to initial conditions. */
-        virtual void reset() = 0;// {}
+        virtual void reset() = 0;
+
+        /*! Updates the status of the source. */
+        virtual void updateStatus() = 0;
 
         /*! Returns the status of the source.
         Sets status to `READY` if currently `FINISHED`.
         \return status code of source. */
-        virtual sampleSourceStatus_t getStatus() = 0;// {return SOURCE_ERROR;}
+        sampleSourceStatus_t getStatus();
 
         /*! Returns the type of source represented by the object.
         \return type code of source */
@@ -61,10 +64,8 @@ class AudioClip : public SampleSource {
         /*! Halts playback and returns playhead to start of clip. */
         void reset() override;
 
-        /*! Returns the status of the audio clip's playback.
-        Sets status to `READY` if currently `FINISHED`.
-        \return status code of clip. */
-        sampleSourceStatus_t getStatus() override;
+        /*! Updates the status of the source. */
+        void updateStatus() override;
 
         /*! Like `reset()`, but completely re-loads the clip.
         Not recommended for real-time use, only call to recover from errors. */

@@ -7,8 +7,12 @@ SampleSource::SampleSource() {
 
 }
 
+sampleSourceStatus_t SampleSource::getStatus() {
+    return status;
+}
+
 sampleSourceType_t SampleSource::getType() {
-    return SOURCE_GENERALISED;
+    return type;
 }
 
 
@@ -29,8 +33,8 @@ void AudioClip::reset() {
 
 }
 
-sampleSourceStatus_t AudioClip::getStatus() {
-    return SOURCE_ERROR;
+void AudioClip::updateStatus() {
+    
 }
 
 void AudioClip::hardReset() {
