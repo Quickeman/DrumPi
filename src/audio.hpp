@@ -23,8 +23,13 @@ class AudioCallback {
 /*! Audio engine class for interacting with the JACK server. */
 class AudioEngine {
     public:
-        /*! Constructor. */
+        /*! Default constructor. */
         AudioEngine();
+
+        /*! Constructor that specifies a number of ports. 
+        \param nOutPorts number of output ports. Default 2.
+        \param nInPorts number of input ports. Default 0. */
+        AudioEngine(int nOutPorts, int nInPorts);
 
         /*! Destructor.
         Closes the JACK client. */
@@ -36,15 +41,15 @@ class AudioEngine {
         \param clientName requested client name in JACK.
         \param serverName requested server name in JACK. `NULL` by default.
         \return error code, zero means no error. */
-        int setup(AudioCallback& callback, std::string clientName, std::string serverName = NULL);
+        audioError_t setup(AudioCallback& callback, std::string clientName, std::string serverName = "");
 
         /*! Informs JACK that the program is ready to go.
         \return error code. */
-        int start();
+        audioError_t start();
 
         /*! Stops the JACK engine.
         \return error code. */
-        int stop();
+        audioError_t stop();
 
         /*! Read method to send output buffer to the JACK server.
         Called by JACK when samples are needed.
@@ -56,16 +61,27 @@ class AudioEngine {
         static void _shutdown(void *arg);
     
     private:
+        /*! Pointer to the callback object that fetches output samples. */
         AudioCallback* callback;
+
+        /*! Default number of output ports. */
+        static const int defNumOutPorts = 2;
+        /*! Default number of input ports. */
+        static const int defNumInPorts = 0;
+        /*! Sets the number of output ports */
+        void setNumPorts(int nOutPorts = defNumOutPorts, int nInPorts = defNumInPorts);
 
         /*! Pointer to the JACK client. */
         jack_client_t *client;
         /*! JACK client name. */
         std::string clientName;
         /*! JACK server name. */
-        std::string serverName;
-        /*! JACK ports. */
+        std::string serverName = NULL;
+        /*! JACK output ports. */
         std::vector<jack_port_t*> outPorts;
+        /*! JACK input ports. Not (yet) implemented. */
+        std::vector<jack_port_t*> inPorts;
+        /*! JACK ports string. */
         std::vector<std::string> ports;
         /*! JACK options. */
         jack_options_t options = JackNullOption;
