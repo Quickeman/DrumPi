@@ -125,3 +125,60 @@ void Max7219::clear(bool redraw) {
         digitBuffer[digit] = 0x0;
     if(redraw) flush();
 }
+
+// Display class
+
+void Display::showVal(unsigned int value) {
+    // Set decode mode to display numerical values
+    command(MAX7219_REG_DECODEMODE, 0xFF);
+
+    // Clear digits
+    clear(false);
+
+    // Separate value into individual digits
+    // 3 digits:
+    if(value > 99) setThreeDigits(value);
+    // 2 digits:
+    if ((value > 9) && (value <= 99)) setTwoDigits(value);
+    // 1 digit:
+    else setOneDigit(value);
+
+    // Flush display
+    flush();
+
+    // Unset decode mode
+    command(MAX7219_REG_DECODEMODE, 0x00);
+}
+
+void Display::setThreeDigits(unsigned int value) {
+    clear(false);
+
+    unsigned char digitOne, digitTwo, digitThree;
+    digitOne = value % 10;
+    digitTwo = (value/10) % 10;
+    digitThree = (value/100) % 10;
+
+    setDigit(0x6, digitOne, false);
+    setDigit(0x7, digitTwo, false);
+    setDigit(0x8, digitThree, false);
+    flush();
+}
+
+void Display::setTwoDigits(unsigned int value) {
+    unsigned char digitOne, digitTwo;
+    digitOne = value % 10;
+    digitTwo = (value/10) % 10;
+    setDigit(0x7, digitOne, false);
+    setDigit(0x8, digitTwo, false);
+}
+
+void Display::setOneDigit(unsigned int value) {
+    unsigned char digitOne;
+    digitOne = value % 10;
+    setDigit(0x8, digitOne, false);
+}
+
+
+
+
+

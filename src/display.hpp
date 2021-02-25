@@ -16,7 +16,6 @@ class Max7219
                 shutdown,
                 displayTest;
         void write(unsigned char *data, unsigned int len);
-        void command(unsigned char reg, unsigned char data);
 
     public:
         Max7219(unsigned char decodeMode = 0x0,
@@ -46,23 +45,45 @@ class Max7219
         // Actions
         void flush();
         void clear(bool redraw);
+        void command(unsigned char reg, unsigned char data);
 };
 
 class Display: public Max7219 {
+    private:
+
+        // Stores state of DP (on/off)
+        bool dpToggle;
+
+        // Display a 3 digit decimal value
+        void setThreeDigits(unsigned int value);
+        // Display a 2 digit decimal value
+        void setTwoDigits(unsigned int value);
+        // Display a 1 digit decimal value
+        void setOneDigit(unsigned int value);
+
     public:
+
+        // Constructor
         Display();
+        // Destructor
         ~Display();
 
-        void showVal(unsigned int value, bool redraw = true);
+        // Display a decimal numerical value up to 999
+        void showVal(unsigned int value);
 
+        // Display P/S depending on mode
         void showMode(unsigned int mode);
 
+        // Show sound level with _ segments
         void showLevel(float level);
 
+        // Show sequence in playback mode, with scrolling seg
         void showPlaybackSeq(std::vector<bool> activeDrums, unsigned int stepNum);
 
+        // Show sequence in stop mode
         void showStopSeq(std::vector<bool> activeDrums, unsigned int page);
 
+        // Toggle the REC ENABLE decimal point flash
         void toggleDPFlash();
 };
 } // namespace display
