@@ -37,6 +37,21 @@ typedef enum _SampleSourceStatus {
     SOURCE_ERROR
 } sampleSourceStatus_t;
 
+namespace engine {
+
+/*! Error codes for the audio engine system. */
+typedef enum _AudioError {
+    NO_ERROR = 0,
+    CLIENT_OPEN_FAILED,
+    CLIENT_ACTIVATE_FAILED,
+    SERVER_CONNECT_FAILED,
+    NO_PORTS_AVAILABLE,
+    NO_PHYSICAL_PORTS,
+    PORT_CONNECT_FAILED,
+    CLIENT_CLOSE_ERROR
+} audioError_t;
+
+} // namespace engine
 } // namespace audio
 } // namespace drumpi
 
