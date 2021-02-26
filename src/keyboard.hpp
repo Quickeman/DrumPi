@@ -14,15 +14,36 @@
 namespace drumpi {
 namespace kbdinput {
 
-//class for detecting keyboard presses
+/*! Class for detecting keyboard presses */
 class KeyboardInput {
 public:
-    KeyboardInput();	//constructor
 
+	/*! /brief Constructor.
+	 *
+	 * The constructor sets and opens the
+	 * device file for the keyboard input device.
+	 */
+    KeyboardInput();
+
+    /*! Event handler containing information about keyboard input events. */
     struct input_event ev;
+
+    /*! File descriptor for the keyboard device file. */
     int fd;
+
+    /*!
+     * Stores error-return codes generated
+     * when reading from the keyboard device file.
+     */
     size_t n;
 
+    /*!
+     * \brief Method to poll the keyboard input.
+     *
+     * This method monitors the keyboard device file
+     * with a polling loop and prints an alert
+     * to the terminal when a key is pressed.
+     */
     void pollInput();
 };
 
