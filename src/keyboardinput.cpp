@@ -1,8 +1,8 @@
-//keyboard.cpp
+//keyboardinput.cpp
 //Implementation of keyboard input class
 //that detects keyboard presses
 
-#include "keyboard.hpp"
+#include "keyboardinput.hpp"
 
 using namespace drumpi;
 using namespace kbdinput;

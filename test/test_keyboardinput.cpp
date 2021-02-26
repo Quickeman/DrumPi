@@ -1,9 +1,9 @@
-//test_keyboard.cpp
+//test_keyboardinput.cpp
 
 #define BOOST_TEST_DYN_LINK
 #define BOOST_TEST_MODULE KeyboardInputTest
 #include <boost/test/unit_test.hpp>
-#include <keyboard.hpp>
+#include <keyboardinput.hpp>
 
 using namespace drumpi;
 using namespace kbdinput;

@@ -1,4 +1,4 @@
-//keyboard.hpp
+//keyboardinput.hpp
 //Declaration of keyboard input class
 //that detects keyboard presses
 
