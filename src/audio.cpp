@@ -15,27 +15,15 @@ AudioEngine::AudioEngine(int nOutPorts, int nInPorts) {
     setNumPorts(nOutPorts, nInPorts);
 }
 
-AudioEngine::~AudioEngine() {
-    audioError_t err = stop();
-
-    if (err) exit(1);
-}
-
-audioError_t AudioEngine::setup(AudioCallback& callback, std::string clientName, std::string serverName) {
+audioError_t AudioEngine::setup(AudioCallback& callback, std::string clientName) {
     // Establish client and server names
     this->clientName = clientName;
-    if (serverName != "") {
-        this->serverName = serverName;
-        int setupOptions = JackNullOption | JackServerName;
-        options = (jack_options_t)setupOptions;
-    }
 
     // Open a client connection to the JACK server
     client = jack_client_open(
         this->clientName.data(), 
         options, 
-        &status, 
-        this->serverName.data()
+        &status
     );
     // Client opening errors
     if (client == NULL) {
@@ -87,7 +75,7 @@ audioError_t AudioEngine::start() {
     }
 
     // Get port names(?)
-    // Ports are input as they are 'input' to the backend
+    // Ports are inputs as they are 'input' to the backend
     const char **portsTemp = jack_get_ports(client, NULL, NULL, JackPortIsPhysical|JackPortIsInput);
     for (int i = 0; i < ports.size(); i++) {
         ports[i] = portsTemp[i];

@@ -31,17 +31,13 @@ class AudioEngine {
         \param nInPorts number of input ports. Default 0. */
         AudioEngine(int nOutPorts, int nInPorts);
 
-        /*! Destructor.
-        Closes the JACK client. */
-        ~AudioEngine();
-
         /*! Setup method.
         Used to specify parameters to JACK.
         \param callback `AudioCallback` type object to fetch output samples.
         \param clientName requested client name in JACK.
-        \param serverName requested server name in JACK. `NULL` by default.
+        \param serverName requested server name in JACK. Blank by default.
         \return error code, zero means no error. */
-        audioError_t setup(AudioCallback& callback, std::string clientName, std::string serverName = "");
+        audioError_t setup(AudioCallback& callback, std::string clientName);
 
         /*! Informs JACK that the program is ready to go.
         \return error code. */
@@ -75,8 +71,6 @@ class AudioEngine {
         jack_client_t *client;
         /*! JACK client name. */
         std::string clientName;
-        /*! JACK server name. */
-        std::string serverName = NULL;
         /*! JACK output ports. */
         std::vector<jack_port_t*> outPorts;
         /*! JACK input ports. Not (yet) implemented. */
