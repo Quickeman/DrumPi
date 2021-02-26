@@ -7,7 +7,7 @@
 #define MAX7219_REG_DIGIT5 0x6
 #define MAX7219_REG_DIGIT6 0x7
 #define MAX7219_REG_DIGIT7 0x8
-#define MAX7219_REG_DECODEMODE 0x9
+#define MAX7219_REG_DECODEMODE 0x09
 #define MAX7219_REG_INTENSITY 0xA
 #define MAX7219_REG_SCANLIMIT 0xB
 #define MAX7219_REG_SHUTDOWN 0xC
@@ -128,10 +128,14 @@ void Max7219::clear(bool redraw) {
 
 // Display class
 
-void Display::showVal(unsigned int value) {
-    // Set decode mode to display numerical values
-    command(MAX7219_REG_DECODEMODE, 0xFF);
+Display::Display() {
+    dpToggle = false;
+}
 
+Display::~Display() {
+}
+
+void Display::showVal(unsigned int value) {
     // Clear digits
     clear(false);
 
@@ -139,46 +143,71 @@ void Display::showVal(unsigned int value) {
     // 3 digits:
     if(value > 99) setThreeDigits(value);
     // 2 digits:
-    if ((value > 9) && (value <= 99)) setTwoDigits(value);
+    else if ((value > 9) && (value <= 99)) setTwoDigits(value);
     // 1 digit:
-    else setOneDigit(value);
+    else if (value <= 9) setOneDigit(value);
 
     // Flush display
     flush();
-
-    // Unset decode mode
-    command(MAX7219_REG_DECODEMODE, 0x00);
 }
 
 void Display::setThreeDigits(unsigned int value) {
     clear(false);
 
     unsigned char digitOne, digitTwo, digitThree;
-    digitOne = value % 10;
-    digitTwo = (value/10) % 10;
-    digitThree = (value/100) % 10;
+    digitOne = decHexVals[value % 10];
+    digitTwo = decHexVals[(value/10) % 10];
+    digitThree = decHexVals[(value/100) % 10];
 
-    setDigit(0x6, digitOne, false);
-    setDigit(0x7, digitTwo, false);
-    setDigit(0x8, digitThree, false);
+    setDigit(5, digitOne, false);
+    setDigit(6, digitTwo, false);
+    setDigit(7, digitThree, false);
     flush();
 }
 
 void Display::setTwoDigits(unsigned int value) {
     unsigned char digitOne, digitTwo;
-    digitOne = value % 10;
-    digitTwo = (value/10) % 10;
-    setDigit(0x7, digitOne, false);
-    setDigit(0x8, digitTwo, false);
+    digitOne = decHexVals[value % 10];
+    digitTwo = decHexVals[(value/10) % 10];
+    setDigit(6, digitOne, false);
+    setDigit(7, digitTwo, false);
 }
 
 void Display::setOneDigit(unsigned int value) {
     unsigned char digitOne;
-    digitOne = value % 10;
-    setDigit(0x8, digitOne, false);
+    digitOne = decHexVals[value % 10];
+    setDigit(7, digitOne, false);
 }
 
+void Display::toggleDPFlash() {
+    // If dp is off, turn on
+    if (!dpToggle) {
+        for (unsigned int digit = 0; digit < numDigits; digit ++) {
+            unsigned char toggled = getDigit(digit) + 0x80;
+            setDigit(digit, toggled, false);
+        }
+        dpToggle = true;
+    }
+    else {
+        for (unsigned int digit = 0; digit < numDigits; digit ++) {
+            unsigned char toggled = getDigit(digit) - 0x80;
+            setDigit(digit, toggled, false);
+        }
+        dpToggle = false;
+    }
+    flush();
+}
 
+void Display::showLevel(float level) {
+    // Clear display
+    clear(false);
+    float magLevel = fabs(level);
+    unsigned int maxDigit = magLevel * numDigits;
 
+    // Apply level to digits
+    for(unsigned int digit = 0; digit <= maxDigit; digit ++)
+        setDigit(numDigits - digit, 0x8, false);
 
+    flush();
+}
 

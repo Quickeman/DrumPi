@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include <vector>
+#include <math.h>
 #include <wiringPiSPI.h>
 
 namespace drumpi {
@@ -8,7 +9,6 @@ namespace display {
 class Max7219
 {
     private:
-        unsigned int numDigits;
         unsigned char* digitBuffer;
         unsigned char decodeMode,
                 intensity,
@@ -18,6 +18,7 @@ class Max7219
         void write(unsigned char *data, unsigned int len);
 
     public:
+        unsigned int numDigits;
         Max7219(unsigned char decodeMode = 0x0,
                 unsigned char intensity = 0x7,
                 unsigned char scanLimit = 0x7,
@@ -50,6 +51,26 @@ class Max7219
 
 class Display: public Max7219 {
     private:
+
+        /* Vector to contain corresponding hex values
+         * for decimal digit representation
+         *
+         * Prevents the need to toggle Code B decode
+         * for every numerical display */
+
+        const std::vector<unsigned char> decHexVals {
+            0x7E, // '0'
+            0x30, // '1'
+            0x6D, // '2'
+            0x79, // '3'
+            0x33, // '4'
+            0x5B, // '5'
+            0x5F, // '6'
+            0x70, // '7'
+            0x7F, // '8'
+            0x7B, // '9'
+        };
+
 
         // Stores state of DP (on/off)
         bool dpToggle;

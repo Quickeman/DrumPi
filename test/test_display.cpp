@@ -2,9 +2,11 @@
 #define BOOST_TEST_MODULE SequencerTest
 #include <boost/test/unit_test.hpp>
 #include <display.hpp>
-extern "C" {
-#include <wiringPiSPI.h>
-}
+#include <stdlib.h>
+#include <time.h>
+//extern "C" {
+//#include <wiringPiSPI.h>
+//}
 
 using namespace drumpi;
 using namespace display;
@@ -60,8 +62,35 @@ BOOST_AUTO_TEST_CASE(digit_setter) {
         }
         display.flush();
     }
-    //display.clear(true);
-    //display.setDigit(0x1, 0xF, true);
-    //display.flush();
-    //display.clear(true);
+}
+
+
+BOOST_AUTO_TEST_CASE(show_num) {
+    //srand(time(NULL));
+    //int num = rand()%150;
+    int displayVal = 619;
+    Display display;
+    display.showVal(displayVal);
+
+    // Test each digit
+    BOOST_TEST(display.getDigit(7) == 0x5F);
+    BOOST_TEST(display.getDigit(6) == 0x30);
+    BOOST_TEST(display.getDigit(5) == 0x7B);
+    BOOST_TEST(display.getDigit(4) == 0x00);
+}
+
+BOOST_AUTO_TEST_CASE(toggle_dp) {
+    Display display;
+    display.toggleDPFlash();
+    for (unsigned int digit = 0; digit < 8; digit ++)
+        BOOST_TEST(display.getDigit(digit) & 0x80);
+
+    display.toggleDPFlash();
+    for (unsigned int digit = 0; digit < 8; digit ++)
+        BOOST_TEST(!(display.getDigit(digit) & 0x80));
+}
+
+BOOST_AUTO_TEST_CASE(show_level) {
+    Display display;
+    display.showLevel(0.5);
 }
