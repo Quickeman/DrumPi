@@ -1,5 +1,5 @@
 #define BOOST_TEST_DYN_LINK
-#define BOOST_TEST_MODULE AudioTest
+#define BOOST_TEST_MODULE AudioEngineTest
 #include <boost/test/unit_test.hpp>
 #include "audio.hpp"
 
@@ -21,7 +21,7 @@ BOOST_AUTO_TEST_CASE(constructors) {
 
 class TestCallback1 : public AudioCallback {
     std::vector<sample_t> getSamples(int nSamples) override {
-        std::vector<sample_t> v;
+        std::vector<sample_t> v(nSamples);
         return v;
     }
 };
@@ -36,6 +36,9 @@ BOOST_AUTO_TEST_CASE(setup) {
     BOOST_CHECK(!err);
 
     err = e.start();
+    BOOST_CHECK(!err);
+
+    err = e.stop();
     BOOST_CHECK(!err);
 }
 
@@ -61,6 +64,7 @@ BOOST_AUTO_TEST_CASE(running) {
     std::this_thread::sleep_for(std::chrono::milliseconds(50));
 
     BOOST_CHECK(c.i);
+    e.stop();
 }
 
 class TestCallback3 : public AudioCallback {
@@ -81,4 +85,6 @@ BOOST_AUTO_TEST_CASE(output) {
     e.start();
 
     std::this_thread::sleep_for(std::chrono::seconds(1));
+
+    e.stop();
 }
