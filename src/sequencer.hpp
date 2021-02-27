@@ -71,6 +71,11 @@ class Sequencer {
         \return A vector containing the IDs of the active drums. */
         std::vector<int> getActive();
 
+        /*! Returns a series of switches for the specified drum's presence in each step.
+        \param drumID ID of the drum to check.
+        \return a vector of bools, true if the drum is active in that index's step. */
+        std::vector<bool> getSteps(int drumID);
+
         /*! Returns the whole sequencer pattern.
         \return A 2D vector of the Sequencer pattern. */
         std::vector<std::vector<bool>> getSequence();

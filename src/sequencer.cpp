@@ -75,6 +75,14 @@ std::vector<int> Sequencer::getActive() {
     return currentStep->getActive();
 }
 
+std::vector<bool> Sequencer::getSteps(int drumID) {
+    std::vector<bool> v(numSteps);
+    for (int i = 0; i < numSteps; i++) {
+        v[i] = steps[i].isActive(drumID);
+    }
+    return v;
+}
+
 std::vector<std::vector<bool>> Sequencer::getSequence() {
     std::vector<std::vector<bool>> pattern;
     pattern.resize(numSteps);
