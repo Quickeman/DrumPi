@@ -9,12 +9,17 @@ DO NOT instantiate any objects, variables etc here. */
 
 namespace drumpi {
 
+/*! ID numbers for each of the DrumPi's drums. */
 typedef enum _DrumIDs {
     KICK_DRUM = 0,
     SNARE_DRUM,
+
+    // Number of drums
+    // ALWAYS LEAVE LAST!
     _NUM_DRUMS
 } drumID_t;
 
+/*! The number of drums available in the DrumPi. */
 #define NUM_DRUMS (int)_DrumIDs::_NUM_DRUMS
 
 namespace audio {
@@ -24,8 +29,8 @@ typedef jack_default_audio_sample_t sample_t;
 
 /*! Defines the type of sample source. */
 typedef enum _SampleSourceType {
-    SOURCE_PREGENERATED,
-    SOURCE_GENERALISED
+    SOURCE_GENERALISED,
+    SOURCE_PREGENERATED
 } sampleSourceType_t;
 
 /*! Defines the status of a SampleSource-type object. */
