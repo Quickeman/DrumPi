@@ -3,6 +3,8 @@
 #include <boost/test/unit_test.hpp>
 #include <sequencer.hpp>
 
+#include "defs.hpp"
+
 using namespace drumpi;
 using namespace sequencer;
 
@@ -41,8 +43,8 @@ BOOST_AUTO_TEST_CASE(stepping) {
 BOOST_AUTO_TEST_CASE(addRemoveDrums) {
 	// Test adding, removing and retrieving drums to/from various Steps
 	Sequencer seq(numSteps);
-	int d1 = 3;
-	int d2 = 5;
+	drumID_t d1 = KICK_DRUM;
+	drumID_t d2 = SNARE_DRUM;
 
 	seq.step();
 	// Add d1 to current step (1)
@@ -56,7 +58,7 @@ BOOST_AUTO_TEST_CASE(addRemoveDrums) {
 	BOOST_CHECK(seq.isActive(d2, 2));
 	BOOST_CHECK(!seq.isActive(d2)); // d2 not active in current step
 
-	std::vector<int> active = seq.getActive();
+	std::vector<drumID_t> active = seq.getActive();
 	BOOST_CHECK(active.size() == 1);
 	BOOST_CHECK(active[0] == d1);
 
@@ -83,7 +85,7 @@ BOOST_AUTO_TEST_CASE(sequence) {
 		s[i].resize(NUM_DRUMS);
 		for (int j = 0; j < s[i].size(); j++) { // For each drum...
 			s[i][j] = static_cast<bool>(rand() % 2);
-			if (s[i][j]) seq.addToStep(j, i);
+			if (s[i][j]) seq.addToStep((drumID_t)j, i);
 		}
 	}
 
@@ -110,7 +112,7 @@ BOOST_AUTO_TEST_CASE(resetting) {
 		s[i].resize(NUM_DRUMS);
 		for (int j = 0; j < s[i].size(); j++) { // For each drum...
 			s[i][j] = static_cast<bool>(rand() % 2);
-			if (s[i][j]) seq.addToStep(j, i);
+			if (s[i][j]) seq.addToStep((drumID_t)j, i);
 		}
 	}
 
