@@ -55,6 +55,19 @@ class PlaybackEngine : public AudioCallback {
         /*! Returns the current master volume.
         \return current master volume multiplier. */
         float getVolume();
+
+        /*! Sets the source type for the specified drum.
+        \param type type of source.
+        \param drum ID of the drum to set the type for. */
+        void setSourceType(sampleSourceType_t type, drumID_t drum);
+
+        /*! Sets the source types for all drums.
+        \param types vector of source types, index corresponding to drum ID. */
+        void setSourceType(std::vector<sampleSourceType_t> types);
+
+        /*! Returns the source type for the given drum. 
+        \return source type. */
+        sampleSourceType_t getSourceType(drumID_t drum);
     
     private:
         /*! Buffer of samples to allow rapid transfer to JACK. */
@@ -64,8 +77,6 @@ class PlaybackEngine : public AudioCallback {
         std::vector<std::unique_ptr<SampleSource>> sources;
         /*! Switches to store whether each source is being played. */
         std::vector<bool> isTriggered;
-        /*! Types of sample retrievers. */
-        std::vector<sampleSourceType_t> types;
 
         /*! Current master volume multiplier. */
         float masterVol;
