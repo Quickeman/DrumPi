@@ -16,6 +16,24 @@ BOOST_AUTO_TEST_CASE(constructors) {
     BOOST_CHECK(&p2);
 }
 
+BOOST_AUTO_TEST_CASE(volumes) {
+    // Test the volume setters and getters
+    PlaybackEngine p;
+    float v1 = 1.0;
+    drumID_t d1 = KICK_DRUM;
+    float v2 = 0.67;
+    drumID_t d2 = SNARE_DRUM;
+    float vM = 0.5;
+
+    p.setVolume(v1, d1);
+    p.setVolume(v2, d2);
+    p.setVolume(vM);
+
+    BOOST_CHECK(p.getVolume(d1) == v1);
+    BOOST_CHECK(p.getVolume(d2) == v2);
+    BOOST_CHECK(p.getVolume() == vM);
+}
+
 BOOST_AUTO_TEST_CASE(getsBuffer) {
     // Test the sample getting method returns a non-empty right-sized vector
     PlaybackEngine p;
