@@ -3,6 +3,8 @@
 #include <boost/test/unit_test.hpp>
 #include <sequencer.hpp>
 
+#include "defs.hpp"
+
 using namespace drumpi;
 using namespace sequencer;
 
@@ -24,14 +26,14 @@ BOOST_AUTO_TEST_CASE(addDrums) {
 
     for (int i = 0; i < drums.size(); i++) {
         drums[i] = static_cast<bool>(rand() % 2);
-        if (drums[i]) s.addToStep(i);
+        if (drums[i]) s.addToStep((drumID_t)i);
     }
 
     for (int i = 0; i < drums.size(); i++) {
-        BOOST_CHECK(drums[i] == s.isActive(i));
+        BOOST_CHECK(drums[i] == s.isActive((drumID_t)i));
     }
 
-    std::vector<int> active = s.getActive();
+    std::vector<drumID_t> active = s.getActive();
     active.resize(active.size() + 1);
     int ind = 0;
     for (int i = 0; i < drums.size(); i++) {
@@ -47,22 +49,19 @@ BOOST_AUTO_TEST_CASE(addDrums) {
 BOOST_AUTO_TEST_CASE(removeDrums) {
     // Test removing drums and clearing the pattern
     Step s;
-    int d1 = 3;
-    int d2 = 5;
-    int d3 = 2;
+    drumID_t d1 = KICK_DRUM;
+    drumID_t d2 = SNARE_DRUM;
 
     s.addToStep(d1);
     s.addToStep(d2);
-    s.addToStep(d3);
 
-    BOOST_CHECK(s.numActive() == 3);
+    BOOST_CHECK(s.numActive() == 2);
 
     s.removeFromStep(d2);
 
-    BOOST_CHECK(s.numActive() == 2);
+    BOOST_CHECK(s.numActive() == 1);
     BOOST_CHECK(s.isActive(d1));
     BOOST_CHECK(!s.isActive(d2));
-    BOOST_CHECK(s.isActive(d3));
 
     s.clear();
 
