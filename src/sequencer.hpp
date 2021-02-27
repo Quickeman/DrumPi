@@ -75,7 +75,7 @@ class Sequencer {
         std::vector<bool> getSteps(drumID_t drumID);
 
         /*! Returns the whole sequencer pattern.
-        \return A 2D vector of the Sequencer pattern. */
+        \return A 2D vector of the Sequencer pattern, indexed as [step][drum]. */
         std::vector<std::vector<bool>> getSequence();
 
         /*! Get the current step number.
