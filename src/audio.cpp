@@ -30,7 +30,7 @@ audioError_t AudioEngine::setup(AudioCallback& callback, std::string clientName)
         if (status & JackServerFailed) {
             return SERVER_CONNECT_FAILED;
         }
-        return CLIENT_OPEN_FAILED;
+        return CLIENT_OPEN_FAILED; // This is where the error for test `setup` is returned (27/02/21)
     }
 
     // Non-unique name given
