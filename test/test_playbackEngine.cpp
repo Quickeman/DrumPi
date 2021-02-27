@@ -47,12 +47,14 @@ BOOST_AUTO_TEST_CASE(getsBuffer) {
 
 BOOST_AUTO_TEST_CASE(triggerSource) {
     // Tests a source can be triggered, the returning of the active sources
-    // and the automatic removal of the source after it's done
+    // and untriggering an active source
     PlaybackEngine p;
-    int n = 2056;
+    int n = 64;
     drumID_t d = KICK_DRUM;
     std::vector<drumID_t> a;
-    std::vector<sample_t> b;
+    for (int i = 0; i < NUM_DRUMS; i++) {
+        p.setSource((drumID_t)i, SOURCE_PREGENERATED, "~/DrumPi/test/whitenoise.wav");
+    }
 
     p.trigger(d);
     a = p.getActive();
@@ -61,10 +63,9 @@ BOOST_AUTO_TEST_CASE(triggerSource) {
     BOOST_CHECK(a.size() == 1);
     BOOST_CHECK(a[0] == d);
 
-    for (int i = 0; i < 200; i++) {
-        b = p.getSamples(n);
-    }
+    p.untrigger(d);
 
     a = p.getActive();
     BOOST_CHECK(a.empty());
 }
+/**/
