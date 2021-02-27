@@ -75,7 +75,7 @@ BOOST_AUTO_TEST_CASE(addRemoveDrums) {
 }
 
 BOOST_AUTO_TEST_CASE(sequence) {
-	// Test retrieving the sequence pattern
+	// Test retrieving the step & sequence pattern
 	Sequencer seq(numSteps);
 
 	std::vector<std::vector<bool>> s;
@@ -89,12 +89,23 @@ BOOST_AUTO_TEST_CASE(sequence) {
 		}
 	}
 
-	std::vector<std::vector<bool>> active = seq.getSequence();
+	drumID_t td = KICK_DRUM;
+	std::vector<bool> steps = seq.getSteps(td);
 
 	bool error = false;
+	for (int i = 0; i < NUM_DRUMS; i++) {
+		error = error || (steps[i] != s[i][td]);
+	}
+
+	BOOST_CHECK(!error);
+
+
+	std::vector<std::vector<bool>> active = seq.getSequence();
+
+	error = false;
 	for (int i = 0; i < s.size(); i++) {
 		for (int j = 0; j < s[i].size(); j++) {
-			error = error or (active[i][j] != s[i][j]);
+			error = error || (active[i][j] != s[i][j]);
 		}
 	}
 
