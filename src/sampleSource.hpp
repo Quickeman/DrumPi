@@ -49,9 +49,6 @@ class SampleSource {
 /*! Handler class for drum samples. */
 class AudioClip : public SampleSource {
     public:
-        /*! Default constructor. */
-        AudioClip();
-
         /*! Class constructor.
         \param filepath the file path of an audio file, e.g. "~/DrumPi/samples/kick.wav". */
         AudioClip(std::string filepath);

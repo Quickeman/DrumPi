@@ -16,10 +16,6 @@ sampleSourceType_t SampleSource::getType() {
 }
 
 
-AudioClip::AudioClip() {
-
-}
-
 AudioClip::AudioClip(std::string filepath) {
 
 }
