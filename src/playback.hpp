@@ -30,7 +30,6 @@ class PlaybackEngine : public AudioCallback {
         void trigger(drumID_t drum);
 
         /*! Removes the specified drum sample from the output.
-        Called automatically when the source has finished playback.
         \param drum ID of the drum to remove. */
         void untrigger(drumID_t drum);
 
@@ -59,11 +58,11 @@ class PlaybackEngine : public AudioCallback {
         /*! Sets the source type for the specified drum.
         \param type type of source.
         \param drum ID of the drum to set the type for. */
-        void setSourceType(sampleSourceType_t type, drumID_t drum);
+        sampleSourceStatus_t setSource(drumID_t drum, sampleSourceType_t type, std::string filepath);
 
-        /*! Sets the source types for all drums.
-        \param types vector of source types, index corresponding to drum ID. */
-        void setSourceType(std::vector<sampleSourceType_t> types);
+        /*! Returns the source status of the given drum.
+        \return source status. */
+        sampleSourceStatus_t getSourceStatus(drumID_t drum);
 
         /*! Returns the source type for the given drum. 
         \return source type. */
