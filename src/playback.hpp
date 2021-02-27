@@ -39,21 +39,21 @@ class PlaybackEngine : public AudioCallback {
         std::vector<drumID_t> getActive();
 
         /*! Sets the playback volume for the passed drum.
-        \param volume desired volume, 0 - 1.
+        \param volume desired volume multiplier.
         \param drumID ID of the drum to be affected. */
         void setVolume(float volume, drumID_t drum);
 
         /*! Sets the master output volume.
-        \param volume desired master volume, 0 - 1. */
+        \param volume desired master volume multiplier. */
         void setVolume(float volume);
 
         /*! Returns the current volume of the passed drum.
         \param drum ID of the drum to look at.
-        \return current volume of `drum`. */
+        \return current volume multiplier of `drum`. */
         float getVolume(drumID_t drum);
 
         /*! Returns the current master volume.
-        \return current master volume. */
+        \return current master volume multiplier. */
         float getVolume();
     
     private:
@@ -67,10 +67,14 @@ class PlaybackEngine : public AudioCallback {
         /*! Types of sample retrievers. */
         std::vector<sampleSourceType_t> types;
 
-        /*! Current master volume. */
+        /*! Current master volume multiplier. */
         float masterVol;
-        /*! Current individual volumes of drums. */
+        /*! Default master volume multiplier. */
+        static constexpr float masterVolDef = 1.f;
+        /*! Current drum volume multipliers. */
         std::vector<float> volumes;
+        /*! Default drum volume multiplier. */
+        static constexpr float volumeDef = 1.f;
 };
 
 } // namespace engine
