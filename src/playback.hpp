@@ -26,18 +26,37 @@ class PlaybackEngine : public AudioCallback {
         std::vector<sample_t> getSamples(int nSamples) override;
 
         /*! Adds the specified drum to the output engine.
-        \param id ID of the drum to add. */
-        void trigger(drumID_t id);
+        \param drum ID of the drum to add. */
+        void trigger(drumID_t drum);
+
+        /*! Removes the specified drum sample from the output.
+        Called automatically when the source has finished playback.
+        \param drum ID of the drum to remove. */
+        void untrigger(drumID_t drum);
 
         /*! Returns a vector containing the IDs of the currently active sources.
         \return IDs of the currently active sources. */
         std::vector<drumID_t> getActive();
+
+        /*! Sets the playback volume for the passed drum.
+        \param volume desired volume, 0 - 1.
+        \param drumID ID of the drum to be affected. */
+        void setVolume(float volume, drumID_t drum);
+
+        /*! Sets the master output volume.
+        \param volume desired master volume, 0 - 1. */
+        void setVolume(float volume);
+
+        /*! Returns the current volume of the passed drum.
+        \param drum ID of the drum to look at.
+        \return current volume of `drum`. */
+        float getVolume(drumID_t drum);
+
+        /*! Returns the current master volume.
+        \return current master volume. */
+        float getVolume();
     
     private:
-        /*! Removes the specified drum sample from the output.
-        \param id ID of the drum to remove. */
-        void untrigger(drumID_t id);
-
         /*! Buffer of samples to allow rapid transfer to JACK. */
         std::vector<sample_t> buffer;
 
@@ -48,8 +67,10 @@ class PlaybackEngine : public AudioCallback {
         /*! Types of sample retrievers. */
         std::vector<sampleSourceType_t> types;
 
-        /*! Counter storing the number of active clips. */
-        int numActive;
+        /*! Current master volume. */
+        float masterVol;
+        /*! Current individual volumes of drums. */
+        std::vector<float> volumes;
 };
 
 } // namespace engine
