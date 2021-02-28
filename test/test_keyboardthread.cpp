@@ -5,6 +5,9 @@
 #include <boost/test/unit_test.hpp>
 #include <keyboardthread.hpp>
 
+using namespace drumpi;
+using namespace keyboard;
+
 //Check the keyboard thread can be started and stopped successfully
 BOOST_AUTO_TEST_CASE(Start_and_Stop_Kbd_Thread) {
 	KeyboardThread kbdThread;

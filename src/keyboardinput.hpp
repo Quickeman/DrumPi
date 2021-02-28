@@ -12,7 +12,7 @@
 #include <stdio.h>
 
 namespace drumpi {
-namespace kbdinput {
+namespace keyboard {
 
 /*! Class for detecting keyboard presses */
 class KeyboardInput {
@@ -50,7 +50,7 @@ public:
     void pollInput();
 };
 
-} //namespace kbdinput
+} //namespace keyboard
 } //namespace drumpi
 
 #endif  //KEYBOARDINPUT_H

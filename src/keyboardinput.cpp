@@ -5,7 +5,7 @@
 #include "keyboardinput.hpp"
 
 using namespace drumpi;
-using namespace kbdinput;
+using namespace keyboard;
 
 KeyboardInput::KeyboardInput() {
 	const char *input_file = "/dev/input/event0";
