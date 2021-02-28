@@ -37,6 +37,9 @@ public:
      */
     size_t n;
 
+    /*! Running flag used to control input polling loop */
+    int running;
+
     /*!
      * \brief Method to poll the keyboard input.
      *

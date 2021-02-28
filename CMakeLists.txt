@@ -52,16 +52,19 @@ set_target_properties(library PROPERTIES ARCHIVE_OUTPUT_DIRECTORY lib)
 # Add
 add_subdirectory(
     lib/cppTimer
+    lib/cppThread
 )
 
 # Include
 include_directories(
     lib/cppTimer
+    lib/cppThread
 )
 
 # Link
 target_link_libraries(library
     cpptimer
+    ${CMAKE_THREAD_LIBS_INIT}
 )
 
 # Link sum library to DrumPi
