@@ -52,7 +52,6 @@ set_target_properties(library PROPERTIES ARCHIVE_OUTPUT_DIRECTORY lib)
 # Add
 add_subdirectory(
     lib/cppTimer
-    lib/cppThread
 )
 
 # Include
@@ -60,6 +59,8 @@ include_directories(
     lib/cppTimer
     lib/cppThread
 )
+
+find_package (Threads)
 
 # Link
 target_link_libraries(library

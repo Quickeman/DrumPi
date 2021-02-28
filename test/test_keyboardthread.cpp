@@ -9,7 +9,6 @@
 BOOST_AUTO_TEST_CASE(Start_and_Stop_Kbd_Thread) {
 	KeyboardThread kbdThread;
 	kbdThread.start();
-	kbdThread.stop();
 
-	//BOOST_CHECK(kbdThread.stop() == 0);
+	BOOST_CHECK(kbdThread.stop() == 0);
 }
