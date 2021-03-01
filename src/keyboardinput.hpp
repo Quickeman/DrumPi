@@ -5,6 +5,7 @@
 #ifndef KEYBOARDINPUT_H
 #define KEYBOARDINPUT_H
 
+#include <poll.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <linux/input.h>
@@ -28,6 +29,9 @@ public:
     /*! Event handler containing information about keyboard input events. */
     struct input_event ev;
 
+    /*! Array of pollfd structs checked by poll() system call */
+    struct pollfd fdset[1];
+
     /*! File descriptor for the keyboard device file. */
     int fd;
 
@@ -39,6 +43,15 @@ public:
 
     /*! Running flag used to control input polling loop */
     int running;
+
+    /*! Flag to check pollInput has been called successfully */
+    int testflag;
+
+    /*! 
+     * Test variable to count number of key presses
+     * whilst pollInput is running
+     */
+    int keypresscount;
 
     /*!
      * \brief Method to poll the keyboard input.

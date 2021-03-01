@@ -18,7 +18,6 @@ public:
 	/*! Method to close the thread.*/
 	int stop();
 
-private:
 	/*! Instance of KeyboardInput class */
 	KeyboardInput kbdIn;
 
