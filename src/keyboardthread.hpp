@@ -18,11 +18,11 @@ public:
 	/*! Method to close the thread.*/
 	int stop();
 
-	/*! Instance of KeyboardInput class */
-	KeyboardInput kbdIn;
-
 	/*! Method called when thread is started. */
 	void run();
+
+	/*! Instance of KeyboardInput class */
+	KeyboardInput kbdIn;
 };
 
 }	//namespace keyboard

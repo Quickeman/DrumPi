@@ -25,15 +25,15 @@ BOOST_AUTO_TEST_CASE(Start_and_Stop_Kbd_Thread) {
 	kbdThread.stop();
 
 	//counts no. of key presses whilst thread was running
-	//int count = kbdThread.kbdIn.keypresscount;
+	//int count = kbdThread.kbdIn.getKeyPressCount();
 
 	//returns 1 if kbdIn.pollInput()'s while loop started
 	//i.e. if thread was started successfully
-	int tf = kbdThread.kbdIn.testflag;
+	int tf = kbdThread.kbdIn.getTestFlag();
 
 	//returns 0 if thread stopped successfully
 	int r = kbdThread.kbdIn.running;
 
-	//BOOST_CHECK(count == 3);
-	BOOST_CHECK(r == 0 && tf == 1);
+	//BOOST_CHECK(count == 1);
+	BOOST_CHECK(tf == 1 && r == 0);
 }

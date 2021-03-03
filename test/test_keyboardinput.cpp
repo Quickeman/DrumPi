@@ -12,5 +12,5 @@ using namespace keyboard;
 BOOST_AUTO_TEST_CASE(Open_Input_File) {
 	KeyboardInput kbd;
 
-	BOOST_CHECK(kbd.fd >= 0);
+	BOOST_CHECK(kbd.getFileDescriptor() >= 0);
 }

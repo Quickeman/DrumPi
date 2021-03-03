@@ -17,6 +17,7 @@ namespace keyboard {
 
 /*! Class for detecting keyboard presses */
 class KeyboardInput {
+
 public:
 
 	/*! /brief Constructor.
@@ -25,6 +26,26 @@ public:
 	 * device file for the keyboard input device.
 	 */
     KeyboardInput();
+
+    /*!
+     * \brief Method to poll the keyboard input.
+     *
+     * This method monitors the keyboard device file
+     * with a polling loop and prints an alert
+     * to the terminal when a key is pressed.
+     */
+    void pollInput();
+
+    int getFileDescriptor();
+
+    int getTestFlag();
+
+    int getKeyPressCount();
+
+    /*! Running flag used to end the input polling loop */
+    int running;
+
+private:
 
     /*! Event handler containing information about keyboard input events. */
     struct input_event ev;
@@ -35,32 +56,15 @@ public:
     /*! File descriptor for the keyboard device file. */
     int fd;
 
-    /*!
-     * Stores error-return codes generated
-     * when reading from the keyboard device file.
-     */
-    size_t n;
-
-    /*! Running flag used to control input polling loop */
-    int running;
-
     /*! Flag to check pollInput has been called successfully */
-    int testflag;
+    int testFlag;
 
     /*! 
      * Test variable to count number of key presses
      * whilst pollInput is running
      */
-    int keypresscount;
+    int keyPressCount;
 
-    /*!
-     * \brief Method to poll the keyboard input.
-     *
-     * This method monitors the keyboard device file
-     * with a polling loop and prints an alert
-     * to the terminal when a key is pressed.
-     */
-    void pollInput();
 };
 
 } //namespace keyboard
