@@ -13,6 +13,12 @@ namespace drumpi {
 typedef enum _DrumIDs {
     KICK_DRUM = 0,
     SNARE_DRUM,
+    CLAP_DRUM,
+    HI_HAT_CLOSED,
+    HI_HAT_OPEN,
+    TOM_1_DRUM,
+    TOM_2_DRUM,
+    CYMBAL_DRUM,
 
     // Number of drums
     // ALWAYS LEAVE LAST!
