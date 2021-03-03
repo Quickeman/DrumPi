@@ -57,11 +57,15 @@ add_subdirectory(
 # Include
 include_directories(
     lib/cppTimer
+    lib/cppThread
 )
+
+find_package (Threads)
 
 # Link
 target_link_libraries(library
     cpptimer
+    ${CMAKE_THREAD_LIBS_INIT}
 )
 
 # Link sum library to DrumPi
