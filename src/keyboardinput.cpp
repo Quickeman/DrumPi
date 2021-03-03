@@ -25,7 +25,7 @@ void KeyboardInput::pollInput() {
 
 		//poll() checks if an input event has occured
 		if (poll(fdset, 1, 0) == 1) {
-			read(fd, &ev, sizeof ev);
+			n = read(fd, &ev, sizeof ev);
 			if (ev.type == EV_KEY && ev.value == 1) {
 				//printf("\n%d key pressed\n", ev.code);
 				keypresscount++;
