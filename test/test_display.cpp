@@ -66,11 +66,9 @@ BOOST_AUTO_TEST_CASE(digit_setter) {
 
 
 BOOST_AUTO_TEST_CASE(show_num) {
-    //srand(time(NULL));
-    //int num = rand()%150;
     int displayVal = 619;
     Display display;
-    display.showVal(displayVal);
+    display.setVal(displayVal, true);
 
     // Test each digit
     BOOST_TEST(display.getDigit(7) == 0x5F);
@@ -81,16 +79,25 @@ BOOST_AUTO_TEST_CASE(show_num) {
 
 BOOST_AUTO_TEST_CASE(toggle_dp) {
     Display display;
-    display.toggleDPFlash();
+    display.toggleDPFlash(true);
     for (unsigned int digit = 0; digit < 8; digit ++)
         BOOST_TEST(display.getDigit(digit) & 0x80);
 
-    display.toggleDPFlash();
+    display.toggleDPFlash(true);
     for (unsigned int digit = 0; digit < 8; digit ++)
         BOOST_TEST(!(display.getDigit(digit) & 0x80));
 }
 
 BOOST_AUTO_TEST_CASE(show_level) {
     Display display;
-    display.showLevel(0.5);
+    display.setLevel(0.4, true);
+    BOOST_TEST(display.getDigit(6) == 0x8);
+    BOOST_TEST(display.getDigit(1) == 0x0);
+}
+
+BOOST_AUTO_TEST_CASE(setStopSeq) {
+    Display display;
+    std::vector<bool> sequence = {1,0,0,0,1,0,0,0, 0,0,1,0,1,0,1,0};
+    display.setStopSeq(sequence, 1, 2, true);
+//    BOOST_TEST(display.getDigit(7) == 0x7E);
 }

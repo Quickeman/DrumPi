@@ -71,6 +71,9 @@ unsigned char Max7219::getShutdown(){
 unsigned char Max7219::getDisplayTest(){
     return displayTest;
 }
+unsigned int Max7219::getNumDigits() {
+    return numDigits;
+}
 
 // Setters //
 
@@ -135,25 +138,19 @@ Display::Display() {
 Display::~Display() {
 }
 
-void Display::showVal(unsigned int value) {
-    // Clear digits
+void Display::setVal(unsigned int value, bool redraw) {
     clear(false);
-
     // Separate value into individual digits
     // 3 digits:
-    if(value > 99) setThreeDigits(value);
+    if(value > 99) setThreeDigit(value);
     // 2 digits:
-    else if ((value > 9) && (value <= 99)) setTwoDigits(value);
+    else if ((value > 9) && (value <= 99)) setTwoDigit(value);
     // 1 digit:
     else if (value <= 9) setOneDigit(value);
-
-    // Flush display
-    flush();
+    if (redraw) flush();
 }
 
-void Display::setThreeDigits(unsigned int value) {
-    clear(false);
-
+void Display::setThreeDigit(unsigned int value) {
     unsigned char digitOne, digitTwo, digitThree;
     digitOne = decHexVals[value % 10];
     digitTwo = decHexVals[(value/10) % 10];
@@ -165,10 +162,11 @@ void Display::setThreeDigits(unsigned int value) {
     flush();
 }
 
-void Display::setTwoDigits(unsigned int value) {
+void Display::setTwoDigit(unsigned int value) {
     unsigned char digitOne, digitTwo;
     digitOne = decHexVals[value % 10];
     digitTwo = decHexVals[(value/10) % 10];
+
     setDigit(6, digitOne, false);
     setDigit(7, digitTwo, false);
 }
@@ -176,38 +174,49 @@ void Display::setTwoDigits(unsigned int value) {
 void Display::setOneDigit(unsigned int value) {
     unsigned char digitOne;
     digitOne = decHexVals[value % 10];
+
     setDigit(7, digitOne, false);
 }
 
-void Display::toggleDPFlash() {
+void Display::toggleDPFlash(bool redraw) {
     // If dp is off, turn on
     if (!dpToggle) {
-        for (unsigned int digit = 0; digit < numDigits; digit ++) {
-            unsigned char toggled = getDigit(digit) + 0x80;
+        for (unsigned int digit = 0; digit < getNumDigits(); digit ++) {
+            unsigned char toggled = getDigit(digit) + dpAddr;
             setDigit(digit, toggled, false);
         }
         dpToggle = true;
     }
     else {
-        for (unsigned int digit = 0; digit < numDigits; digit ++) {
-            unsigned char toggled = getDigit(digit) - 0x80;
+        for (unsigned int digit = 0; digit < getNumDigits(); digit ++) {
+            unsigned char toggled = getDigit(digit) - dpAddr;
             setDigit(digit, toggled, false);
         }
         dpToggle = false;
     }
-    flush();
+    if(redraw) flush();
 }
 
-void Display::showLevel(float level) {
-    // Clear display
+void Display::setLevel(float level, bool redraw) {
     clear(false);
     float magLevel = fabs(level);
-    unsigned int maxDigit = magLevel * numDigits;
+    unsigned int maxDigit = magLevel * getNumDigits();
 
-    // Apply level to digits
     for(unsigned int digit = 0; digit <= maxDigit; digit ++)
-        setDigit(numDigits - digit, 0x8, false);
+        setDigit(getNumDigits() - digit -1, 0x8, false);
 
-    flush();
+    if(redraw) flush();
+}
+
+void Display::setStopSeq(std::vector<bool> activeDrums, unsigned int page, unsigned int currentDrum, bool redraw) {
+    clear(false);
+    unsigned int seqIndex;
+    for(unsigned int digit = 0; digit <= getNumDigits(); digit ++) {
+        seqIndex = (page*getNumDigits()) + digit;
+        if(activeDrums[seqIndex])
+            setDigit(getNumDigits() - digit - 1, decHexVals[0], false);
+    }
+    setDigit(getNumDigits() - currentDrum, getDigit(getNumDigits()-currentDrum) + dpAddr, false);
+    if(redraw) flush();
 }
 

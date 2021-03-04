@@ -10,6 +10,7 @@ class Max7219
 {
     private:
         unsigned char* digitBuffer;
+        unsigned int numDigits;
         unsigned char decodeMode,
                 intensity,
                 scanLimit,
@@ -18,7 +19,6 @@ class Max7219
         void write(unsigned char *data, unsigned int len);
 
     public:
-        unsigned int numDigits;
         Max7219(unsigned char decodeMode = 0x0,
                 unsigned char intensity = 0x7,
                 unsigned char scanLimit = 0x7,
@@ -42,6 +42,7 @@ class Max7219
         unsigned char getScanLimit();
         unsigned char getShutdown();
         unsigned char getDisplayTest();
+        unsigned int getNumDigits();
 
         // Actions
         void flush();
@@ -71,15 +72,22 @@ class Display: public Max7219 {
             0x7B, // '9'
         };
 
+        const unsigned char dpAddr = 0x80;
+
 
         // Stores state of DP (on/off)
         bool dpToggle;
 
-        // Display a 3 digit decimal value
-        void setThreeDigits(unsigned int value);
-        // Display a 2 digit decimal value
-        void setTwoDigits(unsigned int value);
-        // Display a 1 digit decimal value
+        // Stores the current mode
+        unsigned int mode;
+
+        // Set a 3 digit decimal value
+        void setThreeDigit(unsigned int value);
+
+        // Set a 2 digit decimal value
+        void setTwoDigit(unsigned int value);
+
+        // Set a 1 digit decimal value
         void setOneDigit(unsigned int value);
 
     public:
@@ -89,23 +97,29 @@ class Display: public Max7219 {
         // Destructor
         ~Display();
 
-        // Display a decimal numerical value up to 999
-        void showVal(unsigned int value);
+        // Setters //
+        // Set a decimal numerical value up to 999
+        void setVal(unsigned int value, bool redraw);
 
         // Display P/S depending on mode
-        void showMode(unsigned int mode);
+        void setMode(unsigned int mode, bool redraw);
 
         // Show sound level with _ segments
-        void showLevel(float level);
+        void setLevel(float level, bool redraw);
 
-        // Show sequence in playback mode, with scrolling seg
-        void showPlaybackSeq(std::vector<bool> activeDrums, unsigned int stepNum);
+        // Set sequence in playback mode, with scrolling seg
+        void setPlaybackSeq(std::vector<bool> activeDrums, unsigned int stepNum, bool redraw);
 
-        // Show sequence in stop mode
-        void showStopSeq(std::vector<bool> activeDrums, unsigned int page);
+        // Set sequence in stop mode
+        void setStopSeq(std::vector<bool> activeDrums, unsigned int page, unsigned int currentDrum, bool redraw);
 
         // Toggle the REC ENABLE decimal point flash
-        void toggleDPFlash();
+        void toggleDPFlash(bool redraw);
+
+        // Getters //
+        unsigned int getMode();
+
+        unsigned int getDPToggle();
 };
 } // namespace display
 } // namespace drumpi
