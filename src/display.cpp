@@ -208,15 +208,34 @@ void Display::setLevel(float level, bool redraw) {
     if(redraw) flush();
 }
 
-void Display::setStopSeq(std::vector<bool> activeDrums, unsigned int page, unsigned int currentDrum, bool redraw) {
-    clear(false);
+void Display::setActiveDrums(std::vector<bool> activeDrums, unsigned int page) {
     unsigned int seqIndex;
     for(unsigned int digit = 0; digit <= getNumDigits(); digit ++) {
         seqIndex = (page*getNumDigits()) + digit;
         if(activeDrums[seqIndex])
-            setDigit(getNumDigits() - digit - 1, decHexVals[0], false);
+            setDigit((getNumDigits()-1) - digit, upperSqAddr, false);
     }
+}
+
+void Display::setStopSeq(std::vector<bool> activeDrums, unsigned int page, unsigned int currentDrum, bool redraw) {
+    clear(false);
+    setActiveDrums(activeDrums, page);
     setDigit(getNumDigits() - currentDrum, getDigit(getNumDigits()-currentDrum) + dpAddr, false);
     if(redraw) flush();
+}
+
+void Display::setPlaybackSeq(std::vector<bool> activeDrums, unsigned int stepNum, bool redraw) {
+    clear(false);
+    unsigned int page = stepNum > getNumDigits();
+    setActiveDrums(activeDrums, page);
+    if(stepNum <= getNumDigits()) {
+        unsigned char addr = getNumDigits() -stepNum;
+        setDigit(addr, getDigit(addr) + bottomAddr, false);
+    }
+    else {
+        unsigned char addr = getNumDigits() - (stepNum%8);
+        setDigit(addr, getDigit(addr) + dpAddr, false);
+    }
+    flush();
 }
 

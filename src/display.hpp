@@ -73,7 +73,8 @@ class Display: public Max7219 {
         };
 
         const unsigned char dpAddr = 0x80;
-
+        const unsigned char upperSqAddr = 0x63;
+        const unsigned char bottomAddr = 0x8;
 
         // Stores state of DP (on/off)
         bool dpToggle;
@@ -89,6 +90,8 @@ class Display: public Max7219 {
 
         // Set a 1 digit decimal value
         void setOneDigit(unsigned int value);
+
+        void setActiveDrums(std::vector<bool> activeDrums, unsigned int page);
 
     public:
 

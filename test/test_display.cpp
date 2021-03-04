@@ -99,5 +99,10 @@ BOOST_AUTO_TEST_CASE(setStopSeq) {
     Display display;
     std::vector<bool> sequence = {1,0,0,0,1,0,0,0, 0,0,1,0,1,0,1,0};
     display.setStopSeq(sequence, 1, 2, true);
-//    BOOST_TEST(display.getDigit(7) == 0x7E);
+}
+
+BOOST_AUTO_TEST_CASE(setPlaybackSeq) {
+    Display display;
+    std::vector<bool> sequence = {1,0,0,0,1,0,0,0, 0,0,1,0,1,0,1,0};
+    display.setPlaybackSeq(sequence, 15, true);
 }
