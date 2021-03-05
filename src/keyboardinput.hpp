@@ -45,6 +45,12 @@ public:
     /*! Running flag used to end the input polling loop */
     int running;
 
+    /*! Flag indicating that a key has been pressed and requires processing */
+    int keyPressedFlag;
+
+    /*! Variable storing which key was pressed */
+    int keyPressed;
+
 private:
 
     /*! Event handler containing information about keyboard input events. */
