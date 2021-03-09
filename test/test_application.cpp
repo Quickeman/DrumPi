@@ -4,6 +4,7 @@
 #define BOOST_TEST_MODULE ApplicationTest
 #include <boost/test/unit_test.hpp>
 #include <application.hpp>
+#include <linux/input.h>
 
 using namespace std;
 using namespace drumpi;
@@ -31,7 +32,7 @@ BOOST_AUTO_TEST_CASE(interpreting_key_press) {
 	Application app;
 
 	//simulate "m" key being pressed to switch to sequencer mode
-	app.currentstate->interpretKeyPress(&app, 50);
+	app.currentstate->interpretKeyPress(&app, KEY_M);
 
 	//check current state has changed to sequencer mode
 	BOOST_CHECK(app.currentstate->label == "sequencermode");

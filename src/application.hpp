@@ -73,6 +73,7 @@ public:
 	/*! Pointer to current state instance */
 	State* currentstate;
 
+private:
 	/*! Instance of performance mode state */
 	PerformanceMode performancemode;
 
