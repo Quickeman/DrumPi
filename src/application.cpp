@@ -44,11 +44,6 @@ Application::Application() {
 	currentstate = &performancemode;
 }
 
-void Application::setup() {
-	//do setup
-	//potentially unnecessary as can perform initialisation/setup in constructor
-}
-
 void Application::run() {
 	kbdThread.start();
 

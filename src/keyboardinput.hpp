@@ -36,10 +36,13 @@ public:
      */
     void pollInput();
 
+    /*! Returns file descriptor of the input device */
     int getFileDescriptor();
 
+    /*! Returns testFlag */
     int getTestFlag();
 
+    /*! Returns the number of key presses detected whilst pollInput was running */
     int getKeyPressCount();
 
     /*! Running flag used to end the input polling loop */
@@ -48,18 +51,23 @@ public:
     /*! Flag indicating that a key has been pressed and requires processing */
     int keyPressedFlag;
 
-    /*! Variable storing which key was pressed */
+    /*!
+     * \brief Variable storing which key was pressed.
+	 * 
+	 * Key values are defined in linux/input-event-codes,
+	 * included in linux/input.h.
+     */
     int keyPressed;
 
 private:
 
-    /*! Event handler containing information about keyboard input events. */
+    /*! Event handler containing information about keyboard input events */
     struct input_event ev;
 
     /*! Array of pollfd structs checked by poll() system call */
     struct pollfd fdset[1];
 
-    /*! File descriptor for the keyboard device file. */
+    /*! File descriptor for the keyboard device file */
     int fd;
 
     /*! Flag to check pollInput has been called successfully */
@@ -67,7 +75,7 @@ private:
 
     /*! 
      * Test variable to count number of key presses
-     * whilst pollInput is running
+     * detected whilst pollInput is running
      */
     int keyPressCount;
 
