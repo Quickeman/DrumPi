@@ -78,7 +78,11 @@ target_link_libraries(DrumPi library)
 enable_testing()
 
 # Use Boost library for unit tests
-find_package(Boost COMPONENTS system filesystem unit_test_framework REQUIRED)
+find_package(Boost COMPONENTS 
+#	system 
+#	filesystem 
+	unit_test_framework 
+REQUIRED)
 # Link to source directory
 include_directories(${Boost_INCLUDE_DIRS} ${PROJECT_SOURCE_DIR}/src)
 
