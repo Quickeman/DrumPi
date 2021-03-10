@@ -1,21 +1,109 @@
 // File: clock.hpp
 
-#pragma once
+#ifndef DRUMPI_CLOCK_H
+#define DRUMPI_CLOCK_H
 
-#ifndef clock_h
-#define clock_h
+#include "CppTimer.h"
 
-/*! Converts BPM to miliseconds. */
-int bpmToMs(int bpm);
+namespace drumpi {
+namespace clock {
 
-/*! Trigger repeated actions. */
-class Clock {
-// TODO
-};
+/*! Converts BPM to ms. */
+inline int bpmToMs(int bpm) {
+    return 60000 / bpm;
+}
+
 
 /*! Trigger a single delayed action. */
-class Timer {
-// TODO
+class Timer : public CppTimer {
+    public:
+        /*! Constructor. */
+        Timer();
+
+        /*! Set trigger time in ms.
+        \param ms desired trigger time, in ms. */
+        void setTime(int ms);
+
+        /*! Returns the trigger time in ms.
+        \return trigger time in ms. */
+        int getTime();
+
+        /*! Start the timer. */
+        void start();
+
+        /*! Callback method run when given time has passed.
+        Override to add functionality. */
+        virtual void trigger();
+    
+    private:
+        /*! Override event method to call trigger(). */
+        void timerEvent() override;
+
+        /*! Trigger time in ms. */
+        int time;
 };
 
-#endif
+
+/*! Trigger repeated actions. */
+class Clock : public CppTimer {
+    public:
+        /*! Constructor.
+        \param tickOnStart whether to call tick() on Clock start */
+        Clock(bool tickOnStart = true);
+
+        /*! Set the clock rate.
+        \param ms desired clocking rate, in ms. */
+        void setRate(int ms);
+
+        /*! Returns the clock rate in ms.
+        \return clock rate in ms. */
+        int getRate();
+
+        /*! Start the clock.
+        Default period is 1 second, change with setRate(). */
+        void start();
+
+        /*! Callback method run on each clock pulse.
+        Override to add functionality. */
+        virtual void tick();
+
+    private:
+        /*! Override event method to call tick(). */
+        void timerEvent() override;
+
+        /*! Clock rate in ms. */
+        int rate;
+
+        /*! Whether to call tick() on Clock start. */
+        bool startTick;
+
+    protected:
+        /*! Flag for the clocking rate being changed. */
+        bool rateChangeFlag;
+};
+
+
+/*! Metronome class, similar to Clock but can operate in BPM. */
+class Metronome : public Clock {
+    public:
+        /*! Contructor. */
+        Metronome();
+
+        /*! Sets the clock rate in BPM.
+        \param bpm desired clocking rate, in beats per minute (BPM). */
+        void setRateBPM(int bpm);
+
+        /*! Returns the clock rate in BPM.
+        \return clock rate in beats per minute (BPM). */
+        int getRateBPM();
+    
+    private:
+        /*! Clock rate in BPM.
+        Stored to avoid quantisation issues from ms-to-BPM conversion. */
+        int bpm;
+};
+
+} // namespace clock
+} // namespace drumpi
+
+#endif // define DRUMPI_CLOCK_H

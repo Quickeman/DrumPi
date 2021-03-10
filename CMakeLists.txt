@@ -8,9 +8,6 @@ project(DrumPi VERSION 1.0)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# Add subdirectories
-add_subdirectory(lib)
-
 
 ### OUTPUT TARGET ###
 
@@ -44,6 +41,37 @@ endforeach(srcName)
 target_link_libraries(DrumPi sourceLib)
 
 
+### LIBRARIES ###
+
+# Create base library from dummy file
+add_library(library src/.dummy.cxx)
+set_target_properties(library PROPERTIES ARCHIVE_OUTPUT_DIRECTORY lib)
+
+## Add, include and link each library subdirectory
+# For pre-compiled libraries (e.g. wiringPi) only linking is needed
+# Add
+add_subdirectory(
+    lib/cppTimer
+)
+
+# Include
+include_directories(
+    lib/cppTimer
+    lib/cppThread
+)
+
+find_package (Threads)
+
+# Link
+target_link_libraries(library
+    cpptimer
+    ${CMAKE_THREAD_LIBS_INIT}
+)
+
+# Link sum library to DrumPi
+target_link_libraries(DrumPi library)
+
+
 ### UNIT TESTING ###
 
 # Enable testing
@@ -63,7 +91,7 @@ foreach(testSrc ${TEST_SRCS})
     # Add target
     add_executable(${testName} ${testSrc})
     # Link to Boost and deps
-    target_link_libraries(${testName} ${Boost_LIBRARIES} sourceLib)
+    target_link_libraries(${testName} ${Boost_LIBRARIES} sourceLib library)
     # Put test executables in their own directory
     set_target_properties(${testName} PROPERTIES RUNTIME_OUTPUT_DIRECTORY test/testBin)
     # Add test to execution
