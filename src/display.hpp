@@ -16,38 +16,142 @@ class Max7219
                 scanLimit,
                 shutdown,
                 displayTest;
+
+        /**
+         * Low level method for writing a data buffer to SPI bus.
+         *
+         * @param data Buffer containing bytes for writing.
+         * @param len Length of bufer in bytes.
+         */
         void write(unsigned char *data, unsigned int len);
 
+
+        /**
+         * Sends command data over SPI bus
+         */
+        void command(unsigned char reg, unsigned char data);
+
     public:
+
+        /**
+         * Constructor
+         *
+         * @param decodeMode decode mode to be set (default 0x0)
+         * @param intensity Intensity to be set (default 0x7)
+         * @param scanLimit Scan Limit to be set (default 0x7)
+         * @param shutdown Shutdown mode to be set (default 0x1)
+         * @param displayTest Display test mode to be set (default 0x0)
+         * @param numdigits Number of digits in display (default 8)
+         */
         Max7219(unsigned char decodeMode = 0x0,
                 unsigned char intensity = 0x7,
                 unsigned char scanLimit = 0x7,
                 unsigned char shutdown = 0x1,
                 unsigned char displayTest = 0x0,
                 unsigned int numDigits = 8);
+
+        /**
+         * Destructor - deletes any allocated memory and clears display
+         */
         ~Max7219();
 
-        // Setters
+        /**
+         * Sets the value of a digit in the display
+         *
+         * @param digit Byte address of digit
+         * @param value Byte value to assign
+         * @param redraw If true, updates all digits at the end of method call
+         */
         void setDigit(unsigned char digit, unsigned char value, bool redraw);
+
+        /**
+         * Sets the display decode mode
+         * @param value Decode mode byte
+         */
         void setDecodeMode(unsigned char value);
+
+        /**
+         * Sets display intensity
+         * @param value Intensity value (1-15)
+         */
         void setIntensity(unsigned char value);
+
+        /**
+         * Sets display scan limit (number of digits)
+         * @param value Scan limit (0-7)
+         */
         void setScanLimit(unsigned char value);
+
+        /**
+         * Sets shutdown mode on/off
+         * @param value Shutdown mode (1/0)
+         */
         void setShutdown(unsigned char value);
+
+        /**
+         * Sets display mode on/off
+         * @param value Display test mode (1/0)
+         */
         void setDisplayTest(unsigned char value);
 
         // Getters
+
+        /**
+         * Gets a value of a specified digit
+         * @param digit Byte address of digit
+         * @returns Current byte value of digit
+         */
         unsigned char getDigit(unsigned char digit);
+
+        /**
+         * Gets the current decode mode
+         * @returns Current decode mode
+         */
         unsigned char getDecodeMode();
+
+        /**
+         * Gets the current intensity
+         * @returns Current intensity
+         */
         unsigned char getIntensity();
+
+        /**
+         * Gets the current scan limit
+         * @returns Current scan limit
+         */
         unsigned char getScanLimit();
+
+        /**
+         * Gets the current shutdown mode
+         * @returns Current shutdown mode
+         */
         unsigned char getShutdown();
+
+        /**
+         * Gets the current display test mode
+         * @returns Current display mode
+         */
         unsigned char getDisplayTest();
+
+        /**
+         * Gets the number of digits in the display
+         * @returns Number of display digits
+         */
         unsigned int getNumDigits();
 
         // Actions
+
+        /**
+         * Writes all digit values to display via SPI bus
+         */
         void flush();
+
+        /**
+         * Resets all digit values to 0
+         * @param redraw If true, writes updated values to display
+         */
         void clear(bool redraw);
-        void command(unsigned char reg, unsigned char data);
+
 };
 
 class Display: public Max7219 {
