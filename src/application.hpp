@@ -10,7 +10,7 @@
 
 namespace drumpi {
 
-/* Abstract application callback class */
+/*! Abstract application callback class */
 class ApplicationCallback {
 public:
 	/*! Virtual function to be overridden by derived class */
