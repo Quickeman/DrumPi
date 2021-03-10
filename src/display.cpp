@@ -48,6 +48,7 @@ Max7219::Max7219(unsigned char decodeMode,
 
 Max7219::~Max7219() {
     delete digitBuffer;
+    clear(true);
 }
 
 // Getters //
