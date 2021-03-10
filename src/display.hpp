@@ -157,12 +157,12 @@ class Max7219
 class Display: public Max7219 {
     private:
 
-        /* Vector to contain corresponding hex values
-         * for decimal digit representation
+        /** Vector to contain corresponding hex values
+         * for decimal digit representation.
          *
          * Prevents the need to toggle Code B decode
-         * for every numerical display */
-
+         * for every numerical display.
+         */
         const std::vector<unsigned char> decHexVals {
             0x7E, // '0'
             0x30, // '1'
@@ -180,52 +180,98 @@ class Display: public Max7219 {
         const unsigned char upperSqAddr = 0x63;
         const unsigned char bottomAddr = 0x8;
 
-        // Stores state of DP (on/off)
-        bool dpToggle;
+        bool dpToggle;      // Stores state of DP (on/off)
 
-        // Stores the current mode
-        unsigned int mode;
+        unsigned int mode;  // Stores current mode
 
-        // Set a 3 digit decimal value
+        /** Set a 3 digit decimal value
+         * @param value 3 digit value to set
+         */
         void setThreeDigit(unsigned int value);
 
-        // Set a 2 digit decimal value
+        /** Set a 2 digit decimal value
+         * @param value 2 digit value to set
+         */
         void setTwoDigit(unsigned int value);
 
-        // Set a 1 digit decimal value
+        /** Set a 1 digit decimal value
+         * @param value 1 digit value to set
+         */
         void setOneDigit(unsigned int value);
 
+        /**
+         * Sets digits to show active drums of a given sequence and page
+         *
+         * @param activeDrums Vector of bools representing sequence
+         * @param page 8 digit page to display
+         */
         void setActiveDrums(std::vector<bool> activeDrums, unsigned int page);
 
     public:
 
-        // Constructor
-        Display();
-        // Destructor
-        ~Display();
+        Display(); /// Constructor
 
-        // Setters //
-        // Set a decimal numerical value up to 999
+        ~Display(); /// Destructor
+
+        /**
+         * Sets digits to display a number up to 999
+         *
+         * @param value Numerical value to display
+         * @param redraw If true, updates display
+         */
         void setVal(unsigned int value, bool redraw);
 
-        // Display P/S depending on mode
+        /**
+         * Updates mode and sets digit to S or P accordingly
+         *
+         * @param value Mode to display
+         * @param redraw If true, updates display
+         */
         void setMode(unsigned int mode, bool redraw);
 
-        // Show sound level with _ segments
+        /**
+         * Updates display to show audio level between -1 and 1
+         * @param level Audio level to display
+         * @param redraw If true, updates display
+         */
         void setLevel(float level, bool redraw);
 
-        // Set sequence in playback mode, with scrolling seg
+        /**
+         * Updates display to show sequence in playback mode
+         *
+         * @param activeDrums Vector of bools representing sequence
+         * @param stepNum Current step in sequence
+         * @param redraw If true, updates display
+         */
         void setPlaybackSeq(std::vector<bool> activeDrums, unsigned int stepNum, bool redraw);
 
-        // Set sequence in stop mode
+        /**
+         * Updates display to show sequence in stop mode
+         *
+         * @param activeDrums Vector of bools representing sequence
+         * @param page Current page to display
+         * @param currentDrum Active drum for editing
+         * @param redraw If true, updates display
+         */
         void setStopSeq(std::vector<bool> activeDrums, unsigned int page, unsigned int currentDrum, bool redraw);
 
-        // Toggle the REC ENABLE decimal point flash
+        /*
+         * Toggles all DP on and off
+         * @param redraw If true, updates display
+         */
         void toggleDPFlash(bool redraw);
 
-        // Getters //
+        /*
+         * Returns current mode
+         * @returns Current mode
+         */
         unsigned int getMode();
 
+
+        /*
+         * Returns DP flash state
+         * @returns dp flash state
+         */
         unsigned int getDPToggle();
 };
 } // namespace display
