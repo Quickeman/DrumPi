@@ -42,7 +42,9 @@ BOOST_AUTO_TEST_CASE(getsSamples) {
     // Test the samples returned are non-zero
     AudioClip c(fp);
     // Use a large buffer size to allow for non-instant content in file
-    int n = 2048;
+    int n = 4096;
+
+    BOOST_CHECK(c.getStatus() == SOURCE_READY);
 
     std::vector<sample_t> v = c.getSamples(n);
 
