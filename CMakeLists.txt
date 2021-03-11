@@ -52,11 +52,13 @@ set_target_properties(library PROPERTIES ARCHIVE_OUTPUT_DIRECTORY lib)
 # Add
 add_subdirectory(
     lib/cppTimer
+    lib/AudioFile
 )
 
 # Include
 include_directories(
     lib/cppTimer
+    lib/AudioFile
 )
 
 # Link
