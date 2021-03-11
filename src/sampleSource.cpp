@@ -1,5 +1,7 @@
 #include "sampleSource.hpp"
 
+#include <memory>
+
 using namespace drumpi;
 using namespace audio;
 
@@ -63,14 +65,17 @@ void AudioClip::reset() {
 }
 
 void AudioClip::updateStatus() {
-    if ((playhead == 0) && !clip.empty()) {
+    if (clip.empty()) {
+        status = SOURCE_ERROR;
+        return;
+    }
+
+    if (playhead == 0) {
         status = SOURCE_READY;
-    } else
-    if (playhead >= numSamples) {
-        status = SOURCE_FINISHED;
-    } else
-    if (playhead > 0) {
+    } else if (playhead > 0) {
         status = SOURCE_ACTIVE;
+    } else if (playhead >= numSamples) {
+        status = SOURCE_FINISHED;
     } else {
         status = SOURCE_ERROR;
     }
@@ -82,7 +87,22 @@ void AudioClip::hardReset() {
 }
 
 void AudioClip::loadFile() {
-    // TODO
+    std::unique_ptr<AudioFile<sample_t>> file(new AudioFile<sample_t>);
+    bool loaded = false;
+    status = SOURCE_LOADING;
+
+    loaded = file->load(filepath);
+
+    if (!loaded) {
+        status = SOURCE_ERROR;
+        return;
+    }
+
+    clip = file->samples[0];
+    numSamples = clip.size();
+    status = SOURCE_READY;
+
+    status = SOURCE_ERROR;
 }
 
 int AudioClip::samplesRemaining() {
