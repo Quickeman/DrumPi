@@ -1,6 +1,4 @@
 // File: audio.cpp
-#include <iostream>
-
 #include <audio.hpp>
 
 using namespace drumpi;
@@ -112,13 +110,12 @@ int AudioEngine::_process(jack_nframes_t nFrames, void *arg) {
 
     samples = self->callback->getSamples(nFrames);
 
-    for (int i = 0; i < out.size(); i++) {
+    for (int i = 0; i < out.size(); i++) { // For each port...
         // Get a sample memory buffer for each port
-        out[i] = static_cast<sample_t*>(
-            jack_port_get_buffer(self->outPorts[i], nFrames)
-        );
+        out[i] = (sample_t*)jack_port_get_buffer(self->outPorts[i], nFrames);
 
-        for (int j = 0; j < nFrames; j++) {
+        for (int j = 0; j < nFrames; j++) { // For each frame/sample...
+            // Copy retrieved samples to output
             out[i][j] = samples[j];
         }
     }
