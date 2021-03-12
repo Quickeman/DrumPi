@@ -110,7 +110,6 @@ public:
 	/*! Pointer to current state instance */
 	State* currentstate;
 
-private:
 	/*! Instance of PerformanceMode state */
 	PerformanceMode performancemode;
 

@@ -72,10 +72,12 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* app, int key) {
 	switch (key) {
 		case KEY_A:
 			//change currentdrum to drum A
+			currentdrum = KICK_DRUM;
 			//display currentpage for drum A
 			break;
 		case KEY_S:
 			//change currentdrum to drum S
+			currentdrum = SNARE_DRUM;
 			//display currentpage for drum S
 			break;
 		case KEY_D:
@@ -220,7 +222,7 @@ void SetTempoMode::interpretKeyPress(ApplicationCallback* app, int key) {
 
 
 SetDrumVolumeMode::SetDrumVolumeMode() {
-	label = "settempomode";
+	label = "setdrumvolumemode";
 	drumselected = KICK_DRUM;	//default drum A
 	previousstate = "performancemode";	//default previous state
 }
