@@ -11,9 +11,6 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# Add subdirectories
-add_subdirectory(lib)
-
 ### OUTPUT TARGET ###
 
 add_executable(DrumPi src/main.cpp)
@@ -30,7 +27,6 @@ set_target_properties(sourceLib PROPERTIES ARCHIVE_OUTPUT_DIRECTORY lib/src)
 
 # Include source and header files
 file(GLOB SRCS src/*.cpp)
-# file(GLOB HDRS src/*.hpp)
 # Run through each source file
 foreach(srcName ${SRCS})
     # Get extension-less filename
@@ -47,13 +43,51 @@ endforeach(srcName)
 # Link source library to DrumPi
 target_link_libraries(DrumPi sourceLib)
 
+
+### LIBRARIES ###
+
+# Create base library from dummy file
+add_library(library src/.dummy.cxx)
+set_target_properties(library PROPERTIES ARCHIVE_OUTPUT_DIRECTORY lib)
+
+## Add, include and link each library subdirectory
+# For pre-compiled libraries (e.g. wiringPi) only linking is needed
+# Add
+add_subdirectory(
+    lib/cppTimer
+)
+
+# Include
+include_directories(
+    lib/cppTimer
+    lib/cppThread
+)
+
+find_package (Threads)
+
+# Link
+target_link_libraries(library
+    cpptimer
+    ${CMAKE_THREAD_LIBS_INIT}
+)
+
+# Link sum library to DrumPi
+target_link_libraries(DrumPi library)
+
+# Link source library to DrumPi
+target_link_libraries(DrumPi sourceLib)
+
 ### UNIT TESTING ###
 
 # Enable testing
 enable_testing()
 
 # Use Boost library for unit tests
-find_package(Boost COMPONENTS system filesystem unit_test_framework REQUIRED)
+find_package(Boost COMPONENTS 
+#	system 
+#	filesystem 
+	unit_test_framework 
+REQUIRED)
 # Link to source directory
 include_directories(${Boost_INCLUDE_DIRS} ${PROJECT_SOURCE_DIR}/src)
 
@@ -66,7 +100,8 @@ foreach(testSrc ${TEST_SRCS})
     # Add target
     add_executable(${testName} ${testSrc})
     # Link to Boost and deps
-    target_link_libraries(${testName} ${Boost_LIBRARIES} sourceLib)
+
+    target_link_libraries(${testName} ${Boost_LIBRARIES} sourceLib library)
     # Put test executables in their own directory
     set_target_properties(${testName} PROPERTIES RUNTIME_OUTPUT_DIRECTORY test/testBin)
 
@@ -76,4 +111,3 @@ foreach(testSrc ${TEST_SRCS})
              COMMAND ${testName}
             )
 endforeach(testSrc)
-

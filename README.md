@@ -15,19 +15,30 @@ DrumPi is a small, affordable, open-source drum machine, giving you all the perc
 - Standard USB keyboard
 - USB audio interface (recommended)
 
-## Getting Started 
+## Quick-start guide
+### Installation 
 To download and install DrumPi's software on your Raspberry Pi, run the following in a terminal:
 ```
+sudo apt install git cmake libboost-test-dev
 git clone https://github.com/Quickeman/DrumPi.git
-TODO
+cd DrumPi
+cmake .
+make
 ```
 
-## Usage
-To start DrumPi, enter:
+### Startup
+To start the DrumPi, enter:
 ```
-(DrumPi) $ ./DrumPi
+./DrumPi
 ```
-in the terminal.
+in a terminal from the DrumPi directory.
+
+### Running Tests
+To run a suite of unit tests, enter:
+```
+make test
+```
+in a terminal from the DrumPi directory
 
 ## Stretch Goals
 - External clocking
