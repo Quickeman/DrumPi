@@ -14,30 +14,39 @@ PerformanceMode::PerformanceMode() {
 void PerformanceMode::interpretKeyPress(ApplicationCallback* app, int key) {
 	switch (key) {
 		case KEY_A:
+            //Display: Toggle respective drum square and level meter
 			//trigger drum sound
 			break;
 		case KEY_S:
+            //Display: Toggle respective drum square and level meter
 			//trigger drum sound
 			break;
 		case KEY_D:
+            //Display: Toggle respective drum square and level meter
 			//trigger drum sound
 			break;
 		case KEY_F:
+            //Display: Toggle respective drum square and level meter
 			//trigger drum sound
 			break;
 		case KEY_J:
+            //Display: Toggle respective drum square and level meter
 			//trigger drum sound
 			break;
 		case KEY_K:
+            //Display: Toggle respective drum square and level meter
 			//trigger drum sound
 			break;
 		case KEY_L:
+            //Display: Toggle respective drum square and level meter
 			//trigger drum sound
 			break;
 		case KEY_SEMICOLON:
+            //Display: Toggle respective drum square and level meter
 			//trigger drum sound
 			break;
 		case KEY_M:
+            //Display: Toggle respective drum square and level meter
 			app->setState(1);	//change state to SequencerMode
 			break;
 		case KEY_COMMA:
