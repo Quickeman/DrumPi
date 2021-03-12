@@ -30,28 +30,3 @@
 *.exe
 *.out
 *.app
-
-# Vim
-Session.vim
-.vimrc
-
-# cmake
-*.cmake
-CMakeCache.txt
-CMakeFiles/
-Makefile
-
-bin/
-
-# Unit testing
-Testing/
-test/testBin
-
-# Compile commands
-compile_commands.json
-
-#cache
-.cache/
-# VS Code
-.vscode/
-
