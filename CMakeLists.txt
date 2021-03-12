@@ -39,8 +39,6 @@ foreach(srcName ${SRCS})
     add_library(${libName} src/${libName}.cpp)
     # Put libraries in /lib/src
     set_target_properties(${libName} PROPERTIES ARCHIVE_OUTPUT_DIRECTORY lib/src)
-    target_link_libraries(${libName} wiringPi)
-    #target_link_libraries(libMax7219 wiringPi)
     # Link library to DrumPi
     target_link_libraries(sourceLib ${libName})
 endforeach(srcName)
@@ -72,8 +70,6 @@ foreach(testSrc ${TEST_SRCS})
     # Put test executables in their own directory
     set_target_properties(${testName} PROPERTIES RUNTIME_OUTPUT_DIRECTORY test/testBin)
 
-    # Find wiringPi library
-    target_link_libraries(test_display wiringPi)
     # Add test to execution
     add_test(NAME ${testName}
              WORKING_DIRECTORY test/testBin
