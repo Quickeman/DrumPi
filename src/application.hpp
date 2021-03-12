@@ -54,6 +54,27 @@ public:
 	 * Action performed is unique to sequencer mode.
 	 */
 	void interpretKeyPress(ApplicationCallback* app, int key) override;
+
+	drumID_t currentdrum;
+	int currentpage;
+	int playing;
+};
+
+/*! Set tempo mode state */
+class SetTempoMode : public State {
+public:
+	/*! Constructor */
+	SetTempoMode();
+
+	/*!
+	 * \brief Method to perform action depending on key pressed.
+	 * 
+	 * Action performed is unique to SetTempoMode.
+	 */
+	void interpretKeyPress(ApplicationCallback* app, int key) override;
+
+private:
+	int tempo;
 };
 
 
