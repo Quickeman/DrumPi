@@ -60,7 +60,7 @@ public:
 	int playing;
 };
 
-/*! Set tempo mode state */
+/*! Set tempo in this state */
 class SetTempoMode : public State {
 public:
 	/*! Constructor */
@@ -74,7 +74,7 @@ public:
 	void interpretKeyPress(ApplicationCallback* app, int key) override;
 };
 
-/*! Set individual drum volume mode state */
+/*! Set individual drum volumes in this state */
 class SetDrumVolumeMode : public State {
 public:
 	/*! Constructor */
@@ -111,16 +111,16 @@ public:
 	State* currentstate;
 
 private:
-	/*! Instance of performance mode state */
+	/*! Instance of PerformanceMode state */
 	PerformanceMode performancemode;
 
-	/*! Instance of sequencer mode state */
+	/*! Instance of SequencerMode state */
 	SequencerMode sequencermode;
 
-	/*! Instance of tempo mode state */
+	/*! Instance of SetTempoMode state */
 	SetTempoMode settempomode;
 
-	/*! Instance of set individual drum volume state */
+	/*! Instance of SetDrumVolumeMode state */
 	SetDrumVolumeMode setdrumvolumemode;
 
 	/*! Instance of KeyboardThread class */

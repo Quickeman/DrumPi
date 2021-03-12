@@ -14,39 +14,38 @@ PerformanceMode::PerformanceMode() {
 void PerformanceMode::interpretKeyPress(ApplicationCallback* app, int key) {
 	switch (key) {
 		case KEY_A:
-            //Display: Toggle respective drum square and level meter
+			//Display: Toggle respective drum square and level meter
 			//trigger drum sound
 			break;
 		case KEY_S:
-            //Display: Toggle respective drum square and level meter
+			//Display: Toggle respective drum square and level meter
 			//trigger drum sound
 			break;
 		case KEY_D:
-            //Display: Toggle respective drum square and level meter
+			//Display: Toggle respective drum square and level meter
 			//trigger drum sound
 			break;
 		case KEY_F:
-            //Display: Toggle respective drum square and level meter
+			//Display: Toggle respective drum square and level meter
 			//trigger drum sound
 			break;
 		case KEY_J:
-            //Display: Toggle respective drum square and level meter
+			//Display: Toggle respective drum square and level meter
 			//trigger drum sound
 			break;
 		case KEY_K:
-            //Display: Toggle respective drum square and level meter
+			//Display: Toggle respective drum square and level meter
 			//trigger drum sound
 			break;
 		case KEY_L:
-            //Display: Toggle respective drum square and level meter
+			//Display: Toggle respective drum square and level meter
 			//trigger drum sound
 			break;
 		case KEY_SEMICOLON:
-            //Display: Toggle respective drum square and level meter
+			//Display: Toggle respective drum square and level meter
 			//trigger drum sound
 			break;
 		case KEY_M:
-            //Display: Toggle respective drum square and level meter
 			app->setState(1);	//change state to SequencerMode
 			break;
 		case KEY_COMMA:
@@ -54,6 +53,9 @@ void PerformanceMode::interpretKeyPress(ApplicationCallback* app, int key) {
 			break;
 		case KEY_DOT:
 			//increase master volume
+			break;
+		case KEY_V:
+			app->setState(3);	//change state to SetDrumVolumeMode
 			break;
 	}
 }
@@ -188,6 +190,9 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* app, int key) {
 		case KEY_T:
 			app->setState(2);	//change state to SetTempoMode
 			break;
+		case KEY_V:
+			app->setState(3);	//change state to SetDrumVolumeMode
+			break;
 	}
 }
 
@@ -255,7 +260,7 @@ void SetDrumVolumeMode::interpretKeyPress(ApplicationCallback *app, int key) {
 			//set drumselected to drum SEMICOLON
 			break;
 		case KEY_V:
-			//change state to previous state
+			//change state back to previous state
 			if (previousstate == "performancemode") {
 				app->setState(0);	//change state to PerformanceMode
 			} else if (previousstate == "sequencermode") {
@@ -263,7 +268,7 @@ void SetDrumVolumeMode::interpretKeyPress(ApplicationCallback *app, int key) {
 			}
 			break;
 		case KEY_ESC:
-			//change state to previous state
+			//change state back to previous state
 			if (previousstate == "performancemode") {
 				app->setState(0);	//change state to PerformanceMode
 			} else if (previousstate == "sequencermode") {
