@@ -72,9 +72,25 @@ public:
 	 * Action performed is unique to SetTempoMode.
 	 */
 	void interpretKeyPress(ApplicationCallback* app, int key) override;
+};
+
+/*! Set individual drum volume mode state */
+class SetDrumVolumeMode : public State {
+public:
+	/*! Constructor */
+	SetDrumVolumeMode();
+
+	/*!
+	 * \brief Method to perform action depending on key pressed.
+	 * 
+	 * Action performed is unique to SetDrumVolumeMode.
+	 */
+	void interpretKeyPress(ApplicationCallback* app, int key) override;
+
+	std::string previousstate;
 
 private:
-	int tempo;
+	drumID_t drumselected;
 };
 
 
@@ -100,6 +116,12 @@ private:
 
 	/*! Instance of sequencer mode state */
 	SequencerMode sequencermode;
+
+	/*! Instance of tempo mode state */
+	SetTempoMode settempomode;
+
+	/*! Instance of set individual drum volume state */
+	SetDrumVolumeMode setdrumvolumemode;
 
 	/*! Instance of KeyboardThread class */
 	keyboard::KeyboardThread kbdThread;
