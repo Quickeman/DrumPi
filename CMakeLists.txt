@@ -40,9 +40,6 @@ foreach(srcName ${SRCS})
 endforeach(srcName)
 
 
-# Link source library to DrumPi
-target_link_libraries(DrumPi sourceLib)
-
 
 ### LIBRARIES ###
 
@@ -83,10 +80,10 @@ target_link_libraries(DrumPi sourceLib)
 enable_testing()
 
 # Use Boost library for unit tests
-find_package(Boost COMPONENTS 
-#	system 
-#	filesystem 
-	unit_test_framework 
+find_package(Boost COMPONENTS
+#	system
+#	filesystem
+	unit_test_framework
 REQUIRED)
 # Link to source directory
 include_directories(${Boost_INCLUDE_DIRS} ${PROJECT_SOURCE_DIR}/src)
