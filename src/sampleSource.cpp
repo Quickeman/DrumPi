@@ -106,5 +106,5 @@ void AudioClip::loadFile() {
 }
 
 int AudioClip::samplesRemaining() {
-    return 0;
+    return numSamples - playhead;
 }
