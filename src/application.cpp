@@ -46,12 +46,15 @@ void PerformanceMode::interpretKeyPress(ApplicationCallback* app, int key) {
 			//trigger drum sound
 			break;
 		case KEY_M:
+            //Display: Show S to indicate mode change
 			app->setState(1);	//change state to SequencerMode
 			break;
 		case KEY_COMMA:
+            //Display: Show new master volume
 			//decrease master volume
 			break;
 		case KEY_DOT:
+            //Display: Show new master volume
 			//increase master volume
 			break;
 		case KEY_V:
@@ -66,45 +69,55 @@ SequencerMode::SequencerMode() {
 	currentdrum = KICK_DRUM;	//default drum A
 	currentpage = 1;	//default page 1 (beats 1-8)
 	playing = 0;	//sequencer stopped by default
+    //Display: Show kick drum page 1 sequence
 }
 
 void SequencerMode::interpretKeyPress(ApplicationCallback* app, int key) {
 	switch (key) {
 		case KEY_A:
+            //Display: Toggle corresponding DP
 			//change currentdrum to drum A
 			currentdrum = KICK_DRUM;
 			//display currentpage for drum A
 			break;
 		case KEY_S:
+            //Display: Toggle corresponding DP
 			//change currentdrum to drum S
 			currentdrum = SNARE_DRUM;
 			//display currentpage for drum S
 			break;
 		case KEY_D:
+            //Display: Toggle corresponding DP
 			//change currentdrum to drum D
 			//display currentpage for drum D
 			break;
 		case KEY_F:
+            //Display: Toggle corresponding DP
 			//change currentdrum to drum F
 			//display currentpage for drum F
 			break;
 		case KEY_J:
+            //Display: Toggle corresponding DP
 			//change currentdrum to drum J
 			//display currentpage for drum J
 			break;
 		case KEY_K:
+            //Display: Toggle corresponding DP
 			//change currentdrum to drum K
 			//display currentpage for drum K
 			break;
 		case KEY_L:
+            //Display: Toggle corresponding DP
 			//change currentdrum to drum L
 			//display currentpage for drum L
 			break;
 		case KEY_SEMICOLON:
+            //Display: Toggle corresponding DP
 			//change currentdrum to drum ;
 			//display currentpage for drum ;
 			break;
 		case KEY_1:
+            //Display: Toggle upper squre on beat
 			if (currentpage == 1) {
 				//Insert currentdrum into beat 1
 			} else if (currentpage == 2) {
@@ -112,6 +125,7 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* app, int key) {
 			}
 			break;
 		case KEY_2:
+            //Display: Toggle upper squre on beat
 			if (currentpage == 1) {
 				//Insert currentdrum into beat 2
 			} else if (currentpage == 2) {
@@ -119,6 +133,7 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* app, int key) {
 			}
 			break;
 		case KEY_3:
+            //Display: Toggle upper squre on beat
 			if (currentpage == 1) {
 				//Insert currentdrum into beat 3
 			} else if (currentpage == 2) {
@@ -126,6 +141,7 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* app, int key) {
 			}
 			break;
 		case KEY_4:
+            //Display: Toggle upper squre on beat
 			if (currentpage == 1) {
 				//Insert currentdrum into beat 4
 			} else if (currentpage == 2) {
@@ -133,6 +149,7 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* app, int key) {
 			}
 			break;
 		case KEY_5:
+            //Display: Toggle upper squre on beat
 			if (currentpage == 1) {
 				//Insert currentdrum into beat 5
 			} else if (currentpage == 2) {
@@ -140,6 +157,7 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* app, int key) {
 			}
 			break;
 		case KEY_6:
+            //Display: Toggle upper squre on beat
 			if (currentpage == 1) {
 				//Insert currentdrum into beat 6
 			} else if (currentpage == 2) {
@@ -147,6 +165,7 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* app, int key) {
 			}
 			break;
 		case KEY_7:
+            //Display: Toggle upper squre on beat
 			if (currentpage == 1) {
 				//Insert currentdrum into beat 7
 			} else if (currentpage == 2) {
@@ -154,6 +173,7 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* app, int key) {
 			}
 			break;
 		case KEY_8:
+            //Display: Toggle upper squre on beat
 			if (currentpage == 1) {
 				//Insert currentdrum into beat 8
 			} else if (currentpage == 2) {
@@ -170,6 +190,9 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* app, int key) {
 			}
 			break;
 		case KEY_SPACE:
+            // Toggle play/pause sequence display
+
+            // potential alternative: 'playing = !playing' ?
 			if (playing == 0) {
 				playing = 1;
 				//start sequencer
@@ -179,14 +202,17 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* app, int key) {
 			}
 			break;
 		case KEY_M:
+            //Display: switch to performance display mode
 			//stop sequencer before switching to PerformanceMode
 			playing = 0;
 			app->setState(0);	//change state to PerformanceMode
 			break;
 		case KEY_COMMA:
+            //Display: updated master volume
 			//decrease master volume
 			break;
 		case KEY_DOT:
+            //Display: updated master volume
 			//increase master volume
 			break;
 		case KEY_T:
