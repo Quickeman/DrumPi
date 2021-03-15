@@ -8,7 +8,7 @@
 using namespace drumpi;
 using namespace audio;
 
-std::string fp = "~/DrumPi/test/whitenoise.wav";
+std::string fp = "/home/pi/DrumPi/test/test_audio_file.wav";
 
 BOOST_AUTO_TEST_CASE(constructors) {
     // Tests for NULL objects
@@ -81,6 +81,9 @@ BOOST_AUTO_TEST_CASE(getsStatus) {
     }
 
     BOOST_CHECK(status == SOURCE_FINISHED);
+
+    c.reset();
+
     BOOST_CHECK(c.getStatus() == SOURCE_READY);
 }
 
