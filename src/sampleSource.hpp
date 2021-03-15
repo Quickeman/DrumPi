@@ -5,8 +5,6 @@
 #include <string>
 #include <vector>
 
-#include <AudioFile.h>
-
 #include "defs.hpp"
 
 namespace drumpi {

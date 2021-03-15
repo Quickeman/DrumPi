@@ -1,6 +1,6 @@
 #include "sampleSource.hpp"
 
-#include <memory>
+#include <AudioFile.h>
 
 using namespace drumpi;
 using namespace audio;
@@ -87,22 +87,21 @@ void AudioClip::hardReset() {
 }
 
 void AudioClip::loadFile() {
-    std::unique_ptr<AudioFile<sample_t>> file(new AudioFile<sample_t>);
-    bool loaded = false;
+    AudioFile<sample_t> file;
+    bool loaded;
+
     status = SOURCE_LOADING;
 
-    loaded = file->load(filepath);
+    loaded = file.load(filepath);
 
     if (!loaded) {
         status = SOURCE_ERROR;
         return;
     }
 
-    clip = file->samples[0];
+    clip = file.samples[0];
     numSamples = clip.size();
     status = SOURCE_READY;
-
-    status = SOURCE_ERROR;
 }
 
 int AudioClip::samplesRemaining() {
