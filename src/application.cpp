@@ -190,16 +190,8 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* app, int key) {
 			}
 			break;
 		case KEY_SPACE:
-            // Toggle play/pause sequence display
-
-            // potential alternative: 'playing = !playing' ?
-			if (playing == 0) {
-				playing = 1;
-				//start sequencer
-			} else if (playing == 1) {
-				playing = 0;
-				//stop sequencer
-			}
+			// Toggle play/pause sequence display
+            playing = !playing;	//Toggle play/pause
 			break;
 		case KEY_M:
             //Display: switch to performance display mode

@@ -57,7 +57,7 @@ public:
 
 	drumID_t currentdrum;
 	int currentpage;
-	int playing;
+	bool playing;
 };
 
 /*! Set tempo in this state */
