@@ -65,11 +65,13 @@ find_package (Threads)
 # Link
 target_link_libraries(library
     cpptimer
+    wiringPi
     ${CMAKE_THREAD_LIBS_INIT}
 )
 
 # Link sum library to DrumPi
 target_link_libraries(DrumPi library)
+
 
 # Link source library to DrumPi
 target_link_libraries(DrumPi sourceLib)
@@ -98,7 +100,7 @@ foreach(testSrc ${TEST_SRCS})
     add_executable(${testName} ${testSrc})
     # Link to Boost and deps
 
-    target_link_libraries(${testName} ${Boost_LIBRARIES} sourceLib library)
+    target_link_libraries(${testName} ${Boost_LIBRARIES} wiringPi sourceLib library)
     # Put test executables in their own directory
     set_target_properties(${testName} PROPERTIES RUNTIME_OUTPUT_DIRECTORY test/testBin)
 

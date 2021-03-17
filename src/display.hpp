@@ -155,7 +155,7 @@ class Max7219
 };
 
 class Display: public Max7219 {
-    private:
+    //private:
 
         /** Vector to contain corresponding hex values
          * for decimal digit representation.
@@ -163,7 +163,8 @@ class Display: public Max7219 {
          * Prevents the need to toggle Code B decode
          * for every numerical display.
          */
-        const std::vector<unsigned char> decHexVals {
+    public:
+        const unsigned char decHexVals[10] = {
             0x7E, // '0'
             0x30, // '1'
             0x6D, // '2'
@@ -180,7 +181,7 @@ class Display: public Max7219 {
         const unsigned char upperSqAddr = 0x63;
         const unsigned char bottomAddr = 0x8;
 
-        bool dpToggle;      // Stores state of DP (on/off)
+        bool dpToggle = false;      // Stores state of DP (on/off)
 
         unsigned int mode;  // Stores current mode
 
@@ -209,9 +210,9 @@ class Display: public Max7219 {
 
     public:
 
-        Display(); /// Constructor
+        //Display(); /// Constructor
 
-        ~Display(); /// Destructor
+        //~Display(); /// Destructor
 
         /**
          * Sets digits to display a number up to 999

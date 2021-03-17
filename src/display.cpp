@@ -132,12 +132,12 @@ void Max7219::clear(bool redraw) {
 
 // Display class
 
-Display::Display() {
-    dpToggle = false;
-}
+//Display::Display() {
+    //dpToggle = false;
+//}
 
-Display::~Display() {
-}
+//Display::~Display() {
+//}
 
 void Display::setVal(unsigned int value, bool redraw) {
     clear(false);

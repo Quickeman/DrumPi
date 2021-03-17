@@ -70,7 +70,7 @@ BOOST_AUTO_TEST_CASE(show_num) {
     Display display;
     display.setVal(displayVal, true);
 
-    // Test each digit
+    //Test each digit
     BOOST_TEST(display.getDigit(7) == 0x5F);
     BOOST_TEST(display.getDigit(6) == 0x30);
     BOOST_TEST(display.getDigit(5) == 0x7B);
