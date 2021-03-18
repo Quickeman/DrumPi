@@ -15,7 +15,7 @@ BOOST_AUTO_TEST_CASE(constructor) {
 	BOOST_CHECK(&app);
 
 	//check default state is performance mode
-	BOOST_CHECK(app.currentstate->label == "performancemode");
+	BOOST_CHECK(app.currentstate->label == PERFORMANCE_MODE);
 }
 
 
@@ -26,7 +26,7 @@ BOOST_AUTO_TEST_CASE(changing_state) {
 	app.setState(1);
 
 	//check current state has changed to sequencer mode
-	BOOST_CHECK(app.currentstate->label == "sequencermode");
+	BOOST_CHECK(app.currentstate->label == SEQUENCER_MODE);
 }
 
 
@@ -37,7 +37,7 @@ BOOST_AUTO_TEST_CASE(interpreting_key_press) {
 	app.currentstate->interpretKeyPress(&app, KEY_M);
 
 	//check current state has changed to sequencer mode
-	BOOST_CHECK(app.currentstate->label == "sequencermode");
+	BOOST_CHECK(app.currentstate->label == SEQUENCER_MODE);
 }
 
 
@@ -48,7 +48,7 @@ BOOST_AUTO_TEST_CASE(changing_to_SetTempoMode) {
 	//should do nothing as are in performance mode by default
 	app.currentstate->interpretKeyPress(&app, KEY_T);
 	//check current state is still performance mode
-	BOOST_CHECK(app.currentstate->label == "performancemode");
+	BOOST_CHECK(app.currentstate->label == PERFORMANCE_MODE);
 
 	//switch to sequencer mode
 	app.currentstate->interpretKeyPress(&app, KEY_M);
@@ -56,12 +56,12 @@ BOOST_AUTO_TEST_CASE(changing_to_SetTempoMode) {
 	//switch to SetTempoMode
 	app.currentstate->interpretKeyPress(&app, KEY_T);
 	//check current state is now SetTempoMode
-	BOOST_CHECK(app.currentstate->label == "settempomode");
+	BOOST_CHECK(app.currentstate->label == SET_TEMPO_MODE);
 
 	//exit SetTempoMode and return to sequencer mode
 	app.currentstate->interpretKeyPress(&app, KEY_T);
 	//check state has returned to sequencer mode
-	BOOST_CHECK(app.currentstate->label == "sequencermode");
+	BOOST_CHECK(app.currentstate->label == SEQUENCER_MODE);
 }
 
 
@@ -123,12 +123,12 @@ BOOST_AUTO_TEST_CASE(changing_to_SetDrumVolumeMode) {
 	//switch to SetDrumVolumeMode from default performance mode
 	app.currentstate->interpretKeyPress(&app, KEY_V);
 	//check state has changed to SetDrumVolumeMode
-	BOOST_CHECK(app.currentstate->label == "setdrumvolumemode");
+	BOOST_CHECK(app.currentstate->label == SET_DRUM_VOLUME_MODE);
 
 	//exit SetDrumVolumeMode
 	app.currentstate->interpretKeyPress(&app, KEY_V);
 	//check state has returned to performance mode
-	BOOST_CHECK(app.currentstate->label == "performancemode");
+	BOOST_CHECK(app.currentstate->label == PERFORMANCE_MODE);
 
 	//switch to sequencer mode
 	app.setState(1);
@@ -136,10 +136,10 @@ BOOST_AUTO_TEST_CASE(changing_to_SetDrumVolumeMode) {
 	//switch to SetDrumVolumeMode
 	app.currentstate->interpretKeyPress(&app, KEY_V);
 	//check state has changed to SetDrumVolumeMode
-	BOOST_CHECK(app.currentstate->label == "setdrumvolumemode");
+	BOOST_CHECK(app.currentstate->label == SET_DRUM_VOLUME_MODE);
 
 	//exit SetDrumVolumeMode
 	app.currentstate->interpretKeyPress(&app, KEY_V);
 	//check state has this time returned to sequencer mode
-	BOOST_CHECK(app.currentstate->label == "sequencermode");
+	BOOST_CHECK(app.currentstate->label == SEQUENCER_MODE);
 }

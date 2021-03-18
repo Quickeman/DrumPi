@@ -15,6 +15,13 @@ typedef enum _DrumIDs {
 
 #define NUM_DRUMS (int)_DrumIDs::_NUM_DRUMS
 
+typedef enum _StateLabels {
+    PERFORMANCE_MODE,
+    SEQUENCER_MODE,
+    SET_TEMPO_MODE,
+    SET_DRUM_VOLUME_MODE
+} stateLabel_t;
+
 } // namespace drumpi
 
 #endif

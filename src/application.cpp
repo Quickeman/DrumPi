@@ -8,7 +8,7 @@ using namespace drumpi;
 //States
 
 PerformanceMode::PerformanceMode() {
-	label = "performancemode";
+	label = PERFORMANCE_MODE;
 }
 
 void PerformanceMode::interpretKeyPress(ApplicationCallback* app, int key) {
@@ -46,15 +46,15 @@ void PerformanceMode::interpretKeyPress(ApplicationCallback* app, int key) {
 			//trigger drum sound
 			break;
 		case KEY_M:
-            //Display: Show S to indicate mode change
+			//Display: Show S to indicate mode change
 			app->setState(1);	//change state to SequencerMode
 			break;
 		case KEY_COMMA:
-            //Display: Show new master volume
+			//Display: Show new master volume
 			//decrease master volume
 			break;
 		case KEY_DOT:
-            //Display: Show new master volume
+			//Display: Show new master volume
 			//increase master volume
 			break;
 		case KEY_V:
@@ -65,59 +65,59 @@ void PerformanceMode::interpretKeyPress(ApplicationCallback* app, int key) {
 
 
 SequencerMode::SequencerMode() {
-	label = "sequencermode";
+	label = SEQUENCER_MODE;
 	currentdrum = KICK_DRUM;	//default drum A
 	currentpage = 1;	//default page 1 (beats 1-8)
 	playing = 0;	//sequencer stopped by default
-    //Display: Show kick drum page 1 sequence
+	//Display: Show kick drum page 1 sequence
 }
 
 void SequencerMode::interpretKeyPress(ApplicationCallback* app, int key) {
 	switch (key) {
 		case KEY_A:
-            //Display: Toggle corresponding DP
+			//Display: Toggle corresponding DP
 			//change currentdrum to drum A
 			currentdrum = KICK_DRUM;
 			//display currentpage for drum A
 			break;
 		case KEY_S:
-            //Display: Toggle corresponding DP
+			//Display: Toggle corresponding DP
 			//change currentdrum to drum S
 			currentdrum = SNARE_DRUM;
 			//display currentpage for drum S
 			break;
 		case KEY_D:
-            //Display: Toggle corresponding DP
+			//Display: Toggle corresponding DP
 			//change currentdrum to drum D
 			//display currentpage for drum D
 			break;
 		case KEY_F:
-            //Display: Toggle corresponding DP
+			//Display: Toggle corresponding DP
 			//change currentdrum to drum F
 			//display currentpage for drum F
 			break;
 		case KEY_J:
-            //Display: Toggle corresponding DP
+			//Display: Toggle corresponding DP
 			//change currentdrum to drum J
 			//display currentpage for drum J
 			break;
 		case KEY_K:
-            //Display: Toggle corresponding DP
+			//Display: Toggle corresponding DP
 			//change currentdrum to drum K
 			//display currentpage for drum K
 			break;
 		case KEY_L:
-            //Display: Toggle corresponding DP
+			//Display: Toggle corresponding DP
 			//change currentdrum to drum L
 			//display currentpage for drum L
 			break;
 		case KEY_SEMICOLON:
-            //Display: Toggle corresponding DP
+			//Display: Toggle corresponding DP
 			//change currentdrum to drum ;
 			//display currentpage for drum ;
 			break;
 		case KEY_1:
-            //Display: Toggle upper squre on beat
+			//Display: Toggle upper squre on beat
 			if (currentpage == 1) {
 				//Insert currentdrum into beat 1
 			} else if (currentpage == 2) {
@@ -125,7 +125,7 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* app, int key) {
 			}
 			break;
 		case KEY_2:
-            //Display: Toggle upper squre on beat
+			//Display: Toggle upper squre on beat
 			if (currentpage == 1) {
 				//Insert currentdrum into beat 2
 			} else if (currentpage == 2) {
@@ -133,7 +133,7 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* app, int key) {
 			}
 			break;
 		case KEY_3:
-            //Display: Toggle upper squre on beat
+			//Display: Toggle upper squre on beat
 			if (currentpage == 1) {
 				//Insert currentdrum into beat 3
 			} else if (currentpage == 2) {
@@ -141,7 +141,7 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* app, int key) {
 			}
 			break;
 		case KEY_4:
-            //Display: Toggle upper squre on beat
+			//Display: Toggle upper squre on beat
 			if (currentpage == 1) {
 				//Insert currentdrum into beat 4
 			} else if (currentpage == 2) {
@@ -149,7 +149,7 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* app, int key) {
 			}
 			break;
 		case KEY_5:
-            //Display: Toggle upper squre on beat
+			//Display: Toggle upper squre on beat
 			if (currentpage == 1) {
 				//Insert currentdrum into beat 5
 			} else if (currentpage == 2) {
@@ -157,7 +157,7 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* app, int key) {
 			}
 			break;
 		case KEY_6:
-            //Display: Toggle upper squre on beat
+			//Display: Toggle upper squre on beat
 			if (currentpage == 1) {
 				//Insert currentdrum into beat 6
 			} else if (currentpage == 2) {
@@ -165,7 +165,7 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* app, int key) {
 			}
 			break;
 		case KEY_7:
-            //Display: Toggle upper squre on beat
+			//Display: Toggle upper squre on beat
 			if (currentpage == 1) {
 				//Insert currentdrum into beat 7
 			} else if (currentpage == 2) {
@@ -173,7 +173,7 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* app, int key) {
 			}
 			break;
 		case KEY_8:
-            //Display: Toggle upper squre on beat
+			//Display: Toggle upper squre on beat
 			if (currentpage == 1) {
 				//Insert currentdrum into beat 8
 			} else if (currentpage == 2) {
@@ -191,20 +191,20 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* app, int key) {
 			break;
 		case KEY_SPACE:
 			// Toggle play/pause sequence display
-            playing = !playing;	//Toggle play/pause
+			playing = !playing;	//Toggle play/pause
 			break;
 		case KEY_M:
-            //Display: switch to performance display mode
+			//Display: switch to performance display mode
 			//stop sequencer before switching to PerformanceMode
 			playing = 0;
 			app->setState(0);	//change state to PerformanceMode
 			break;
 		case KEY_COMMA:
-            //Display: updated master volume
+			//Display: updated master volume
 			//decrease master volume
 			break;
 		case KEY_DOT:
-            //Display: updated master volume
+			//Display: updated master volume
 			//increase master volume
 			break;
 		case KEY_T:
@@ -218,7 +218,7 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* app, int key) {
 
 
 SetTempoMode::SetTempoMode() {
-	label = "settempomode";
+	label = SET_TEMPO_MODE;
 }
 
 void SetTempoMode::interpretKeyPress(ApplicationCallback* app, int key) {
@@ -240,9 +240,9 @@ void SetTempoMode::interpretKeyPress(ApplicationCallback* app, int key) {
 
 
 SetDrumVolumeMode::SetDrumVolumeMode() {
-	label = "setdrumvolumemode";
+	label = SET_DRUM_VOLUME_MODE;
 	drumselected = KICK_DRUM;	//default drum A
-	previousstate = "performancemode";	//default previous state
+	previousstate = PERFORMANCE_MODE;	//default previous state
 }
 
 void SetDrumVolumeMode::interpretKeyPress(ApplicationCallback *app, int key) {
@@ -281,17 +281,17 @@ void SetDrumVolumeMode::interpretKeyPress(ApplicationCallback *app, int key) {
 			break;
 		case KEY_V:
 			//change state back to previous state
-			if (previousstate == "performancemode") {
+			if (previousstate == PERFORMANCE_MODE) {
 				app->setState(0);	//change state to PerformanceMode
-			} else if (previousstate == "sequencermode") {
+			} else if (previousstate == SEQUENCER_MODE) {
 				app->setState(1);	//change state to SequencerMode
 			}
 			break;
 		case KEY_ESC:
 			//change state back to previous state
-			if (previousstate == "performancemode") {
+			if (previousstate == PERFORMANCE_MODE) {
 				app->setState(0);	//change state to PerformanceMode
-			} else if (previousstate == "sequencermode") {
+			} else if (previousstate == SEQUENCER_MODE) {
 				app->setState(1);	//change state to SequencerMode
 			}
 			break;
@@ -333,10 +333,10 @@ void Application::setState(int newstate) {
 			break;
 		case 3:
 			if (currentstate == &sequencermode) {
-				setdrumvolumemode.previousstate = "sequencermode";
+				setdrumvolumemode.previousstate = SEQUENCER_MODE;
 				currentstate = &setdrumvolumemode;
 			} else if (currentstate == &performancemode) {
-				setdrumvolumemode.previousstate = "performancemode";
+				setdrumvolumemode.previousstate = PERFORMANCE_MODE;
 				currentstate = &setdrumvolumemode;
 			}
 			break;

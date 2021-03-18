@@ -20,6 +20,7 @@ DrumPi is a small, affordable, open-source drum machine, giving you all the perc
 To download and install DrumPi's software on your Raspberry Pi, run the following in a terminal:
 ```
 sudo apt install git cmake libboost-test-dev
+sudo adduser <username> input	(Reboot system following this step before continuing)
 git clone https://github.com/Quickeman/DrumPi.git
 cd DrumPi
 cmake .
