@@ -33,7 +33,7 @@ class Timer : public CppTimer {
 
         /*! Callback method run when given time has passed.
         Override to add functionality. */
-        virtual void trigger();
+        virtual void trigger() = 0;
     
     private:
         /*! Override event method to call trigger(). */
@@ -65,7 +65,7 @@ class Clock : public CppTimer {
 
         /*! Callback method run on each clock pulse.
         Override to add functionality. */
-        virtual void tick();
+        virtual void tick() = 0;
 
     private:
         /*! Override event method to call tick(). */

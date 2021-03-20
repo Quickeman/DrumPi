@@ -3,10 +3,9 @@
 #define SEQUENCER_H
 
 #include "defs.hpp"
+#include "clock.hpp"
 
 #include <vector>
-
-#include "defs.hpp"
 
 namespace drumpi {
 namespace sequencer {
@@ -134,6 +133,19 @@ class Sequencer {
         /*! Call to update the active step pointer.
         Should be called after the active step ID is updated. */
         void _updateStepPtr();
+};
+
+class SequencerClock : public clock::Metronome {
+    public:
+        /*! Sets the Sequencer object to be clocked. */
+        void setSequencer(Sequencer& s);
+
+        /*! Override the tick method. */
+        void tick() override;
+    
+    private:
+        /*! Pointer to the `Sequencer` object to be clocked. */
+        Sequencer* seq;
 };
 
 } // namespace sequencer
