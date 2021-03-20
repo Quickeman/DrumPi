@@ -51,9 +51,13 @@ void Step::clear() {
 
 // Sequencer class
 
+Sequencer::Sequencer() {
+    setNumSteps(numStepsDef);
+    reset();
+}
+
 Sequencer::Sequencer(const int numSteps) {
-    this->numSteps = numSteps;
-    steps.resize(this->numSteps);
+    setNumSteps(numSteps);
     reset();
 }
 
@@ -128,6 +132,11 @@ void Sequencer::removeFromStep(drumID_t drum, int step) {
 
 void Sequencer::removeFromStep(drumID_t drum) {
     removeFromStep(drum, stepNum);
+}
+
+void Sequencer::setNumSteps(int n) {
+    numSteps = n;
+    steps.resize(numSteps);
 }
 
 void Sequencer::_updateStepID() {

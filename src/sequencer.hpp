@@ -50,12 +50,13 @@ class Sequencer {
     public:
         /*! Defualt constructor. */
         Sequencer();
+
         /*! Sequencer constructor.
         \param numSteps the number of steps in the sequence. */
         Sequencer(const int numSteps);
 
         /*! Advance the sequencer by one step.
-        \param n number of step to advance by. */
+        \param n number of step(s) to advance by. */
         void step(int n = 1);
 
         /*! Returns `true` if the specified drum is active in the specified step.
@@ -114,6 +115,13 @@ class Sequencer {
         std::vector<Step> steps;
         /*! Number of steps in the sequence. */
         int numSteps;
+        /*! Default number of steps in the sequence. */
+        static const int numStepsDef = 16;
+
+        /*! Sets the number of steps.
+        Unstable for active use.
+        \param n desired number of sequence steps. */
+        void setNumSteps(int n);
 
         /*! ID of the current step.
         Index in the `steps` vector. */
