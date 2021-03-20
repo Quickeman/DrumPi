@@ -67,6 +67,7 @@ find_package (Threads)
 # Link
 target_link_libraries(library
     cpptimer
+    wiringPi
     jack
     ${CMAKE_THREAD_LIBS_INIT}
 )
@@ -98,7 +99,7 @@ foreach(testSrc ${TEST_SRCS})
     add_executable(${testName} ${testSrc})
     # Link to Boost and deps
 
-    target_link_libraries(${testName} ${Boost_LIBRARIES} sourceLib library)
+    target_link_libraries(${testName} ${Boost_LIBRARIES} wiringPi sourceLib library)
     # Put test executables in their own directory
     set_target_properties(${testName} PROPERTIES RUNTIME_OUTPUT_DIRECTORY test/testBin)
 
