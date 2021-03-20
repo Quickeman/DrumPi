@@ -46,6 +46,7 @@ bin/
 # Unit testing
 Testing/
 test/testBin
+lib/cppTimer/test/test_*
 
 # Compile commands
 compile_commands.json
