@@ -52,12 +52,14 @@ set_target_properties(library PROPERTIES ARCHIVE_OUTPUT_DIRECTORY lib)
 # Add
 add_subdirectory(
     lib/cppTimer
+    lib/AudioFile
 )
 
 # Include
 include_directories(
     lib/cppTimer
     lib/cppThread
+    lib/AudioFile
 )
 
 find_package (Threads)
@@ -66,6 +68,7 @@ find_package (Threads)
 target_link_libraries(library
     cpptimer
     wiringPi
+    jack
     ${CMAKE_THREAD_LIBS_INIT}
 )
 
@@ -82,11 +85,8 @@ target_link_libraries(DrumPi sourceLib)
 enable_testing()
 
 # Use Boost library for unit tests
-find_package(Boost COMPONENTS
-#	system
-#	filesystem
-	unit_test_framework
-REQUIRED)
+find_package(Boost COMPONENTS unit_test_framework REQUIRED)
+
 # Link to source directory
 include_directories(${Boost_INCLUDE_DIRS} ${PROJECT_SOURCE_DIR}/src)
 

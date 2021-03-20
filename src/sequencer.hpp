@@ -6,6 +6,8 @@
 
 #include <vector>
 
+#include "defs.hpp"
+
 namespace drumpi {
 namespace sequencer {
 
