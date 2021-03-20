@@ -5,7 +5,9 @@
 
 #include <string>
 #include "audio.hpp"
+#include "playback.hpp"
 #include "sequencer.hpp"
+#include "clock.hpp"
 #include "keyboardthread.hpp"
 
 namespace drumpi {
@@ -141,6 +143,18 @@ public:
 
 	/*! Instance of KeyboardThread class */
 	keyboard::KeyboardThread kbdThread;
+
+	/*! AudioEngine object. */
+	audio::engine::AudioEngine audioEngine;
+
+	/*! PlaybackEngine object. */
+	audio::engine::PlaybackEngine playbackEngine;
+
+	/*! Sequencer object. */
+	sequencer::Sequencer seq;
+
+	/*! SequencerClock object used to clock the Sequencer. */
+	sequencer::SequencerClock seqClocker;
 
 };
 
