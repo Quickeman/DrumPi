@@ -7,7 +7,7 @@
 #include "audio.hpp"
 #include "playback.hpp"
 #include "sequencer.hpp"
-#include "clock.hpp"
+#include "sequencerClock.hpp"
 #include "keyboardthread.hpp"
 
 namespace drumpi {
@@ -154,7 +154,7 @@ public:
 	sequencer::Sequencer seq;
 
 	/*! SequencerClock object used to clock the Sequencer. */
-	sequencer::SequencerClock seqClocker;
+	SequencerClock seqClocker;
 
 };
 

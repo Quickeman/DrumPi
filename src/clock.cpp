@@ -21,15 +21,12 @@ void Timer::start() {
     CppTimer::start(long(time * 1000000), ONESHOT);
 };
 
-void Timer::trigger() {}
-
 void Timer::timerEvent() {
     trigger();
 };
 
 
-Clock::Clock(bool tickOnStart) {
-    startTick = tickOnStart;
+Clock::Clock() {
     setRate(1000);
     rateChangeFlag = false;
 }
@@ -45,21 +42,15 @@ int Clock::getRate() {
 
 void Clock::start() {
     CppTimer::start(long(rate*1000000));
-    if (startTick) {
-        timerEvent();
-    }
+    timerEvent();
 }
-
-void Clock::tick() {}
 
 void Clock::timerEvent() {
     if (rateChangeFlag) {
-        bool tempST = startTick;
-        startTick = false;
+        rateChangeFlag = false;
         stop();
         start();
-        startTick = tempST;
-        rateChangeFlag = false;
+        return;
     }
     tick();
 }
@@ -72,7 +63,7 @@ Metronome::Metronome() {
 
 void Metronome::setRateBPM(int bpm) {
     this->bpm = bpm;
-    setRate(bpmToMs(bpm));
+    setRate(bpmToMs(this->bpm));
 }
 
 int Metronome::getRateBPM() {

@@ -135,19 +135,6 @@ class Sequencer {
         void _updateStepPtr();
 };
 
-class SequencerClock : public clock::Metronome {
-    public:
-        /*! Sets the Sequencer object to be clocked. */
-        void setSequencer(Sequencer& s);
-
-        /*! Override the tick method. */
-        void tick() override;
-    
-    private:
-        /*! Pointer to the `Sequencer` object to be clocked. */
-        Sequencer* seq;
-};
-
 } // namespace sequencer
 } // namespace drumpi
 
