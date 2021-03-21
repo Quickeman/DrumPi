@@ -7,10 +7,15 @@
 using namespace drumpi;
 using namespace clock;
 
+class TestMetronome : public Metronome {
+    public:
+        void tick() override {}
+};
+
 BOOST_AUTO_TEST_CASE(constructors) {
     // Test for NULL object pointers
-    Metronome m1;
-    Metronome m2;
+    TestMetronome m1;
+    TestMetronome m2;
 
     BOOST_CHECK(&m1);
     BOOST_CHECK(&m2);
@@ -25,7 +30,7 @@ BOOST_AUTO_TEST_CASE(bpmToMsConversion) {
 
 BOOST_AUTO_TEST_CASE(setRateBpm) {
     // Test rate setting with BPM
-    Metronome m;
+    TestMetronome m;
     int bpm = 90;
     int ms = bpmToMs(bpm);
     m.setRateBPM(bpm);

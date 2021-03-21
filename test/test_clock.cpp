@@ -7,26 +7,7 @@
 using namespace drumpi;
 using namespace clock;
 
-BOOST_AUTO_TEST_CASE(constructors) {
-    // Test for NULL object pointers
-    Clock c1;
-    Clock c2;
-
-    BOOST_CHECK(&c1);
-    BOOST_CHECK(&c2);
-}
-
-BOOST_AUTO_TEST_CASE(rateSetting) {
-    // Test the clock rate setting & retrieving
-    Clock c;
-    int r = 100; // rate = 100ms
-
-    c.setRate(r);
-    
-    BOOST_CHECK_EQUAL(r, c.getRate());
-}
-
-class TestClock1 : public Clock {
+class TestClock : public Clock {
     public:
     int i = 0;
     void tick() override {
@@ -34,9 +15,28 @@ class TestClock1 : public Clock {
     }
 };
 
+BOOST_AUTO_TEST_CASE(constructors) {
+    // Test for NULL object pointers
+    TestClock c1;
+    TestClock c2;
+
+    BOOST_CHECK(&c1);
+    BOOST_CHECK(&c2);
+}
+
+BOOST_AUTO_TEST_CASE(rateSetting) {
+    // Test the clock rate setting & retrieving
+    TestClock c;
+    int r = 100; // rate = 100ms
+
+    c.setRate(r);
+    
+    BOOST_CHECK_EQUAL(r, c.getRate());
+}
+
 BOOST_AUTO_TEST_CASE(counter) {
     // Test the clocking with a basic ticker counter
-    TestClock1 c;
+    TestClock c;
     int r = 10; // rate = 10ms
     c.setRate(r);
 
@@ -57,7 +57,7 @@ BOOST_AUTO_TEST_CASE(counter) {
 
 BOOST_AUTO_TEST_CASE(stopping) {
     // Test the clock stops when requested
-    TestClock1 c;
+    TestClock c;
     int r = 10; // rate = 10ms
     c.setRate(r);
     c.start();
@@ -74,7 +74,7 @@ BOOST_AUTO_TEST_CASE(stopping) {
 
 BOOST_AUTO_TEST_CASE(activeRateSetting) {
     // Test changing clock rate while Clock is active/ticking
-    TestClock1 c;
+    TestClock c;
     int r1 = 40; // rate1 = 40ms
     int r2 = 10; // rate2 = 10ms
     c.setRate(r1);

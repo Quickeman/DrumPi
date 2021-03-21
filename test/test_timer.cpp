@@ -7,26 +7,7 @@
 using namespace drumpi;
 using namespace clock;
 
-BOOST_AUTO_TEST_CASE(constructors) {
-    // Test for NULL object pointers
-    Timer t1;
-    Timer t2;
-
-    BOOST_CHECK(&t1);
-    BOOST_CHECK(&t2);
-}
-
-BOOST_AUTO_TEST_CASE(triggerTimeSetting) {
-    // Test that Timer delay is set properly
-    Timer t;
-    int d = 100; // delay = 100ms
-
-    t.setTime(d);
-
-    BOOST_CHECK_EQUAL(d, t.getTime());
-}
-
-class TestTimer1 : public Timer {
+class TestTimer : public Timer {
     public:
     int i = 0;
     void trigger() override {
@@ -34,9 +15,28 @@ class TestTimer1 : public Timer {
     }
 };
 
+BOOST_AUTO_TEST_CASE(constructors) {
+    // Test for NULL object pointers
+    TestTimer t1;
+    TestTimer t2;
+
+    BOOST_CHECK(&t1);
+    BOOST_CHECK(&t2);
+}
+
+BOOST_AUTO_TEST_CASE(triggerTimeSetting) {
+    // Test that Timer delay is set properly
+    TestTimer t;
+    int d = 100; // delay = 100ms
+
+    t.setTime(d);
+
+    BOOST_CHECK_EQUAL(d, t.getTime());
+}
+
 BOOST_AUTO_TEST_CASE(incrementOnce) {
     // Test that the Timer triggers once and only once
-    TestTimer1 t;
+    TestTimer t;
     int d = 10; // delay = 10ms
     t.setTime(d);
 
@@ -57,7 +57,7 @@ BOOST_AUTO_TEST_CASE(incrementOnce) {
 
 BOOST_AUTO_TEST_CASE(stopTimer) {
     // Test stopping the timer before the timer triggers
-    TestTimer1 t;
+    TestTimer t;
     int d = 10; // delay = 10ms
     t.setTime(d);
 
