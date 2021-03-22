@@ -8,7 +8,6 @@
 
 using namespace drumpi;
 using namespace audio;
-using namespace engine;
 
 class TestCallback : public AudioCallback {
     public:
@@ -38,17 +37,14 @@ class TestCallback : public AudioCallback {
 };
 
 BOOST_AUTO_TEST_CASE(audioTest) {
-    AudioEngine e;
+    JackClient e("DrumPiClient_test");
     TestCallback c;
     int err;
     
     BOOST_CHECK(&e);
     BOOST_CHECK(&c);
     
-    err = e.setup(c, "DrumPiClient_test");
-    BOOST_CHECK(!err);
-    
-    err = e.start();
+    err = e.start(c);
     BOOST_CHECK(!err);
     
     std::this_thread::sleep_for(std::chrono::seconds(1));

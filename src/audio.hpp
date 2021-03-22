@@ -12,7 +12,6 @@
 
 namespace drumpi {
 namespace audio {
-namespace engine {
 
 /*! Abstract sample retieval callback class. */
 class AudioCallback {
@@ -21,51 +20,49 @@ class AudioCallback {
 };
 
 /*! Audio engine class for interacting with the JACK server. */
-class AudioEngine {
+class JackClient {
     public:
-        /*! Default constructor. */
-        AudioEngine();
-
-        /*! Constructor that specifies a number of ports. 
+        /*! Constructor.
+        Specifies parameters to JACK.
+        \param clientName requested client name in JACK.
         \param nOutPorts number of output ports. Default 2.
         \param nInPorts number of input ports. Default 0. */
-        AudioEngine(int nOutPorts, int nInPorts);
-
-        /*! Setup method.
-        Used to specify parameters to JACK.
-        \param callback `AudioCallback` type object to fetch output samples.
-        \param clientName requested client name in JACK.
-        \param serverName requested server name in JACK. Blank by default.
-        \return error code, zero means no error. */
-        audioError_t setup(AudioCallback& callback, std::string clientName);
+        JackClient(std::string clientName, int nOutPorts = JackClient::defNumOutPorts, int nInPorts = JackClient::defNumInPorts);
 
         /*! Informs JACK that the program is ready to go.
+        \param callback `AudioCallback` type object to fetch output samples.
         \return error code. */
-        audioError_t start();
+        audioError_t start(AudioCallback& callback);
 
         /*! Stops the JACK engine.
+        \param closeClient whether to close the client or just 'deactivate' it.
         \return error code. */
-        audioError_t stop();
+        audioError_t stop(bool closeClient = true);
 
         /*! Read method to send output buffer to the JACK server.
         Called by JACK when samples are needed.
         \param nFrames number of frames requested by JACK.
-        \param arg pointer to the `PlaybackEngine` object being used. */
+        \param arg pointer to the `PlaybackEngine` object being used.
+        \return JACK error code */
         static int _process(jack_nframes_t nFrames, void *arg);
 
-        /*! Shutdown method to exit the program should the JACK server shut down or disconnect the client. */
+        /*! Shutdown method to exit the program should the JACK server shut down or disconnect the client.
+        \param arg zero/null. */
         static void _shutdown(void *arg);
     
     private:
         /*! Pointer to the callback object that fetches output samples. */
         AudioCallback* callback;
 
+        /*! Sets the number of JACK ports.
+        \param nOutPorts number of output ports.
+        \param nInPorts number of input ports. */
+        void setNumPorts(int nOutPorts, int nInPorts);
+
         /*! Default number of output ports. */
         static const int defNumOutPorts = 2;
         /*! Default number of input ports. */
         static const int defNumInPorts = 0;
-        /*! Sets the number of output ports */
-        void setNumPorts(int nOutPorts = defNumOutPorts, int nInPorts = defNumInPorts);
 
         /*! Pointer to the JACK client. */
         jack_client_t *client;
@@ -80,10 +77,12 @@ class AudioEngine {
         /*! JACK options. */
         jack_options_t options = JackNullOption;
         /*! JACK status. */
-        jack_status_t status;
+        jack_status_t jackStatus;
+
+        /*! JackClient error state. */
+        audioError_t errorStatus = NO_ERROR;
 };
 
-} // namespace engine
 } // namespace audio
 } // namespace drumpi
 

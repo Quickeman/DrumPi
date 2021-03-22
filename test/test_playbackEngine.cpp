@@ -5,7 +5,6 @@
 
 using namespace drumpi;
 using namespace audio;
-using namespace engine;
 
 BOOST_AUTO_TEST_CASE(constructors) {
     // Test for NULL objects

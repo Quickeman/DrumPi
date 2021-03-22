@@ -4,6 +4,8 @@
 #define APPLICATION_H
 
 #include <string>
+#include <memory>
+
 #include "audio.hpp"
 #include "playback.hpp"
 #include "sequencer.hpp"
@@ -145,13 +147,13 @@ public:
 	keyboard::KeyboardThread kbdThread;
 
 	/*! AudioEngine object. */
-	audio::engine::AudioEngine audioEngine;
+	std::unique_ptr<audio::JackClient> audioEngine = nullptr;
 
 	/*! PlaybackEngine object. */
-	audio::engine::PlaybackEngine playbackEngine;
+	audio::PlaybackEngine playbackEngine;
 
 	/*! Sequencer object. */
-	sequencer::Sequencer seq;
+	Sequencer seq;
 
 	/*! SequencerClock object used to clock the Sequencer. */
 	SequencerClock seqClocker;

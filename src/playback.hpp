@@ -11,7 +11,6 @@
 
 namespace drumpi {
 namespace audio {
-namespace engine {
 
 /*! Sample handling class.
 Manages audio clips for sending to output. */
@@ -87,7 +86,6 @@ class PlaybackEngine : public AudioCallback {
         static constexpr float volumeDef = 1.f;
 };
 
-} // namespace engine
 } // namespace audio
 } // namespace drumpi
 

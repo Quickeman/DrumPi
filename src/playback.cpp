@@ -2,7 +2,6 @@
 
 using namespace drumpi;
 using namespace audio;
-using namespace engine;
 
 PlaybackEngine::PlaybackEngine() {
     sources.resize(NUM_DRUMS);
