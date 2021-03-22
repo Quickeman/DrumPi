@@ -2,7 +2,7 @@
 
 using namespace drumpi;
 
-void SequencerClock::setSequencer(sequencer::Sequencer& s) {
+void SequencerClock::setSequencer(Sequencer& s) {
     *seq = s;
 }
 

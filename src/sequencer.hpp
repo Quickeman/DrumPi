@@ -8,13 +8,12 @@
 #include <vector>
 
 namespace drumpi {
-namespace sequencer {
 
 /*! Step class for a Sequencer object. */
-class Step {
+class _SequenceStep {
     public:
-        /*! Step constructor. */
-        Step();
+        /*! _SequenceStep constructor. */
+        _SequenceStep();
 
         /*! Adds the sample with the passed ID to the step.
         \param id ID of the drum to be added. */
@@ -36,7 +35,7 @@ class Step {
         \return A vector containing the IDs of the active drums. */
         std::vector<drumID_t> getActive();
 
-        /*! Removes all drums from the Step. */
+        /*! Removes all drums from the _SequenceStep. */
         void clear();
     
     private:
@@ -111,7 +110,7 @@ class Sequencer {
     
     private:
         /*! Container for step objects. */
-        std::vector<Step> steps;
+        std::vector<_SequenceStep> steps;
         /*! Number of steps in the sequence. */
         int numSteps;
         /*! Default number of steps in the sequence. */
@@ -129,13 +128,12 @@ class Sequencer {
         void _updateStepID();
 
         /*! Pointer to currently active step object. */
-        Step* currentStep;
+        _SequenceStep* currentStep;
         /*! Call to update the active step pointer.
         Should be called after the active step ID is updated. */
         void _updateStepPtr();
 };
 
-} // namespace sequencer
 } // namespace drumpi
 
 #endif // define SEQUENCER_H

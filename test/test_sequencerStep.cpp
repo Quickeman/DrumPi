@@ -6,12 +6,11 @@
 #include "defs.hpp"
 
 using namespace drumpi;
-using namespace sequencer;
 
 BOOST_AUTO_TEST_CASE(constructors) {
     // Test for NULL object pointers
-    Step s1;
-    Step s2;
+    _SequenceStep s1;
+    _SequenceStep s2;
 
     BOOST_CHECK(&s1);
     BOOST_CHECK(&s2);
@@ -19,7 +18,7 @@ BOOST_AUTO_TEST_CASE(constructors) {
 
 BOOST_AUTO_TEST_CASE(addDrums) {
     // Test adding drums, retrieving individuals and pattern
-    Step s;
+    _SequenceStep s;
 
     std::vector<bool> drums;
     drums.resize(NUM_DRUMS);
@@ -48,7 +47,7 @@ BOOST_AUTO_TEST_CASE(addDrums) {
 
 BOOST_AUTO_TEST_CASE(removeDrums) {
     // Test removing drums and clearing the pattern
-    Step s;
+    _SequenceStep s;
     drumID_t d1 = KICK_DRUM;
     drumID_t d2 = SNARE_DRUM;
 

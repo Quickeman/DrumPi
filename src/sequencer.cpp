@@ -3,28 +3,27 @@
 #include "sequencer.hpp"
 
 using namespace drumpi;
-using namespace sequencer;
 
-// Step class
+// _SequenceStep class
 
-Step::Step() {
+_SequenceStep::_SequenceStep() {
     switches.resize(NUM_DRUMS);
     clear();
 }
 
-void Step::addToStep(drumID_t id) {
+void _SequenceStep::addToStep(drumID_t id) {
     switches[id] = true;
 }
 
-void Step::removeFromStep(drumID_t id) {
+void _SequenceStep::removeFromStep(drumID_t id) {
     switches[id] = false;
 }
 
-bool Step::isActive(drumID_t id) {
+bool _SequenceStep::isActive(drumID_t id) {
     return switches[id];
 }
 
-int Step::numActive() {
+int _SequenceStep::numActive() {
     int n = 0;
     for (int i = 0; i < switches.size(); i++) {
         n += (int)switches[i];
@@ -32,7 +31,7 @@ int Step::numActive() {
     return n;
 }
 
-std::vector<drumID_t> Step::getActive() {
+std::vector<drumID_t> _SequenceStep::getActive() {
     std::vector<drumID_t> active;
     for (int i = 0; i < switches.size(); i++) {
         if (isActive((drumID_t)i)) {
@@ -42,7 +41,7 @@ std::vector<drumID_t> Step::getActive() {
     return active;
 }
 
-void Step::clear() {
+void _SequenceStep::clear() {
     for (int i = 0; i < switches.size(); i++) {
         switches[i] = false;
     }
@@ -92,7 +91,7 @@ std::vector<std::vector<bool>> Sequencer::getSequence() {
     std::vector<std::vector<bool>> pattern;
     pattern.resize(numSteps);
     for (int i = 0; i < numSteps; i++) {
-        // For each Step...
+        // For each _SequenceStep...
         pattern[i].resize(NUM_DRUMS);
         for (int j = 0; j < NUM_DRUMS; j++) {
             // For each drum...

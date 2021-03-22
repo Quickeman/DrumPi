@@ -6,7 +6,6 @@
 #include "defs.hpp"
 
 using namespace drumpi;
-using namespace sequencer;
 
 int numSteps = 8;
 

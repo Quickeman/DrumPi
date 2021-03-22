@@ -9,14 +9,14 @@ namespace drumpi {
 class SequencerClock : public clock::Metronome {
     public:
         /*! Sets the Sequencer object to be clocked. */
-        void setSequencer(sequencer::Sequencer& s);
+        void setSequencer(Sequencer& s);
 
         /*! Override the tick method. */
         void tick() override;
     
     private:
         /*! Pointer to the `Sequencer` object to be clocked. */
-        sequencer::Sequencer* seq;
+        Sequencer* seq;
 };
 
 } // namespace drumpi
