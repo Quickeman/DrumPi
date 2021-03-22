@@ -156,7 +156,7 @@ public:
 	std::unique_ptr<Sequencer> seq = nullptr;
 
 	/*! SequencerClock object used to clock the Sequencer. */
-	SequencerClock seqClocker;
+	std::unique_ptr<SequencerClock> seqClocker = nullptr;
 
 };
 

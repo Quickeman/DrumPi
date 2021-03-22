@@ -2,10 +2,10 @@
 
 using namespace drumpi;
 
-void SequencerClock::setSequencer(Sequencer& s) {
+SequencerClock::SequencerClock(Sequencer& s) {
     *seq = s;
 }
 
 void SequencerClock::tick() {
-    return;
+    seq->step();
 }
