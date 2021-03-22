@@ -41,10 +41,15 @@ namespace audio {
 typedef jack_default_audio_sample_t sample_t;
 
 /*! Defines the type of sample source. */
-typedef enum _SampleSourceType {
+typedef enum _SampleSourceTypes {
     SOURCE_GENERALISED,
-    SOURCE_PREGENERATED
+    SOURCE_PREGENERATED,
+
+    // Number of source types
+    _NUM_SOURCE_TYPES
 } sampleSourceType_t;
+
+#define NUM_SOURCE_TYPES (int)_SampleSourceTypes::_NUM_SOURCE_TYPES
 
 /*! Defines the status of a SampleSource-type object. */
 typedef enum _SampleSourceStatus {

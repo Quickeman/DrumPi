@@ -8,6 +8,7 @@
 #include "defs.hpp"
 #include "audio.hpp"
 #include "sampleSource.hpp"
+#include "audioLibrary.hpp"
 
 namespace drumpi {
 namespace audio {
@@ -54,10 +55,10 @@ class PlaybackEngine : public AudioCallback {
         \return current master volume multiplier. */
         float getVolume();
 
-        /*! Sets the source type for the specified drum.
-        \param type type of source.
-        \param drum ID of the drum to set the type for. */
-        sampleSourceStatus_t setSource(drumID_t drum, sampleSourceType_t type, std::string filepath);
+        /*! Sets the source for the specified drum.
+        \param drum ID of the drum to set the type for.
+        \param type type of source. */
+        sampleSourceStatus_t setSource(drumID_t drum, sampleSourceType_t type);
 
         /*! Returns the source status of the given drum.
         \return source status. */
@@ -68,6 +69,9 @@ class PlaybackEngine : public AudioCallback {
         sampleSourceType_t getSourceType(drumID_t drum);
     
     private:
+        /*! Library manager for the audio sources. */
+        AudioLibrary library;
+
         /*! Buffer of samples to allow rapid transfer to JACK. */
         std::vector<sample_t> buffer;
 
