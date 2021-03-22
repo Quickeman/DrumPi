@@ -153,7 +153,7 @@ public:
 	audio::PlaybackEngine playbackEngine;
 
 	/*! Sequencer object. */
-	Sequencer seq;
+	std::unique_ptr<Sequencer> seq = nullptr;
 
 	/*! SequencerClock object used to clock the Sequencer. */
 	SequencerClock seqClocker;

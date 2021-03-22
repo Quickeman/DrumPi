@@ -46,9 +46,6 @@ class _SequenceStep {
 
 class Sequencer {
     public:
-        /*! Defualt constructor. */
-        Sequencer();
-
         /*! Sequencer constructor.
         \param numSteps the number of steps in the sequence. */
         Sequencer(const int numSteps);
@@ -113,8 +110,6 @@ class Sequencer {
         std::vector<_SequenceStep> steps;
         /*! Number of steps in the sequence. */
         int numSteps;
-        /*! Default number of steps in the sequence. */
-        static const int numStepsDef = 16;
 
         /*! Sets the number of steps.
         Unstable for active use.
