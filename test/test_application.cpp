@@ -16,6 +16,10 @@ BOOST_AUTO_TEST_CASE(constructor) {
 
 	//check default state is performance mode
 	BOOST_CHECK(app.currentstate->label == PERFORMANCE_MODE);
+
+	// Check the state of the JackClient
+	BOOST_CHECK(app.audioEngine->isOpen());
+	BOOST_CHECK(!app.audioEngine->isRunning());
 }
 
 
