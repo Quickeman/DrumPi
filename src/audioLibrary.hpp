@@ -22,7 +22,7 @@ class AudioLibrary {
                 "snare_drum",
                 "hand_clap",
                 "hi_hat_closed",
-                "hit_hat_open",
+                "hi_hat_open",
                 "tom_1",
                 "tom_2",
                 "cymbal"

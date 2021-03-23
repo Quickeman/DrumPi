@@ -112,4 +112,4 @@ foreach(testSrc ${TEST_SRCS})
 endforeach(testSrc)
 
 # Add definition for the project root directly for file loading
-add_definitions(-DPROJECT_ROOT_DIR="${PROJECT_SOURCE_DIR}")
+add_definitions(-DPROJECT_ROOT_DIR="${PROJECT_SOURCE_DIR}/")
