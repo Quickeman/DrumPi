@@ -5,6 +5,7 @@
 
 #include <vector>
 #include <thread>
+#include <math.h>
 
 using namespace drumpi;
 using namespace audio;
@@ -31,7 +32,7 @@ class TestCallback : public AudioCallback {
         std::vector<sample_t> v;
 
         int count = 0;
-    
+
     private:
 	    float phase = 0.f;
 };
@@ -40,13 +41,13 @@ BOOST_AUTO_TEST_CASE(audioTest) {
     JackClient e("DrumPiClient_test");
     TestCallback c;
     int err;
-    
+
     BOOST_CHECK(&e);
     BOOST_CHECK(&c);
-    
+
     err = e.start(c);
     BOOST_CHECK(!err);
-    
+
     std::this_thread::sleep_for(std::chrono::seconds(1));
 
     BOOST_CHECK(c.count != 0);
@@ -59,7 +60,7 @@ BOOST_AUTO_TEST_CASE(audioTest) {
     BOOST_CHECK(x != 0.f);
 
     std::this_thread::sleep_for(std::chrono::seconds(1));
-    
+
     err = e.stop();
     BOOST_CHECK(!err);
 }
