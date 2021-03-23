@@ -12,10 +12,12 @@ class SequencerClock : public clock::Metronome {
         /*! Constructor. */
         SequencerClock();
 
-        /*! Sets the Sequencer to be clocked. */
+        /*! Sets the Sequencer to be clocked.
+        \param s \ref Sequencer object to be clocked. */
         void setSequencer(Sequencer& s);
 
-        /*! Override the tick method. */
+        /*! Override the tick method.
+        Clocks the \ref Sequencer given to \ref setSequencer. */
         void tick() override;
     
     private:
