@@ -5,6 +5,9 @@ using namespace drumpi;
 using namespace audio;
 
 JackClient::JackClient(std::string clientName, int nOutPorts, int nInPorts) {
+    open = false;
+    running = false;
+
     setNumPorts(nOutPorts, nInPorts);
 
     // Establish client name
@@ -23,6 +26,7 @@ JackClient::JackClient(std::string clientName, int nOutPorts, int nInPorts) {
         }
         errorStatus = CLIENT_OPEN_FAILED;
     }
+    open = true;
 
     // Non-unique name given
     if (jackStatus & JackNameNotUnique) clientName = jack_get_client_name(client);
@@ -50,6 +54,11 @@ JackClient::JackClient(std::string clientName, int nOutPorts, int nInPorts) {
     }
 }
 
+JackClient::~JackClient() {
+    if (running) jack_deactivate(client);
+    if (open) jack_client_close(client);
+}
+
 audioError_t JackClient::start(AudioCallback& callback) {
     // Establish if any errors occurred in setup routine (in constructor)
     if (errorStatus != NO_ERROR) {
@@ -66,6 +75,7 @@ audioError_t JackClient::start(AudioCallback& callback) {
     if (err) {
         return CLIENT_ACTIVATE_FAILED;
     }
+    running = true;
 
     // Get port names(?)
     // Output ports are inputs as they are 'input' to the backend
@@ -93,12 +103,23 @@ audioError_t JackClient::stop(bool closeClient) {
     if (closeClient) {
         err = jack_client_close(client);
         if (err) return CLIENT_CLOSE_ERROR;
+        running = false;
+        open = false;
     } else {
         err = jack_deactivate(client);
         if (err) return CLIENT_DEACTIVATE_ERROR;
+        running = false;
     }
 
     return NO_ERROR;
+}
+
+bool JackClient::isOpen() {
+    return open;
+}
+
+bool JackClient::isRunning() {
+    return running;
 }
 
 int JackClient::_process(jack_nframes_t nFrames, void *arg) {

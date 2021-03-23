@@ -29,6 +29,10 @@ class JackClient {
         \param nInPorts number of input ports. Default 0. */
         JackClient(std::string clientName, int nOutPorts = JackClient::defNumOutPorts, int nInPorts = JackClient::defNumInPorts);
 
+        /*! Destructor.
+        Closes the JACK client. */
+        ~JackClient();
+
         /*! Informs JACK that the program is ready to go.
         \param callback `AudioCallback` type object to fetch output samples.
         \return error code. */
@@ -38,6 +42,14 @@ class JackClient {
         \param closeClient whether to close the client or just 'deactivate' it.
         \return error code. */
         audioError_t stop(bool closeClient = true);
+
+        /*! Check if the Jack client is open.
+        \return `true` if the client is open. */
+        bool isOpen();
+
+        /*! Check if the Jack client is running.
+        \return `true` if the client is running. */
+        bool isRunning();
 
         /*! Read method to send output buffer to the JACK server.
         Called by JACK when samples are needed.
@@ -81,6 +93,11 @@ class JackClient {
 
         /*! JackClient error state. */
         audioError_t errorStatus = NO_ERROR;
+
+        /*! Jack client open status. */
+        bool open;
+        /*! Jack client running status. */
+        bool running;
 };
 
 } // namespace audio
