@@ -206,7 +206,7 @@ class Display: public Max7219 {
          * @param activeDrums Vector of bools representing sequence
          * @param page 8 digit page to display
          */
-        void setActiveDrums(std::vector<bool> activeDrums, unsigned int page);
+        void setActiveDrums(bool* activeDrums, unsigned int page);
 
     public:
 
@@ -244,7 +244,7 @@ class Display: public Max7219 {
          * @param stepNum Current step in sequence
          * @param redraw If true, updates display
          */
-        void setPlaybackSeq(std::vector<bool> activeDrums, unsigned int stepNum, bool redraw);
+        void setPlaybackSeq(bool* activeDrums, unsigned int stepNum, bool redraw);
 
         /**
          * Updates display to show sequence in stop mode
@@ -254,7 +254,7 @@ class Display: public Max7219 {
          * @param currentDrum Active drum for editing
          * @param redraw If true, updates display
          */
-        void setStopSeq(std::vector<bool> activeDrums, unsigned int page, unsigned int currentDrum, bool redraw);
+        void setStopSeq(bool* activeDrums, unsigned int page, unsigned int currentDrum, bool redraw);
 
         /*
          * Toggles all DP on and off

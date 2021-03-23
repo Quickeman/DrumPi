@@ -4,6 +4,8 @@
 #include <display.hpp>
 #include <stdlib.h>
 #include <time.h>
+#include <vector>
+
 //extern "C" {
 //#include <wiringPiSPI.h>
 //}
@@ -97,12 +99,48 @@ BOOST_AUTO_TEST_CASE(show_level) {
 
 BOOST_AUTO_TEST_CASE(setStopSeq) {
     Display display;
-    std::vector<bool> sequence = {1,0,0,0,1,0,0,0, 0,0,1,0,1,0,1,0};
-    display.setStopSeq(sequence, 1, 2, true);
+    bool sequence[16] = {1,0,0,0,1,0,0,0, 0,0,1,0,1,0,1,0};
+    display.setStopSeq(sequence, 0, 2, true);
+    BOOST_TEST(display.getDigit(7) == 0x63);
+    BOOST_TEST(display.getDigit(6) == 0x80);
+    BOOST_TEST(display.getDigit(5) == 0x0);
+    BOOST_TEST(display.getDigit(4) == 0x0);
+    BOOST_TEST(display.getDigit(3) == 0x63);
+    BOOST_TEST(display.getDigit(2) == 0x0);
+    BOOST_TEST(display.getDigit(1) == 0x0);
+    BOOST_TEST(display.getDigit(0) == 0x0);
+
+    display.setStopSeq(sequence, 1, 8, true);
+    BOOST_TEST(display.getDigit(7) == 0x0);
+    BOOST_TEST(display.getDigit(6) == 0x0);
+    BOOST_TEST(display.getDigit(5) == 0x63);
+    BOOST_TEST(display.getDigit(4) == 0x0);
+    BOOST_TEST(display.getDigit(3) == 0x63);
+    BOOST_TEST(display.getDigit(2) == 0x0);
+    BOOST_TEST(display.getDigit(1) == 0x63);
+    BOOST_TEST(display.getDigit(0) == 0x80);
 }
 
 BOOST_AUTO_TEST_CASE(setPlaybackSeq) {
     Display display;
-    std::vector<bool> sequence = {1,0,0,0,1,0,0,0, 0,0,1,0,1,0,1,0};
+    bool sequence[16] = {1,0,0,0,1,0,0,0, 0,0,1,0,1,0,1,0};
+    display.setPlaybackSeq(sequence, 1, true);
+    BOOST_TEST(display.getDigit(7) == 0x6B);
+    BOOST_TEST(display.getDigit(6) == 0x0);
+    BOOST_TEST(display.getDigit(5) == 0x0);
+    BOOST_TEST(display.getDigit(4) == 0x0);
+    BOOST_TEST(display.getDigit(3) == 0x63);
+    BOOST_TEST(display.getDigit(2) == 0x0);
+    BOOST_TEST(display.getDigit(1) == 0x0);
+    BOOST_TEST(display.getDigit(0) == 0x0);
+
     display.setPlaybackSeq(sequence, 15, true);
+    BOOST_TEST(display.getDigit(7) == 0x0);
+    BOOST_TEST(display.getDigit(6) == 0x0);
+    BOOST_TEST(display.getDigit(5) == 0x63);
+    BOOST_TEST(display.getDigit(4) == 0x0);
+    BOOST_TEST(display.getDigit(3) == 0x63);
+    BOOST_TEST(display.getDigit(2) == 0x0);
+    BOOST_TEST(display.getDigit(1) == 0xE3);
+    BOOST_TEST(display.getDigit(0) == 0x0);
 }

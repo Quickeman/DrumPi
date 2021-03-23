@@ -48,7 +48,7 @@ Max7219::Max7219(unsigned char decodeMode,
 
 Max7219::~Max7219() {
     delete digitBuffer;
-    clear(true);
+    //clear(true);
 }
 
 // Getters //
@@ -209,8 +209,8 @@ void Display::setLevel(float level, bool redraw) {
     if(redraw) flush();
 }
 
-void Display::setActiveDrums(std::vector<bool> activeDrums, unsigned int page) {
-    unsigned int seqIndex;
+void Display::setActiveDrums(bool* activeDrums, unsigned int page) {
+    unsigned int seqIndex = 0;
     for(unsigned int digit = 0; digit <= getNumDigits(); digit ++) {
         seqIndex = (page*getNumDigits()) + digit;
         if(activeDrums[seqIndex])
@@ -218,14 +218,14 @@ void Display::setActiveDrums(std::vector<bool> activeDrums, unsigned int page) {
     }
 }
 
-void Display::setStopSeq(std::vector<bool> activeDrums, unsigned int page, unsigned int currentDrum, bool redraw) {
+void Display::setStopSeq(bool* activeDrums, unsigned int page, unsigned int currentDrum, bool redraw) {
     clear(false);
     setActiveDrums(activeDrums, page);
     setDigit(getNumDigits() - currentDrum, getDigit(getNumDigits()-currentDrum) + dpAddr, false);
     if(redraw) flush();
 }
 
-void Display::setPlaybackSeq(std::vector<bool> activeDrums, unsigned int stepNum, bool redraw) {
+void Display::setPlaybackSeq(bool* activeDrums, unsigned int stepNum, bool redraw) {
     clear(false);
     unsigned int page = stepNum > getNumDigits();
     setActiveDrums(activeDrums, page);
