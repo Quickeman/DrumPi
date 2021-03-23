@@ -2,8 +2,13 @@
 
 using namespace drumpi;
 
-SequencerClock::SequencerClock(Sequencer& s) {
-    *seq = s;
+SequencerClock::SequencerClock() {
+    setRateBPM(240);
+    rateChangeFlag = false;
+}
+
+void SequencerClock::setSequencer(Sequencer& s) {
+    seq = &s;
 }
 
 void SequencerClock::tick() {
