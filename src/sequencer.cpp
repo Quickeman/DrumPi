@@ -50,11 +50,6 @@ void _SequenceStep::clear() {
 
 // Sequencer class
 
-Sequencer::Sequencer() {
-    setNumSteps(numStepsDef);
-    reset();
-}
-
 Sequencer::Sequencer(const int numSteps) {
     setNumSteps(numSteps);
     reset();

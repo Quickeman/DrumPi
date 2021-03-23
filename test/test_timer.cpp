@@ -37,7 +37,7 @@ BOOST_AUTO_TEST_CASE(triggerTimeSetting) {
 BOOST_AUTO_TEST_CASE(incrementOnce) {
     // Test that the Timer triggers once and only once
     TestTimer t;
-    int d = 10; // delay = 10ms
+    int d = 20; // delay = 10ms
     t.setTime(d);
 
     BOOST_CHECK_EQUAL(0, t.i);
@@ -58,7 +58,7 @@ BOOST_AUTO_TEST_CASE(incrementOnce) {
 BOOST_AUTO_TEST_CASE(stopTimer) {
     // Test stopping the timer before the timer triggers
     TestTimer t;
-    int d = 10; // delay = 10ms
+    int d = 20; // delay = 10ms
     t.setTime(d);
 
     t.start();

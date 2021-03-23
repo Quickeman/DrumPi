@@ -52,7 +52,7 @@ BOOST_AUTO_TEST_CASE(triggerSource) {
     drumID_t d = KICK_DRUM;
     std::vector<drumID_t> a;
     for (int i = 0; i < NUM_DRUMS; i++) {
-        p.setSource((drumID_t)i, SOURCE_PREGENERATED, "~/DrumPi/test/whitenoise.wav");
+        p.setSource((drumID_t)i, SOURCE_PREGENERATED);
     }
 
     p.trigger(d);
@@ -67,4 +67,3 @@ BOOST_AUTO_TEST_CASE(triggerSource) {
     a = p.getActive();
     BOOST_CHECK(a.empty());
 }
-/**/

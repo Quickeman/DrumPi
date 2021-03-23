@@ -6,9 +6,13 @@
 
 namespace drumpi {
 
+/*! \ref Metronome derived class to clock a \ref Sequencer. */
 class SequencerClock : public clock::Metronome {
     public:
-        /*! Sets the Sequencer object to be clocked. */
+        /*! Constructor. */
+        SequencerClock();
+
+        /*! Sets the Sequencer to be clocked. */
         void setSequencer(Sequencer& s);
 
         /*! Override the tick method. */

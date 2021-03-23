@@ -3,12 +3,14 @@
 #include <boost/test/unit_test.hpp>
 #include "sampleSource.hpp"
 
+#include "defs.hpp"
+
 #include <string>
 
 using namespace drumpi;
 using namespace audio;
 
-std::string fp = "/home/pi/DrumPi/test/test_audio_file.wav";
+std::string fp = std::string(DRUMPI_DIR).append("/test/test_audio_file.wav");
 
 BOOST_AUTO_TEST_CASE(constructors) {
     // Tests for NULL objects
