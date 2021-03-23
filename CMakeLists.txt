@@ -110,3 +110,6 @@ foreach(testSrc ${TEST_SRCS})
              COMMAND ${testName}
             )
 endforeach(testSrc)
+
+# Add definition for the project root directly for file loading
+add_definitions(-DPROJECT_ROOT_DIR="${PROJECT_SOURCE_DIR}")

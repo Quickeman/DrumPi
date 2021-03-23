@@ -9,6 +9,15 @@ DO NOT instantiate any objects, variables etc here. */
 
 namespace drumpi {
 
+// Stop VSC etc. thinking this hasn't been defined (defined in CMakeLists)
+#ifndef PROJECT_ROOT_DIR
+#define PROJECT_ROOT_DIR ""
+#endif
+
+/*! DrumPi project root directory.
+Used for loading audio files where the absolute path is required. */
+#define DRUMPI_DIR PROJECT_ROOT_DIR
+
 /*! ID numbers for each of the DrumPi's drums. */
 typedef enum _DrumIDs {
     KICK_DRUM = 0,

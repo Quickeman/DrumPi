@@ -15,8 +15,6 @@ class AudioLibrary {
         /*! Constructor.
         Initialises members to correct values. */
         AudioLibrary() {
-            drumPiDir = "/home/pi/DrumPi/";
-
             audioDir = "audio/";
 
             filenames = {
@@ -42,7 +40,7 @@ class AudioLibrary {
         \return absolute filepath of the drum's relevant file. */
         std::string getFilepath(drumID_t drum, sampleSourceType_t type) {
             std::string fp;
-            fp = drumPiDir;
+            fp = DRUMPI_DIR;
             fp.append(audioDir);
             fp.append(filenames[drum]);
             fp.append(extensions[type]);
@@ -50,8 +48,6 @@ class AudioLibrary {
         }
     
     private:
-        /*! DrumPi project/repository root directory (absolute). */
-        std::string drumPiDir;
         /*! Audio files directory (relative). */
         std::string audioDir;
         /*! Extensionless filenames of audio sources. */
