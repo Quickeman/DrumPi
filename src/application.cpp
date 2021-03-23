@@ -303,9 +303,20 @@ void SetDrumVolumeMode::interpretKeyPress(ApplicationCallback *app, int key) {
 
 Application::Application() {
 	currentstate = &performancemode;
+
+	// Jack client
+	audioEngine.reset(new audio::JackClient("DrumPi"));
+
+	// Get the PlaybackEngine to load all of the audio samples
+	for (int i = 0; i < NUM_DRUMS; i++) {
+		playbackEngine.setSource((drumID_t)i, audio::SOURCE_PREGENERATED);
+	}
 }
 
 void Application::run() {
+	// Start the audio stream
+	audioEngine->start(playbackEngine);
+
 	kbdThread.start();
 
 	while(1) {
