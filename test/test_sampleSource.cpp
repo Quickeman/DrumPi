@@ -10,7 +10,7 @@
 using namespace drumpi;
 using namespace audio;
 
-std::string fp = std::string(DRUMPI_DIR).append("/test/test_audio_file.wav");
+std::string fp = std::string(DRUMPI_DIR).append("test/test_audio_file.wav");
 
 BOOST_AUTO_TEST_CASE(constructors) {
     // Tests for NULL objects
