@@ -198,16 +198,28 @@ void Display::toggleDPFlash(bool redraw) {
     if(redraw) flush();
 }
 
-void Display::setLevel(float level, bool redraw) {
-    clear(false);
+void Display::addLevel(float level, bool redraw) {
     float magLevel = fabs(level);
     unsigned int maxDigit = magLevel * getNumDigits();
 
-    for(unsigned int digit = 0; digit <= maxDigit; digit ++)
-        setDigit(getNumDigits() - digit -1, 0x8, false);
+    for(unsigned int digit = 0; digit <= maxDigit; digit ++) {
+        unsigned char currentDigit = getNumDigits() - digit - 1;
+        setDigit(currentDigit, getDigit(currentDigit) + 0x8, false);
+    }
 
     if(redraw) flush();
 }
+
+void Display::showPerformance(bool* activeDrums, float level) {
+    clear(false);
+    for(unsigned int digit = 0; digit <= getNumDigits(); digit ++) {
+        if(activeDrums[digit])
+            setDigit((getNumDigits()-1) - digit, upperSqAddr, false);
+    }
+    addLevel(level, false);
+    flush();
+}
+
 
 void Display::setActiveDrums(bool* activeDrums, unsigned int page) {
     unsigned int seqIndex = 0;

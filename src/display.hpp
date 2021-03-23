@@ -235,7 +235,7 @@ class Display: public Max7219 {
          * @param level Audio level to display
          * @param redraw If true, updates display
          */
-        void setLevel(float level, bool redraw);
+        void addLevel(float level, bool redraw);
 
         /**
          * Updates display to show sequence in playback mode
@@ -255,6 +255,8 @@ class Display: public Max7219 {
          * @param redraw If true, updates display
          */
         void setStopSeq(bool* activeDrums, unsigned int page, unsigned int currentDrum, bool redraw);
+
+        void showPerformance(bool* activeDrums, float level);
 
         /*
          * Toggles all DP on and off
