@@ -30,6 +30,7 @@
 *.exe
 *.out
 *.app
+bin/
 
 # Vim
 Session.vim
@@ -41,11 +42,9 @@ CMakeCache.txt
 CMakeFiles/
 Makefile
 
-bin/
-
 # Unit testing
 Testing/
-test/testBin
+test/bin
 lib/cppTimer/test/test_*
 
 # Compile commands
