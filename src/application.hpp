@@ -18,7 +18,7 @@ namespace drumpi {
 class ApplicationCallback {
 public:
 	/*! Virtual function to be overridden by derived class */
-	virtual void setState(int newstate) = 0;
+	virtual void setState(stateLabel_t newstate) = 0;
 };
 
 
@@ -126,7 +126,7 @@ public:
 	void run();
 
 	/*! Method to change the current state */
-	void setState(int newstate) override;
+	void setState(stateLabel_t newstate) override;
 	
 	/*! Pointer to current state instance */
 	State* currentstate;

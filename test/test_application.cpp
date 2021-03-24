@@ -27,7 +27,7 @@ BOOST_AUTO_TEST_CASE(changing_state) {
 	Application app;
 
 	//change state to sequencer mode
-	app.setState(1);
+	app.setState(SEQUENCER_MODE);
 
 	//check current state has changed to sequencer mode
 	BOOST_CHECK(app.currentstate->label == SEQUENCER_MODE);
@@ -82,7 +82,7 @@ BOOST_AUTO_TEST_CASE(switching_pages_in_sequencer_mode) {
 	Application app;
 
 	//switch to sequencer mode
-	app.setState(1);
+	app.setState(SEQUENCER_MODE);
 
 	//simulate "tab" key being pressed to change page
 	app.currentstate->interpretKeyPress(&app, KEY_TAB);
@@ -100,7 +100,7 @@ BOOST_AUTO_TEST_CASE(returning_to_sequencer_mode) {
 	Application app;
 
 	//switch to sequencer mode
-	app.setState(1);
+	app.setState(SEQUENCER_MODE);
 
 	//simulate "tab" key being pressed to change to page 2
 	app.currentstate->interpretKeyPress(&app, KEY_TAB);
@@ -135,7 +135,7 @@ BOOST_AUTO_TEST_CASE(changing_to_SetDrumVolumeMode) {
 	BOOST_CHECK(app.currentstate->label == PERFORMANCE_MODE);
 
 	//switch to sequencer mode
-	app.setState(1);
+	app.setState(SEQUENCER_MODE);
 	
 	//switch to SetDrumVolumeMode
 	app.currentstate->interpretKeyPress(&app, KEY_V);
