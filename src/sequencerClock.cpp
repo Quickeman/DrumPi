@@ -7,8 +7,8 @@ SequencerClock::SequencerClock() {
     rateChangeFlag = false;
 }
 
-void SequencerClock::setSequencer(Sequencer* s) {
-    seq.reset(s);
+void SequencerClock::setSequencer(std::shared_ptr<Sequencer> s) {
+    seq = s;
 }
 
 void SequencerClock::tick() {

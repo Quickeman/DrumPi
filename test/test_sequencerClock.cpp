@@ -15,19 +15,19 @@ BOOST_AUTO_TEST_CASE(constructor) {
 }
 
 BOOST_AUTO_TEST_CASE(clocking) {
-    Sequencer s(8);
+    std::shared_ptr<Sequencer> s(new Sequencer(8));
     SequencerClock c;
     int r = 50;
 
-    BOOST_CHECK(s.getStepNum() == 0);
+    BOOST_CHECK(s->getStepNum() == 0);
 
-    c.setSequencer(&s);
+    c.setSequencer(s);
     c.setRate(r);
     c.start();
 
-    BOOST_CHECK(s.getStepNum() == 1);
+    BOOST_CHECK(s->getStepNum() == 1);
 
     std::this_thread::sleep_for(std::chrono::milliseconds(r + (r / 2)));
 
-    BOOST_CHECK(s.getStepNum() == 2);
+    BOOST_CHECK(s->getStepNum() == 2);
 }

@@ -311,6 +311,11 @@ Application::Application() {
 	for (int i = 0; i < NUM_DRUMS; i++) {
 		playbackEngine.setSource((drumID_t)i, audio::SOURCE_PREGENERATED);
 	}
+
+	// // Sequencer
+	// seq.reset(new Sequencer(16));
+	// // SequencerClock
+	// seqClocker.setSequencer(seq);
 }
 
 void Application::run() {
