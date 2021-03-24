@@ -7,8 +7,8 @@ SequencerClock::SequencerClock() {
     rateChangeFlag = false;
 }
 
-void SequencerClock::setSequencer(Sequencer& s) {
-    seq = &s;
+void SequencerClock::setSequencer(Sequencer* s) {
+    seq = s;
 }
 
 void SequencerClock::tick() {

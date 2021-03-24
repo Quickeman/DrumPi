@@ -10,9 +10,6 @@ BOOST_AUTO_TEST_CASE(constructor) {
     SequencerClock c1;
     SequencerClock c2;
 
-    // Even though they're not linked here, this needs to exist for some reason
-    Sequencer s(8);
-
     BOOST_CHECK(&c1);
     BOOST_CHECK(&c2);
 }
@@ -24,7 +21,7 @@ BOOST_AUTO_TEST_CASE(clocking) {
 
     BOOST_CHECK(s.getStepNum() == 0);
 
-    c.setSequencer(s);
+    c.setSequencer(&s);
     c.setRate(r);
     c.start();
 

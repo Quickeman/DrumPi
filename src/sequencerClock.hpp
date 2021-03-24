@@ -14,7 +14,7 @@ class SequencerClock : public clock::Metronome {
 
         /*! Sets the Sequencer to be clocked.
         \param s \ref Sequencer object to be clocked. */
-        void setSequencer(Sequencer& s);
+        void setSequencer(Sequencer* s);
 
         /*! Override the tick method.
         Clocks the \ref Sequencer given to \ref setSequencer. */
