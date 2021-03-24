@@ -8,7 +8,7 @@ SequencerClock::SequencerClock() {
 }
 
 void SequencerClock::setSequencer(Sequencer* s) {
-    seq = s;
+    seq.reset(s);
 }
 
 void SequencerClock::tick() {

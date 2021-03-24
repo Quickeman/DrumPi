@@ -1,6 +1,8 @@
 #ifndef SEQUENCER_CLOCK_H
 #define SEQUENCER_CLOCK_H
 
+#include <memory>
+
 #include "sequencer.hpp"
 #include "clock.hpp"
 
@@ -22,7 +24,7 @@ class SequencerClock : public clock::Metronome {
     
     private:
         /*! Pointer to the `Sequencer` object to be clocked. */
-        Sequencer* seq;
+        std::shared_ptr<Sequencer> seq = nullptr;
 };
 
 } // namespace drumpi
