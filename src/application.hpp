@@ -17,8 +17,9 @@ namespace drumpi {
 /*! Abstract application callback class */
 class ApplicationCallback {
 public:
-	/*! Virtual function to be overridden by derived class */
+	/*! Virtual functions to be overridden by derived class */
 	virtual void setState(stateLabel_t newstate) = 0;
+	virtual drumID_t interpretDrumKey(int key) = 0;
 };
 
 
@@ -127,6 +128,9 @@ public:
 
 	/*! Method to change the current state */
 	void setState(stateLabel_t newstate) override;
+
+	/*! Interprets drum keys and returns a drum ID */
+	drumID_t interpretDrumKey(int key) override;
 	
 	/*! Pointer to current state instance */
 	State* currentstate;
