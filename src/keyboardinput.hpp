@@ -12,8 +12,20 @@
 #include <string.h>
 #include <stdio.h>
 
+#include "defs.hpp"
+
 namespace drumpi {
-namespace keyboard {
+
+/*! Abstract application callback class */
+class ApplicationCallback {
+public:
+    /*! Virtual function to be overridden by derived class */
+    virtual void interpretKeyPress(int key) = 0;
+    
+	/*! Virtual function to be overridden by derived class */
+	virtual void setState(stateLabel_t newstate) = 0;
+};
+
 
 /*! Class for detecting keyboard presses */
 class KeyboardInput {
@@ -81,7 +93,6 @@ private:
 
 };
 
-} //namespace keyboard
 } //namespace drumpi
 
 #endif  //KEYBOARDINPUT_H

@@ -4,7 +4,6 @@
 #include <stdio.h>
 
 using namespace drumpi;
-using namespace keyboard;
 
 void KeyboardThread::run() {
 	//printf("Keyboard thread has been started.\n");

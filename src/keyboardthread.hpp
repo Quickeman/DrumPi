@@ -7,7 +7,6 @@
 #include "keyboardinput.hpp"
 
 namespace drumpi {
-namespace keyboard {
 
 /*!
  * Class inheriting from CppThread wrapper class
@@ -25,7 +24,6 @@ public:
 	KeyboardInput kbdIn;
 };
 
-}	//namespace keyboard
 }	//namespace drumpi
 
 #endif	//KEYBOARDTHREAD_H
