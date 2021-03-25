@@ -45,6 +45,7 @@ std::vector<sample_t> PlaybackEngine::getSamples(int nSamples) {
 }
 
 void PlaybackEngine::trigger(drumID_t drum) {
+    if (sources[drum]->getStatus() == SOURCE_ACTIVE) sources[drum]->reset();
     isTriggered[drum] = true;
 }
 
