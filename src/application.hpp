@@ -148,6 +148,8 @@ public:
 
 	/*! Instance of KeyboardThread class */
 	KeyboardThread kbdThread;
+	
+	bool running;
 
 	/*! AudioEngine object. */
 	std::unique_ptr<audio::JackClient> audioEngine = nullptr;
