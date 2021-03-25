@@ -17,7 +17,7 @@ DrumPi is a small, affordable, open-source drum machine, giving you all the perc
 
 ## Quick-start guide
 ### Installation
-To download and install DrumPi's software on your Raspberry Pi, perform the following steps:
+To download and install DrumPi's software on your Raspberry Pi, perform the following steps:    
 First, run the following in a terminal:
 ```
 sudo apt install git cmake libboost-test-dev libjack-jackd2-dev
@@ -25,13 +25,13 @@ sudo adduser <username> input
 sudo adduser <username> audio
 sudo adduser <username> spi
 ```
-Reboot system before continuing.
+Reboot system before continuing.    
 To enable the SPI interface, run the following in a terminal:
 ```
 sudo raspi-config
 ```
-Navigate to Interface Options -> SPI.
-Enable SPI interface.
+Navigate to Interface Options -> SPI.   
+Enable SPI interface.   
 Finally, to download and build the DrumPi program, run the following in a terminal:
 ```
 git clone https://github.com/Quickeman/DrumPi.git
