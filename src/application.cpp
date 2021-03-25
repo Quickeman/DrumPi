@@ -217,7 +217,10 @@ void Application::run() {
 	running = true;
 
 	while(running) {}
-	kbdThread.stop();	
+
+	kbdThread.stop();
+
+	audioEngine->stop();
 }
 
 void Application::interpretKeyPress(int key) {
