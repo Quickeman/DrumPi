@@ -14,6 +14,7 @@ PerformanceMode::PerformanceMode() {
 void PerformanceMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 	Application* app = static_cast<Application*>(appc);
 	std::vector<drumID_t> drumsActive;
+	std::vector<bool> activeDrums;
 	switch (key) {
 		case KEY_A:
 		case KEY_S:
@@ -26,6 +27,10 @@ void PerformanceMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 			// Trigger the drum sound
 			app->playbackEngine.trigger(interpretDrumKey(key));
 			drumsActive = app->playbackEngine.getActive();
+			for(int i = 0; i < drumsActive.size(); i++) {
+				activeDrums[drumsActive[i]] = true;
+			}
+			app->display.showPerformance(activeDrums, 0.f);
 			//Display: Toggle respective drum square and level meter
 			break;
 		
@@ -192,7 +197,6 @@ void SetDrumVolumeMode::interpretKeyPress(ApplicationCallback *appc, int key) {
 Application::Application() {
 	currentstate = &performancemode;
 	kbdThread.kbdIn.connectCallback(this);
-	running = false;
 
 	// Jack client
 	audioEngine.reset(new audio::JackClient("DrumPi"));
@@ -213,11 +217,8 @@ void Application::run() {
 	audioEngine->start(playbackEngine);
 
 	kbdThread.start();
-	
-	running = true;
 
-	while(running) {}
-	kbdThread.stop();	
+	while(1) {}
 }
 
 void Application::interpretKeyPress(int key) {
