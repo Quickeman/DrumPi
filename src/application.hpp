@@ -8,8 +8,8 @@
 
 #include "audio.hpp"
 #include "playback.hpp"
+#include "display.hpp"
 #include "sequencer.hpp"
-#include "sequencerClock.hpp"
 #include "keyboardthread.hpp"
 
 namespace drumpi {
@@ -154,6 +154,9 @@ public:
 
 	/*! PlaybackEngine object. */
 	audio::PlaybackEngine playbackEngine;
+
+	/*! Display object. */
+	Display display;
 
 	// /*! Sequencer object. */
 	// std::shared_ptr<Sequencer> seq = nullptr;

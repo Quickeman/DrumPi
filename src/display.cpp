@@ -16,7 +16,6 @@
 #include "display.hpp"
 
 using namespace drumpi;
-using namespace display;
 
 Max7219::Max7219(unsigned char decodeMode,
                 unsigned char intensity,

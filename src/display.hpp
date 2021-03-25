@@ -4,7 +4,6 @@
 #include <wiringPiSPI.h>
 
 namespace drumpi {
-namespace display {
 
 class Max7219
 {
@@ -277,5 +276,4 @@ class Display: public Max7219 {
          */
         unsigned int getDPToggle();
 };
-} // namespace display
 } // namespace drumpi

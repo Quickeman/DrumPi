@@ -11,7 +11,6 @@
 //}
 
 using namespace drumpi;
-using namespace display;
 
 BOOST_AUTO_TEST_CASE(constructors) {
     Max7219 display;

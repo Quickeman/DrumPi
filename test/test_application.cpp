@@ -20,6 +20,9 @@ BOOST_AUTO_TEST_CASE(constructor) {
 	// Check the state of the JackClient
 	BOOST_CHECK(app.audioEngine->isOpen());
 	BOOST_CHECK(!app.audioEngine->isRunning());
+
+	// Check the display driver is running
+	BOOST_CHECK(&app.display);
 }
 
 

@@ -1,5 +1,7 @@
 // File: sequencer.cpp
 
+#include <memory>
+
 #include "sequencer.hpp"
 
 using namespace drumpi;
@@ -140,4 +142,20 @@ void Sequencer::_updateStepID() {
 
 void Sequencer::_updateStepPtr() {
     currentStep = &steps[stepNum];
+}
+
+
+// SequencerClock class
+
+SequencerClock::SequencerClock() {
+    setRateBPM(240);
+    rateChangeFlag = false;
+}
+
+void SequencerClock::setSequencer(std::shared_ptr<Sequencer> s) {
+    seq = s;
+}
+
+void SequencerClock::tick() {
+    seq->step();
 }
