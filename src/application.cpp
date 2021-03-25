@@ -11,8 +11,9 @@ PerformanceMode::PerformanceMode() {
 	label = PERFORMANCE_MODE;
 }
 
-void PerformanceMode::interpretKeyPress(ApplicationCallback* app, int key) {
-	app = static_cast<Application*>(app);
+void PerformanceMode::interpretKeyPress(ApplicationCallback* appc, int key) {
+	Application* app = static_cast<Application*>(appc);
+	std::vector<drumID_t> drumsActive;
 	switch (key) {
 		case KEY_A:
 		case KEY_S:
@@ -22,8 +23,10 @@ void PerformanceMode::interpretKeyPress(ApplicationCallback* app, int key) {
 		case KEY_K:
 		case KEY_L:
 		case KEY_SEMICOLON:
+			// Trigger the drum sound
+			app->playbackEngine.trigger(interpretDrumKey(key));
+			drumsActive = app->playbackEngine.getActive();
 			//Display: Toggle respective drum square and level meter
-			//trigger drum sound
 			break;
 		
 		case KEY_M:
@@ -55,8 +58,8 @@ SequencerMode::SequencerMode() {
 	//Display: Show tom 1 drum page 1 sequence
 }
 
-void SequencerMode::interpretKeyPress(ApplicationCallback* app, int key) {
-	app = static_cast<Application*>(app);
+void SequencerMode::interpretKeyPress(ApplicationCallback* appc, int key) {
+	Application* app = static_cast<Application*>(appc);
 	switch (key) {
 		case KEY_A:
 		case KEY_S:
@@ -66,6 +69,8 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* app, int key) {
 		case KEY_K:
 		case KEY_L:
 		case KEY_SEMICOLON:
+			// Trigger the drum sound
+			app->playbackEngine.trigger(interpretDrumKey(key));
 			//Display: Toggle corresponding DP
 			//change currentdrum to respective drum
 			//display currentpage for respective drum
@@ -123,8 +128,8 @@ SetTempoMode::SetTempoMode() {
 	label = SET_TEMPO_MODE;
 }
 
-void SetTempoMode::interpretKeyPress(ApplicationCallback* app, int key) {
-	app = static_cast<Application*>(app);
+void SetTempoMode::interpretKeyPress(ApplicationCallback* appc, int key) {
+	Application* app = static_cast<Application*>(appc);
 	switch (key) {
 		case KEY_DOT:
 			//increase tempo (should tempo variable be a member of SetTempoMode or Application??)
@@ -148,8 +153,8 @@ SetDrumVolumeMode::SetDrumVolumeMode() {
 	previousstate = PERFORMANCE_MODE;	//default previous state
 }
 
-void SetDrumVolumeMode::interpretKeyPress(ApplicationCallback *app, int key) {
-	app = static_cast<Application*>(app);
+void SetDrumVolumeMode::interpretKeyPress(ApplicationCallback *appc, int key) {
+	Application* app = static_cast<Application*>(appc);
 	switch (key) {
 		case KEY_DOT:
 			//increaseDrumVolume(drumselected);	//increase selected drum volume in some way
@@ -168,8 +173,9 @@ void SetDrumVolumeMode::interpretKeyPress(ApplicationCallback *app, int key) {
 		case KEY_K:
 		case KEY_L:
 		case KEY_SEMICOLON:
+			// Trigger the drum sound
+			app->playbackEngine.trigger(interpretDrumKey(key));
 			//set drumselected to respective drum
-			// trigger respective drum?
 			break;
 
 		case KEY_V:

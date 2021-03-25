@@ -22,7 +22,7 @@ public:
 	stateLabel_t label;
 
 	/*! Virtual function to be overridden by derived class */
-	virtual void interpretKeyPress(ApplicationCallback* app, int key) = 0;
+	virtual void interpretKeyPress(ApplicationCallback* appc, int key) = 0;
 	
 	/*! Interprets drum keys and returns a drum ID */
     drumID_t interpretDrumKey(int key);
@@ -38,10 +38,10 @@ public:
 	 * \brief Method to perform action depending on key pressed.
 	 * 
 	 * Action performed is unique to performance mode.
-	 * @param app Callback to the main application
+	 * @param appc Callback to the main application
 	 * @param key The keypress detected
 	 */
-	void interpretKeyPress(ApplicationCallback* app, int key) override;
+	void interpretKeyPress(ApplicationCallback* appc, int key) override;
 };
 
 /*! Sequencer mode state */
@@ -54,10 +54,10 @@ public:
 	 * \brief Method to perform action depending on key pressed.
 	 * 
 	 * Action performed is unique to sequencer mode.
-	 * @param app Callback to the main application
+	 * @param appc Callback to the main application
 	 * @param key The keypress detected
 	 */
-	void interpretKeyPress(ApplicationCallback* app, int key) override;
+	void interpretKeyPress(ApplicationCallback* appc, int key) override;
 
 	/*! Drum currently being set in sequencer */
 	drumID_t currentdrum;
@@ -81,10 +81,10 @@ public:
 	 * \brief Method to perform action depending on key pressed.
 	 * 
 	 * Action performed is unique to SetTempoMode.
-	 * @param app Callback to the main application
+	 * @param appc Callback to the main application
 	 * @param key The keypress detected
 	 */
-	void interpretKeyPress(ApplicationCallback* app, int key) override;
+	void interpretKeyPress(ApplicationCallback* appc, int key) override;
 };
 
 /*! Set individual drum volumes in this state */
@@ -97,10 +97,10 @@ public:
 	 * \brief Method to perform action depending on key pressed.
 	 * 
 	 * Action performed is unique to SetDrumVolumeMode.
-	 * @param app Callback to the main application
+	 * @param appc Callback to the main application
 	 * @param key The keypress detected
 	 */
-	void interpretKeyPress(ApplicationCallback* app, int key) override;
+	void interpretKeyPress(ApplicationCallback* appc, int key) override;
 
 	/*! Variable storing the previous state of the application */
 	stateLabel_t previousstate;
