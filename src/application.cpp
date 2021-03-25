@@ -210,6 +210,10 @@ void Application::run() {
 	}
 }
 
+void Application::interpretKeyPress(int key) {
+	currentstate->interpretKeyPress(this, key);
+}
+
 void Application::setState(stateLabel_t newstate) {
 	switch (newstate) {
 		case PERFORMANCE_MODE:

@@ -14,14 +14,6 @@
 
 namespace drumpi {
 
-/*! Abstract application callback class */
-class ApplicationCallback {
-public:
-	/*! Virtual function to be overridden by derived class */
-	virtual void setState(stateLabel_t newstate) = 0;
-};
-
-
 /*! Abstract state class */
 class State {
 public:
@@ -124,6 +116,13 @@ public:
 
 	/*! Method to run the application */
 	void run();
+	
+	/*! 
+	 * Method called by keyboard input when a keyboard event occurs.
+	 * 
+	 * @param key The keypress detected
+	 */
+	void interpretKeyPress(int key) override;
 
 	/*! Method to change the current state */
 	void setState(stateLabel_t newstate) override;
@@ -144,7 +143,7 @@ public:
 	SetDrumVolumeMode setdrumvolumemode;
 
 	/*! Instance of KeyboardThread class */
-	keyboard::KeyboardThread kbdThread;
+	KeyboardThread kbdThread;
 
 	/*! AudioEngine object. */
 	std::unique_ptr<audio::JackClient> audioEngine = nullptr;
