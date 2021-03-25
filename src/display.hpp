@@ -163,7 +163,7 @@ class Display: public Max7219 {
          * for every numerical display.
          */
     public:
-        const unsigned char decHexVals[10] = {
+        std::vector<unsigned char> decHexVals = {
             0x7E, // '0'
             0x30, // '1'
             0x6D, // '2'
