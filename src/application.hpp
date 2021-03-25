@@ -10,7 +10,6 @@
 #include "playback.hpp"
 #include "display.hpp"
 #include "sequencer.hpp"
-#include "sequencerClock.hpp"
 #include "keyboardthread.hpp"
 
 namespace drumpi {
