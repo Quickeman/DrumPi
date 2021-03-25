@@ -4,6 +4,7 @@
 #define BOOST_TEST_MODULE KeyboardInputTest
 #include <boost/test/unit_test.hpp>
 #include <keyboardinput.hpp>
+#include <application.hpp>
 
 using namespace drumpi;
 
@@ -12,4 +13,12 @@ BOOST_AUTO_TEST_CASE(Open_Input_File) {
 	KeyboardInput kbd;
 
 	BOOST_CHECK(kbd.getFileDescriptor() >= 0);
+}
+
+BOOST_AUTO_TEST_CASE(application_callback) {
+	Application app;
+	
+	app.kbdThread.kbdIn.callback->interpretKeyPress(KEY_M);
+	
+	BOOST_CHECK(app.currentstate->label == SEQUENCER_MODE);
 }
