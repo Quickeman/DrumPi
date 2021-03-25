@@ -98,7 +98,7 @@ BOOST_AUTO_TEST_CASE(toggle_dp) {
 
 BOOST_AUTO_TEST_CASE(setStopSeq) {
     Display display;
-    bool sequence[16] = {1,0,0,0,1,0,0,0, 0,0,1,0,1,0,1,0};
+    std::vector<bool> sequence = {1,0,0,0,1,0,0,0, 0,0,1,0,1,0,1,0};
     display.setStopSeq(sequence, 0, 2, true);
     BOOST_TEST(display.getDigit(7) == 0x63);
     BOOST_TEST(display.getDigit(6) == 0x80);
@@ -122,7 +122,7 @@ BOOST_AUTO_TEST_CASE(setStopSeq) {
 
 BOOST_AUTO_TEST_CASE(setPlaybackSeq) {
     Display display;
-    bool sequence[16] = {1,0,0,0,1,0,0,0, 0,0,1,0,1,0,1,0};
+    std::vector<bool> sequence = {1,0,0,0,1,0,0,0, 0,0,1,0,1,0,1,0};
     display.setPlaybackSeq(sequence, 1, true);
     BOOST_TEST(display.getDigit(7) == 0x6B);
     BOOST_TEST(display.getDigit(6) == 0x0);
@@ -146,7 +146,7 @@ BOOST_AUTO_TEST_CASE(setPlaybackSeq) {
 
 BOOST_AUTO_TEST_CASE(showPerformance) {
     Display display;
-    bool activeDrums[8] = {1,0,1,0,1,0,1,0};
+    std::vector<bool> activeDrums = {1,0,1,0,1,0,1,0};
     display.showPerformance(activeDrums, 0.9);
     BOOST_TEST(display.getDigit(7) == 0x6B);
     BOOST_TEST(display.getDigit(6) == 0x8);
