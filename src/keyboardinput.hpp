@@ -45,6 +45,9 @@ public:
      * to the terminal when a key is pressed.
      */
     void pollInput();
+    
+    /*! Method to set the class called when a keyboard event occurs */
+    void connectCallback(ApplicationCallback* app);
 
     /*! Returns file descriptor of the input device */
     int getFileDescriptor();
@@ -57,6 +60,9 @@ public:
 
     /*! Running flag used to end the input polling loop */
     int running;
+
+    /*! Callback class called by KeyboardInput when a keyboard event occurs */
+    ApplicationCallback* callback;
 
 private:
 

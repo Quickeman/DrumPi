@@ -28,11 +28,15 @@ void KeyboardInput::pollInput() {
 			read(fd, &ev, sizeof ev);
 			if (ev.type == EV_KEY && ev.value == 1) {
 				//printf("\n%d key pressed\n", ev.code);
-				//call ApplicationCallback::interpretKeyPress(ev.code)
+				callback->interpretKeyPress(ev.code);
 				keyPressCount++;
 			}
 		}
 	}
+}
+
+void KeyboardInput::connectCallback(ApplicationCallback* app) {
+	callback = app;
 }
 
 int KeyboardInput::getFileDescriptor() {

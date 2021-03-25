@@ -191,6 +191,7 @@ void SetDrumVolumeMode::interpretKeyPress(ApplicationCallback *appc, int key) {
 
 Application::Application() {
 	currentstate = &performancemode;
+	kbdThread.kbdIn.connectCallback(this);
 
 	// Jack client
 	audioEngine.reset(new audio::JackClient("DrumPi"));
