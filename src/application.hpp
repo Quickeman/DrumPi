@@ -23,6 +23,9 @@ public:
 
 	/*! Virtual function to be overridden by derived class */
 	virtual void interpretKeyPress(ApplicationCallback* app, int key) = 0;
+	
+	/*! Interprets drum keys and returns a drum ID */
+    drumID_t interpretDrumKey(int key);
 };
 
 /*! Performance mode state */
@@ -128,9 +131,6 @@ public:
 	/*! Method to change the current state */
 	void setState(stateLabel_t newstate) override;
 
-	/*! Interprets drum keys and returns a drum ID */
-	drumID_t interpretDrumKey(int key) override;
-	
 	/*! Pointer to current state instance */
 	State* currentstate;
 

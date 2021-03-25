@@ -50,24 +50,24 @@ BOOST_AUTO_TEST_CASE(interpreting_drum_key) {
 	drumID_t testID;
 
 	// Simulate a key press and store return drum ID
-	testID = app.interpretDrumKey(KEY_A);
+	testID = app.currentstate->interpretDrumKey(KEY_A);
 	//Check that the ID is correct
 	BOOST_CHECK(testID == TOM_1_DRUM);
 
 	// Repeat for each drum key
-	testID = app.interpretDrumKey(KEY_S);
+	testID = app.currentstate->interpretDrumKey(KEY_S);
 	BOOST_CHECK(testID == TOM_2_DRUM);
-	testID = app.interpretDrumKey(KEY_D);
+	testID = app.currentstate->interpretDrumKey(KEY_D);
 	BOOST_CHECK(testID == SNARE_DRUM);
-	testID = app.interpretDrumKey(KEY_F);
+	testID = app.currentstate->interpretDrumKey(KEY_F);
 	BOOST_CHECK(testID == KICK_DRUM);
-	testID = app.interpretDrumKey(KEY_J);
+	testID = app.currentstate->interpretDrumKey(KEY_J);
 	BOOST_CHECK(testID == CLAP_DRUM);
-	testID = app.interpretDrumKey(KEY_K);
+	testID = app.currentstate->interpretDrumKey(KEY_K);
 	BOOST_CHECK(testID == HI_HAT_CLOSED);
-	testID = app.interpretDrumKey(KEY_L);
+	testID = app.currentstate->interpretDrumKey(KEY_L);
 	BOOST_CHECK(testID == HI_HAT_OPEN);
-	testID = app.interpretDrumKey(KEY_SEMICOLON);
+	testID = app.currentstate->interpretDrumKey(KEY_SEMICOLON);
 	BOOST_CHECK(testID == CYMBAL_DRUM);
 }
 
@@ -100,7 +100,7 @@ BOOST_AUTO_TEST_CASE(sequencer_mode_defaults) {
 	Application app;
 
 	//check defaults
-	BOOST_CHECK(app.sequencermode.currentdrum == KICK_DRUM);
+	BOOST_CHECK(app.sequencermode.currentdrum == TOM_1_DRUM);
 	BOOST_CHECK(app.sequencermode.currentpage == 1);
 }
 
@@ -135,11 +135,11 @@ BOOST_AUTO_TEST_CASE(returning_to_sequencer_mode) {
 	app.interpretKeyPress(KEY_S);
 	//check current page is still page 2
 	BOOST_CHECK(app.sequencermode.currentpage == 2);
-	//check active drum is now drum S (currently snare drum)
-
+	
+	// Check active drum is now drum S
 	// This test will fail until the getDrumIDFromKey() function is implemented
 	// Function name just a placeholder, can be whatever
-	// BOOST_CHECK(app.sequencermode.currentdrum == getDrumIDFromKey(KEY_S));
+	//BOOST_CHECK(app.sequencermode.currentdrum == app.currentstate->interpretDrumKey(KEY_S);
 
 	//leave sequencer mode (switch to performance mode)
 	app.interpretKeyPress(KEY_M);
@@ -147,7 +147,7 @@ BOOST_AUTO_TEST_CASE(returning_to_sequencer_mode) {
 	app.interpretKeyPress(KEY_M);
 	//check sequencer mode variables have returned to defaults
 	BOOST_CHECK(app.sequencermode.currentpage == 1);
-	BOOST_CHECK(app.sequencermode.currentdrum == KICK_DRUM);
+	BOOST_CHECK(app.sequencermode.currentdrum == TOM_1_DRUM);
 }
 
 

@@ -12,6 +12,7 @@ PerformanceMode::PerformanceMode() {
 }
 
 void PerformanceMode::interpretKeyPress(ApplicationCallback* app, int key) {
+	app = static_cast<Application*>(app);
 	switch (key) {
 		case KEY_A:
 		case KEY_S:
@@ -48,13 +49,14 @@ void PerformanceMode::interpretKeyPress(ApplicationCallback* app, int key) {
 
 SequencerMode::SequencerMode() {
 	label = SEQUENCER_MODE;
-	currentdrum = KICK_DRUM;	//default drum A
+	currentdrum = interpretDrumKey(KEY_A);	//default drum A
 	currentpage = 1;	//default page 1 (beats 1-8)
-	playing = 0;	//sequencer stopped by default
-	//Display: Show kick drum page 1 sequence
+	playing = false;	//sequencer stopped by default
+	//Display: Show tom 1 drum page 1 sequence
 }
 
 void SequencerMode::interpretKeyPress(ApplicationCallback* app, int key) {
+	app = static_cast<Application*>(app);
 	switch (key) {
 		case KEY_A:
 		case KEY_S:
@@ -94,7 +96,7 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* app, int key) {
 		case KEY_M:
 			//Display: switch to performance display mode
 			//stop sequencer before switching to PerformanceMode
-			playing = 0;
+			playing = false;
 			app->setState(PERFORMANCE_MODE);	//change state to PerformanceMode
 			break;
 
@@ -122,6 +124,7 @@ SetTempoMode::SetTempoMode() {
 }
 
 void SetTempoMode::interpretKeyPress(ApplicationCallback* app, int key) {
+	app = static_cast<Application*>(app);
 	switch (key) {
 		case KEY_DOT:
 			//increase tempo (should tempo variable be a member of SetTempoMode or Application??)
@@ -141,11 +144,12 @@ void SetTempoMode::interpretKeyPress(ApplicationCallback* app, int key) {
 
 SetDrumVolumeMode::SetDrumVolumeMode() {
 	label = SET_DRUM_VOLUME_MODE;
-	drumselected = KICK_DRUM;	//default drum A
+	drumselected = interpretDrumKey(KEY_A);	//default drum A
 	previousstate = PERFORMANCE_MODE;	//default previous state
 }
 
 void SetDrumVolumeMode::interpretKeyPress(ApplicationCallback *app, int key) {
+	app = static_cast<Application*>(app);
 	switch (key) {
 		case KEY_DOT:
 			//increaseDrumVolume(drumselected);	//increase selected drum volume in some way
@@ -202,12 +206,7 @@ void Application::run() {
 
 	kbdThread.start();
 
-	while(1) {
-		if (kbdThread.kbdIn.keyPressedFlag == 1) {
-			currentstate->interpretKeyPress(this, kbdThread.kbdIn.keyPressed);
-			kbdThread.kbdIn.keyPressedFlag = 0;
-		}
-	}
+	while(1) {}
 }
 
 void Application::interpretKeyPress(int key) {
@@ -223,7 +222,7 @@ void Application::setState(stateLabel_t newstate) {
 		case SEQUENCER_MODE:
 			currentstate = &sequencermode;
 			sequencermode.currentpage = 1;	//switch to default page
-			sequencermode.currentdrum = KICK_DRUM;	//switch to default drum A
+			sequencermode.currentdrum = currentstate->interpretDrumKey(KEY_A);	//switch to default drum A
 			//switch display to sequencer mode
 			break;
 		case SET_TEMPO_MODE:
@@ -241,7 +240,7 @@ void Application::setState(stateLabel_t newstate) {
 	}
 }
 
-drumID_t Application::interpretDrumKey(int key) {
+drumID_t State::interpretDrumKey(int key) {
 	switch (key) {
 		case KEY_A:
 			return TOM_1_DRUM;

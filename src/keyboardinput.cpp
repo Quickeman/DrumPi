@@ -10,7 +10,6 @@ KeyboardInput::KeyboardInput() {
 	const char *input_file = "/dev/input/event0";
 	fd = open(input_file, O_RDONLY);
 	running = 0;
-	keyPressedFlag = 0;
 	testFlag = 0;
 	keyPressCount = 0;
 	fdset[0].fd = fd;
@@ -29,8 +28,7 @@ void KeyboardInput::pollInput() {
 			read(fd, &ev, sizeof ev);
 			if (ev.type == EV_KEY && ev.value == 1) {
 				//printf("\n%d key pressed\n", ev.code);
-				keyPressedFlag = 1;
-				keyPressed = ev.code;
+				//call ApplicationCallback::interpretKeyPress(ev.code)
 				keyPressCount++;
 			}
 		}

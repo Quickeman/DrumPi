@@ -22,7 +22,6 @@ public:
     /*! Virtual functions to be overridden by derived class */
     virtual void interpretKeyPress(int key) = 0;
     virtual void setState(stateLabel_t newstate) = 0;
-    virtual drumID_t interpretDrumKey(int key) = 0;
 };
 
 
@@ -58,17 +57,6 @@ public:
 
     /*! Running flag used to end the input polling loop */
     int running;
-
-    /*! Flag indicating that a key has been pressed and requires processing */
-    int keyPressedFlag;
-
-    /*!
-     * \brief Variable storing which key was pressed.
-	 * 
-	 * Key values are defined in linux/input-event-codes,
-	 * included in linux/input.h.
-     */
-    int keyPressed;
 
 private:
 
