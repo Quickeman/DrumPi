@@ -22,6 +22,9 @@ public:
     /*! Virtual functions to be overridden by derived class */
     virtual void interpretKeyPress(int key) = 0;
     virtual void setState(stateLabel_t newstate) = 0;
+    
+    /*! running flag for the application */
+    bool running;
 };
 
 
