@@ -14,6 +14,7 @@
 
 namespace drumpi {
 
+
 /*! Abstract state class */
 class State {
 public:
@@ -126,6 +127,9 @@ public:
 
 	/*! Method to change the current state */
 	void setState(stateLabel_t newstate) override;
+
+	/*! Interprets drum keys and returns a drum ID */
+	drumID_t interpretDrumKey(int key) override;
 	
 	/*! Pointer to current state instance */
 	State* currentstate;

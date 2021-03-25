@@ -44,6 +44,33 @@ BOOST_AUTO_TEST_CASE(interpreting_key_press) {
 	BOOST_CHECK(app.currentstate->label == SEQUENCER_MODE);
 }
 
+BOOST_AUTO_TEST_CASE(interpreting_drum_key) {
+	Application app;
+
+	drumID_t testID;
+
+	// Simulate a key press and store return drum ID
+	testID = app.interpretDrumKey(KEY_A);
+	//Check that the ID is correct
+	BOOST_CHECK(testID == TOM_1_DRUM);
+
+	// Repeat for each drum key
+	testID = app.interpretDrumKey(KEY_S);
+	BOOST_CHECK(testID == TOM_2_DRUM);
+	testID = app.interpretDrumKey(KEY_D);
+	BOOST_CHECK(testID == SNARE_DRUM);
+	testID = app.interpretDrumKey(KEY_F);
+	BOOST_CHECK(testID == KICK_DRUM);
+	testID = app.interpretDrumKey(KEY_J);
+	BOOST_CHECK(testID == CLAP_DRUM);
+	testID = app.interpretDrumKey(KEY_K);
+	BOOST_CHECK(testID == HI_HAT_CLOSED);
+	testID = app.interpretDrumKey(KEY_L);
+	BOOST_CHECK(testID == HI_HAT_OPEN);
+	testID = app.interpretDrumKey(KEY_SEMICOLON);
+	BOOST_CHECK(testID == CYMBAL_DRUM);
+}
+
 
 BOOST_AUTO_TEST_CASE(changing_to_SetTempoMode) {
 	Application app;
