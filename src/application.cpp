@@ -41,12 +41,14 @@ void PerformanceMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 			break;
 		
 		case KEY_COMMA:
+			// Decrease master volume
+			app->playbackEngine.volumeDown();
 			//Display: Show new master volume
-			//decrease master volume
 			break;
 		case KEY_DOT:
+			// Increase master volume
+			app->playbackEngine.volumeUp();
 			//Display: Show new master volume
-			//increase master volume
 			break;
 		
 		case KEY_V:
@@ -163,12 +165,16 @@ void SetDrumVolumeMode::interpretKeyPress(ApplicationCallback *appc, int key) {
 	Application* app = static_cast<Application*>(appc);
 	switch (key) {
 		case KEY_DOT:
-			//increaseDrumVolume(drumselected);	//increase selected drum volume in some way
-			//trigger drumselected?
+			// Increase selected drum's volume
+			app->playbackEngine.volumeUp(drumselected);
+			// Trigger selected drum for user reference
+			app->playbackEngine.trigger(drumselected);
 			break;
 		case KEY_COMMA:
-			//decreaseDrumVolume(drumselected);
-			//trigger drumselected?
+			// Decrease selected drum's volume
+			app->playbackEngine.volumeDown(drumselected);
+			// Trigger selected drum for user reference
+			app->playbackEngine.trigger(drumselected);
 			break;
 		
 		case KEY_A:
