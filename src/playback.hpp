@@ -95,7 +95,7 @@ class PlaybackEngine : public AudioCallback {
         static constexpr float volumeDef = 1.f;
 
         /*! Step size for volume increments and decrements. */
-        const float volumeStep = 0.5f;
+        const float volumeStep = 0.05f;
 };
 
 } // namespace audio
