@@ -37,14 +37,19 @@ class PlaybackEngine : public AudioCallback {
         \return IDs of the currently active sources. */
         std::vector<drumID_t> getActive();
 
-        /*! Sets the playback volume for the passed drum.
-        \param volume desired volume multiplier.
+        /*! Increments the playback volume for the passed drum.
         \param drumID ID of the drum to be affected. */
-        void setVolume(float volume, drumID_t drum);
+        void volumeUp(drumID_t drum);
 
-        /*! Sets the master output volume.
-        \param volume desired master volume multiplier. */
-        void setVolume(float volume);
+        /*! Increments the master output volume. */
+        void volumeUp();
+
+        /*! Decrements the playback volume for the passed drum.
+        \param drumID ID of the drum to be affected. */
+        void volumeDown(drumID_t drum);
+
+        /*! Decrements the master output volume. */
+        void volumeDown();
 
         /*! Returns the current volume of the passed drum.
         \param drum ID of the drum to look at.
@@ -88,6 +93,9 @@ class PlaybackEngine : public AudioCallback {
         std::vector<float> volumes;
         /*! Default drum volume multiplier. */
         static constexpr float volumeDef = 1.f;
+
+        /*! Step size for volume increments and decrements. */
+        const float volumeStep = 0.05f;
 };
 
 } // namespace audio
