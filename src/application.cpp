@@ -15,6 +15,7 @@ void PerformanceMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 	Application* app = static_cast<Application*>(appc);
 	std::vector<drumID_t> drumsActive;
 	std::vector<bool> activeDrums;
+	activeDrums.resize(8);
 	switch (key) {
 		case KEY_A:
 		case KEY_S:
