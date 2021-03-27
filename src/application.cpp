@@ -15,6 +15,7 @@ void PerformanceMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 	Application* app = static_cast<Application*>(appc);
 	std::vector<drumID_t> drumsActive;
 	std::vector<bool> activeDrums;
+	activeDrums.resize(8);
 	switch (key) {
 		case KEY_A:
 		case KEY_S:
@@ -30,7 +31,7 @@ void PerformanceMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 			for(int i = 0; i < drumsActive.size(); i++) {
 				activeDrums[drumsActive[i]] = true;
 			}
-			app->display.showPerformance(activeDrums, 0.f);
+			app->display.showPerformance(activeDrums, 0.5f);
 			//Display: Toggle respective drum square and level meter
 			break;
 		
