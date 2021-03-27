@@ -62,12 +62,20 @@ std::vector<drumID_t> PlaybackEngine::getActive() {
     return v;
 }
 
-void PlaybackEngine::setVolume(float volume, drumID_t drum) {
-    volumes[drum] = volume;
+void PlaybackEngine::volumeUp(drumID_t drum) {
+    volumes[drum] += volumeStep;
 }
 
-void PlaybackEngine::setVolume(float volume) {
-    masterVol = volume;
+void PlaybackEngine::volumeUp() {
+    masterVol += volumeStep;
+}
+
+void PlaybackEngine::volumeDown(drumID_t drum) {
+    volumes[drum] -= volumeStep;
+}
+
+void PlaybackEngine::volumeDown() {
+    masterVol -= volumeStep;
 }
 
 float PlaybackEngine::getVolume(drumID_t drum) {
