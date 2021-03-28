@@ -2,13 +2,32 @@
 //Implementation of keyboard input class
 //that detects keyboard presses
 
+#include <string>
+#include <iostream>
+#include <fstream>
 #include "keyboardinput.hpp"
 
 using namespace drumpi;
 
 KeyboardInput::KeyboardInput() {
-	const char *input_file = "/dev/input/event0";
-	fd = open(input_file, O_RDONLY);
+	std::string kbdConf = std::string(DRUMPI_DIR).append("kbd-config.txt");
+	std::string kbdID;
+	std::string kbdPath;
+	std::ifstream kbdConfigFile;
+		
+	kbdConfigFile.open (kbdConf, std::ios::in);
+	kbdConfigFile >> kbdID;
+	
+	kbdPath = "/dev/input/by-id/" + kbdID;
+	//strcat(kbdPath, "/dev/input/by-id/");
+	//strcat(kbdPath, kbdID);
+	const char* kbdFilePath = kbdPath.c_str();	//conversion necessary since open() expects a const char
+	printf("USB Keyboard Path: %s\n", kbdFilePath);
+	
+	kbdConfigFile.close();
+	//const char *input_file = "/dev/input/event0";
+	
+	fd = open(kbdFilePath, O_RDONLY);
 	running = 0;
 	testFlag = 0;
 	keyPressCount = 0;
@@ -19,7 +38,7 @@ KeyboardInput::KeyboardInput() {
 void KeyboardInput::pollInput() {
 	running = 1;
 	testFlag = 0;
-	keyPressCount = 0;
+	//keyPressCount = 0;
 	while (running) {
 		testFlag = 1; 	//flag is only set to 1 if while loop starts
 
@@ -32,7 +51,7 @@ void KeyboardInput::pollInput() {
 				}
 				//printf("\n%d key pressed\n", ev.code);
 				callback->interpretKeyPress(ev.code);
-				keyPressCount++;
+				//keyPressCount++;
 			}
 		}
 	}

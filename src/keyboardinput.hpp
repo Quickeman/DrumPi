@@ -9,7 +9,6 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <linux/input.h>
-#include <string.h>
 #include <stdio.h>
 
 #include "defs.hpp"
