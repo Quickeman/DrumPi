@@ -19,13 +19,10 @@ KeyboardInput::KeyboardInput() {
 	kbdConfigFile >> kbdID;
 	
 	kbdPath = "/dev/input/by-id/" + kbdID;
-	//strcat(kbdPath, "/dev/input/by-id/");
-	//strcat(kbdPath, kbdID);
 	const char* kbdFilePath = kbdPath.c_str();	//conversion necessary since open() expects a const char
 	printf("USB Keyboard Path: %s\n", kbdFilePath);
 	
 	kbdConfigFile.close();
-	//const char *input_file = "/dev/input/event0";
 	
 	fd = open(kbdFilePath, O_RDONLY);
 	running = 0;

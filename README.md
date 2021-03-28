@@ -43,7 +43,7 @@ make
 ### Startup
 To start the DrumPi, enter:
 ```
-./DrumPi
+bash DrumPi.sh
 ```
 in a terminal from the DrumPi directory.
 
