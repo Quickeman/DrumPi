@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Detect USB keyboard
-ls /dev/input/by-id/ | grep kbd >| config.txt
+ls /dev/input/by-id/ | grep kbd >| kbd-config.txt
 
 # Start jackd
 echo "Starting a JACK server..."
