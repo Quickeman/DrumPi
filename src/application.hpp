@@ -44,49 +44,6 @@ public:
 	void interpretKeyPress(ApplicationCallback* appc, int key) override;
 };
 
-/*! Sequencer mode state */
-class SequencerMode : public State {
-public:
-	/*! Constructor */
-	SequencerMode();
-
-	/*!
-	 * \brief Method to perform action depending on key pressed.
-	 * 
-	 * Action performed is unique to sequencer mode.
-	 * @param appc Callback to the main application
-	 * @param key The keypress detected
-	 */
-	void interpretKeyPress(ApplicationCallback* appc, int key) override;
-
-	/*! Drum currently being set in sequencer */
-	drumID_t currentdrum;
-	/*!
-	 * \brief Page currently displayed on ZeroSeg.
-	 * 
-	 * Either page 1 (beats 1-8) or page 2 (beats 9-16)
-	 */
-	int currentpage;
-	/*! Running flag for the sequencer */
-	bool playing;
-};
-
-/*! Set tempo in this state */
-class SetTempoMode : public State {
-public:
-	/*! Constructor */
-	SetTempoMode();
-
-	/*!
-	 * \brief Method to perform action depending on key pressed.
-	 * 
-	 * Action performed is unique to SetTempoMode.
-	 * @param appc Callback to the main application
-	 * @param key The keypress detected
-	 */
-	void interpretKeyPress(ApplicationCallback* appc, int key) override;
-};
-
 /*! Set individual drum volumes in this state */
 class SetDrumVolumeMode : public State {
 public:
@@ -137,12 +94,6 @@ public:
 	/*! Instance of PerformanceMode state */
 	PerformanceMode performancemode;
 
-	/*! Instance of SequencerMode state */
-	SequencerMode sequencermode;
-
-	/*! Instance of SetTempoMode state */
-	SetTempoMode settempomode;
-
 	/*! Instance of SetDrumVolumeMode state */
 	SetDrumVolumeMode setdrumvolumemode;
 
@@ -157,13 +108,6 @@ public:
 
 	/*! Display object. */
 	Display display;
-
-	// /*! Sequencer object. */
-	// std::shared_ptr<Sequencer> seq = nullptr;
-
-	// /*! SequencerClock object used to clock the Sequencer. */
-	// SequencerClock seqClocker;
-
 };
 
 }	// namespace drumpi

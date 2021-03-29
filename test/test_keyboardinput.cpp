@@ -18,7 +18,7 @@ BOOST_AUTO_TEST_CASE(Open_Input_File) {
 BOOST_AUTO_TEST_CASE(application_callback) {
 	Application app;
 	
-	app.kbdThread.kbdIn.callback->interpretKeyPress(KEY_M);
+	app.kbdThread.kbdIn.callback->interpretKeyPress(KEY_V);
 	
-	BOOST_CHECK(app.currentstate->label == SEQUENCER_MODE);
+	BOOST_CHECK(app.currentstate->label == SET_DRUM_VOLUME_MODE);
 }
