@@ -21,23 +21,16 @@ BOOST_AUTO_TEST_CASE(volumes) {
     drumID_t d1 = KICK_DRUM;
     drumID_t d2 = SNARE_DRUM;
 
-    p.volumeDown(d1);
-    p.volumeUp(d2);
-    p.volumeDown();
-
-    BOOST_CHECK(p.getVolume(d1) == 0.95f);
-    BOOST_CHECK(p.getVolume(d2) == 1.0f);
-    BOOST_CHECK(p.getVolume() == 0.95f);
-
     int c = 22;
     while (c) {
+        p.volumeUp(d1);
         p.volumeDown(d2);
+        p.volumeDown();
         c--;
     }
+    BOOST_CHECK(p.getVolume(d1) == 1.f);
     BOOST_CHECK(p.getVolume(d2) == 0.0f);
-    
-    p.volumeUp(d2);
-    BOOST_CHECK(p.getVolume(d2) == 0.05f);
+    BOOST_CHECK(p.getVolume() == 0.f);
 }
 
 BOOST_AUTO_TEST_CASE(getsBuffer) {

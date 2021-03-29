@@ -88,11 +88,11 @@ class PlaybackEngine : public AudioCallback {
         /*! Current master volume multiplier. */
         float masterVol;
         /*! Default master volume multiplier. */
-        static constexpr float masterVolDef = 1.f;
+        static constexpr float masterVolDef = 0.75f;
         /*! Current drum volume multipliers. */
         std::vector<float> volumes;
         /*! Default drum volume multiplier. */
-        static constexpr float volumeDef = 1.f;
+        static constexpr float volumeDef = 0.75f;
 
         /*! Step size for volume increments and decrements. */
         const float volumeStep = 0.05f;
