@@ -63,18 +63,22 @@ std::vector<drumID_t> PlaybackEngine::getActive() {
 }
 
 void PlaybackEngine::volumeUp(drumID_t drum) {
+    if (volumes[drum] > 0.94f) volumes[drum] = 1.f;
     if (volumes[drum] < 1.f) volumes[drum] += volumeStep;
 }
 
 void PlaybackEngine::volumeUp() {
+    if (masterVol > 0.94f) masterVol = 1.f;
     if (masterVol < 1.f) masterVol += volumeStep;
 }
 
 void PlaybackEngine::volumeDown(drumID_t drum) {
+    if (volumes[drum] < 0.06f) volumes[drum] = 0.f;
     if (volumes[drum] > 0.f) volumes[drum] -= volumeStep;
 }
 
 void PlaybackEngine::volumeDown() {
+    if (masterVol < 0.06f) masterVol = 0.f;
     if (masterVol > 0.f) masterVol -= volumeStep;
 }
 
