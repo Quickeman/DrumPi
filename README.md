@@ -43,32 +43,36 @@ make
 ## Usage
 Performance Mode:  
 ```
-KEY	Action
-A	Tom 1
-S	Tom 2
-D	Snare
-F	Kick
-J	Clap
-K	Hi-hat (closed)
-L	hi-hat (open)
-;	Cymbal
-.	Increase master volume
-,	Decrease master volume
-V	Switch to "Set Drum Volume" Mode
+KEY		ACTION
+A		Tom 1
+S		Tom 2
+D		Snare
+F		Kick
+J		Clap
+K		Hi-hat (closed)
+L		hi-hat (open)
+;		Cymbal
+.		Increase master volume
+,		Decrease master volume
+V		Switch to "Set Drum Volume" Mode
+BACKSPACE	Exit program
 ```
-Set Drum Volume Mode
+Set Drum Volume Mode:
 ```
-.	Increase volume of selected drum
-,	Decrease volume of selected drum
-A	Switch selected drum to Tom 1
-S	Switch selected drum to Tom 2
-D	Switch selected drum to Snare
-F	Switch selected drum to Kick
-J	Switch selected drum to Clap
-K	Switch selected drum to Hi-hat (closed)
-L	Switch selected drum to Hi-hat (open)
-;	Switch selected drum to Cymbal
-V	Exit "Set Drum Volume" Mode
+KEY		ACTION
+.		Increase volume of selected drum
+,		Decrease volume of selected drum
+A		Switch selected drum to Tom 1
+S		Switch selected drum to Tom 2
+D		Switch selected drum to Snare
+F		Switch selected drum to Kick
+J		Switch selected drum to Clap
+K		Switch selected drum to Hi-hat (closed)
+L		Switch selected drum to Hi-hat (open)
+;		Switch selected drum to Cymbal
+V		Exit "Set Drum Volume" Mode
+ESC		Exit "Set Drum Volume" Mode
+BACKSPACE	Exit program
 ```
 
 ### Startup
@@ -81,6 +85,7 @@ in a terminal from the DrumPi directory.
 ### Running Tests
 To run a suite of unit tests, enter:
 ```
+jackd -dalsa -dhw:2 &
 make test
 ```
 in a terminal from the DrumPi directory
