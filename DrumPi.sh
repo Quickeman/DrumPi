@@ -5,6 +5,8 @@ ls /dev/input/by-id/ | grep kbd >| kbd-config.txt
 
 # Close any active JACK servers
 killall -s SIGINT jackd
+# Sleep to allow server closing
+sleep 1
 
 # Start jackd
 echo "Starting a JACK server..."
