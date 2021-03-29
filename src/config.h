@@ -1,5 +1,5 @@
-#ifndef INCLUDE_GUARD
-#define INCLUDE_GUARD
+#ifndef DRUMPI_VERSION_H
+#define DRUMPI_VERSION_H
 
 #define PROJECT_NAME "DrumPi"
 #define PROJECT_VER  "0.1"
@@ -7,4 +7,4 @@
 #define PROJECT_VER_MINOR "1"
 #define PTOJECT_VER_PATCH ""
 
-#endif // INCLUDE_GUARD
+#endif // DRUMPI_VERSION_H
