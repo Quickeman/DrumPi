@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.12)
 
 # Project name and version
-project(DrumPi VERSION 1.0)
+project(DrumPi VERSION 0.1)
 
 # Generate compile_commands.json for clangd
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
