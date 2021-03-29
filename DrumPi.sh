@@ -3,6 +3,9 @@
 # Detect USB keyboard
 ls /dev/input/by-id/ | grep kbd >| kbd-config.txt
 
+# Close any active JACK servers
+killall -s SIGINT jackd
+
 # Start jackd
 echo "Starting a JACK server..."
 jackd -P70 -t2000 -dalsa -dhw:2 -p128 -n3 -r48000 -s &
