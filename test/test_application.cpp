@@ -30,10 +30,10 @@ BOOST_AUTO_TEST_CASE(changing_state) {
 	Application app;
 
 	//change state to sequencer mode
-	app.setState(SEQUENCER_MODE);
+	app.setState(SET_DRUM_VOLUME_MODE);
 
 	//check current state has changed to sequencer mode
-	BOOST_CHECK(app.currentstate->label == SEQUENCER_MODE);
+	BOOST_CHECK(app.currentstate->label == SET_DRUM_VOLUME_MODE);
 }
 
 
@@ -41,10 +41,10 @@ BOOST_AUTO_TEST_CASE(interpreting_key_press) {
 	Application app;
 
 	//simulate "m" key being pressed to switch to sequencer mode
-	app.interpretKeyPress(KEY_M);
+	app.interpretKeyPress(KEY_V);
 
 	//check current state has changed to sequencer mode
-	BOOST_CHECK(app.currentstate->label == SEQUENCER_MODE);
+	BOOST_CHECK(app.currentstate->label == SET_DRUM_VOLUME_MODE);
 }
 
 BOOST_AUTO_TEST_CASE(interpreting_drum_key) {
@@ -75,7 +75,7 @@ BOOST_AUTO_TEST_CASE(interpreting_drum_key) {
 }
 
 
-BOOST_AUTO_TEST_CASE(changing_to_SetTempoMode) {
+/* BOOST_AUTO_TEST_CASE(changing_to_SetTempoMode) {
 	Application app;
 
 	//simulate "t" key being pressed to switch to SetTempoMode
@@ -96,19 +96,19 @@ BOOST_AUTO_TEST_CASE(changing_to_SetTempoMode) {
 	app.interpretKeyPress(KEY_T);
 	//check state has returned to sequencer mode
 	BOOST_CHECK(app.currentstate->label == SEQUENCER_MODE);
-}
+} */
 
 
-BOOST_AUTO_TEST_CASE(sequencer_mode_defaults) {
+/* BOOST_AUTO_TEST_CASE(sequencer_mode_defaults) {
 	Application app;
 
 	//check defaults
 	BOOST_CHECK(app.sequencermode.currentdrum == TOM_1_DRUM);
 	BOOST_CHECK(app.sequencermode.currentpage == 1);
-}
+} */
 
 
-BOOST_AUTO_TEST_CASE(switching_pages_in_sequencer_mode) {
+/* BOOST_AUTO_TEST_CASE(switching_pages_in_sequencer_mode) {
 	Application app;
 
 	//switch to sequencer mode
@@ -123,10 +123,10 @@ BOOST_AUTO_TEST_CASE(switching_pages_in_sequencer_mode) {
 	app.interpretKeyPress(KEY_TAB);
 	//check current page has switched back to page 1
 	BOOST_CHECK(app.sequencermode.currentpage == 1);
-}
+} */
 
 
-BOOST_AUTO_TEST_CASE(returning_to_sequencer_mode) {
+/* BOOST_AUTO_TEST_CASE(returning_to_sequencer_mode) {
 	Application app;
 
 	//switch to sequencer mode
@@ -151,7 +151,7 @@ BOOST_AUTO_TEST_CASE(returning_to_sequencer_mode) {
 	//check sequencer mode variables have returned to defaults
 	BOOST_CHECK(app.sequencermode.currentpage == 1);
 	BOOST_CHECK(app.sequencermode.currentdrum == TOM_1_DRUM);
-}
+} */
 
 
 BOOST_AUTO_TEST_CASE(changing_to_SetDrumVolumeMode) {
@@ -166,17 +166,4 @@ BOOST_AUTO_TEST_CASE(changing_to_SetDrumVolumeMode) {
 	app.interpretKeyPress(KEY_V);
 	//check state has returned to performance mode
 	BOOST_CHECK(app.currentstate->label == PERFORMANCE_MODE);
-
-	//switch to sequencer mode
-	app.setState(SEQUENCER_MODE);
-	
-	//switch to SetDrumVolumeMode
-	app.interpretKeyPress(KEY_V);
-	//check state has changed to SetDrumVolumeMode
-	BOOST_CHECK(app.currentstate->label == SET_DRUM_VOLUME_MODE);
-
-	//exit SetDrumVolumeMode
-	app.interpretKeyPress(KEY_V);
-	//check state has this time returned to sequencer mode
-	BOOST_CHECK(app.currentstate->label == SEQUENCER_MODE);
 }
