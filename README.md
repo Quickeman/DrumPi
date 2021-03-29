@@ -13,7 +13,7 @@ DrumPi is a small, affordable, open-source drum machine, giving you all the perc
 - Raspberry Pi (designed on RPI 4B)
 - ZeroSeg 8-digit 7-segment display
 - Standard USB keyboard
-- USB audio interface (required)
+- USB audio interface
 
 ## Quick-start guide
 ### Installation
@@ -58,4 +58,3 @@ in a terminal from the DrumPi directory
 - External clocking
 - Customisation of drum sounds by user
 - Ability for real-time DSP using Pd patches
-- Audio interface flexibility 
