@@ -163,6 +163,7 @@ SetDrumVolumeMode::SetDrumVolumeMode() {
 
 void SetDrumVolumeMode::interpretKeyPress(ApplicationCallback *appc, int key) {
 	Application* app = static_cast<Application*>(appc);
+	drumID_t drum = interpretDrumKey(key);
 	switch (key) {
 		case KEY_DOT:
 			// Increase selected drum's volume
@@ -186,8 +187,8 @@ void SetDrumVolumeMode::interpretKeyPress(ApplicationCallback *appc, int key) {
 		case KEY_L:
 		case KEY_SEMICOLON:
 			// Trigger the drum sound
-			app->playbackEngine.trigger(interpretDrumKey(key));
-			//set drumselected to respective drum
+			app->playbackEngine.trigger(drum);
+			drumselected = drum;	//set drumselected to respective drum
 			break;
 
 		case KEY_V:
