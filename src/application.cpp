@@ -217,7 +217,7 @@ Application::Application() {
 	// Sequencer
 	seq.reset(new Sequencer(16));
 	// SequencerClock
-	seqClocker.setSequencer(seq);
+	seqClocker.reset(new SequencerClock(seq));
 }
 
 void Application::run() {

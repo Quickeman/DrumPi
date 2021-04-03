@@ -3,12 +3,14 @@
 #include <boost/test/unit_test.hpp>
 #include "sequencer.hpp"
 #include <thread>
+#include <memory>
 
 using namespace drumpi;
 
 BOOST_AUTO_TEST_CASE(constructor) {
-    SequencerClock c1;
-    SequencerClock c2;
+    std::shared_ptr<Sequencer> s(new Sequencer(8));
+    SequencerClock c1(s);
+    SequencerClock c2(s);
 
     BOOST_CHECK(&c1);
     BOOST_CHECK(&c2);
@@ -16,12 +18,11 @@ BOOST_AUTO_TEST_CASE(constructor) {
 
 BOOST_AUTO_TEST_CASE(clocking) {
     std::shared_ptr<Sequencer> s(new Sequencer(8));
-    SequencerClock c;
+    SequencerClock c(s);
     int r = 50;
 
     BOOST_CHECK(s->getStepNum() == 0);
 
-    c.setSequencer(s);
     c.setRate(r);
     c.start();
 

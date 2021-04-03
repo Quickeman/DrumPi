@@ -147,12 +147,10 @@ void Sequencer::_updateStepPtr() {
 
 // SequencerClock class
 
-SequencerClock::SequencerClock() {
+SequencerClock::SequencerClock(std::shared_ptr<Sequencer> s) {
     setRateBPM(240);
     rateChangeFlag = false;
-}
 
-void SequencerClock::setSequencer(std::shared_ptr<Sequencer> s) {
     seq = s;
 }
 

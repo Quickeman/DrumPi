@@ -133,12 +133,10 @@ class Sequencer {
 /*! \ref Metronome derived class to clock a \ref Sequencer. */
 class SequencerClock : public clock::Metronome {
     public:
-        /*! Constructor. */
-        SequencerClock();
-
-        /*! Sets the Sequencer to be clocked.
+        /*! Constructor.
+        Sets the Sequencer to be clocked.
         \param s \ref Sequencer object to be clocked. */
-        void setSequencer(std::shared_ptr<Sequencer> s);
+        SequencerClock(std::shared_ptr<Sequencer> s);
 
         /*! Override the tick method.
         Clocks the \ref Sequencer given to \ref setSequencer. */
