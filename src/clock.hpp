@@ -20,6 +20,10 @@ class Timer : public CppTimer {
         /*! Constructor. */
         Timer();
 
+        /*! Destructor.
+        Deactivates the timer. */
+        ~Timer();
+
         /*! Set trigger time in ms.
         \param ms desired trigger time, in ms. */
         void setTime(int ms);
@@ -59,6 +63,10 @@ class Clock : public CppTimer {
     public:
         /*! Constructor. */
         Clock();
+
+        /*! Destructor.
+        Deactivates the clock. */
+        ~Clock();
 
         /*! Set the clock rate.
         \param ms desired clocking rate, in ms. */

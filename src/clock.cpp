@@ -10,6 +10,10 @@ Timer::Timer() {
     active = false;
 }
 
+Timer::~Timer() {
+    stop();
+}
+
 void Timer::setTime(int ms) {
     time = ms;
 }
@@ -42,6 +46,10 @@ Clock::Clock() {
     setRate(1000);
     rateChangeFlag = false;
     active = false;
+}
+
+Clock::~Clock() {
+    stop();
 }
 
 void Clock::setRate(int ms) {
