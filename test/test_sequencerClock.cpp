@@ -26,6 +26,7 @@ BOOST_AUTO_TEST_CASE(clocking) {
     c.setRate(r);
     c.start();
 
+    BOOST_CHECK(c.isActive());
     BOOST_CHECK(s->getStepNum() == 1);
 
     std::this_thread::sleep_for(std::chrono::milliseconds(r + (r / 2)));

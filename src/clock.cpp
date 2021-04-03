@@ -7,6 +7,7 @@ using namespace clock;
 
 Timer::Timer() {
     setTime(1000);
+    active = false;
 }
 
 void Timer::setTime(int ms) {
@@ -19,16 +20,28 @@ int Timer::getTime() {
 
 void Timer::start() {
     CppTimer::start(long(time * 1000000), ONESHOT);
-};
+    active = true;
+}
+
+void Timer::stop() {
+    CppTimer::stop();
+    active = false;
+}
+
+bool Timer::isActive() {
+    return active;
+}
 
 void Timer::timerEvent() {
     trigger();
+    active = false;
 };
 
 
 Clock::Clock() {
     setRate(1000);
     rateChangeFlag = false;
+    active = false;
 }
 
 void Clock::setRate(int ms) {
@@ -43,6 +56,16 @@ int Clock::getRate() {
 void Clock::start() {
     CppTimer::start(long(rate*1000000));
     timerEvent();
+    active = true;
+}
+
+void Clock::stop() {
+    CppTimer::stop();
+    active = false;
+}
+
+bool Clock::isActive() {
+    return active;
 }
 
 void Clock::timerEvent() {
