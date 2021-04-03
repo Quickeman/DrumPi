@@ -67,8 +67,6 @@ public:
 	 * Either page 1 (beats 1-8) or page 2 (beats 9-16)
 	 */
 	int currentpage;
-	/*! Running flag for the sequencer */
-	bool playing;
 };
 
 /*! Set tempo in this state */

@@ -62,7 +62,6 @@ SequencerMode::SequencerMode() {
 	label = SEQUENCER_MODE;
 	currentdrum = interpretDrumKey(KEY_A);	//default drum A
 	currentpage = 1;	//default page 1 (beats 1-8)
-	playing = false;	//sequencer stopped by default
 	//Display: Show tom 1 drum page 1 sequence
 }
 
@@ -77,10 +76,11 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 		case KEY_K:
 		case KEY_L:
 		case KEY_SEMICOLON:
+			// Interpret the drum key
+			currentdrum = interpretDrumKey(key);
 			// Trigger the drum sound
-			app->playbackEngine.trigger(interpretDrumKey(key));
+			app->playbackEngine.trigger(currentdrum);
 			//Display: Toggle corresponding DP
-			//change currentdrum to respective drum
 			//display currentpage for respective drum
 			break;
 		
@@ -102,24 +102,27 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 			break;
 			
 		case KEY_SPACE:
+			// Toggle Sequencer's activity state
+			app->seqClocker->isActive() ? app->seqClocker->stop() : app->seqClocker->start();
 			// Toggle play/pause sequence display
-			playing = !playing;	//Toggle play/pause
 			break;
 
 		case KEY_M:
 			//Display: switch to performance display mode
 			//stop sequencer before switching to PerformanceMode
-			playing = false;
+			app->seqClocker->stop();
 			app->setState(PERFORMANCE_MODE);	//change state to PerformanceMode
 			break;
 
 		case KEY_COMMA:
+			// Decrease master volume
+			app->playbackEngine.volumeDown();
 			//Display: updated master volume
-			//decrease master volume
 			break;
 		case KEY_DOT:
+			// Increase master volume
+			app->playbackEngine.volumeUp();
 			//Display: updated master volume
-			//increase master volume
 			break;
 
 		case KEY_T:
@@ -163,7 +166,6 @@ SetDrumVolumeMode::SetDrumVolumeMode() {
 
 void SetDrumVolumeMode::interpretKeyPress(ApplicationCallback *appc, int key) {
 	Application* app = static_cast<Application*>(appc);
-	drumID_t drum = interpretDrumKey(key);
 	switch (key) {
 		case KEY_DOT:
 			// Increase selected drum's volume
@@ -186,9 +188,10 @@ void SetDrumVolumeMode::interpretKeyPress(ApplicationCallback *appc, int key) {
 		case KEY_K:
 		case KEY_L:
 		case KEY_SEMICOLON:
+			// Interpret the drum key
+			drumselected = interpretDrumKey(key);
 			// Trigger the drum sound
-			app->playbackEngine.trigger(drum);
-			drumselected = drum;	//set drumselected to respective drum
+			app->playbackEngine.trigger(drumselected);
 			break;
 
 		case KEY_V:
