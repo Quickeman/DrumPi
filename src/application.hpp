@@ -158,11 +158,11 @@ public:
 	/*! Display object. */
 	Display display;
 
-	// /*! Sequencer object. */
-	// std::shared_ptr<Sequencer> seq = nullptr;
+	/*! Sequencer object. */
+	std::shared_ptr<Sequencer> seq = nullptr;
 
-	// /*! SequencerClock object used to clock the Sequencer. */
-	// SequencerClock seqClocker;
+	/*! SequencerClock object used to clock the Sequencer. */
+	SequencerClock seqClocker;
 
 };
 

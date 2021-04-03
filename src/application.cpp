@@ -214,10 +214,10 @@ Application::Application() {
 		playbackEngine.setSource((drumID_t)i, audio::SOURCE_PREGENERATED);
 	}
 
-	// // Sequencer
-	// seq.reset(new Sequencer(16));
-	// // SequencerClock
-	// seqClocker.setSequencer(seq);
+	// Sequencer
+	seq.reset(new Sequencer(16));
+	// SequencerClock
+	seqClocker.setSequencer(seq);
 }
 
 void Application::run() {
