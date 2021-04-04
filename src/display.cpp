@@ -131,12 +131,16 @@ void Max7219::clear(bool redraw) {
 
 // Display class
 
-//Display::Display() {
-    //dpToggle = false;
-//}
+Display::Display() {
+    dpToggle = false;
+}
 
-//Display::~Display() {
-//}
+Display::~Display() {
+}
+
+int Display::getKeymapping(int index){
+    return keyMapping[index];
+}
 
 void Display::setVal(unsigned int value, bool redraw) {
     clear(false);
@@ -148,6 +152,10 @@ void Display::setVal(unsigned int value, bool redraw) {
     // 1 digit:
     else if (value <= 9) setOneDigit(value);
     if (redraw) flush();
+}
+
+void Display::setKeymapping(std::vector<int> _keyMapping) {
+    keyMapping = _keyMapping;
 }
 
 void Display::setThreeDigit(unsigned int value) {

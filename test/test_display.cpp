@@ -158,3 +158,27 @@ BOOST_AUTO_TEST_CASE(showPerformance) {
     BOOST_TEST(display.getDigit(0) == 0x8);
 
 }
+
+BOOST_AUTO_TEST_CASE(setKeyMapping) {
+    Display display;
+    std::vector<int> newMapping = {
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+    };
+
+    display.setKeymapping(newMapping);
+    BOOST_TEST(display.getKeymapping(0) == 0);
+    BOOST_TEST(display.getKeymapping(1) == 1);
+    BOOST_TEST(display.getKeymapping(2) == 2);
+    BOOST_TEST(display.getKeymapping(3) == 3);
+    BOOST_TEST(display.getKeymapping(4) == 4);
+    BOOST_TEST(display.getKeymapping(5) == 5);
+    BOOST_TEST(display.getKeymapping(6) == 6);
+    BOOST_TEST(display.getKeymapping(7) == 7);
+}

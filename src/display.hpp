@@ -162,7 +162,6 @@ class Display: public Max7219 {
          * Prevents the need to toggle Code B decode
          * for every numerical display.
          */
-    public:
         std::vector<unsigned char> decHexVals = {
             0x7E, // '0'
             0x30, // '1'
@@ -174,6 +173,21 @@ class Display: public Max7219 {
             0x70, // '7'
             0x7F, // '8'
             0x7B, // '9'
+        };
+
+        /** Vector to contain key mappings
+         *
+         * keyMapping[drum] = key/digit
+         */
+        std::vector<int> keyMapping = {
+            3,  // Kick
+            4,  // Snare
+            2,  // Clap
+            5,  // HH Close
+            1,  // HH Open
+            0,  // Tom 1
+            1,  // Tom 2
+            7,  // Cymbal
         };
 
         const unsigned char dpAddr = 0x80;
@@ -209,9 +223,11 @@ class Display: public Max7219 {
 
     public:
 
-        //Display(); /// Constructor
+        Display(); /// Constructor
 
-        //~Display(); /// Destructor
+        ~Display(); /// Destructor
+
+        int getKeymapping(int index);
 
         /**
          * Sets digits to display a number up to 999
@@ -220,6 +236,14 @@ class Display: public Max7219 {
          * @param redraw If true, updates display
          */
         void setVal(unsigned int value, bool redraw);
+
+        /**
+         * Sets the mapping of drums to keys
+         * Ensuring that the correct digits are displayed
+         * 
+         * @param _keyMapping The given mapping to set
+         */
+        void setKeymapping(std::vector<int> _keyMapping);
 
         /**
          * Updates mode and sets digit to S or P accordingly
