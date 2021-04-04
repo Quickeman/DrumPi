@@ -217,12 +217,17 @@ void Display::addLevel(float level, bool redraw) {
     if(redraw) flush();
 }
 
-void Display::showPerformance(std::vector<bool> activeDrums, float level) {
+void Display::showPerformance(std::vector<drumID_t> activeDrums, float level) {
     clear(false);
-    for(unsigned int digit = 0; digit <= getNumDigits(); digit ++) {
-        if(activeDrums[digit])
-            setDigit((getNumDigits()-1) - digit, upperSqAddr, false);
-    }
+
+    for(int i = 0; i < activeDrums.size(); i++) {
+		setDigit(7 - keyMapping[activeDrums[i]], upperSqAddr, false);
+	}
+
+    // for(unsigned int digit = 0; digit <= getNumDigits(); digit ++) {
+    //     if(activeDrums[digit])
+    //         setDigit((getNumDigits()-1) - digit, upperSqAddr, false);
+    // }
     addLevel(level, false);
     flush();
 }

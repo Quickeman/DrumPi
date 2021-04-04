@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include <vector>
 #include <math.h>
+#include <defs.hpp>
 #include <wiringPiSPI.h>
 
 namespace drumpi {
@@ -181,10 +182,10 @@ class Display: public Max7219 {
          */
         std::vector<int> keyMapping = {
             3,  // Kick
-            4,  // Snare
-            2,  // Clap
+            2,  // Snare
+            4,  // Clap
             5,  // HH Close
-            1,  // HH Open
+            6,  // HH Open
             0,  // Tom 1
             1,  // Tom 2
             7,  // Cymbal
@@ -279,7 +280,7 @@ class Display: public Max7219 {
          */
         void setStopSeq(std::vector<bool> activeDrums, unsigned int page, unsigned int currentDrum, bool redraw);
 
-        void showPerformance(std::vector<bool> activeDrums, float level);
+        void showPerformance(std::vector<drumID_t> activeDrums, float level);
 
         /*
          * Toggles all DP on and off

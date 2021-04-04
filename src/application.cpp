@@ -28,10 +28,10 @@ void PerformanceMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 			// Trigger the drum sound
 			app->playbackEngine.trigger(interpretDrumKey(key));
 			drumsActive = app->playbackEngine.getActive();
-			for(int i = 0; i < drumsActive.size(); i++) {
-				activeDrums[drumsActive[i]] = true;
-			}
-			app->display.showPerformance(activeDrums, 0.5f);
+			// for(int i = 0; i < drumsActive.size(); i++) {
+			// 	activeDrums[drumsActive[i]] = true;
+			// }
+			app->display.showPerformance(drumsActive, 1.0f);
 			//Display: Toggle respective drum square and level meter
 			break;
 	
