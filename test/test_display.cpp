@@ -7,10 +7,6 @@
 #include <vector>
 #include <defs.hpp>
 
-//extern "C" {
-//#include <wiringPiSPI.h>
-//}
-
 using namespace drumpi;
 
 BOOST_AUTO_TEST_CASE(constructors) {
@@ -79,23 +75,7 @@ BOOST_AUTO_TEST_CASE(show_num) {
     BOOST_TEST(display.getDigit(4) == 0x00);
 }
 
-BOOST_AUTO_TEST_CASE(toggle_dp) {
-    Display display;
-    display.toggleDPFlash(true);
-    for (unsigned int digit = 0; digit < 8; digit ++)
-        BOOST_TEST(display.getDigit(digit) & 0x80);
 
-    display.toggleDPFlash(true);
-    for (unsigned int digit = 0; digit < 8; digit ++)
-        BOOST_TEST(!(display.getDigit(digit) & 0x80));
-}
-
-//BOOST_AUTO_TEST_CASE(show_level) {
-    //Display display;
-    //display.addLevel(0.4, true);
-    //BOOST_TEST(display.getDigit(6) == 0x8);
-    //BOOST_TEST(display.getDigit(1) == 0x0);
-//}
 
 BOOST_AUTO_TEST_CASE(setStopSeq) {
     Display display;
@@ -147,7 +127,7 @@ BOOST_AUTO_TEST_CASE(setPlaybackSeq) {
 
 BOOST_AUTO_TEST_CASE(setKeyMapping) {
     Display display;
-    std::vector<int> newMapping = {
+    std::vector<unsigned int> newMapping = {
         0,
         1,
         2,
@@ -172,7 +152,7 @@ BOOST_AUTO_TEST_CASE(setKeyMapping) {
 BOOST_AUTO_TEST_CASE(showPerformance) {
     Display display;
     std::vector<drumID_t> drumsActive = {drumID_t(5), drumID_t(1), drumID_t(2), drumID_t(4)};
-    display.showPerformance(drumsActive, 0.9);
+    display.setPerformance(drumsActive, 0.9, true);
     BOOST_TEST(display.getDigit(7) == 0x6B);
     BOOST_TEST(display.getDigit(6) == 0x8);
     BOOST_TEST(display.getDigit(5) == 0x6B);

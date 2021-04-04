@@ -17,6 +17,21 @@
 
 using namespace drumpi;
 
+// Max7219
+
+// Low-level methods //
+
+void Max7219::write(unsigned char* data, unsigned int len) {
+    wiringPiSPIDataRW(0, data, len);
+}
+
+void Max7219::command(unsigned char reg, unsigned char data) {
+    unsigned char tx[2] = {reg, data};
+    write(tx, 2);
+}
+
+// Constructor & Destructor //
+
 Max7219::Max7219(unsigned char decodeMode,
                 unsigned char intensity,
                 unsigned char scanLimit,
@@ -31,8 +46,7 @@ Max7219::Max7219(unsigned char decodeMode,
     numDigits(numDigits)
 {
     // Allocate digit buffer and init to 0
-    digitBuffer = new unsigned char[numDigits];
-    clear(true);
+    digitBuffer.assign(numDigits, 0);
 
     // Init SPI
     wiringPiSPISetup(0, 32000000);
@@ -46,36 +60,10 @@ Max7219::Max7219(unsigned char decodeMode,
 }
 
 Max7219::~Max7219() {
-    delete digitBuffer;
-    //clear(true);
+    clear(true);
 }
 
-// Getters //
-
-unsigned char Max7219::getDigit(unsigned char digit) {
-    return digitBuffer[digit];
-}
-
-unsigned char Max7219::getDecodeMode(){
-    return decodeMode;
-}
-unsigned char Max7219::getIntensity(){
-    return intensity;
-}
-unsigned char Max7219::getScanLimit(){
-    return scanLimit;
-}
-unsigned char Max7219::getShutdown(){
-    return shutdown;
-}
-unsigned char Max7219::getDisplayTest(){
-    return displayTest;
-}
-unsigned int Max7219::getNumDigits() {
-    return numDigits;
-}
-
-// Setters //
+// SETTERS //
 
 void Max7219::setDigit(unsigned char digit, unsigned char value, bool redraw) {
     digitBuffer[digit] = value;
@@ -103,19 +91,35 @@ void Max7219::setDisplayTest(unsigned char value){
     command(MAX7219_REG_DISPLAYTEST, value);
 }
 
-// Actions //
+// GETTERS //
 
-void Max7219::write(unsigned char* data, unsigned int len) {
-    wiringPiSPIDataRW(0, data, len);
+unsigned char Max7219::getDigit(unsigned char digit) {
+    return digitBuffer[digit];
 }
 
-void Max7219::command(unsigned char reg, unsigned char data) {
-    unsigned char tx[2] = {reg, data};
-    write(tx, 2);
+unsigned char Max7219::getDecodeMode(){
+    return decodeMode;
 }
+unsigned char Max7219::getIntensity(){
+    return intensity;
+}
+unsigned char Max7219::getScanLimit(){
+    return scanLimit;
+}
+unsigned char Max7219::getShutdown(){
+    return shutdown;
+}
+unsigned char Max7219::getDisplayTest(){
+    return displayTest;
+}
+unsigned int Max7219::getNumDigits() {
+    return numDigits;
+}
+
+// HIGH LEVEL METHODS //
 
 void Max7219::flush() {
-    unsigned char tx[2];
+    unsigned char tx[2]; // Holds digit address and digit value
     for (unsigned char digit = 0; digit < numDigits; digit ++) {
         tx[0] = digit + 1; // digits addresses are 1-8
         tx[1] = digitBuffer[digit];
@@ -129,34 +133,19 @@ void Max7219::clear(bool redraw) {
     if(redraw) flush();
 }
 
-// Display class
+// End Max7219
+
+// Display
+
+// CONSTRUCTOR & DESTRUCTOR //
 
 Display::Display() {
-    dpToggle = false;
 }
 
 Display::~Display() {
 }
 
-int Display::getKeymapping(int index){
-    return keyMapping[index];
-}
-
-void Display::setVal(unsigned int value, bool redraw) {
-    clear(false);
-    // Separate value into individual digits
-    // 3 digits:
-    if(value > 99) setThreeDigit(value);
-    // 2 digits:
-    else if ((value > 9) && (value <= 99)) setTwoDigit(value);
-    // 1 digit:
-    else if (value <= 9) setOneDigit(value);
-    if (redraw) flush();
-}
-
-void Display::setKeymapping(std::vector<int> _keyMapping) {
-    keyMapping = _keyMapping;
-}
+// PRIVATE METHODS
 
 void Display::setThreeDigit(unsigned int value) {
     unsigned char digitOne, digitTwo, digitThree;
@@ -186,52 +175,6 @@ void Display::setOneDigit(unsigned int value) {
     setDigit(7, digitOne, false);
 }
 
-void Display::toggleDPFlash(bool redraw) {
-    // If dp is off, turn on
-    if (!dpToggle) {
-        for (unsigned int digit = 0; digit < getNumDigits(); digit ++) {
-            unsigned char toggled = getDigit(digit) + dpAddr;
-            setDigit(digit, toggled, false);
-        }
-        dpToggle = true;
-    }
-    else {
-        for (unsigned int digit = 0; digit < getNumDigits(); digit ++) {
-            unsigned char toggled = getDigit(digit) - dpAddr;
-            setDigit(digit, toggled, false);
-        }
-        dpToggle = false;
-    }
-    if(redraw) flush();
-}
-
-void Display::addLevel(float level, bool redraw) {
-    float magLevel = fabs(level);
-    unsigned int maxDigit = magLevel * getNumDigits();
-
-    for(unsigned int digit = 0; digit <= maxDigit; digit ++) {
-        unsigned char currentDigit = getNumDigits() - digit - 1;
-        setDigit(currentDigit, getDigit(currentDigit) + 0x8, false);
-    }
-
-    if(redraw) flush();
-}
-
-void Display::showPerformance(std::vector<drumID_t> activeDrums, float level) {
-    clear(false);
-
-    for(int i = 0; i < activeDrums.size(); i++) {
-		setDigit(7 - keyMapping[activeDrums[i]], upperSqAddr, false);
-	}
-
-    // for(unsigned int digit = 0; digit <= getNumDigits(); digit ++) {
-    //     if(activeDrums[digit])
-    //         setDigit((getNumDigits()-1) - digit, upperSqAddr, false);
-    // }
-    addLevel(level, false);
-    flush();
-}
-
 
 void Display::setActiveDrums(std::vector<bool> activeDrums, unsigned int page) {
     unsigned int seqIndex = 0;
@@ -242,11 +185,31 @@ void Display::setActiveDrums(std::vector<bool> activeDrums, unsigned int page) {
     }
 }
 
-void Display::setStopSeq(std::vector<bool> activeDrums, unsigned int page, unsigned int currentDrum, bool redraw) {
+void Display::addLevel(float level) {
+    float magLevel = fabs(level);
+    unsigned int maxDigit = magLevel * getNumDigits();
+
+    for(unsigned int digit = 0; digit <= maxDigit; digit ++) {
+        unsigned char currentDigit = getNumDigits() - digit - 1;
+        setDigit(currentDigit, getDigit(currentDigit) + 0x8, false);
+    }
+
+}
+
+void Display::setVal(unsigned int value, bool redraw) {
     clear(false);
-    setActiveDrums(activeDrums, page);
-    setDigit(getNumDigits() - currentDrum, getDigit(getNumDigits()-currentDrum) + dpAddr, false);
-    if(redraw) flush();
+    // Separate value into individual digits
+    // 3 digits:
+    if(value > 99) setThreeDigit(value);
+    // 2 digits:
+    else if ((value > 9) && (value <= 99)) setTwoDigit(value);
+    // 1 digit:
+    else if (value <= 9) setOneDigit(value);
+    if (redraw) flush();
+}
+
+void Display::setKeymapping(std::vector<unsigned int> _keyMapping) {
+    keyMapping = _keyMapping;
 }
 
 void Display::setPlaybackSeq(std::vector<bool> activeDrums, unsigned int stepNum, bool redraw) {
@@ -263,4 +226,28 @@ void Display::setPlaybackSeq(std::vector<bool> activeDrums, unsigned int stepNum
     }
     flush();
 }
+
+void Display::setStopSeq(std::vector<bool> activeDrums, unsigned int page, unsigned int currentDrum, bool redraw) {
+    clear(false);
+    setActiveDrums(activeDrums, page);
+    setDigit(getNumDigits() - currentDrum, getDigit(getNumDigits()-currentDrum) + dpAddr, false);
+    if(redraw) flush();
+}
+
+void Display::setPerformance(std::vector<drumID_t> activeDrums, float level, bool redraw) {
+    clear(false);
+    for(int i = 0; i < activeDrums.size(); i++) {
+		setDigit(7 - keyMapping[activeDrums[i]], upperSqAddr, false);
+	}
+    addLevel(level);
+    if(redraw) flush();
+}
+
+int Display::getKeymapping(int index){
+    return keyMapping[index];
+}
+
+
+
+
 

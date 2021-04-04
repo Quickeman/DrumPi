@@ -9,22 +9,32 @@ namespace drumpi {
 class Max7219
 {
     private:
-        unsigned char* digitBuffer;
+
+        // Number of digits
         unsigned int numDigits;
-        unsigned char decodeMode,
-                intensity,
-                scanLimit,
-                shutdown,
-                displayTest;
+
+        // Command register variables
+        unsigned char 
+            decodeMode,
+            intensity,
+            scanLimit,
+            shutdown,
+            displayTest;
+    
+        /**
+         * Buffer to contain each digit's value
+         */
+        std::vector<unsigned char> digitBuffer;
 
         /**
          * Low level method for writing a data buffer to SPI bus.
-         *
+         * Should not be used by host application.
+         * Instead use digit setters and flush commands.
+         * 
          * @param data Buffer containing bytes for writing.
          * @param len Length of bufer in bytes.
          */
         void write(unsigned char *data, unsigned int len);
-
 
         /**
          * Sends command data over SPI bus
@@ -54,6 +64,8 @@ class Max7219
          * Destructor - deletes any allocated memory and clears display
          */
         ~Max7219();
+
+        // SETTERS //
 
         /**
          * Sets the value of a digit in the display
@@ -94,7 +106,7 @@ class Max7219
          */
         void setDisplayTest(unsigned char value);
 
-        // Getters
+        // GETTERS //
 
         /**
          * Gets a value of a specified digit
@@ -139,7 +151,7 @@ class Max7219
          */
         unsigned int getNumDigits();
 
-        // Actions
+        // HIGH LEVEL METHODS //
 
         /**
          * Writes all digit values to display via SPI bus
@@ -155,7 +167,8 @@ class Max7219
 };
 
 class Display: public Max7219 {
-    //private:
+
+    private:
 
         /** Vector to contain corresponding hex values
          * for decimal digit representation.
@@ -163,7 +176,7 @@ class Display: public Max7219 {
          * Prevents the need to toggle Code B decode
          * for every numerical display.
          */
-        std::vector<unsigned char> decHexVals = {
+        const std::vector<unsigned char> decHexVals = {
             0x7E, // '0'
             0x30, // '1'
             0x6D, // '2'
@@ -176,11 +189,16 @@ class Display: public Max7219 {
             0x7B, // '9'
         };
 
+        // Hex adresses for commonly used segments
+        const unsigned char dpAddr = 0x80;
+        const unsigned char upperSqAddr = 0x63;
+        const unsigned char bottomAddr = 0x8;
+
         /** Vector to contain key mappings
          *
-         * keyMapping[drum] = key/digit
+         * keyMapping[drumID] = key/digit
          */
-        std::vector<int> keyMapping = {
+        std::vector<unsigned int> keyMapping = {
             3,  // Kick
             2,  // Snare
             4,  // Clap
@@ -190,14 +208,6 @@ class Display: public Max7219 {
             1,  // Tom 2
             7,  // Cymbal
         };
-
-        const unsigned char dpAddr = 0x80;
-        const unsigned char upperSqAddr = 0x63;
-        const unsigned char bottomAddr = 0x8;
-
-        bool dpToggle = false;      // Stores state of DP (on/off)
-
-        unsigned int mode;  // Stores current mode
 
         /** Set a 3 digit decimal value
          * @param value 3 digit value to set
@@ -222,13 +232,19 @@ class Display: public Max7219 {
          */
         void setActiveDrums(std::vector<bool> activeDrums, unsigned int page);
 
+        /**
+         * Updates display to show audio level between -1 and 1
+         * @param level Audio level to display
+         */
+        void addLevel(float level);
+
     public:
 
         Display(); /// Constructor
 
         ~Display(); /// Destructor
 
-        int getKeymapping(int index);
+        // SETTERS //
 
         /**
          * Sets digits to display a number up to 999
@@ -244,22 +260,7 @@ class Display: public Max7219 {
          * 
          * @param _keyMapping The given mapping to set
          */
-        void setKeymapping(std::vector<int> _keyMapping);
-
-        /**
-         * Updates mode and sets digit to S or P accordingly
-         *
-         * @param value Mode to display
-         * @param redraw If true, updates display
-         */
-        void setMode(unsigned int mode, bool redraw);
-
-        /**
-         * Updates display to show audio level between -1 and 1
-         * @param level Audio level to display
-         * @param redraw If true, updates display
-         */
-        void addLevel(float level, bool redraw);
+        void setKeymapping(std::vector<unsigned int> _keyMapping);
 
         /**
          * Updates display to show sequence in playback mode
@@ -280,25 +281,18 @@ class Display: public Max7219 {
          */
         void setStopSeq(std::vector<bool> activeDrums, unsigned int page, unsigned int currentDrum, bool redraw);
 
-        void showPerformance(std::vector<drumID_t> activeDrums, float level);
-
-        /*
-         * Toggles all DP on and off
+        /**
+         * Updates performance mode display
+         * 
+         * @param activeDrums Vector containing drum IDs of all current drums
+         * @param level Audio level
          * @param redraw If true, updates display
          */
-        void toggleDPFlash(bool redraw);
-
-        /*
-         * Returns current mode
-         * @returns Current mode
-         */
-        unsigned int getMode();
-
-
-        /*
-         * Returns DP flash state
-         * @returns dp flash state
-         */
-        unsigned int getDPToggle();
-};
+        void setPerformance(std::vector<drumID_t> activeDrums, float level, bool redraw);
+        /**
+         * Returns a key mapping
+         * @param index DrumId to query
+         * */
+        int getKeymapping(int index);
+    };
 } // namespace drumpi
