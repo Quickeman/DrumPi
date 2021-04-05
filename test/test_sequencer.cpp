@@ -7,7 +7,7 @@
 
 using namespace drumpi;
 
-int numSteps = 8;
+const int numSteps = 8;
 
 BOOST_AUTO_TEST_CASE(constructors) {
 	// Test for NULL object pointers
@@ -77,12 +77,10 @@ BOOST_AUTO_TEST_CASE(sequence) {
 	// Test retrieving the step & sequence pattern
 	Sequencer seq(numSteps);
 
-	std::vector<std::vector<bool>> s;
+	std::array<std::array<bool, NUM_DRUMS>, numSteps> s;
 
-	s.resize(numSteps);
-	for (int i = 0; i < s.size(); i++) { // For each step...
-		s[i].resize(NUM_DRUMS);
-		for (int j = 0; j < s[i].size(); j++) { // For each drum...
+	for (int i = 0; i < numSteps; i++) { // For each step...
+		for (int j = 0; j < NUM_DRUMS; j++) { // For each drum...
 			s[i][j] = static_cast<bool>(rand() % 2);
 			if (s[i][j]) seq.add((drumID_t)j, i);
 		}
@@ -102,8 +100,8 @@ BOOST_AUTO_TEST_CASE(sequence) {
 	std::vector<std::vector<bool>> active = seq.getSequence();
 
 	error = false;
-	for (int i = 0; i < s.size(); i++) {
-		for (int j = 0; j < s[i].size(); j++) {
+	for (int i = 0; i < numSteps; i++) { // For each step...
+		for (int j = 0; j < NUM_DRUMS; j++) { // For each drum...
 			error = error || (active[i][j] != s[i][j]);
 		}
 	}
@@ -115,12 +113,10 @@ BOOST_AUTO_TEST_CASE(resetting) {
 	// Test resetting the Sequencer
 	Sequencer seq(numSteps);
 
-	std::vector<std::vector<bool>> s;
+	std::array<std::array<bool, NUM_DRUMS>, numSteps> s;
 
-	s.resize(numSteps);
-	for (int i = 0; i < s.size(); i++) { // For each step...
-		s[i].resize(NUM_DRUMS);
-		for (int j = 0; j < s[i].size(); j++) { // For each drum...
+	for (int i = 0; i < numSteps; i++) { // For each step...
+		for (int j = 0; j < NUM_DRUMS; j++) { // For each drum...
 			s[i][j] = static_cast<bool>(rand() % 2);
 			if (s[i][j]) seq.add((drumID_t)j, i);
 		}

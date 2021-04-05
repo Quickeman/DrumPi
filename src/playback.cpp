@@ -4,10 +4,6 @@ using namespace drumpi;
 using namespace audio;
 
 PlaybackEngine::PlaybackEngine() {
-    sources.resize(NUM_DRUMS);
-    isTriggered.resize(NUM_DRUMS);
-    volumes.resize(NUM_DRUMS);
-
     masterVol = masterVolDef;
 
     for (int i = 0; i < NUM_DRUMS; i++) {

@@ -9,7 +9,6 @@ using namespace drumpi;
 // _SequenceStep class
 
 _SequenceStep::_SequenceStep() {
-    switches.resize(NUM_DRUMS);
     clear();
 }
 
