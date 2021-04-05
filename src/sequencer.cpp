@@ -13,12 +13,16 @@ _SequenceStep::_SequenceStep() {
     clear();
 }
 
-void _SequenceStep::addToStep(drumID_t id) {
+void _SequenceStep::add(drumID_t id) {
     switches[id] = true;
 }
 
-void _SequenceStep::removeFromStep(drumID_t id) {
+void _SequenceStep::remove(drumID_t id) {
     switches[id] = false;
+}
+
+void _SequenceStep::toggle(drumID_t id) {
+    switches[id] = !switches[id];
 }
 
 bool _SequenceStep::isActive(drumID_t id) {
@@ -114,20 +118,28 @@ void Sequencer::reset(bool clearSteps) {
     if (clearSteps) clear();
 }
 
-void Sequencer::addToStep(drumID_t drum, int step) {
-    steps[step].addToStep(drum);
+void Sequencer::add(drumID_t drum, int step) {
+    steps[step].add(drum);
 }
 
-void Sequencer::addToStep(drumID_t drum) {
-    addToStep(drum, stepNum);
+void Sequencer::add(drumID_t drum) {
+    add(drum, stepNum);
 }
 
-void Sequencer::removeFromStep(drumID_t drum, int step) {
-    steps[step].removeFromStep(drum);
+void Sequencer::remove(drumID_t drum, int step) {
+    steps[step].remove(drum);
 }
 
-void Sequencer::removeFromStep(drumID_t drum) {
-    removeFromStep(drum, stepNum);
+void Sequencer::remove(drumID_t drum) {
+    remove(drum, stepNum);
+}
+
+void Sequencer::toggle(drumID_t drum, int step) {
+    steps[step].toggle(drum);
+}
+
+void Sequencer::toggle(drumID_t drum) {
+    toggle(drum, stepNum);
 }
 
 void Sequencer::setNumSteps(int n) {

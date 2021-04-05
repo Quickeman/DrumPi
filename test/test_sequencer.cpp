@@ -47,10 +47,10 @@ BOOST_AUTO_TEST_CASE(addRemoveDrums) {
 
 	seq.step();
 	// Add d1 to current step (1)
-	seq.addToStep(d1);
+	seq.add(d1);
 	// Add d1 and d2 to step 2
-	seq.addToStep(d1, 2);
-	seq.addToStep(d2, 2);
+	seq.add(d1, 2);
+	seq.add(d2, 2);
 
 	BOOST_CHECK(seq.isActive(d1));
 	BOOST_CHECK(seq.isActive(d1, 2));
@@ -61,7 +61,7 @@ BOOST_AUTO_TEST_CASE(addRemoveDrums) {
 	BOOST_CHECK(active.size() == 1);
 	BOOST_CHECK(active[0] == d1);
 
-	seq.removeFromStep(d1);
+	seq.remove(d1);
 	active = seq.getActive();
 	BOOST_CHECK(active.empty());
 
@@ -84,7 +84,7 @@ BOOST_AUTO_TEST_CASE(sequence) {
 		s[i].resize(NUM_DRUMS);
 		for (int j = 0; j < s[i].size(); j++) { // For each drum...
 			s[i][j] = static_cast<bool>(rand() % 2);
-			if (s[i][j]) seq.addToStep((drumID_t)j, i);
+			if (s[i][j]) seq.add((drumID_t)j, i);
 		}
 	}
 
@@ -122,7 +122,7 @@ BOOST_AUTO_TEST_CASE(resetting) {
 		s[i].resize(NUM_DRUMS);
 		for (int j = 0; j < s[i].size(); j++) { // For each drum...
 			s[i][j] = static_cast<bool>(rand() % 2);
-			if (s[i][j]) seq.addToStep((drumID_t)j, i);
+			if (s[i][j]) seq.add((drumID_t)j, i);
 		}
 	}
 

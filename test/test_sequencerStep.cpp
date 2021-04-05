@@ -25,7 +25,7 @@ BOOST_AUTO_TEST_CASE(addDrums) {
 
     for (int i = 0; i < drums.size(); i++) {
         drums[i] = static_cast<bool>(rand() % 2);
-        if (drums[i]) s.addToStep((drumID_t)i);
+        if (drums[i]) s.add((drumID_t)i);
     }
 
     for (int i = 0; i < drums.size(); i++) {
@@ -51,12 +51,12 @@ BOOST_AUTO_TEST_CASE(removeDrums) {
     drumID_t d1 = KICK_DRUM;
     drumID_t d2 = SNARE_DRUM;
 
-    s.addToStep(d1);
-    s.addToStep(d2);
+    s.add(d1);
+    s.add(d2);
 
     BOOST_CHECK(s.numActive() == 2);
 
-    s.removeFromStep(d2);
+    s.remove(d2);
 
     BOOST_CHECK(s.numActive() == 1);
     BOOST_CHECK(s.isActive(d1));
