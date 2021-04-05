@@ -161,7 +161,7 @@ void Sequencer::_updateStepPtr() {
 // SequencerClock class
 
 SequencerClock::SequencerClock(std::shared_ptr<Sequencer> s, audio::PlaybackEngine& p) {
-    setRateBPM(240);
+    setRateBPM(480);
     rateChangeFlag = false;
 
     seq = s;
