@@ -104,7 +104,7 @@ BOOST_AUTO_TEST_CASE(sequencer_mode_defaults) {
 
 	//check defaults
 	BOOST_CHECK(app.sequencermode.currentdrum == TOM_1_DRUM);
-	BOOST_CHECK(app.sequencermode.currentpage == 1);
+	BOOST_CHECK(app.sequencermode.currentpage == 0);
 }
 
 
@@ -117,12 +117,12 @@ BOOST_AUTO_TEST_CASE(switching_pages_in_sequencer_mode) {
 	//simulate "tab" key being pressed to change page
 	app.interpretKeyPress(KEY_TAB);
 	//check current page has switched to page 2
-	BOOST_CHECK(app.sequencermode.currentpage == 2);
+	BOOST_CHECK(app.sequencermode.currentpage == 1);
 
 	//simulate "tab" key being pressed again to change page
 	app.interpretKeyPress(KEY_TAB);
 	//check current page has switched back to page 1
-	BOOST_CHECK(app.sequencermode.currentpage == 1);
+	BOOST_CHECK(app.sequencermode.currentpage == 0);
 }
 
 
@@ -137,7 +137,7 @@ BOOST_AUTO_TEST_CASE(returning_to_sequencer_mode) {
 	//simulate "s" key being pressed to change active drum to drum S
 	app.interpretKeyPress(KEY_S);
 	//check current page is still page 2
-	BOOST_CHECK(app.sequencermode.currentpage == 2);
+	BOOST_CHECK(app.sequencermode.currentpage == 1);
 	
 	// Check active drum is now drum S
 	// This test will fail until the getDrumIDFromKey() function is implemented
@@ -149,7 +149,7 @@ BOOST_AUTO_TEST_CASE(returning_to_sequencer_mode) {
 	//return to sequencer mode
 	app.interpretKeyPress(KEY_M);
 	//check sequencer mode variables have returned to defaults
-	BOOST_CHECK(app.sequencermode.currentpage == 1);
+	BOOST_CHECK(app.sequencermode.currentpage == 0);
 	BOOST_CHECK(app.sequencermode.currentdrum == TOM_1_DRUM);
 }
 
