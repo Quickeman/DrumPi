@@ -61,7 +61,7 @@ void PerformanceMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 SequencerMode::SequencerMode() {
 	label = SEQUENCER_MODE;
 	currentdrum = interpretDrumKey(KEY_A);	//default drum A
-	currentpage = 1;	//default page 1 (beats 1-8)
+	currentpage = 0;	//default page 1 (beats 1-8)
 	//Display: Show tom 1 drum page 1 sequence
 }
 
@@ -97,7 +97,7 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 		
 		case KEY_TAB:
 			currentpage++;
-			if (currentpage > 2) currentpage = 1;
+			if (currentpage > 1) currentpage = 0;
 			// Display relevant beats for currentdrum
 			break;
 			
@@ -248,7 +248,7 @@ void Application::setState(stateLabel_t newstate) {
 			break;
 		case SEQUENCER_MODE:
 			currentstate = &sequencermode;
-			sequencermode.currentpage = 1;	//switch to default page
+			sequencermode.currentpage = 0;	//switch to default page
 			sequencermode.currentdrum = currentstate->interpretDrumKey(KEY_A);	//switch to default drum A
 			//switch display to sequencer mode
 			break;
