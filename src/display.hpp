@@ -2,6 +2,8 @@
 #include <vector>
 #include <math.h>
 #include <wiringPiSPI.h>
+#include <clock.hpp>
+#include <memory>
 
 namespace drumpi {
 
@@ -276,4 +278,22 @@ class Display: public Max7219 {
          */
         unsigned int getDPToggle();
 };
+
+/*! \ref Metronome derived class to clock a \ref Display. */
+class DisplayClock : public clock::Clock {
+    public:
+        /*! Constructor.
+        Sets the Display to be clocked.
+        \param s \ref Display object to be clocked. */
+        DisplayClock(std::shared_ptr<Display> d);
+
+        /*! Override the tick method.
+        Clocks the \ref Display given to \ref setDisplay. */
+        void tick() override;
+    
+    private:
+        /*! Pointer to the `Display` object to be clocked. */
+        std::shared_ptr<Display> display = nullptr;
+};
+
 } // namespace drumpi

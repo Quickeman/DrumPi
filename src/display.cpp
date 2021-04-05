@@ -251,3 +251,13 @@ void Display::setPlaybackSeq(std::vector<bool> activeDrums, unsigned int stepNum
     flush();
 }
 
+// DisplayClock class
+
+DisplayClock::DisplayClock(std::shared_ptr<Display> d) {
+    setRate(10); //ms
+    display = d;
+}
+
+void DisplayClock::tick() {
+    display->flush();
+}
