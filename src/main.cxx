@@ -13,6 +13,10 @@ int main(int argc, char* argv[]){
 
     Application* appPtr;
     signal(SIGINT, signalHandler);
+    signal(SIGQUIT, signalHandler);
+    signal(SIGTERM, signalHandler);
+    signal(SIGHUP, signalHandler);
+    signal(SIGKILL, signalHandler);
     shutdownHandler = [&](int signal) {
         std::cout << "DrumPi: caught signal " << signal << std::endl;
         appPtr->running = false;
@@ -20,7 +24,7 @@ int main(int argc, char* argv[]){
 
     Application app;
     appPtr = &app;
-    
+
     app.run();
 
     return 0;
