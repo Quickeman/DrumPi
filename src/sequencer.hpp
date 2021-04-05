@@ -4,6 +4,7 @@
 
 #include "defs.hpp"
 #include "clock.hpp"
+#include "playback.hpp"
 
 #include <vector>
 
@@ -148,8 +149,9 @@ class SequencerClock : public clock::Metronome {
     public:
         /*! Constructor.
         Sets the Sequencer to be clocked.
-        \param s \ref Sequencer object to be clocked. */
-        SequencerClock(std::shared_ptr<Sequencer> s);
+        \param s \ref Sequencer object to be clocked.
+        \param p \ref PlaybackEngine object. */
+        SequencerClock(std::shared_ptr<Sequencer> s, audio::PlaybackEngine& p);
 
         /*! Override the tick method.
         Clocks the \ref Sequencer given to \ref setSequencer. */
@@ -158,6 +160,9 @@ class SequencerClock : public clock::Metronome {
     private:
         /*! Pointer to the `Sequencer` object to be clocked. */
         std::shared_ptr<Sequencer> seq = nullptr;
+
+        /*! Pointer to the `PlaybackEngine`. */
+        audio::PlaybackEngine* pbe;
 };
 
 } // namespace drumpi

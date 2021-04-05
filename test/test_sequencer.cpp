@@ -23,20 +23,20 @@ BOOST_AUTO_TEST_CASE(stepping) {
 	Sequencer seq(numSteps);
 
 	// Should be on step 0
-	BOOST_CHECK(seq.getStepNum() == 0);
+	BOOST_CHECK(seq.getStepNum() == -1);
 
 	// Advance by one, should be on step 1
 	seq.step();
-	BOOST_CHECK(seq.getStepNum() == 1);
+	BOOST_CHECK(seq.getStepNum() == 0);
 
 	// Advance by 2, should be on step 3
 	seq.step(2);
-	BOOST_CHECK(seq.getStepNum() == 3);
+	BOOST_CHECK(seq.getStepNum() == 2);
 
 	// Check wrapping around
 	// Wrap around and then step again
 	for (int i = 0; i < 6; i++) seq.step();
-	BOOST_CHECK(seq.getStepNum() == 1);
+	BOOST_CHECK(seq.getStepNum() == 0);
 }
 
 BOOST_AUTO_TEST_CASE(addRemoveDrums) {
@@ -139,5 +139,5 @@ BOOST_AUTO_TEST_CASE(resetting) {
 	}
 
 	BOOST_CHECK(!error);
-	BOOST_CHECK(seq.getStepNum() == 0);
+	BOOST_CHECK(seq.getStepNum() == -1);
 }

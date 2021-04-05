@@ -115,6 +115,7 @@ void Sequencer::clear() {
 void Sequencer::reset(bool clearSteps) {
     stepNum = -1;
     step();
+    stepNum = -1;
     if (clearSteps) clear();
 }
 
@@ -159,13 +160,17 @@ void Sequencer::_updateStepPtr() {
 
 // SequencerClock class
 
-SequencerClock::SequencerClock(std::shared_ptr<Sequencer> s) {
+SequencerClock::SequencerClock(std::shared_ptr<Sequencer> s, audio::PlaybackEngine& p) {
     setRateBPM(240);
     rateChangeFlag = false;
 
     seq = s;
+    pbe = &p;
 }
 
 void SequencerClock::tick() {
     seq->step();
+
+    std::vector<drumID_t> active = seq->getActive();
+    for(int i = 0; i < active.size(); i++) pbe->trigger(active[i]);
 }

@@ -92,7 +92,11 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 		case KEY_6:
 		case KEY_7:
 		case KEY_8:
-			// Insert currentdrum into relevant beat
+			// Toggle currentdrum in relevant beat
+			app->seq->toggle(
+				currentdrum,
+				(key - KEY_1) + (currentpage * 8)
+			);
 			break;
 		
 		case KEY_TAB:
@@ -220,7 +224,7 @@ Application::Application() {
 	// Sequencer
 	seq.reset(new Sequencer(16));
 	// SequencerClock
-	seqClocker.reset(new SequencerClock(seq));
+	seqClocker.reset(new SequencerClock(seq, playbackEngine));
 }
 
 void Application::run() {
