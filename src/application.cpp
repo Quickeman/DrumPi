@@ -107,7 +107,14 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 			
 		case KEY_SPACE:
 			// Toggle Sequencer's activity state
-			app->seqClocker->isActive() ? app->seqClocker->stop() : app->seqClocker->start();
+			if(app->seqClocker->isActive()) {
+				// Stop the Sequencer's clock
+				app->seqClocker->stop();
+				// Reset the Sequencer to first step, not clearing the sequence
+				app->seq->reset(false);
+			} else {
+				app->seqClocker->start();
+			}
 			// Toggle play/pause sequence display
 			break;
 
