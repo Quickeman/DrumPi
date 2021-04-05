@@ -46,7 +46,7 @@ BOOST_AUTO_TEST_CASE(addRemoveDrums) {
 	drumID_t d2 = SNARE_DRUM;
 
 	seq.step();
-	// Add d1 to current step (1)
+	// Add d1 to current step (0)
 	seq.add(d1);
 	// Add d1 and d2 to step 2
 	seq.add(d1, 2);
@@ -55,7 +55,7 @@ BOOST_AUTO_TEST_CASE(addRemoveDrums) {
 	BOOST_CHECK(seq.isActive(d1));
 	BOOST_CHECK(seq.isActive(d1, 2));
 	BOOST_CHECK(seq.isActive(d2, 2));
-	BOOST_CHECK(!seq.isActive(d2)); // d2 not active in current step
+	BOOST_CHECK(!seq.isActive(d2)); // d2 not active in current step (0)
 
 	std::vector<drumID_t> active = seq.getActive();
 	BOOST_CHECK(active.size() == 1);
@@ -66,7 +66,7 @@ BOOST_AUTO_TEST_CASE(addRemoveDrums) {
 	BOOST_CHECK(active.empty());
 
 	// Check step 2
-	seq.step();
+	seq.step(2);
 	active = seq.getActive();
 	BOOST_CHECK(active.size() == 2);
 	BOOST_CHECK(active[0] == d1);
