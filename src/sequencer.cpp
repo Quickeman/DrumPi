@@ -38,11 +38,13 @@ int _SequenceStep::numActive() {
 
 std::vector<drumID_t> _SequenceStep::getActive() {
     std::vector<drumID_t> active;
+    active.reserve(NUM_DRUMS);
     for (int i = 0; i < switches.size(); i++) {
         if (isActive((drumID_t)i)) {
             active.push_back((drumID_t)i);
         }
     }
+    active.shrink_to_fit();
     return active;
 }
 

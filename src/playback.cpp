@@ -52,9 +52,11 @@ void PlaybackEngine::untrigger(drumID_t drum) {
 
 std::vector<drumID_t> PlaybackEngine::getActive() {
     std::vector<drumID_t> v;
+    v.reserve(NUM_DRUMS);
     for (int i = 0; i < NUM_DRUMS; i++) {
         if (isTriggered[i]) v.push_back((drumID_t)i);
     }
+    v.shrink_to_fit();
     return v;
 }
 
