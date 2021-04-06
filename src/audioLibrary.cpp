@@ -20,10 +20,5 @@ AudioLibrary::AudioLibrary() {
 }
 
 std::string AudioLibrary::getFilepath(drumID_t drum, sampleSourceType_t type) {
-    std::string fp;
-    fp = DRUMPI_DIR;
-    fp.append(audioDir);
-    fp.append(filenames[drum]);
-    fp.append(extensions[type]);
-    return fp;
+    return DRUMPI_DIR + audioDir + filenames[drum] + extensions[type];
 }
