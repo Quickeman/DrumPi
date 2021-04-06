@@ -28,8 +28,8 @@ class AudioLibrary {
         std::string audioDir;
         /*! Prefix for the bank directory names. */
         std::string bankDirPre;
-        /*! Extensionless filenames of audio sources. */
-        std::array<std::string, NUM_DRUMS> filenames;
+        /*! Prefix for the files' names. */
+        std::string drumNamePre;
         /*! Extensions for the types of audio sources. */
         std::array<std::string, NUM_SOURCE_TYPES> extensions;
 };

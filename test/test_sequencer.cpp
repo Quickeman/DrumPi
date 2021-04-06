@@ -42,8 +42,8 @@ BOOST_AUTO_TEST_CASE(stepping) {
 BOOST_AUTO_TEST_CASE(addRemoveDrums) {
 	// Test adding, removing and retrieving drums to/from various Steps
 	Sequencer seq(numSteps);
-	drumID_t d1 = KICK_DRUM;
-	drumID_t d2 = SNARE_DRUM;
+	drumID_t d1 = DRUM_1;
+	drumID_t d2 = DRUM_2;
 
 	seq.step();
 	// Add d1 to current step (0)
@@ -86,7 +86,7 @@ BOOST_AUTO_TEST_CASE(sequence) {
 		}
 	}
 
-	drumID_t td = KICK_DRUM;
+	drumID_t td = DRUM_1;
 	std::vector<bool> steps = seq.getSteps(td);
 
 	bool error = false;

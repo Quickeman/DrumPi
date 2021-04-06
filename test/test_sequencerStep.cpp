@@ -47,8 +47,8 @@ BOOST_AUTO_TEST_CASE(addDrums) {
 BOOST_AUTO_TEST_CASE(removeDrums) {
     // Test removing drums and clearing the pattern
     _SequenceStep s;
-    drumID_t d1 = KICK_DRUM;
-    drumID_t d2 = SNARE_DRUM;
+    drumID_t d1 = DRUM_1;
+    drumID_t d2 = DRUM_2;
 
     s.add(d1);
     s.add(d2);

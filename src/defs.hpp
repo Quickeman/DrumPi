@@ -20,14 +20,14 @@ Used for loading audio files where the absolute path is required. */
 
 /*! ID numbers for each of the DrumPi's drums. */
 typedef enum _DrumIDs {
-    KICK_DRUM = 0,
-    SNARE_DRUM,
-    CLAP_DRUM,
-    HI_HAT_CLOSED,
-    HI_HAT_OPEN,
-    TOM_1_DRUM,
-    TOM_2_DRUM,
-    CYMBAL_DRUM,
+    DRUM_1 = 0,
+    DRUM_2,
+    DRUM_3,
+    DRUM_4,
+    DRUM_5,
+    DRUM_6,
+    DRUM_7,
+    DRUM_8,
 
     // Number of drums
     // ALWAYS LEAVE LAST!

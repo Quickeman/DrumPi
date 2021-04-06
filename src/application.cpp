@@ -282,28 +282,28 @@ void Application::setState(stateLabel_t newstate) {
 drumID_t State::interpretDrumKey(int key) {
 	switch (key) {
 		case KEY_A : default :
-			return TOM_1_DRUM;
+			return DRUM_6;
 			break;
 		case KEY_S:
-			return TOM_2_DRUM;
+			return DRUM_7;
 			break;
 		case KEY_D:
-			return SNARE_DRUM;
+			return DRUM_2;
 			break;
 		case KEY_F:
-			return KICK_DRUM;
+			return DRUM_1;
 			break;
 		case KEY_J:
-			return CLAP_DRUM;
+			return DRUM_3;
 			break;
 		case KEY_K:
-			return HI_HAT_CLOSED;
+			return DRUM_4;
 			break;
 		case KEY_L:
-			return HI_HAT_OPEN;
+			return DRUM_5;
 			break;
 		case KEY_SEMICOLON:
-			return CYMBAL_DRUM;
+			return DRUM_8;
 			break;
 	}
 }
