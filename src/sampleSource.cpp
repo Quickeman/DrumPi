@@ -19,11 +19,11 @@ sampleSourceType_t SampleSource::getType() {
 }
 
 
+// class AudioClip
+
 AudioClip::AudioClip(std::string filepath) {
     type = SOURCE_PREGENERATED;
-    this->filepath = filepath;
-
-    loadFile();
+    loadFile(filepath);
 
     numSamples = clip.size();
 
@@ -82,17 +82,19 @@ void AudioClip::updateStatus() {
 }
 
 void AudioClip::hardReset() {
-    loadFile();
+    loadFile(filepath);
     reset();
 }
 
-void AudioClip::loadFile() {
+void AudioClip::loadFile(std::string filepath) {
     AudioFile<sample_t> file;
     bool loaded;
+    
+    this->filepath = filepath;
 
     status = SOURCE_LOADING;
 
-    loaded = file.load(filepath);
+    loaded = file.load(this->filepath);
 
     if (!loaded) {
         status = SOURCE_ERROR;

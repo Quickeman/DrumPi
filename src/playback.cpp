@@ -88,7 +88,7 @@ float PlaybackEngine::getVolume() {
     return masterVol;
 }
 
-sampleSourceStatus_t PlaybackEngine::setSource(drumID_t drum, sampleSourceType_t type) {
+sampleSourceStatus_t PlaybackEngine::setSource(drumID_t drum, int bank, sampleSourceType_t type) {
     sampleSourceStatus_t status;
 
     switch (type) {
@@ -98,8 +98,7 @@ sampleSourceStatus_t PlaybackEngine::setSource(drumID_t drum, sampleSourceType_t
             break;
         
         case SOURCE_PREGENERATED:
-            // sources[drum].reset(new AudioClip(filepath));
-            sources[drum].reset(new AudioClip(library.getFilepath(drum, type)));
+            sources[drum].reset(new AudioClip(library.getFilepath(drum, bank, type)));
             status = sources[drum]->getStatus();
             break;
     }

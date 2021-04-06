@@ -64,7 +64,7 @@ class PlaybackEngine : public AudioCallback {
         /*! Sets the source for the specified drum.
         \param drum ID of the drum to set the type for.
         \param type type of source. */
-        sampleSourceStatus_t setSource(drumID_t drum, sampleSourceType_t type);
+        sampleSourceStatus_t setSource(drumID_t drum, int bank, sampleSourceType_t type);
 
         /*! Returns the source status of the given drum.
         \return source status. */

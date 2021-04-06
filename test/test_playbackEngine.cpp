@@ -59,7 +59,7 @@ BOOST_AUTO_TEST_CASE(triggerSource) {
     drumID_t d = KICK_DRUM;
     std::vector<drumID_t> a;
     for (int i = 0; i < NUM_DRUMS; i++) {
-        p.setSource((drumID_t)i, SOURCE_PREGENERATED);
+        p.setSource((drumID_t)i, 0, SOURCE_PREGENERATED);
     }
 
     p.trigger(d);
