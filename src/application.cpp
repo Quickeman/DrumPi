@@ -153,10 +153,12 @@ void SetTempoMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 	Application* app = static_cast<Application*>(appc);
 	switch (key) {
 		case KEY_DOT:
-			//increase tempo (should tempo variable be a member of SetTempoMode or Application??)
+			//increase tempo
+			app->seqClocker->setRateBPM(app->seqClocker->getRateBPM() + 20);
 			break;
 		case KEY_COMMA:
 			//decrease tempo
+			app->seqClocker->setRateBPM(app->seqClocker->getRateBPM() - 20);
 			break;
 			
 		case KEY_T:
