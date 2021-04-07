@@ -255,10 +255,8 @@ Application::Application() {
 	// Jack client
 	audioEngine.reset(new audio::JackClient("DrumPi"));
 
-	// Get the PlaybackEngine to load all of the audio samples for bank 0
-	for (int i = 0; i < NUM_DRUMS; i++) {
-		playbackEngine.setSource((drumID_t)i, 1, audio::SOURCE_PREGENERATED);
-	}
+	// Get the PlaybackEngine to load the audio samples for bank 1
+	playbackEngine.loadBank(1, audio::SOURCE_PREGENERATED);
 
 	// Sequencer
 	seq.reset(new Sequencer(16));
