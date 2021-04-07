@@ -94,6 +94,7 @@ void AudioClip::loadFile(std::string filepath) {
 
     status = SOURCE_LOADING;
 
+    file.shouldLogErrorsToConsole(false);
     loaded = file.load(this->filepath);
 
     if (!loaded) {

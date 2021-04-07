@@ -1,5 +1,7 @@
 //application.cpp
 
+#include <iostream>
+
 #include "application.hpp"
 
 using namespace drumpi;
@@ -46,6 +48,10 @@ void PerformanceMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 		
 		case KEY_V:
 			app->setState(SET_DRUM_VOLUME_MODE);	//change state to SetDrumVolumeMode
+			break;
+
+		case KEY_B:
+			app->setState(SET_DRUM_BANK_MODE);
 			break;
 	}
 }
@@ -144,6 +150,8 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 		case KEY_V:
 			app->setState(SET_DRUM_VOLUME_MODE);	//change state to SetDrumVolumeMode
 			break;
+		case KEY_B:
+			app->setState(SET_DRUM_BANK_MODE);
 	}
 }
 
@@ -246,6 +254,71 @@ void SetDrumVolumeMode::updateDisplay(ApplicationCallback* appc) {
 }
 
 
+// SetDrumBankMode
+
+SetDrumBankMode::SetDrumBankMode() {
+	// Default bank
+	bank = 1;
+	safeBank = bank;
+	label = SET_DRUM_BANK_MODE;
+	previousstate = PERFORMANCE_MODE;
+}
+
+void SetDrumBankMode::interpretKeyPress(ApplicationCallback* appc, int key) {
+	Application* app = static_cast<Application*>(appc);
+	audio::sampleSourceStatus_t loadStatus = audio::SOURCE_READY;
+	switch (key) {
+		case KEY_DOT:
+			// Bank up
+			bank++;
+			// Load the bank
+			loadStatus = app->playbackEngine.loadBank(bank, audio::SOURCE_PREGENERATED);
+			break;
+		case KEY_COMMA:
+			// Bank down
+			if (bank > 0) bank--;
+			// Load the bank
+			loadStatus = app->playbackEngine.loadBank(bank, audio::SOURCE_PREGENERATED);
+			break;
+		
+		case KEY_A:
+		case KEY_S:
+		case KEY_D:
+		case KEY_F:
+		case KEY_J:
+		case KEY_K:
+		case KEY_L:
+		case KEY_SEMICOLON:
+			// Trigger the relevant drum sound
+			app->playbackEngine.trigger(interpretDrumKey(key));
+			break;
+		
+		case KEY_B:
+		case KEY_BACKSPACE:
+			// Exit SetDrumBankMode
+			app->setState(previousstate);
+			break;
+	}
+
+	if (loadStatus != audio::SOURCE_READY) {
+		std::cout << std::endl << "Could not load bank " << bank << std::endl;
+		std::cout << "Returning to bank " << safeBank << std::endl;
+		bank = safeBank;
+		app->playbackEngine.loadBank(bank, audio::SOURCE_PREGENERATED);
+	} else {
+		safeBank = bank;
+	}
+}
+
+void SetDrumBankMode::updateDisplay(ApplicationCallback* appc) {
+
+}
+
+int SetDrumBankMode::getBank() {
+	return bank;
+}
+
+
 //Application
 
 Application::Application() {
@@ -256,7 +329,7 @@ Application::Application() {
 	audioEngine.reset(new audio::JackClient("DrumPi"));
 
 	// Get the PlaybackEngine to load the audio samples for bank 1
-	playbackEngine.loadBank(1, audio::SOURCE_PREGENERATED);
+	playbackEngine.loadBank(setDrumBankMode.getBank(), audio::SOURCE_PREGENERATED);
 
 	// Sequencer
 	seq.reset(new Sequencer(16));
@@ -312,6 +385,11 @@ void Application::setState(stateLabel_t newstate) {
 				currentstate = &setdrumvolumemode;
 			}
 			break;
+		case SET_DRUM_BANK_MODE:
+			if ((currentstate == &sequencermode) || (currentstate == &performancemode)) {
+				setDrumBankMode.previousstate = currentstate->label;
+			}
+			currentstate = &setDrumBankMode;
 	}
 }
 

@@ -41,7 +41,8 @@ typedef enum _StateLabels {
     PERFORMANCE_MODE,
     SEQUENCER_MODE,
     SET_TEMPO_MODE,
-    SET_DRUM_VOLUME_MODE
+    SET_DRUM_VOLUME_MODE,
+    SET_DRUM_BANK_MODE
 } stateLabel_t;
 
 namespace audio {

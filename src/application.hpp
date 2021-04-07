@@ -140,6 +140,37 @@ private:
 };
 
 
+/*! Load different banks of drums in this state. */
+class SetDrumBankMode : public State {
+public:
+	/*! Constructor. */
+	SetDrumBankMode();
+
+	/*!
+	 * \brief Method to perform action depending on key pressed.
+	 * 
+	 * Action performed is unique to SetDrumBankMode.
+	 * @param appc Callback to the main application
+	 * @param key The keypress detected
+	 */
+	void interpretKeyPress(ApplicationCallback* appc, int key) override;
+
+	virtual void updateDisplay(ApplicationCallback* appc) override;
+
+	/*! Returns the current bank's ID. */
+	int getBank();
+
+	/*! Variable storing the previous state of the application */
+	stateLabel_t previousstate;
+
+private:
+	/*! Current bank selected. */
+	int bank;
+	/*! The last bank successfully loaded. */
+	int safeBank;
+};
+
+
 /*! Main application */
 class Application : public ApplicationCallback {
 public:
@@ -174,6 +205,9 @@ public:
 
 	/*! Instance of SetDrumVolumeMode state */
 	SetDrumVolumeMode setdrumvolumemode;
+
+	/*! Instance of SetDrumBankMode state. */
+	SetDrumBankMode setDrumBankMode;
 
 	/*! Instance of KeyboardThread class */
 	KeyboardThread kbdThread;
