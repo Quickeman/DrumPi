@@ -216,12 +216,12 @@ void Display::setPlaybackSeq(std::vector<bool> activeDrums, unsigned int stepNum
     clear(false);
     unsigned int page = stepNum > getNumDigits();
     setActiveDrums(activeDrums, page);
-    if(stepNum <= getNumDigits()) {
-        unsigned char addr = getNumDigits() -stepNum;
+    if(stepNum < getNumDigits()) {
+        unsigned char addr = getNumDigits() - stepNum - 1;
         setDigit(addr, getDigit(addr) + bottomAddr, false);
     }
     else {
-        unsigned char addr = getNumDigits() - (stepNum%8);
+        unsigned char addr = getNumDigits() - (stepNum % 8) - 1; 
         setDigit(addr, getDigit(addr) + dpAddr, false);
     }
     if (redraw) flush();
