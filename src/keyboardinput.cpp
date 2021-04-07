@@ -44,6 +44,8 @@ void KeyboardInput::pollInput() {
 			read(fd, &ev, sizeof ev);
 			if (ev.type == EV_KEY && ev.value == 1) {
 				if (ev.code == KEY_BACKSPACE) {
+					printf("\n");
+					tcflush(STDIN_FILENO, TCIFLUSH);
 					callback->running = false;
 				}
 				//printf("\n%d key pressed\n", ev.code);

@@ -4,10 +4,6 @@ using namespace drumpi;
 using namespace audio;
 
 PlaybackEngine::PlaybackEngine() {
-    sources.resize(NUM_DRUMS);
-    isTriggered.resize(NUM_DRUMS);
-    volumes.resize(NUM_DRUMS);
-
     masterVol = masterVolDef;
 
     for (int i = 0; i < NUM_DRUMS; i++) {
@@ -56,9 +52,11 @@ void PlaybackEngine::untrigger(drumID_t drum) {
 
 std::vector<drumID_t> PlaybackEngine::getActive() {
     std::vector<drumID_t> v;
+    v.reserve(NUM_DRUMS);
     for (int i = 0; i < NUM_DRUMS; i++) {
         if (isTriggered[i]) v.push_back((drumID_t)i);
     }
+    v.shrink_to_fit();
     return v;
 }
 
@@ -90,7 +88,7 @@ float PlaybackEngine::getVolume() {
     return masterVol;
 }
 
-sampleSourceStatus_t PlaybackEngine::setSource(drumID_t drum, sampleSourceType_t type) {
+sampleSourceStatus_t PlaybackEngine::setSource(drumID_t drum, int bank, sampleSourceType_t type) {
     sampleSourceStatus_t status;
 
     switch (type) {
@@ -100,8 +98,7 @@ sampleSourceStatus_t PlaybackEngine::setSource(drumID_t drum, sampleSourceType_t
             break;
         
         case SOURCE_PREGENERATED:
-            // sources[drum].reset(new AudioClip(filepath));
-            sources[drum].reset(new AudioClip(library.getFilepath(drum, type)));
+            sources[drum].reset(new AudioClip(library.getFilepath(drum, bank, type)));
             status = sources[drum]->getStatus();
             break;
     }

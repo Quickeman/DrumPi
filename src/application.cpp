@@ -14,8 +14,7 @@ PerformanceMode::PerformanceMode() {
 void PerformanceMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 	Application* app = static_cast<Application*>(appc);
 	std::vector<drumID_t> drumsActive;
-	std::vector<bool> activeDrums;
-	activeDrums.resize(8);
+	std::vector<bool> activeDrums(NUM_DRUMS);
 	switch (key) {
 		case KEY_A:
 		case KEY_S:
@@ -107,7 +106,14 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 			
 		case KEY_SPACE:
 			// Toggle Sequencer's activity state
-			app->seqClocker->isActive() ? app->seqClocker->stop() : app->seqClocker->start();
+			if(app->seqClocker->isActive()) {
+				// Stop the Sequencer's clock
+				app->seqClocker->stop();
+				// Reset the Sequencer to first step, not clearing the sequence
+				app->seq->reset(false);
+			} else {
+				app->seqClocker->start();
+			}
 			// Toggle play/pause sequence display
 			break;
 
@@ -115,6 +121,7 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 			//Display: switch to performance display mode
 			//stop sequencer before switching to PerformanceMode
 			app->seqClocker->stop();
+			app->seq->reset(false);
 			app->setState(PERFORMANCE_MODE);	//change state to PerformanceMode
 			break;
 
@@ -147,10 +154,12 @@ void SetTempoMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 	Application* app = static_cast<Application*>(appc);
 	switch (key) {
 		case KEY_DOT:
-			//increase tempo (should tempo variable be a member of SetTempoMode or Application??)
+			//increase tempo
+			app->seqClocker->setRateBPM(app->seqClocker->getRateBPM() + 20);
 			break;
 		case KEY_COMMA:
 			//decrease tempo
+			app->seqClocker->setRateBPM(app->seqClocker->getRateBPM() - 20);
 			break;
 			
 		case KEY_T:
@@ -216,9 +225,9 @@ Application::Application() {
 	// Jack client
 	audioEngine.reset(new audio::JackClient("DrumPi"));
 
-	// Get the PlaybackEngine to load all of the audio samples
+	// Get the PlaybackEngine to load all of the audio samples for bank 0
 	for (int i = 0; i < NUM_DRUMS; i++) {
-		playbackEngine.setSource((drumID_t)i, audio::SOURCE_PREGENERATED);
+		playbackEngine.setSource((drumID_t)i, 0, audio::SOURCE_PREGENERATED);
 	}
 
 	// Sequencer
@@ -274,28 +283,28 @@ void Application::setState(stateLabel_t newstate) {
 drumID_t State::interpretDrumKey(int key) {
 	switch (key) {
 		case KEY_A : default :
-			return TOM_1_DRUM;
+			return DRUM_1;
 			break;
 		case KEY_S:
-			return TOM_2_DRUM;
+			return DRUM_2;
 			break;
 		case KEY_D:
-			return SNARE_DRUM;
+			return DRUM_3;
 			break;
 		case KEY_F:
-			return KICK_DRUM;
+			return DRUM_4;
 			break;
 		case KEY_J:
-			return CLAP_DRUM;
+			return DRUM_5;
 			break;
 		case KEY_K:
-			return HI_HAT_CLOSED;
+			return DRUM_6;
 			break;
 		case KEY_L:
-			return HI_HAT_OPEN;
+			return DRUM_7;
 			break;
 		case KEY_SEMICOLON:
-			return CYMBAL_DRUM;
+			return DRUM_8;
 			break;
 	}
 }

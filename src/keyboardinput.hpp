@@ -5,6 +5,7 @@
 #ifndef KEYBOARDINPUT_H
 #define KEYBOARDINPUT_H
 
+#include <termios.h>
 #include <poll.h>
 #include <unistd.h>
 #include <fcntl.h>

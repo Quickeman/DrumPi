@@ -7,6 +7,7 @@
 #include "playback.hpp"
 
 #include <vector>
+#include <array>
 
 namespace drumpi {
 
@@ -45,7 +46,7 @@ class _SequenceStep {
     
     private:
         /*! Container for drum trigger switches. */
-        std::vector<bool> switches;
+        std::array<bool, NUM_DRUMS> switches;
 };
 
 

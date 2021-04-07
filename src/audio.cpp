@@ -25,11 +25,12 @@ JackClient::JackClient(std::string clientName, int nOutPorts, int nInPorts) {
             errorStatus = SERVER_CONNECT_FAILED;
         }
         errorStatus = CLIENT_OPEN_FAILED;
+    } else {
+        open = true;
     }
-    open = true;
 
     // Non-unique name given
-    if (jackStatus & JackNameNotUnique) clientName = jack_get_client_name(client);
+    if (jackStatus & JackNameNotUnique) clientName.assign(jack_get_client_name(client));
 
     // Set up shutdown routine
     jack_on_shutdown(client, JackClient::_shutdown, 0);
@@ -38,7 +39,7 @@ JackClient::JackClient(std::string clientName, int nOutPorts, int nInPorts) {
     // Outputs
     for (int i = 0; i < outPorts.size(); i++) {
         std::string name = "output";
-        name = name.append(std::to_string(i + 1));
+        name.append(std::to_string(i + 1));
         outPorts[i] = jack_port_register(
             client,
             name.data(),
@@ -74,12 +75,13 @@ audioError_t JackClient::start(AudioCallback& callback) {
     // Error handling
     if (err) {
         return CLIENT_ACTIVATE_FAILED;
+    } else{
+        running = true;
     }
-    running = true;
 
     // Get port names(?)
     // Output ports are inputs as they are 'input' to the backend
-    const char **portsTemp = jack_get_ports(client, NULL, NULL, JackPortIsPhysical|JackPortIsInput);
+    const char** portsTemp = jack_get_ports(client, NULL, NULL, JackPortIsPhysical|JackPortIsInput);
     for (int i = 0; i < ports.size(); i++) {
         ports[i] = portsTemp[i];
         err = jack_connect(

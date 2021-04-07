@@ -9,7 +9,6 @@ using namespace drumpi;
 // _SequenceStep class
 
 _SequenceStep::_SequenceStep() {
-    switches.resize(NUM_DRUMS);
     clear();
 }
 
@@ -39,11 +38,13 @@ int _SequenceStep::numActive() {
 
 std::vector<drumID_t> _SequenceStep::getActive() {
     std::vector<drumID_t> active;
+    active.reserve(NUM_DRUMS);
     for (int i = 0; i < switches.size(); i++) {
         if (isActive((drumID_t)i)) {
             active.push_back((drumID_t)i);
         }
     }
+    active.shrink_to_fit();
     return active;
 }
 
@@ -161,7 +162,7 @@ void Sequencer::_updateStepPtr() {
 // SequencerClock class
 
 SequencerClock::SequencerClock(std::shared_ptr<Sequencer> s, audio::PlaybackEngine& p) {
-    setRateBPM(240);
+    setRateBPM(480);
     rateChangeFlag = false;
 
     seq = s;
