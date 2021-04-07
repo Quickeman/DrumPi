@@ -285,7 +285,7 @@ class DisplayClock : public clock::Clock {
         /*! Constructor.
         Sets the Display to be clocked.
         \param s \ref Display object to be clocked. */
-        DisplayClock(std::shared_ptr<Display> d);
+        DisplayClock(Display* d);
 
         /*! Override the tick method.
         Clocks the \ref Display given to \ref setDisplay. */
@@ -293,7 +293,8 @@ class DisplayClock : public clock::Clock {
     
     private:
         /*! Pointer to the `Display` object to be clocked. */
-        std::shared_ptr<Display> display = nullptr;
-};
+        Display* display = nullptr;
+
+    };
 
 } // namespace drumpi
