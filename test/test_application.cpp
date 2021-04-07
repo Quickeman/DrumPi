@@ -134,23 +134,25 @@ BOOST_AUTO_TEST_CASE(returning_to_sequencer_mode) {
 
 	//simulate "tab" key being pressed to change to page 2
 	app.interpretKeyPress(KEY_TAB);
-	//simulate "s" key being pressed to change active drum to drum S
-	app.interpretKeyPress(KEY_S);
 	//check current page is still page 2
 	BOOST_CHECK(app.sequencermode.currentpage == 1);
+
+	int testKey = KEY_S;
+	drumID_t testDrum = DRUM_2;
+	BOOST_CHECK(testDrum == app.currentstate->interpretDrumKey(testKey));
+	//simulate "s" key being pressed to change active drum to drum S
+	app.interpretKeyPress(testKey);
 	
 	// Check active drum is now drum S
-	// This test will fail until the getDrumIDFromKey() function is implemented
-	// Function name just a placeholder, can be whatever
-	//BOOST_CHECK(app.sequencermode.currentdrum == app.currentstate->interpretDrumKey(KEY_S);
+	BOOST_CHECK(app.sequencermode.currentdrum == app.currentstate->interpretDrumKey(testKey));
 
 	//leave sequencer mode (switch to performance mode)
 	app.interpretKeyPress(KEY_M);
 	//return to sequencer mode
 	app.interpretKeyPress(KEY_M);
-	//check sequencer mode variables have returned to defaults
+	//check sequencer mode variables are correct
 	BOOST_CHECK(app.sequencermode.currentpage == 0);
-	BOOST_CHECK(app.sequencermode.currentdrum == DRUM_1);
+	BOOST_CHECK(app.sequencermode.currentdrum == testDrum);
 }
 
 

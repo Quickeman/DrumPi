@@ -298,7 +298,6 @@ void Application::setState(stateLabel_t newstate) {
 		case SEQUENCER_MODE:
 			currentstate = &sequencermode;
 			sequencermode.currentpage = 0;	//switch to default page
-			sequencermode.currentdrum = currentstate->interpretDrumKey(KEY_A);	//switch to default drum A
 			//switch display to sequencer mode
 			break;
 		case SET_TEMPO_MODE:
