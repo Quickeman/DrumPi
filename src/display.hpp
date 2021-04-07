@@ -297,7 +297,6 @@ class Display: public Max7219 {
          * */
         int getKeymapping(int index);
     };
-};
 
 /*! \ref Metronome derived class to clock a \ref Display. */
 class DisplayClock : public clock::Clock {
