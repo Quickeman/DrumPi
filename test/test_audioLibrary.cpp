@@ -13,7 +13,7 @@ BOOST_AUTO_TEST_CASE(loadingWavFiles) {
     for (int i = 0; i < NUM_DRUMS; i++) {
         AudioFile<sample_t> f;
         bool loaded;
-        loaded = f.load(lib.getFilepath((drumID_t)i, 0, SOURCE_PREGENERATED));
+        loaded = f.load(lib.getFilepath((drumID_t)i, 1, SOURCE_PREGENERATED));
         BOOST_CHECK(loaded);
     }
 }
