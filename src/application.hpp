@@ -180,6 +180,9 @@ public:
 
 	/*! AudioEngine object. */
 	std::unique_ptr<audio::JackClient> audioEngine = nullptr;
+	
+	/*! DisplayClock object. */
+	std::unique_ptr<DisplayClock> displayClock = nullptr;
 
 	/*! PlaybackEngine object. */
 	audio::PlaybackEngine playbackEngine;

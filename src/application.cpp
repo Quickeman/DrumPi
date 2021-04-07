@@ -13,8 +13,6 @@ PerformanceMode::PerformanceMode() {
 
 void PerformanceMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 	Application* app = static_cast<Application*>(appc);
-	std::vector<drumID_t> drumsActive;
-	std::vector<bool> activeDrums(NUM_DRUMS);
 	switch (key) {
 		case KEY_A:
 		case KEY_S:
@@ -26,8 +24,7 @@ void PerformanceMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 		case KEY_SEMICOLON:
 			// Trigger the drum sound
 			app->playbackEngine.trigger(interpretDrumKey(key));
-			drumsActive = app->playbackEngine.getActive();
-			app->display.setPerformance(drumsActive, 1.0f, true);
+
 			//Display: Toggle respective drum square and level meter
 			break;
 			
@@ -54,7 +51,11 @@ void PerformanceMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 }
 
 void PerformanceMode::updateDisplay(ApplicationCallback* appc) {
+	Application* app = static_cast<Application*>(appc);
 
+	std::vector<drumID_t> drumsActive;
+	drumsActive = app->playbackEngine.getActive();
+	app->display.setPerformance(drumsActive, 1.0f, true);
 }
 
 
@@ -247,17 +248,25 @@ Application::Application() {
 	seq.reset(new Sequencer(16));
 	// SequencerClock
 	seqClocker.reset(new SequencerClock(seq, playbackEngine));
+
+	// DisplayClock
+	displayClock.reset(new DisplayClock(this));
+
 }
 
 void Application::run() {
 	// Start the audio stream
 	audioEngine->start(playbackEngine);
 
+	displayClock->start();
+
 	kbdThread.start();
 
 	while(running) {}
 
 	kbdThread.stop();
+
+	displayClock->stop();
 
 	audioEngine->stop();
 }
