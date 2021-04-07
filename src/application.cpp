@@ -30,6 +30,11 @@ void PerformanceMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 			app->display.setPerformance(drumsActive, 1.0f, true);
 			//Display: Toggle respective drum square and level meter
 			break;
+			
+		case KEY_M:
+			//Display: Show S to indicate mode change
+			app->setState(SEQUENCER_MODE);	//change state to SequencerMode
+			break;
 	
 		case KEY_COMMA:
 			// Decrease master volume
@@ -222,7 +227,6 @@ Application::Application() {
 		playbackEngine.setSource((drumID_t)i, 1, audio::SOURCE_PREGENERATED);
 	}
 
-
 	// Sequencer
 	seq.reset(new Sequencer(16));
 	// SequencerClock
@@ -262,8 +266,13 @@ void Application::setState(stateLabel_t newstate) {
 			currentstate = &settempomode;
 			break;
 		case SET_DRUM_VOLUME_MODE:
-			setdrumvolumemode.previousstate = PERFORMANCE_MODE;
-			currentstate = &setdrumvolumemode;
+			if (currentstate == &sequencermode) {
+				setdrumvolumemode.previousstate = SEQUENCER_MODE;
+				currentstate = &setdrumvolumemode;
+			} else if (currentstate == &performancemode) {
+				setdrumvolumemode.previousstate = PERFORMANCE_MODE;
+				currentstate = &setdrumvolumemode;
+			}
 			break;
 	}
 }
