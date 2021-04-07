@@ -53,6 +53,10 @@ void PerformanceMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 	}
 }
 
+void PerformanceMode::updateDisplay(ApplicationCallback* appc) {
+
+}
+
 
 SequencerMode::SequencerMode() {
 	label = SEQUENCER_MODE;
@@ -142,6 +146,10 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 	}
 }
 
+void SequencerMode::updateDisplay(ApplicationCallback* appc) {
+
+}
+
 
 SetTempoMode::SetTempoMode() {
 	label = SET_TEMPO_MODE;
@@ -165,6 +173,10 @@ void SetTempoMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 			app->setState(SEQUENCER_MODE);	//change state to SequencerMode
 			break;
 	}
+}
+
+void SetTempoMode::updateDisplay(ApplicationCallback* appc) {
+
 }
 
 
@@ -210,6 +222,10 @@ void SetDrumVolumeMode::interpretKeyPress(ApplicationCallback *appc, int key) {
 			app->setState(previousstate);
 			break;
 	}
+}
+
+void SetDrumVolumeMode::updateDisplay(ApplicationCallback* appc) {
+
 }
 
 
@@ -304,4 +320,18 @@ drumID_t State::interpretDrumKey(int key) {
 			return DRUM_8;
 			break;
 	}
+}
+
+
+// DisplayClock class
+
+DisplayClock::DisplayClock(ApplicationCallback* a) {
+    setRate(33); //ms
+    appc = a;
+}
+
+void DisplayClock::tick() {
+	Application* app = static_cast<Application*>(appc);
+
+	app->currentstate->updateDisplay(appc);
 }
