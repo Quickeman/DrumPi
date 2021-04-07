@@ -3,6 +3,8 @@
 #include <math.h>
 #include <defs.hpp>
 #include <wiringPiSPI.h>
+#include <clock.hpp>
+#include <memory>
 
 namespace drumpi {
 
@@ -295,4 +297,24 @@ class Display: public Max7219 {
          * */
         int getKeymapping(int index);
     };
+};
+
+/*! \ref Metronome derived class to clock a \ref Display. */
+class DisplayClock : public clock::Clock {
+    public:
+        /*! Constructor.
+        Sets the Display to be clocked.
+        \param s \ref Display object to be clocked. */
+        DisplayClock(Display* d);
+
+        /*! Override the tick method.
+        Clocks the \ref Display given to \ref setDisplay. */
+        void tick() override;
+    
+    private:
+        /*! Pointer to the `Display` object to be clocked. */
+        Display* display = nullptr;
+
+    };
+
 } // namespace drumpi

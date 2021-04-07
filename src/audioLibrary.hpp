@@ -18,15 +18,18 @@ class AudioLibrary {
 
         /*! Returns the absolute filepath for the given drum and type.
         \param drum ID of the drum to inspect the filepath of.
+        \param bank ID of the bank of drums to load from.
         \param type type of source to inspect the filepath of.
         \return absolute filepath of the drum's relevant file. */
-        std::string getFilepath(drumID_t drum, sampleSourceType_t type);
+        std::string getFilepath(drumID_t drum, int bank, sampleSourceType_t type);
     
     private:
         /*! Audio files directory (relative). */
         std::string audioDir;
-        /*! Extensionless filenames of audio sources. */
-        std::array<std::string, NUM_DRUMS> filenames;
+        /*! Prefix for the bank directory names. */
+        std::string bankDirPre;
+        /*! Prefix for the files' names. */
+        std::string drumNamePre;
         /*! Extensions for the types of audio sources. */
         std::array<std::string, NUM_SOURCE_TYPES> extensions;
 };

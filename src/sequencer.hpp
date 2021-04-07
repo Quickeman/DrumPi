@@ -4,8 +4,10 @@
 
 #include "defs.hpp"
 #include "clock.hpp"
+#include "playback.hpp"
 
 #include <vector>
+#include <array>
 
 namespace drumpi {
 
@@ -17,11 +19,15 @@ class _SequenceStep {
 
         /*! Adds the sample with the passed ID to the step.
         \param id ID of the drum to be added. */
-        void addToStep(drumID_t id);
+        void add(drumID_t id);
 
         /*! Removes the sample with the passed ID from the step.
         \param id ID of the drum to be removed. */
-        void removeFromStep(drumID_t id);
+        void remove(drumID_t id);
+
+        /*! Toggles the sample with the passed ID in the step.
+        \param id ID of the drum to be toggled. */
+        void toggle(drumID_t id);
 
         /*! Returns true if the sample with the passed ID is active in the step.
         \param id ID of the drum to be tested. */
@@ -40,7 +46,7 @@ class _SequenceStep {
     
     private:
         /*! Container for drum trigger switches. */
-        std::vector<bool> switches;
+        std::array<bool, NUM_DRUMS> switches;
 };
 
 
@@ -90,20 +96,29 @@ class Sequencer {
         /*! Adds the specified drum to the specified step.
         \param drum ID of the drum to add.
         \param step ID of the step to be modified. */
-        void addToStep(drumID_t drum, int step);
+        void add(drumID_t drum, int step);
 
         /*! Adds the specified drum to the current step.
         \param drum ID of the drum to add. */
-        void addToStep(drumID_t drum);
+        void add(drumID_t drum);
 
         /*! Removes the specified drum from the specified step.
         \param drum ID of the drum to remove.
         \param step ID of the step to be modified. */
-        void removeFromStep(drumID_t drum, int step);
+        void remove(drumID_t drum, int step);
 
         /*! Removes the specified drum from the current step.
         \param drum ID of the drum to remove. */
-        void removeFromStep(drumID_t drum);
+        void remove(drumID_t drum);
+
+        /*! Toggles the specified drum in the specified step.
+        \param drum ID of the drum to toggle.
+        \param step ID of the step to be modified. */
+        void toggle(drumID_t drum, int step);
+
+        /*! Toggles the specified drum in the current step.
+        \param drum ID of the drum to toggle. */
+        void toggle(drumID_t drum);
     
     private:
         /*! Container for step objects. */
@@ -133,12 +148,11 @@ class Sequencer {
 /*! \ref Metronome derived class to clock a \ref Sequencer. */
 class SequencerClock : public clock::Metronome {
     public:
-        /*! Constructor. */
-        SequencerClock();
-
-        /*! Sets the Sequencer to be clocked.
-        \param s \ref Sequencer object to be clocked. */
-        void setSequencer(std::shared_ptr<Sequencer> s);
+        /*! Constructor.
+        Sets the Sequencer to be clocked.
+        \param s \ref Sequencer object to be clocked.
+        \param p \ref PlaybackEngine object. */
+        SequencerClock(std::shared_ptr<Sequencer> s, audio::PlaybackEngine& p);
 
         /*! Override the tick method.
         Clocks the \ref Sequencer given to \ref setSequencer. */
@@ -147,6 +161,9 @@ class SequencerClock : public clock::Metronome {
     private:
         /*! Pointer to the `Sequencer` object to be clocked. */
         std::shared_ptr<Sequencer> seq = nullptr;
+
+        /*! Pointer to the `PlaybackEngine`. */
+        audio::PlaybackEngine* pbe;
 };
 
 } // namespace drumpi

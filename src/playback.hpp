@@ -4,6 +4,7 @@
 
 #include <vector>
 #include <memory>
+#include <array>
 
 #include "defs.hpp"
 #include "audio.hpp"
@@ -63,7 +64,7 @@ class PlaybackEngine : public AudioCallback {
         /*! Sets the source for the specified drum.
         \param drum ID of the drum to set the type for.
         \param type type of source. */
-        sampleSourceStatus_t setSource(drumID_t drum, sampleSourceType_t type);
+        sampleSourceStatus_t setSource(drumID_t drum, int bank, sampleSourceType_t type);
 
         /*! Returns the source status of the given drum.
         \return source status. */
@@ -81,16 +82,16 @@ class PlaybackEngine : public AudioCallback {
         std::vector<sample_t> buffer;
 
         /*! SampleSource object pointers. */
-        std::vector<std::unique_ptr<SampleSource>> sources;
+        std::array<std::unique_ptr<SampleSource>, NUM_DRUMS> sources;
         /*! Switches to store whether each source is being played. */
-        std::vector<bool> isTriggered;
+        std::array<bool, NUM_DRUMS> isTriggered;
 
         /*! Current master volume multiplier. */
         float masterVol;
         /*! Default master volume multiplier. */
         static constexpr float masterVolDef = 0.75f;
         /*! Current drum volume multipliers. */
-        std::vector<float> volumes;
+        std::array<float, NUM_DRUMS> volumes;
         /*! Default drum volume multiplier. */
         static constexpr float volumeDef = 0.75f;
 

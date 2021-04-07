@@ -10,8 +10,7 @@
 namespace drumpi {
 namespace audio {
 
-/*! Abstract class for sample retieval.
-\param T data format of playback samples. */
+/*! Abstract class for sample retieval. */
 class SampleSource {
     public:
         /*! Constructor. */
@@ -44,11 +43,24 @@ class SampleSource {
         sampleSourceType_t type;
 };
 
-/*! Handler class for drum samples. */
-class AudioClip : public SampleSource {
+
+/*! Specialised abstract class for file-based sample sources, e.g. wav files. */
+class SampleSourceFile : public SampleSource {
+    protected:
+        /*! Loads the specified file.
+        \param filepath file path of the file to load. */
+        virtual void loadFile(std::string filepath) = 0;
+
+        /*! File path used for loading. */
+        std::string filepath;
+};
+
+
+/*! Handler class for pre-generated drum samples. */
+class AudioClip : public SampleSourceFile {
     public:
         /*! Class constructor.
-        \param filepath the file path of an audio file, e.g. "~/DrumPi/samples/kick.wav". */
+        \param filepath the file path of an audio file, e.g. "/home/pi/DrumPi/samples/kick.wav". */
         AudioClip(std::string filepath);
 
         /*! Returns a buffer of samples.
@@ -67,10 +79,10 @@ class AudioClip : public SampleSource {
         void hardReset();
 
     private:
-        /*! Retrieve the audio from the given file. */
-        void loadFile();
-        /*! File path of the audio clip to load. */
-        std::string filepath;
+        /*! Loads the specified file.
+        \param filepath file path of the file to load. */
+        void loadFile(std::string filepath) override;
+
         /*! Container for the audio clip. */
         std::vector<sample_t> clip;
 

@@ -42,7 +42,9 @@ BOOST_AUTO_TEST_CASE(counter) {
 
     BOOST_CHECK_EQUAL(0, c.i);
 
+    BOOST_CHECK(!c.isActive());
     c.start();
+    BOOST_CHECK(c.isActive());
 
     BOOST_CHECK_EQUAL(1, c.i);
 
@@ -64,8 +66,10 @@ BOOST_AUTO_TEST_CASE(stopping) {
 
     std::this_thread::sleep_for(std::chrono::milliseconds((2*r) + (r / 2)));
 
+    BOOST_CHECK(c.isActive());
     int val = c.i;
     c.stop();
+    BOOST_CHECK(!c.isActive());
 
     std::this_thread::sleep_for(std::chrono::milliseconds((2*r) + (r / 2)));
 

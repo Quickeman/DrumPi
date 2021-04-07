@@ -20,6 +20,10 @@ class Timer : public CppTimer {
         /*! Constructor. */
         Timer();
 
+        /*! Destructor.
+        Deactivates the timer. */
+        ~Timer();
+
         /*! Set trigger time in ms.
         \param ms desired trigger time, in ms. */
         void setTime(int ms);
@@ -31,6 +35,13 @@ class Timer : public CppTimer {
         /*! Start the timer. */
         void start();
 
+        /*! Cancels the timer. */
+        void stop();
+
+        /*! Checks if the `Timer` is active.
+        \return `true` if active. */
+        bool isActive();
+
         /*! Callback method run when given time has passed.
         Override to add functionality. */
         virtual void trigger() = 0;
@@ -41,6 +52,9 @@ class Timer : public CppTimer {
 
         /*! Trigger time in ms. */
         int time;
+
+        /*! Active flag. */
+        bool active;
 };
 
 
@@ -49,6 +63,10 @@ class Clock : public CppTimer {
     public:
         /*! Constructor. */
         Clock();
+
+        /*! Destructor.
+        Deactivates the clock. */
+        ~Clock();
 
         /*! Set the clock rate.
         \param ms desired clocking rate, in ms. */
@@ -62,6 +80,13 @@ class Clock : public CppTimer {
         Default period is 1 second, change with setRate(). */
         void start();
 
+        /*! Stop the clock. */
+        void stop();
+
+        /*! Checks if the `Clock` is active.
+        \return `true` if active. */
+        bool isActive();
+
         /*! Callback method run on each clock pulse.
         Override to add functionality. */
         virtual void tick() = 0;
@@ -72,6 +97,9 @@ class Clock : public CppTimer {
 
         /*! Clock rate in ms. */
         int rate;
+
+        /*! Active flag. */
+        bool active;
 
     protected:
         /*! Flag for the clocking rate being changed. */

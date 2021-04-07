@@ -224,7 +224,7 @@ void Display::setPlaybackSeq(std::vector<bool> activeDrums, unsigned int stepNum
         unsigned char addr = getNumDigits() - (stepNum%8);
         setDigit(addr, getDigit(addr) + dpAddr, false);
     }
-    flush();
+    if (redraw) flush();
 }
 
 void Display::setStopSeq(std::vector<bool> activeDrums, unsigned int page, unsigned int currentDrum, bool redraw) {
@@ -248,6 +248,13 @@ int Display::getKeymapping(int index){
 }
 
 
+// DisplayClock class
 
+DisplayClock::DisplayClock(Display* d) {
+    setRate(33); //ms
+    display = d;
+}
 
-
+void DisplayClock::tick() {
+    display->flush();
+}

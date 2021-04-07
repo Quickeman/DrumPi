@@ -9,16 +9,19 @@ using namespace drumpi;
 // _SequenceStep class
 
 _SequenceStep::_SequenceStep() {
-    switches.resize(NUM_DRUMS);
     clear();
 }
 
-void _SequenceStep::addToStep(drumID_t id) {
+void _SequenceStep::add(drumID_t id) {
     switches[id] = true;
 }
 
-void _SequenceStep::removeFromStep(drumID_t id) {
+void _SequenceStep::remove(drumID_t id) {
     switches[id] = false;
+}
+
+void _SequenceStep::toggle(drumID_t id) {
+    switches[id] = !switches[id];
 }
 
 bool _SequenceStep::isActive(drumID_t id) {
@@ -35,11 +38,13 @@ int _SequenceStep::numActive() {
 
 std::vector<drumID_t> _SequenceStep::getActive() {
     std::vector<drumID_t> active;
+    active.reserve(NUM_DRUMS);
     for (int i = 0; i < switches.size(); i++) {
         if (isActive((drumID_t)i)) {
             active.push_back((drumID_t)i);
         }
     }
+    active.shrink_to_fit();
     return active;
 }
 
@@ -111,23 +116,32 @@ void Sequencer::clear() {
 void Sequencer::reset(bool clearSteps) {
     stepNum = -1;
     step();
+    stepNum = -1;
     if (clearSteps) clear();
 }
 
-void Sequencer::addToStep(drumID_t drum, int step) {
-    steps[step].addToStep(drum);
+void Sequencer::add(drumID_t drum, int step) {
+    steps[step].add(drum);
 }
 
-void Sequencer::addToStep(drumID_t drum) {
-    addToStep(drum, stepNum);
+void Sequencer::add(drumID_t drum) {
+    add(drum, stepNum);
 }
 
-void Sequencer::removeFromStep(drumID_t drum, int step) {
-    steps[step].removeFromStep(drum);
+void Sequencer::remove(drumID_t drum, int step) {
+    steps[step].remove(drum);
 }
 
-void Sequencer::removeFromStep(drumID_t drum) {
-    removeFromStep(drum, stepNum);
+void Sequencer::remove(drumID_t drum) {
+    remove(drum, stepNum);
+}
+
+void Sequencer::toggle(drumID_t drum, int step) {
+    steps[step].toggle(drum);
+}
+
+void Sequencer::toggle(drumID_t drum) {
+    toggle(drum, stepNum);
 }
 
 void Sequencer::setNumSteps(int n) {
@@ -147,15 +161,17 @@ void Sequencer::_updateStepPtr() {
 
 // SequencerClock class
 
-SequencerClock::SequencerClock() {
-    setRateBPM(240);
+SequencerClock::SequencerClock(std::shared_ptr<Sequencer> s, audio::PlaybackEngine& p) {
+    setRateBPM(480);
     rateChangeFlag = false;
-}
 
-void SequencerClock::setSequencer(std::shared_ptr<Sequencer> s) {
     seq = s;
+    pbe = &p;
 }
 
 void SequencerClock::tick() {
     seq->step();
+
+    std::vector<drumID_t> active = seq->getActive();
+    for(int i = 0; i < active.size(); i++) pbe->trigger(active[i]);
 }
