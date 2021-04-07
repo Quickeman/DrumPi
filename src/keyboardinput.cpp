@@ -43,8 +43,7 @@ void KeyboardInput::pollInput() {
 		if (poll(fdset, 1, 0) == 1) {
 			read(fd, &ev, sizeof ev);
 			if (ev.type == EV_KEY && ev.value == 1) {
-				if (ev.code == KEY_BACKSPACE) {
-					printf("\n");
+				if (ev.code == KEY_ESC) {
 					tcflush(STDIN_FILENO, TCIFLUSH);
 					callback->running = false;
 				}

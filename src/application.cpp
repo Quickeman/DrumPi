@@ -185,7 +185,7 @@ void SetTempoMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 			break;
 			
 		case KEY_T:
-		case KEY_ESC:
+		case KEY_BACKSPACE:
 			// Exit SetTempoMode
 			app->setState(SEQUENCER_MODE);	//change state to SequencerMode
 			break;
@@ -234,7 +234,7 @@ void SetDrumVolumeMode::interpretKeyPress(ApplicationCallback *appc, int key) {
 			break;
 
 		case KEY_V:
-		case KEY_ESC:
+		case KEY_BACKSPACE:
 			// Exit SetDrumVolumeMode
 			app->setState(previousstate);
 			break;
