@@ -248,13 +248,13 @@ void Display::setPlaybackSeq(std::vector<bool> activeDrums, unsigned int stepNum
         unsigned char addr = getNumDigits() - (stepNum%8);
         setDigit(addr, getDigit(addr) + dpAddr, false);
     }
-    flush();
+    if (redraw) flush();
 }
 
 // DisplayClock class
 
-DisplayClock::DisplayClock(std::shared_ptr<Display> d) {
-    setRate(10); //ms
+DisplayClock::DisplayClock(Display* d) {
+    setRate(33); //ms
     display = d;
 }
 
