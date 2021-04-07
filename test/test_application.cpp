@@ -176,7 +176,7 @@ BOOST_AUTO_TEST_CASE(changing_to_SetDrumVolumeMode) {
 	BOOST_CHECK(app.currentstate->label == SET_DRUM_VOLUME_MODE);
 	
 	//exit SetDrumVolumeMode
-	app.interpretKeyPress(KEY_V);
+	app.interpretKeyPress(KEY_BACKSPACE);
 	//check state has this time returned to sequencer mode
 	BOOST_CHECK(app.currentstate->label == SEQUENCER_MODE);
 }
