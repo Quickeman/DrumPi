@@ -148,7 +148,23 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 }
 
 void SequencerMode::updateDisplay(ApplicationCallback* appc) {
+	Application* app = static_cast<Application*>(appc);
 
+	//std::vector<drumID_t> activeDrums;
+	//app->display.setPerformance(activeDrums, 0.0f, true);
+
+	std::vector<bool> activeDigits;
+	unsigned int step;
+
+	activeDigits = app->seq->getSteps(currentdrum);
+	step = app->seq->getStepNum();
+
+	if(app->seqClocker->isActive()) {
+		app->display.setPlaybackSeq(activeDigits, step, true);
+	}
+	else {
+		app->display.setStopSeq(activeDigits, currentpage, currentdrum, true);
+	}
 }
 
 
