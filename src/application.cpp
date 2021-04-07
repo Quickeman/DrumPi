@@ -121,6 +121,7 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 			//Display: switch to performance display mode
 			//stop sequencer before switching to PerformanceMode
 			app->seqClocker->stop();
+			app->seq->reset(false);
 			app->setState(PERFORMANCE_MODE);	//change state to PerformanceMode
 			break;
 
