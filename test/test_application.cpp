@@ -75,7 +75,7 @@ BOOST_AUTO_TEST_CASE(interpreting_drum_key) {
 }
 
 
-/* BOOST_AUTO_TEST_CASE(changing_to_SetTempoMode) {
+BOOST_AUTO_TEST_CASE(changing_to_SetTempoMode) {
 	Application app;
 
 	//simulate "t" key being pressed to switch to SetTempoMode
@@ -96,7 +96,7 @@ BOOST_AUTO_TEST_CASE(interpreting_drum_key) {
 	app.interpretKeyPress(KEY_T);
 	//check state has returned to sequencer mode
 	BOOST_CHECK(app.currentstate->label == SEQUENCER_MODE);
-} */
+}
 
 
 BOOST_AUTO_TEST_CASE(sequencer_mode_defaults) {
