@@ -8,7 +8,7 @@
 using namespace drumpi;
 
 BOOST_AUTO_TEST_CASE(constructor) {
-    std::shared_ptr<Display> d(new Display);
+    Display* d;
     DisplayClock c1(d);
     DisplayClock c2(d);
 
