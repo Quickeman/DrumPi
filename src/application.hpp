@@ -13,7 +13,25 @@
 #include "keyboardthread.hpp"
 
 namespace drumpi {
+	
+/*! \ref Metronome derived class to clock a \ref Display. */
+class DisplayClock : public clock::Clock {
+    public:
+        /*! Constructor.
+        Sets the Application to be clocked.
+        \param s \ref Application object to be clocked. */
+        DisplayClock(ApplicationCallback* a);
 
+        /*! Override the tick method.
+        Clocks the \ref Application given to \ref setApplication. */
+        void tick() override;
+    
+    private:
+
+        /*! Pointer to the `Application` object to be clocked. */
+        ApplicationCallback* appc = nullptr;
+
+    };
 
 /*! Abstract state class */
 class State {
@@ -23,6 +41,8 @@ public:
 
 	/*! Virtual function to be overridden by derived class */
 	virtual void interpretKeyPress(ApplicationCallback* appc, int key) = 0;
+
+	virtual void updateDisplay(ApplicationCallback* appc) = 0;
 	
 	/*! Interprets drum keys and returns a drum ID */
     drumID_t interpretDrumKey(int key);
@@ -42,6 +62,9 @@ public:
 	 * @param key The keypress detected
 	 */
 	void interpretKeyPress(ApplicationCallback* appc, int key) override;
+
+	virtual void updateDisplay(ApplicationCallback* appc) override;
+
 };
 
 
@@ -59,6 +82,8 @@ public:
 	 * @param key The keypress detected
 	 */
 	void interpretKeyPress(ApplicationCallback* appc, int key) override;
+
+	virtual void updateDisplay(ApplicationCallback* appc) override;
 
 	/*! Drum currently being set in sequencer */
 	drumID_t currentdrum;
@@ -84,6 +109,9 @@ public:
 	 * @param key The keypress detected
 	 */
 	void interpretKeyPress(ApplicationCallback* appc, int key) override;
+
+	virtual void updateDisplay(ApplicationCallback* appc) override;
+
 };
 
 /*! Set individual drum volumes in this state */
@@ -100,6 +128,8 @@ public:
 	 * @param key The keypress detected
 	 */
 	void interpretKeyPress(ApplicationCallback* appc, int key) override;
+
+	virtual void updateDisplay(ApplicationCallback* appc) override;
 
 	/*! Variable storing the previous state of the application */
 	stateLabel_t previousstate;
@@ -150,6 +180,9 @@ public:
 
 	/*! AudioEngine object. */
 	std::unique_ptr<audio::JackClient> audioEngine = nullptr;
+	
+	/*! DisplayClock object. */
+	std::unique_ptr<DisplayClock> displayClock = nullptr;
 
 	/*! PlaybackEngine object. */
 	audio::PlaybackEngine playbackEngine;
@@ -165,6 +198,6 @@ public:
 
 };
 
-}	// namespace drumpi
+} // namespace drumpi
 
 #endif	// define APPLICATION_H

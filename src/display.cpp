@@ -246,15 +246,3 @@ void Display::setPerformance(std::vector<drumID_t> activeDrums, float level, boo
 int Display::getKeymapping(int index){
     return keyMapping[index];
 }
-
-
-// DisplayClock class
-
-DisplayClock::DisplayClock(Display* d) {
-    setRate(33); //ms
-    display = d;
-}
-
-void DisplayClock::tick() {
-    display->flush();
-}

@@ -4,6 +4,7 @@
 #include <defs.hpp>
 #include <wiringPiSPI.h>
 #include <clock.hpp>
+#include <keyboardinput.hpp>
 #include <memory>
 
 namespace drumpi {
@@ -201,13 +202,13 @@ class Display: public Max7219 {
          * keyMapping[drumID] = key/digit
          */
         std::vector<unsigned int> keyMapping = {
-            3,  // Kick
-            2,  // Snare
-            4,  // Clap
-            5,  // HH Close
-            6,  // HH Open
-            0,  // Tom 1
-            1,  // Tom 2
+            0,  // Kick
+            1,  // Snare
+            2,  // Clap
+            3,  // HH Close
+            4,  // HH Open
+            5,  // Tom 1
+            6,  // Tom 2
             7,  // Cymbal
         };
 
@@ -297,23 +298,4 @@ class Display: public Max7219 {
          * */
         int getKeymapping(int index);
     };
-
-/*! \ref Metronome derived class to clock a \ref Display. */
-class DisplayClock : public clock::Clock {
-    public:
-        /*! Constructor.
-        Sets the Display to be clocked.
-        \param s \ref Display object to be clocked. */
-        DisplayClock(Display* d);
-
-        /*! Override the tick method.
-        Clocks the \ref Display given to \ref setDisplay. */
-        void tick() override;
-    
-    private:
-        /*! Pointer to the `Display` object to be clocked. */
-        Display* display = nullptr;
-
-    };
-
-} // namespace drumpi
+}
