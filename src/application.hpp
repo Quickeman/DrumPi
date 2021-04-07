@@ -44,6 +44,7 @@ public:
 	void interpretKeyPress(ApplicationCallback* appc, int key) override;
 };
 
+
 /*! Sequencer mode state */
 class SequencerMode : public State {
 public:
@@ -134,12 +135,6 @@ public:
 
 	/*! Instance of PerformanceMode state */
 	PerformanceMode performancemode;
-
-	/*! Instance of SequencerMode state */
-	SequencerMode sequencermode;
-
-	/*! Instance of SetTempoMode state */
-	SetTempoMode settempomode;
 
 	/*! Instance of SetDrumVolumeMode state */
 	SetDrumVolumeMode setdrumvolumemode;

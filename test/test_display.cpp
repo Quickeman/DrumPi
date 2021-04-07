@@ -5,10 +5,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <vector>
-
-//extern "C" {
-//#include <wiringPiSPI.h>
-//}
+#include <defs.hpp>
 
 using namespace drumpi;
 
@@ -78,23 +75,7 @@ BOOST_AUTO_TEST_CASE(show_num) {
     BOOST_TEST(display.getDigit(4) == 0x00);
 }
 
-BOOST_AUTO_TEST_CASE(toggle_dp) {
-    Display display;
-    display.toggleDPFlash(true);
-    for (unsigned int digit = 0; digit < 8; digit ++)
-        BOOST_TEST(display.getDigit(digit) & 0x80);
 
-    display.toggleDPFlash(true);
-    for (unsigned int digit = 0; digit < 8; digit ++)
-        BOOST_TEST(!(display.getDigit(digit) & 0x80));
-}
-
-//BOOST_AUTO_TEST_CASE(show_level) {
-    //Display display;
-    //display.addLevel(0.4, true);
-    //BOOST_TEST(display.getDigit(6) == 0x8);
-    //BOOST_TEST(display.getDigit(1) == 0x0);
-//}
 
 BOOST_AUTO_TEST_CASE(setStopSeq) {
     Display display;
@@ -144,10 +125,34 @@ BOOST_AUTO_TEST_CASE(setPlaybackSeq) {
     BOOST_TEST(display.getDigit(0) == 0x0);
 }
 
+BOOST_AUTO_TEST_CASE(setKeyMapping) {
+    Display display;
+    std::vector<unsigned int> newMapping = {
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+    };
+
+    display.setKeymapping(newMapping);
+    BOOST_TEST(display.getKeymapping(0) == 0);
+    BOOST_TEST(display.getKeymapping(1) == 1);
+    BOOST_TEST(display.getKeymapping(2) == 2);
+    BOOST_TEST(display.getKeymapping(3) == 3);
+    BOOST_TEST(display.getKeymapping(4) == 4);
+    BOOST_TEST(display.getKeymapping(5) == 5);
+    BOOST_TEST(display.getKeymapping(6) == 6);
+    BOOST_TEST(display.getKeymapping(7) == 7);
+}
+
 BOOST_AUTO_TEST_CASE(showPerformance) {
     Display display;
-    std::vector<bool> activeDrums = {1,0,1,0,1,0,1,0};
-    display.showPerformance(activeDrums, 0.9);
+    std::vector<drumID_t> drumsActive = {drumID_t(5), drumID_t(1), drumID_t(2), drumID_t(4)};
+    display.setPerformance(drumsActive, 0.9, true);
     BOOST_TEST(display.getDigit(7) == 0x6B);
     BOOST_TEST(display.getDigit(6) == 0x8);
     BOOST_TEST(display.getDigit(5) == 0x6B);

@@ -1,3 +1,4 @@
+#include "config.h.in"
 #include "application.hpp"
 
 #include <iostream>
@@ -9,7 +10,8 @@ std::function<void(int)> shutdownHandler;
 void signalHandler(int signal) { shutdownHandler(signal); }
 
 int main(int argc, char* argv[]){
-    std::cout << "DrumPi v0.1" << std::endl;
+
+    std::cout << std::endl << PROJECT_NAME << " version: " << PROJECT_VER << std::endl;
 
     Application* appPtr;
     signal(SIGINT, signalHandler);
