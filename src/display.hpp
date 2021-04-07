@@ -202,13 +202,13 @@ class Display: public Max7219 {
          * keyMapping[drumID] = key/digit
          */
         std::vector<unsigned int> keyMapping = {
-            3,  // Kick
-            2,  // Snare
-            4,  // Clap
-            5,  // HH Close
-            6,  // HH Open
-            0,  // Tom 1
-            1,  // Tom 2
+            0,  // Kick
+            1,  // Snare
+            2,  // Clap
+            3,  // HH Close
+            4,  // HH Open
+            5,  // Tom 1
+            6,  // Tom 2
             7,  // Cymbal
         };
 
