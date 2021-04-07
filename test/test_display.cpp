@@ -80,7 +80,7 @@ BOOST_AUTO_TEST_CASE(show_num) {
 BOOST_AUTO_TEST_CASE(setStopSeq) {
     Display display;
     std::vector<bool> sequence = {1,0,0,0,1,0,0,0, 0,0,1,0,1,0,1,0};
-    display.setStopSeq(sequence, 0, 2, true);
+    display.setStopSeq(sequence, 0, drumID_t(1), true);
     BOOST_TEST(display.getDigit(7) == 0x63);
     BOOST_TEST(display.getDigit(6) == 0x80);
     BOOST_TEST(display.getDigit(5) == 0x0);
@@ -90,7 +90,7 @@ BOOST_AUTO_TEST_CASE(setStopSeq) {
     BOOST_TEST(display.getDigit(1) == 0x0);
     BOOST_TEST(display.getDigit(0) == 0x0);
 
-    display.setStopSeq(sequence, 1, 8, true);
+    display.setStopSeq(sequence, 1, drumID_t(7), true);
     BOOST_TEST(display.getDigit(7) == 0x0);
     BOOST_TEST(display.getDigit(6) == 0x0);
     BOOST_TEST(display.getDigit(5) == 0x63);
@@ -151,7 +151,7 @@ BOOST_AUTO_TEST_CASE(setKeyMapping) {
 
 BOOST_AUTO_TEST_CASE(showPerformance) {
     Display display;
-    std::vector<drumID_t> drumsActive = {drumID_t(5), drumID_t(1), drumID_t(2), drumID_t(4)};
+    std::vector<drumID_t> drumsActive = {drumID_t(0), drumID_t(2), drumID_t(4), drumID_t(6)};
     display.setPerformance(drumsActive, 0.9, true);
     BOOST_TEST(display.getDigit(7) == 0x6B);
     BOOST_TEST(display.getDigit(6) == 0x8);

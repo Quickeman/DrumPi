@@ -282,7 +282,7 @@ class Display: public Max7219 {
          * @param currentDrum Active drum for editing
          * @param redraw If true, updates display
          */
-        void setStopSeq(std::vector<bool> activeDrums, unsigned int page, unsigned int currentDrum, bool redraw);
+        void setStopSeq(std::vector<bool> activeDrums, unsigned int page, drumID_t currentDrum, bool redraw);
 
         /**
          * Updates performance mode display

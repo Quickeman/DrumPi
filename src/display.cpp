@@ -227,10 +227,11 @@ void Display::setPlaybackSeq(std::vector<bool> activeDrums, unsigned int stepNum
     if (redraw) flush();
 }
 
-void Display::setStopSeq(std::vector<bool> activeDrums, unsigned int page, unsigned int currentDrum, bool redraw) {
+void Display::setStopSeq(std::vector<bool> activeDrums, unsigned int page, drumID_t currentDrum, bool redraw) {
     clear(false);
     setActiveDrums(activeDrums, page);
-    setDigit(getNumDigits() - currentDrum, getDigit(getNumDigits()-currentDrum) + dpAddr, false);
+    unsigned int currentKey = keyMapping[currentDrum];
+    setDigit(getNumDigits() - currentKey-1, getDigit(getNumDigits()-currentKey-1) + dpAddr, false);
     if(redraw) flush();
 }
 
