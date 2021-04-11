@@ -241,6 +241,12 @@ class Display: public Max7219 {
          */
         void addLevel(float level);
 
+        /**
+         * Updates display to show current page with underscores
+         * @param page Page to display
+         */
+        void addPage(unsigned int page);
+
     public:
 
         Display(); /// Constructor

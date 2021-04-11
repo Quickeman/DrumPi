@@ -196,6 +196,19 @@ void Display::addLevel(float level) {
 
 }
 
+void Display::addPage(unsigned int page){
+    if(page > 0) {
+        for(int digit = 0; digit < 4; digit ++){
+            setDigit(digit, getDigit(digit) + bottomAddr, false);
+        }
+    }
+    else {
+        for(int digit = 4; digit < 8; digit ++){
+            setDigit(digit, getDigit(digit) + bottomAddr, false);
+        }
+    }
+}
+
 void Display::setVal(unsigned int value, bool redraw) {
     clear(false);
     // Separate value into individual digits
@@ -222,16 +235,11 @@ void Display::setKeymapping(std::vector<unsigned int> _keyMapping) {
 
 void Display::setPlaybackSeq(std::vector<bool> activeDrums, unsigned int stepNum, bool redraw) {
     clear(false);
-    unsigned int page = stepNum > getNumDigits();
+    unsigned int page = stepNum >= getNumDigits();
     setActiveDrums(activeDrums, page);
-    if(stepNum < getNumDigits()) {
-        unsigned char addr = getNumDigits() - stepNum - 1;
-        setDigit(addr, getDigit(addr) + bottomAddr, false);
-    }
-    else {
-        unsigned char addr = getNumDigits() - (stepNum % 8) - 1; 
-        setDigit(addr, getDigit(addr) + dpAddr, false);
-    }
+    unsigned char addr = getNumDigits() - (stepNum % 8) - 1; 
+    setDigit(addr, getDigit(addr) + dpAddr, false);
+    addPage(page);
     if (redraw) flush();
 }
 
@@ -240,6 +248,7 @@ void Display::setStopSeq(std::vector<bool> activeDrums, unsigned int page, drumI
     setActiveDrums(activeDrums, page);
     unsigned int currentKey = keyMapping[currentDrum];
     setDigit(getNumDigits() - currentKey-1, getDigit(getNumDigits()-currentKey-1) + dpAddr, false);
+    addPage(page);
     if(redraw) flush();
 }
 
