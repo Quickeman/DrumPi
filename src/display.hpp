@@ -258,6 +258,15 @@ class Display: public Max7219 {
         void setVal(unsigned int value, bool redraw);
 
         /**
+         * Sets digits to display a drum volume and current drum
+         *
+         * @param value Numerical value to display
+         * @param currentDrum Current drum to display
+         * @param redraw If true, updates display
+         */
+        void setDrumVolume(unsigned int value, drumID_t currentDrum, bool redraw);
+
+        /**
          * Sets the mapping of drums to keys
          * Ensuring that the correct digits are displayed
          * 

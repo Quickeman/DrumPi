@@ -208,6 +208,14 @@ void Display::setVal(unsigned int value, bool redraw) {
     if (redraw) flush();
 }
 
+void Display::setDrumVolume(unsigned int value, drumID_t currentDrum, bool redraw) {
+    clear(false);
+    setVal(value, false);
+    unsigned int currentKey = keyMapping[currentDrum];
+    setDigit(getNumDigits() - currentKey-1, getDigit(getNumDigits()-currentKey-1) + dpAddr, false);
+    if(redraw) flush();
+}
+
 void Display::setKeymapping(std::vector<unsigned int> _keyMapping) {
     keyMapping = _keyMapping;
 }

@@ -251,7 +251,8 @@ void SetDrumVolumeMode::interpretKeyPress(ApplicationCallback *appc, int key) {
 }
 
 void SetDrumVolumeMode::updateDisplay(ApplicationCallback* appc) {
-
+	Application* app = static_cast<Application*>(appc);
+	app->display.setDrumVolume(int(100*(app->playbackEngine.getVolume(drumselected))), drumselected, true);
 }
 
 
@@ -312,7 +313,8 @@ void SetDrumBankMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 }
 
 void SetDrumBankMode::updateDisplay(ApplicationCallback* appc) {
-
+	Application* app = static_cast<Application*>(appc);
+	app->display.setVal(getBank(), true);
 }
 
 int SetDrumBankMode::getBank() {
