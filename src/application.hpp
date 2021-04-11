@@ -115,6 +115,12 @@ public:
 
 	void updateDisplay(ApplicationCallback* appc) override;
 
+private:
+	/*! Step size of the tempo inc/decrements. */
+	const int bpmStep = 20;
+
+	/*! Minimum BPM. */
+	const int minBPM = 28 + bpmStep;
 };
 
 

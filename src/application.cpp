@@ -140,12 +140,14 @@ bool SetTempoMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 	switch (key) {
 		case KEY_DOT:
 			//increase tempo
-			app->seqClocker->setRateBPM(app->seqClocker->getRateBPM() + 20);
+			app->seqClocker->setRateBPM(app->seqClocker->getRateBPM() + bpmStep);
 			actionFlag = true;
 			break;
 		case KEY_COMMA:
 			//decrease tempo
-			app->seqClocker->setRateBPM(app->seqClocker->getRateBPM() - 20);
+			if (app->seqClocker->getRateBPM() > minBPM) {
+				app->seqClocker->setRateBPM(app->seqClocker->getRateBPM() - bpmStep);
+			}
 			actionFlag = true;
 			break;
 	}
