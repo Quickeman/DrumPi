@@ -201,7 +201,8 @@ void SetTempoMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 }
 
 void SetTempoMode::updateDisplay(ApplicationCallback* appc) {
-
+	Application* app = static_cast<Application*>(appc);
+	app->display.setVal(app->seqClocker->getRateBPM()/4, true);
 }
 
 
