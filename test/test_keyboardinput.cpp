@@ -20,5 +20,5 @@ BOOST_AUTO_TEST_CASE(application_callback) {
 	
 	app.kbdThread.kbdIn.callback->interpretKeyPress(KEY_V);
 	
-	BOOST_CHECK(app.currentstate->label == SET_DRUM_VOLUME_MODE);
+	BOOST_CHECK(app.subMode->label == SET_DRUM_VOLUME_MODE);
 }

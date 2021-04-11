@@ -13,7 +13,7 @@ PerformanceMode::PerformanceMode() {
 	label = PERFORMANCE_MODE;
 }
 
-void PerformanceMode::interpretKeyPress(ApplicationCallback* appc, int key) {
+bool PerformanceMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 	Application* app = static_cast<Application*>(appc);
 	switch (key) {
 		case KEY_A:
@@ -29,31 +29,9 @@ void PerformanceMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 
 			//Display: Toggle respective drum square and level meter
 			break;
-			
-		case KEY_M:
-			//Display: Show S to indicate mode change
-			app->setState(SEQUENCER_MODE);	//change state to SequencerMode
-			break;
-	
-		case KEY_COMMA:
-			// Decrease master volume
-			app->playbackEngine.volumeDown();
-			//Display: Show new master volume
-			break;
-		case KEY_DOT:
-			// Increase master volume
-			app->playbackEngine.volumeUp();
-			//Display: Show new master volume
-			break;
-		
-		case KEY_V:
-			app->setState(SET_DRUM_VOLUME_MODE);	//change state to SetDrumVolumeMode
-			break;
-
-		case KEY_B:
-			app->setState(SET_DRUM_BANK_MODE);
-			break;
 	}
+
+	return false;
 }
 
 void PerformanceMode::updateDisplay(ApplicationCallback* appc) {
@@ -72,7 +50,7 @@ SequencerMode::SequencerMode() {
 	//Display: Show tom 1 drum page 1 sequence
 }
 
-void SequencerMode::interpretKeyPress(ApplicationCallback* appc, int key) {
+bool SequencerMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 	Application* app = static_cast<Application*>(appc);
 	switch (key) {
 		case KEY_A:
@@ -124,35 +102,9 @@ void SequencerMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 			}
 			// Toggle play/pause sequence display
 			break;
-
-		case KEY_M:
-			//Display: switch to performance display mode
-			//stop sequencer before switching to PerformanceMode
-			app->seqClocker->stop();
-			app->seq->reset(false);
-			app->setState(PERFORMANCE_MODE);	//change state to PerformanceMode
-			break;
-
-		case KEY_COMMA:
-			// Decrease master volume
-			app->playbackEngine.volumeDown();
-			//Display: updated master volume
-			break;
-		case KEY_DOT:
-			// Increase master volume
-			app->playbackEngine.volumeUp();
-			//Display: updated master volume
-			break;
-
-		case KEY_T:
-			app->setState(SET_TEMPO_MODE);	//change state to SetTempoMode
-			break;
-		case KEY_V:
-			app->setState(SET_DRUM_VOLUME_MODE);	//change state to SetDrumVolumeMode
-			break;
-		case KEY_B:
-			app->setState(SET_DRUM_BANK_MODE);
 	}
+
+	return false;
 }
 
 void SequencerMode::updateDisplay(ApplicationCallback* appc) {
@@ -176,28 +128,29 @@ void SequencerMode::updateDisplay(ApplicationCallback* appc) {
 }
 
 
+// SetTempoMode
+
 SetTempoMode::SetTempoMode() {
 	label = SET_TEMPO_MODE;
 }
 
-void SetTempoMode::interpretKeyPress(ApplicationCallback* appc, int key) {
+bool SetTempoMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 	Application* app = static_cast<Application*>(appc);
+	bool actionFlag = false;
 	switch (key) {
 		case KEY_DOT:
 			//increase tempo
 			app->seqClocker->setRateBPM(app->seqClocker->getRateBPM() + 20);
+			actionFlag = true;
 			break;
 		case KEY_COMMA:
 			//decrease tempo
 			app->seqClocker->setRateBPM(app->seqClocker->getRateBPM() - 20);
-			break;
-			
-		case KEY_T:
-		case KEY_BACKSPACE:
-			// Exit SetTempoMode
-			app->setState(SEQUENCER_MODE);	//change state to SequencerMode
+			actionFlag = true;
 			break;
 	}
+
+	return actionFlag;
 }
 
 void SetTempoMode::updateDisplay(ApplicationCallback* appc) {
@@ -206,26 +159,69 @@ void SetTempoMode::updateDisplay(ApplicationCallback* appc) {
 }
 
 
+
+
+// SetMasterVolumeMode
+
+SetMasterVolumeMode::SetMasterVolumeMode() {
+	label = SET_MASTER_VOLUME_MODE;
+}
+
+bool SetMasterVolumeMode::interpretKeyPress(ApplicationCallback* appc, int key) {
+	Application* app = static_cast<Application*>(appc);
+	bool actionFlag = false;
+	switch (key) {
+		case KEY_COMMA:
+			// Master volume down
+			app->playbackEngine.volumeDown();
+			// Set the display to show the master volume for a few seconds
+			// something like:
+			// app->displayState = setMasterVolumeMode
+			// displayDelay.setTime(3) // displayDelay being a clock::Timer
+			// displayDelay.start(); // will change displayState back to perf/seq mode on trigger
+			actionFlag = true;
+			break;
+		case KEY_DOT:
+			// Master volume up
+			app->playbackEngine.volumeUp();
+			// Set the display to show the master volume for a few seconds
+			// See above for example pseudocode
+			actionFlag = true;
+			break;
+	}
+
+	return actionFlag;
+}
+
+void SetMasterVolumeMode::updateDisplay(ApplicationCallback* appc) {
+
+}
+
+
+// SetDrumVolumeMode
+
 SetDrumVolumeMode::SetDrumVolumeMode() {
 	label = SET_DRUM_VOLUME_MODE;
 	drumselected = interpretDrumKey(KEY_A);	//default drum A
-	previousstate = PERFORMANCE_MODE;	//default previous state
 }
 
-void SetDrumVolumeMode::interpretKeyPress(ApplicationCallback *appc, int key) {
+bool SetDrumVolumeMode::interpretKeyPress(ApplicationCallback *appc, int key) {
 	Application* app = static_cast<Application*>(appc);
+	bool actionFlag = false;
 	switch (key) {
 		case KEY_DOT:
 			// Increase selected drum's volume
 			app->playbackEngine.volumeUp(drumselected);
 			// Trigger selected drum for user reference
 			app->playbackEngine.trigger(drumselected);
+			actionFlag = true;
 			break;
 		case KEY_COMMA:
 			// Decrease selected drum's volume
 			app->playbackEngine.volumeDown(drumselected);
 			// Trigger selected drum for user reference
 			app->playbackEngine.trigger(drumselected);
+			actionFlag = true;
 			break;
 		
 		case KEY_A:
@@ -240,14 +236,11 @@ void SetDrumVolumeMode::interpretKeyPress(ApplicationCallback *appc, int key) {
 			drumselected = interpretDrumKey(key);
 			// Trigger the drum sound
 			app->playbackEngine.trigger(drumselected);
-			break;
-
-		case KEY_V:
-		case KEY_BACKSPACE:
-			// Exit SetDrumVolumeMode
-			app->setState(previousstate);
+			actionFlag = true;
 			break;
 	}
+
+	return actionFlag;
 }
 
 void SetDrumVolumeMode::updateDisplay(ApplicationCallback* appc) {
@@ -263,24 +256,26 @@ SetDrumBankMode::SetDrumBankMode() {
 	bank = 1;
 	safeBank = bank;
 	label = SET_DRUM_BANK_MODE;
-	previousstate = PERFORMANCE_MODE;
 }
 
-void SetDrumBankMode::interpretKeyPress(ApplicationCallback* appc, int key) {
+bool SetDrumBankMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 	Application* app = static_cast<Application*>(appc);
 	audio::sampleSourceStatus_t loadStatus = audio::SOURCE_READY;
+	bool actionFlag = false;
 	switch (key) {
 		case KEY_DOT:
 			// Bank up
 			bank++;
 			// Load the bank
 			loadStatus = app->playbackEngine.loadBank(bank, audio::SOURCE_PREGENERATED);
+			actionFlag = true;
 			break;
 		case KEY_COMMA:
 			// Bank down
 			if (bank > 0) bank--;
 			// Load the bank
 			loadStatus = app->playbackEngine.loadBank(bank, audio::SOURCE_PREGENERATED);
+			actionFlag = true;
 			break;
 		
 		case KEY_A:
@@ -293,12 +288,7 @@ void SetDrumBankMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 		case KEY_SEMICOLON:
 			// Trigger the relevant drum sound
 			app->playbackEngine.trigger(interpretDrumKey(key));
-			break;
-		
-		case KEY_B:
-		case KEY_BACKSPACE:
-			// Exit SetDrumBankMode
-			app->setState(previousstate);
+			actionFlag = true;
 			break;
 	}
 
@@ -310,6 +300,8 @@ void SetDrumBankMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 	} else {
 		safeBank = bank;
 	}
+
+	return actionFlag;
 }
 
 void SetDrumBankMode::updateDisplay(ApplicationCallback* appc) {
@@ -325,7 +317,10 @@ int SetDrumBankMode::getBank() {
 //Application
 
 Application::Application() {
-	currentstate = &performancemode;
+	mode = &performancemode;
+	subMode = &setMasterVolumeMode;
+	displayState = mode;
+
 	kbdThread.kbdIn.connectCallback(this);
 
 	// Jack client
@@ -362,37 +357,89 @@ void Application::run() {
 }
 
 void Application::interpretKeyPress(int key) {
-	currentstate->interpretKeyPress(this, key);
+	if (!subMode->interpretKeyPress(this, key)) {
+		mode->interpretKeyPress(this, key);
+	}
+
+	// If any of the mode buttons, setState(selectedMode)
+	switch (key) {
+		case KEY_BACKSPACE:
+			// Go to main mode
+			setState(mode->label);
+			break;
+		
+		case KEY_M:
+			// Swap between performance and sequencer modes
+			if (mode->label == PERFORMANCE_MODE) {
+				setState(SEQUENCER_MODE);
+			} else {
+				seqClocker->stop();
+				seq->reset(false);
+				setState(PERFORMANCE_MODE);
+			}
+			break;
+		
+		case KEY_V:
+			if (subMode->label != SET_DRUM_VOLUME_MODE) {
+				// If not in setDrumVolumeMode, go to it
+				setState(SET_DRUM_VOLUME_MODE);
+			} else {
+				// otherwise escape to main mode
+				setState(mode->label);
+			}
+			break;
+
+		case KEY_B:
+			if (subMode->label != SET_DRUM_BANK_MODE) {
+				// If not in setDrumBankMode, go to it
+				setState(SET_DRUM_BANK_MODE);
+			} else {
+				// otherwise escape to main mode
+				setState(mode->label);
+			}
+			break;
+
+		case KEY_T:
+			if (mode->label == SEQUENCER_MODE) {
+				if (subMode->label != SET_TEMPO_MODE) {
+					// If not in setTempoMode and in sequencerMode, go to it
+					setState(SET_TEMPO_MODE);
+				} else {
+					// otherwise escape to main mode
+					setState(mode->label);
+				}
+			}
+			break;
+	}
 }
 
 void Application::setState(stateLabel_t newstate) {
 	switch (newstate) {
 		case PERFORMANCE_MODE:
-			currentstate = &performancemode;
+			mode = &performancemode;
+			subMode = &setMasterVolumeMode;
+			displayState = mode;
 			//switch display to performance mode
 			break;
 		case SEQUENCER_MODE:
-			currentstate = &sequencermode;
+			mode = &sequencermode;
+			subMode = &setMasterVolumeMode;
+			displayState = mode;
 			sequencermode.currentpage = 0;	//switch to default page
 			//switch display to sequencer mode
 			break;
 		case SET_TEMPO_MODE:
-			currentstate = &settempomode;
+			subMode = &settempomode;
+			displayState = subMode;
 			break;
 		case SET_DRUM_VOLUME_MODE:
-			if (currentstate == &sequencermode) {
-				setdrumvolumemode.previousstate = SEQUENCER_MODE;
-				currentstate = &setdrumvolumemode;
-			} else if (currentstate == &performancemode) {
-				setdrumvolumemode.previousstate = PERFORMANCE_MODE;
-				currentstate = &setdrumvolumemode;
-			}
+			subMode = &setdrumvolumemode;
+			displayState = subMode;
 			break;
 		case SET_DRUM_BANK_MODE:
-			if ((currentstate == &sequencermode) || (currentstate == &performancemode)) {
-				setDrumBankMode.previousstate = currentstate->label;
-			}
-			currentstate = &setDrumBankMode;
+			subMode = &setDrumBankMode;
+			displayState = subMode;
+			break;
 	}
 }
 
@@ -436,5 +483,5 @@ DisplayClock::DisplayClock(ApplicationCallback* a) {
 void DisplayClock::tick() {
 	Application* app = static_cast<Application*>(appc);
 
-	app->currentstate->updateDisplay(appc);
+	app->displayState->updateDisplay(appc);
 }

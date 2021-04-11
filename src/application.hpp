@@ -16,22 +16,23 @@ namespace drumpi {
 	
 /*! \ref Metronome derived class to clock a \ref Display. */
 class DisplayClock : public clock::Clock {
-    public:
-        /*! Constructor.
-        Sets the Application to be clocked.
-        \param s \ref Application object to be clocked. */
-        DisplayClock(ApplicationCallback* a);
+public:
+	/*! Constructor.
+	Sets the Application to be clocked.
+	\param s \ref Application object to be clocked. */
+	DisplayClock(ApplicationCallback* a);
 
-        /*! Override the tick method.
-        Clocks the \ref Application given to \ref setApplication. */
-        void tick() override;
-    
-    private:
+	/*! Override the tick method.
+	Clocks the \ref Application given to \ref setApplication. */
+	void tick() override;
 
-        /*! Pointer to the `Application` object to be clocked. */
-        ApplicationCallback* appc = nullptr;
+private:
 
-    };
+	/*! Pointer to the `Application` object to be clocked. */
+	ApplicationCallback* appc = nullptr;
+
+};
+
 
 /*! Abstract state class */
 class State {
@@ -40,13 +41,14 @@ public:
 	stateLabel_t label;
 
 	/*! Virtual function to be overridden by derived class */
-	virtual void interpretKeyPress(ApplicationCallback* appc, int key) = 0;
+	virtual bool interpretKeyPress(ApplicationCallback* appc, int key) = 0;
 
 	virtual void updateDisplay(ApplicationCallback* appc) = 0;
 	
 	/*! Interprets drum keys and returns a drum ID */
     drumID_t interpretDrumKey(int key);
 };
+
 
 /*! Performance mode state */
 class PerformanceMode : public State {
@@ -61,9 +63,9 @@ public:
 	 * @param appc Callback to the main application
 	 * @param key The keypress detected
 	 */
-	void interpretKeyPress(ApplicationCallback* appc, int key) override;
+	bool interpretKeyPress(ApplicationCallback* appc, int key) override;
 
-	virtual void updateDisplay(ApplicationCallback* appc) override;
+	void updateDisplay(ApplicationCallback* appc) override;
 
 };
 
@@ -81,9 +83,9 @@ public:
 	 * @param appc Callback to the main application
 	 * @param key The keypress detected
 	 */
-	void interpretKeyPress(ApplicationCallback* appc, int key) override;
+	bool interpretKeyPress(ApplicationCallback* appc, int key) override;
 
-	virtual void updateDisplay(ApplicationCallback* appc) override;
+	void updateDisplay(ApplicationCallback* appc) override;
 
 	/*! Drum currently being set in sequencer */
 	drumID_t currentdrum;
@@ -94,6 +96,7 @@ public:
 	 */
 	int currentpage;
 };
+
 
 /*! Set tempo in this state */
 class SetTempoMode : public State {
@@ -108,11 +111,31 @@ public:
 	 * @param appc Callback to the main application
 	 * @param key The keypress detected
 	 */
-	void interpretKeyPress(ApplicationCallback* appc, int key) override;
+	bool interpretKeyPress(ApplicationCallback* appc, int key) override;
 
-	virtual void updateDisplay(ApplicationCallback* appc) override;
+	void updateDisplay(ApplicationCallback* appc) override;
 
 };
+
+
+/*! Set the master volume in this state (default) */
+class SetMasterVolumeMode : public State {
+public:
+	/*! Constructor. */
+	SetMasterVolumeMode();
+
+	/*!
+	 * \brief Method to perform action depending on key pressed.
+	 * 
+	 * Action performed is unique to SetMasterVolumeMode.
+	 * @param appc Callback to the main application
+	 * @param key The keypress detected
+	 */
+	bool interpretKeyPress(ApplicationCallback* appc, int key) override;
+
+	void updateDisplay(ApplicationCallback* appc) override;
+};
+
 
 /*! Set individual drum volumes in this state */
 class SetDrumVolumeMode : public State {
@@ -127,12 +150,9 @@ public:
 	 * @param appc Callback to the main application
 	 * @param key The keypress detected
 	 */
-	void interpretKeyPress(ApplicationCallback* appc, int key) override;
+	bool interpretKeyPress(ApplicationCallback* appc, int key) override;
 
-	virtual void updateDisplay(ApplicationCallback* appc) override;
-
-	/*! Variable storing the previous state of the application */
-	stateLabel_t previousstate;
+	void updateDisplay(ApplicationCallback* appc) override;
 
 private:
 	/*! Drum volume currently selected to be modified */
@@ -153,15 +173,12 @@ public:
 	 * @param appc Callback to the main application
 	 * @param key The keypress detected
 	 */
-	void interpretKeyPress(ApplicationCallback* appc, int key) override;
+	bool interpretKeyPress(ApplicationCallback* appc, int key) override;
 
-	virtual void updateDisplay(ApplicationCallback* appc) override;
+	void updateDisplay(ApplicationCallback* appc) override;
 
 	/*! Returns the current bank's ID. */
 	int getBank();
-
-	/*! Variable storing the previous state of the application */
-	stateLabel_t previousstate;
 
 private:
 	/*! Current bank selected. */
@@ -191,15 +208,20 @@ public:
 	/*! Method to change the current state */
 	void setState(stateLabel_t newstate) override;
 
-	/*! Pointer to current state instance */
-	State* currentstate;
 
 	/*! Instance of PerformanceMode state */
 	PerformanceMode performancemode;
 
 	/*! Instance of SequencerMode state */
 	SequencerMode sequencermode;
+
+	/*! Pointer to current mode instance */
+	State* mode;
 	
+
+	/*! Instance of SetMasterVolumeMode state. */
+	SetMasterVolumeMode setMasterVolumeMode;
+
 	/*! Instance of SetTempoMode state */
 	SetTempoMode settempomode;
 
@@ -208,6 +230,14 @@ public:
 
 	/*! Instance of SetDrumBankMode state. */
 	SetDrumBankMode setDrumBankMode;
+
+	/*! Pointer to current sub-mode instance */
+	State* subMode;
+
+
+	/*! Pointer to the state to be displayed. */
+	State* displayState;
+
 
 	/*! Instance of KeyboardThread class */
 	KeyboardThread kbdThread;
