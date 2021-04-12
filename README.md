@@ -4,7 +4,7 @@
     <img src="/images/drumpi_logo.png" alt="Logo" height="300">
   </a>
 
-  <p align="center">A drum machine made for the Raspberry Pi.</p>  
+  <p align="center">A drum machine made for the Raspberry Pi</p>  
 </p>
 
 ## Contents
@@ -14,15 +14,15 @@
       <li><a href="#Functionality">Functionality</a>
       <li><a href="#Hardware">Hardware</a>
     </ul>
-  <li><a href="#Quick Start Guide">Quick-start guide</a>
+  <li><a href="#Quick-Start-Guide">Quick Start Guide</a>
     <ul>
       <li><a href="#Setup">Setup</a>
       <li><a href="#Installation">Installation</a>
       <li><a href="#Startup">Startup</a>
-      <li><a href="#Running Tests">Running Tests</a>
+      <li><a href="#Running-Tests">Running Tests</a>
     </ul>
   <li><a href="#Usage">Usage</a>
-  <li><a href="#Stretch Goals">Stretch Goals</a>
+  <li><a href="#Stretch-Goals">Stretch Goals</a>
 </ul>
 
 ## About
@@ -39,7 +39,7 @@ DrumPi is a small, affordable, open-source drum machine, giving you all the perc
 - Standard USB keyboard
 - USB audio interface
 
-## Quick-start guide
+## Quick Start Guide
 ### Setup
 Before downloading and installing DrumPi's software on your Raspberry Pi, perform the following steps:    
 First, run the following in a terminal:
