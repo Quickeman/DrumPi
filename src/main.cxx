@@ -1,4 +1,3 @@
-#include "config.h.in"
 #include "application.hpp"
 
 #include <iostream>
@@ -11,7 +10,7 @@ void signalHandler(int signal) { shutdownHandler(signal); }
 
 int main(int argc, char* argv[]){
 
-    std::cout << std::endl << PROJECT_NAME << " version: " << PROJECT_VER << std::endl;
+    std::cout << std::endl << PROJECT_NAME << " v" << PROJECT_VERSION << std::endl;
 
     Application* appPtr;
     signal(SIGINT, signalHandler);
