@@ -6,6 +6,7 @@
 #include <string>
 #include <memory>
 
+#include "applicationcallback.hpp"
 #include "audio.hpp"
 #include "playback.hpp"
 #include "display.hpp"
