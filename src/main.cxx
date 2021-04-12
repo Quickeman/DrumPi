@@ -18,6 +18,7 @@ int main(int argc, char* argv[]){
     signal(SIGTERM, signalHandler);
     signal(SIGHUP, signalHandler);
     signal(SIGKILL, signalHandler);
+    signal(SIGTSTP, signalHandler);
     shutdownHandler = [&](int signal) {
         std::cout << "DrumPi: caught signal " << signal << std::endl;
         appPtr->running = false;
