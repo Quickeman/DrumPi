@@ -1,11 +1,29 @@
 <h1 align="center">DrumPi</h1>
 <p align="center">
   <a href="https://github.com/Quickeman/DrumPi">
-    <img src="/images/drumpi_logo.png" alt="Logo" height="200">
+    <img src="/images/drumpi_logo.png" alt="Logo" height="300">
   </a>
 
-  <p align="center">A drum machine made using a Raspberry Pi.</p>  
-</div>
+  <p align="center">A drum machine made for the Raspberry Pi.</p>  
+</p>
+
+## Contents
+<ul>
+  <li><a href="#About">About</a>
+    <ul>
+      <li><a href="#Functionality">Functionality</a>
+      <li><a href="#Hardware">Hardware</a>
+    </ul>
+  <li><a href="#Quick Start Guide">Quick-start guide</a>
+    <ul>
+      <li><a href="#Setup">Setup</a>
+      <li><a href="#Installation">Installation</a>
+      <li><a href="#Startup">Startup</a>
+      <li><a href="#Running Tests">Running Tests</a>
+    </ul>
+  <li><a href="#Usage">Usage</a>
+  <li><a href="#Stretch Goals">Stretch Goals</a>
+</ul>
 
 ## About
 DrumPi is a small, affordable, open-source drum machine, giving you all the percussive power you need in a pocket-sized package.
