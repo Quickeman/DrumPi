@@ -322,29 +322,32 @@ Application::Application() {
 	mode = &performancemode;
 	subMode = &setMasterVolumeMode;
 	displayState = mode;
-
-	kbdThread.kbdIn.connectCallback(this);
-
-	// Jack client
-	audioEngine.reset(new audio::JackClient("DrumPi"));
-
-	// Get the PlaybackEngine to load the audio samples for bank 1
-	playbackEngine.loadBank(setDrumBankMode.getBank(), audio::SOURCE_PREGENERATED);
-
-	// Sequencer
-	seq.reset(new Sequencer(16));
-	// SequencerClock
-	seqClocker.reset(new SequencerClock(seq, playbackEngine));
-
-	// DisplayClock
-	displayClock.reset(new DisplayClock(this));
-
-	// Display Delay timer
-	displayDelay.reset(new DisplayDelay(this));
-
 }
 
 void Application::run() {
+	if (running) {
+		// Connect keyboard thread to Application
+		kbdThread.kbdIn.connectCallback(this);
+
+		// Jack client
+		audioEngine.reset(new audio::JackClient("DrumPi"));
+
+		// Get the PlaybackEngine to load the audio samples for bank 1
+		playbackEngine.loadBank(setDrumBankMode.getBank(), audio::SOURCE_PREGENERATED);
+
+		// Sequencer
+		seq.reset(new Sequencer(16));
+		// SequencerClock
+		seqClocker.reset(new SequencerClock(seq, playbackEngine));
+
+		// DisplayClock
+		displayClock.reset(new DisplayClock(this));
+
+		// Display Delay timer
+		displayDelay.reset(new DisplayDelay(this));
+	}
+
+
 	// Start the audio stream
 	audioEngine->start(playbackEngine);
 

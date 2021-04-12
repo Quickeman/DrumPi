@@ -3,12 +3,23 @@
 # Detect USB keyboard
 bash scripts/detect_keyboards.bash
 
+# Trap interupt signals to terminate jackd
+trap "killall -s SIGINT jackd; exit" SIGINT
+
 # Close any active JACK servers and start a new one
 bash scripts/start_jackd.bash
+
+# Release the trapped signal handler
+trap -- SIGINT
+# Send interrupt signals to the DrumPi
+trap "killall -s SIGINT DrumPi" SIGINT
 
 # Start the DrumPi program
 echo "Starting DrumPi..."
 ./bin/DrumPi
+
+# Release the trapped signal handler
+trap -- SIGINT
 
 # When DrumPi has been quit, say goodbye
 echo ""

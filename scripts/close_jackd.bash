@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Close jackd
-echo "Closing the JACK server..."
+echo "Closing JACK server..."
 killall -s SIGINT jackd
 
 # Pause to let bash catch its breath
