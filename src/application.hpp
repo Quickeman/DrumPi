@@ -62,7 +62,8 @@ public:
 
 	/*! Virtual function to be overridden by derived class */
 	virtual bool interpretKeyPress(ApplicationCallback* appc, int key) = 0;
-
+	
+	/*! Virtual function to be overridden by derived class */
 	virtual void updateDisplay(ApplicationCallback* appc) = 0;
 	
 	/*! Interprets drum keys and returns a drum ID */

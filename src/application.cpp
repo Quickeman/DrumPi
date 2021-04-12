@@ -9,6 +9,38 @@ using namespace drumpi;
 
 //States
 
+drumID_t State::interpretDrumKey(int key) {
+	switch (key) {
+		case KEY_A : default :
+			return DRUM_1;
+			break;
+		case KEY_S:
+			return DRUM_2;
+			break;
+		case KEY_D:
+			return DRUM_3;
+			break;
+		case KEY_F:
+			return DRUM_4;
+			break;
+		case KEY_J:
+			return DRUM_5;
+			break;
+		case KEY_K:
+			return DRUM_6;
+			break;
+		case KEY_L:
+			return DRUM_7;
+			break;
+		case KEY_SEMICOLON:
+			return DRUM_8;
+			break;
+	}
+}
+
+
+// PerformanceMode
+
 PerformanceMode::PerformanceMode() {
 	label = PERFORMANCE_MODE;
 }
@@ -42,6 +74,8 @@ void PerformanceMode::updateDisplay(ApplicationCallback* appc) {
 	app->display.setPerformance(drumsActive, 1.0f, true);
 }
 
+
+// SequencerMode
 
 SequencerMode::SequencerMode() {
 	label = SEQUENCER_MODE;
@@ -159,8 +193,6 @@ void SetTempoMode::updateDisplay(ApplicationCallback* appc) {
 	Application* app = static_cast<Application*>(appc);
 	app->display.setVal(app->seqClocker->getRateBPM()/4, true);
 }
-
-
 
 
 // SetMasterVolumeMode
@@ -447,35 +479,6 @@ void Application::setState(stateLabel_t newstate) {
 		case SET_DRUM_BANK_MODE:
 			subMode = &setDrumBankMode;
 			displayState = subMode;
-			break;
-	}
-}
-
-drumID_t State::interpretDrumKey(int key) {
-	switch (key) {
-		case KEY_A : default :
-			return DRUM_1;
-			break;
-		case KEY_S:
-			return DRUM_2;
-			break;
-		case KEY_D:
-			return DRUM_3;
-			break;
-		case KEY_F:
-			return DRUM_4;
-			break;
-		case KEY_J:
-			return DRUM_5;
-			break;
-		case KEY_K:
-			return DRUM_6;
-			break;
-		case KEY_L:
-			return DRUM_7;
-			break;
-		case KEY_SEMICOLON:
-			return DRUM_8;
 			break;
 	}
 }
