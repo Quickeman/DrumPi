@@ -11,6 +11,8 @@ echo "Starting DrumPi..."
 ./bin/DrumPi
 
 # When DrumPi has been quit, say goodbye
+echo ""
+echo ""
 echo "DrumPi closed."
 
 # Close JACK server
