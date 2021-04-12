@@ -1,5 +1,11 @@
-# DrumPi
-A drum machine made using a Raspberry Pi.
+<h1 align="center">DrumPi</h1>
+<p align="center">
+  <a href="https://github.com/Quickeman/DrumPi">
+    <img src="/images/drumpi_logo.png" alt="Logo" height="200">
+  </a>
+
+  <p align="center">A drum machine made using a Raspberry Pi.</p>  
+</div>
 
 ## About
 DrumPi is a small, affordable, open-source drum machine, giving you all the percussive power you need in a pocket-sized package.
@@ -9,15 +15,15 @@ DrumPi is a small, affordable, open-source drum machine, giving you all the perc
 - Visual feedback provided via an 8-digit 7-segment display
 - Standard USB keyboard control interface
 
-### Components
+### Hardware
 - Raspberry Pi (designed on RPI 4B)
 - ZeroSeg 8-digit 7-segment display
 - Standard USB keyboard
 - USB audio interface
 
 ## Quick-start guide
-### Installation
-To download and install DrumPi's software on your Raspberry Pi, perform the following steps:    
+### Setup
+Before downloading and installing DrumPi's software on your Raspberry Pi, perform the following steps:    
 First, run the following in a terminal:
 ```
 sudo apt install git cmake libboost-test-dev libjack-jackd2-dev
@@ -32,13 +38,28 @@ sudo raspi-config
 ```
 Navigate to Interface Options -> SPI.   
 Enable SPI interface.   
-Finally, to download and build the DrumPi program, run the following in a terminal:
+
+### Installation
+To download and build the DrumPi program, run the following in a terminal:
 ```
 git clone https://github.com/Quickeman/DrumPi.git
 cd DrumPi
-cmake .
-make
+./install
 ```
+
+### Startup
+To start the DrumPi, enter:
+```
+./DrumPi
+```
+in a terminal from the DrumPi directory.
+
+### Running Tests
+To run the suite of unit tests, enter:
+```
+./run_tests
+```
+in a terminal from the DrumPi directory
 
 ## Usage
 Performance Mode:  
@@ -74,21 +95,6 @@ V		Exit "Set Drum Volume" Mode
 ESC		Exit "Set Drum Volume" Mode
 BACKSPACE	Exit program
 ```
-
-### Startup
-To start the DrumPi, enter:
-```
-bash DrumPi.sh
-```
-in a terminal from the DrumPi directory.
-
-### Running Tests
-To run a suite of unit tests, enter:
-```
-jackd -dalsa -dhw:2 &
-make test
-```
-in a terminal from the DrumPi directory
 
 ## Stretch Goals
 - External clocking
