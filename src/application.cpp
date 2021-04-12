@@ -176,18 +176,19 @@ bool SetMasterVolumeMode::interpretKeyPress(ApplicationCallback* appc, int key) 
 		case KEY_COMMA:
 			// Master volume down
 			app->playbackEngine.volumeDown();
-			// Set the display to show the master volume for a few seconds
-			// something like:
-			// app->displayState = setMasterVolumeMode
-			// displayDelay.setTime(3) // displayDelay being a clock::Timer
-			// displayDelay.start(); // will change displayState back to perf/seq mode on trigger
+			app->displayState = app->subMode;
+			app->displayDelay->setTime(2000);
+			//if(!app->displayDelay->isActive()) 
+			app->displayDelay->start();
 			actionFlag = true;
 			break;
 		case KEY_DOT:
 			// Master volume up
 			app->playbackEngine.volumeUp();
-			// Set the display to show the master volume for a few seconds
-			// See above for example pseudocode
+			app->displayState = app->subMode;
+			app->displayDelay->setTime(2000);
+			//if(!app->displayDelay->isActive()) 
+			app->displayDelay->start();
 			actionFlag = true;
 			break;
 	}
@@ -196,7 +197,8 @@ bool SetMasterVolumeMode::interpretKeyPress(ApplicationCallback* appc, int key) 
 }
 
 void SetMasterVolumeMode::updateDisplay(ApplicationCallback* appc) {
-
+	Application* app = static_cast<Application*>(appc);
+	app->display.setVal(int(100*(app->playbackEngine.getVolume() + 0.0005f)), true);
 }
 
 
@@ -338,6 +340,9 @@ Application::Application() {
 
 	// DisplayClock
 	displayClock.reset(new DisplayClock(this));
+
+	// Display Delay timer
+	displayDelay.reset(new DisplayDelay(this));
 
 }
 
@@ -486,4 +491,15 @@ void DisplayClock::tick() {
 	Application* app = static_cast<Application*>(appc);
 
 	app->displayState->updateDisplay(appc);
+}
+
+// Display Delay class
+
+DisplayDelay::DisplayDelay(ApplicationCallback* a) {
+    appc = a;
+}
+
+void DisplayDelay::trigger() {
+	Application* app = static_cast<Application*>(appc);
+	app->displayState = app->mode; // Reset to primary display mode after timeout
 }

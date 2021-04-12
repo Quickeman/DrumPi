@@ -33,6 +33,25 @@ private:
 
 };
 
+/*! \ref Timer derived class to clock master volume display timeout. */
+class DisplayDelay : public clock::Timer {
+public:
+	/*! Constructor.
+	Sets the Application to be clocked.
+	\param s \ref Application object to be clocked. */
+	DisplayDelay(ApplicationCallback* a);
+
+	/*! Override the tick method.
+	Clocks the \ref Application given to \ref setApplication. */
+	void trigger() override;
+
+private:
+
+	/*! Pointer to the `Application` object to be clocked. */
+	ApplicationCallback* appc = nullptr;
+
+};
+
 
 /*! Abstract state class */
 class State {
@@ -253,6 +272,9 @@ public:
 	
 	/*! DisplayClock object. */
 	std::unique_ptr<DisplayClock> displayClock = nullptr;
+
+	/*! DisplayTimer object. */
+	std::unique_ptr<DisplayDelay> displayDelay = nullptr;
 
 	/*! PlaybackEngine object. */
 	audio::PlaybackEngine playbackEngine;
