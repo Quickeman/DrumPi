@@ -27,6 +27,7 @@ int main(int argc, char* argv[]){
     Application app;
     appPtr = &app;
 
+    app.setup();
     app.run();
 
     return 0;

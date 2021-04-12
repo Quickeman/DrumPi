@@ -11,6 +11,7 @@ using namespace drumpi;
 
 BOOST_AUTO_TEST_CASE(constructor) {
 	Application app;
+	app.setup();
 
 	BOOST_CHECK(&app);
 
@@ -30,6 +31,7 @@ BOOST_AUTO_TEST_CASE(constructor) {
 
 BOOST_AUTO_TEST_CASE(changing_state) {
 	Application app;
+	app.setup();
 
 	//change state to sequencer mode
 	app.setState(SET_DRUM_VOLUME_MODE);
@@ -43,6 +45,7 @@ BOOST_AUTO_TEST_CASE(changing_state) {
 
 BOOST_AUTO_TEST_CASE(interpreting_key_press) {
 	Application app;
+	app.setup();
 
 	//simulate "v" key being pressed to switch to drum volume set mode
 	app.interpretKeyPress(KEY_V);
@@ -55,6 +58,7 @@ BOOST_AUTO_TEST_CASE(interpreting_key_press) {
 
 BOOST_AUTO_TEST_CASE(interpreting_drum_key) {
 	Application app;
+	app.setup();
 
 	drumID_t testID;
 
@@ -83,6 +87,7 @@ BOOST_AUTO_TEST_CASE(interpreting_drum_key) {
 
 BOOST_AUTO_TEST_CASE(changing_to_SetTempoMode) {
 	Application app;
+	app.setup();
 
 	//simulate "t" key being pressed to switch to SetTempoMode
 	//should do nothing as are in performance mode by default
@@ -113,6 +118,7 @@ BOOST_AUTO_TEST_CASE(changing_to_SetTempoMode) {
 
 BOOST_AUTO_TEST_CASE(sequencer_mode_defaults) {
 	Application app;
+	app.setup();
 
 	//check defaults
 	BOOST_CHECK(app.sequencermode.currentdrum == DRUM_1);
@@ -122,6 +128,7 @@ BOOST_AUTO_TEST_CASE(sequencer_mode_defaults) {
 
 BOOST_AUTO_TEST_CASE(switching_pages_in_sequencer_mode) {
 	Application app;
+	app.setup();
 
 	//switch to sequencer mode
 	app.setState(SEQUENCER_MODE);
@@ -140,6 +147,7 @@ BOOST_AUTO_TEST_CASE(switching_pages_in_sequencer_mode) {
 
 BOOST_AUTO_TEST_CASE(returning_to_sequencer_mode) {
 	Application app;
+	app.setup();
 
 	//switch to sequencer mode
 	app.setState(SEQUENCER_MODE);
@@ -170,6 +178,7 @@ BOOST_AUTO_TEST_CASE(returning_to_sequencer_mode) {
 
 BOOST_AUTO_TEST_CASE(changing_to_SetDrumVolumeMode) {
 	Application app;
+	app.setup();
 
 	//switch to SetDrumVolumeMode from default performance mode
 	app.interpretKeyPress(KEY_V);

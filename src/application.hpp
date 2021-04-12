@@ -220,6 +220,9 @@ public:
 	/*! Constructor */
 	Application();
 
+	/*! Method to set up the application */
+	void setup();
+
 	/*! Method to run the application */
 	void run();
 	
