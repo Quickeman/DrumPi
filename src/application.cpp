@@ -177,7 +177,6 @@ bool SetMasterVolumeMode::interpretKeyPress(ApplicationCallback* appc, int key) 
 			// Master volume down
 			app->playbackEngine.volumeDown();
 			app->displayState = app->subMode;
-			app->displayDelay->setTime(2000);
 			//if(!app->displayDelay->isActive()) 
 			app->displayDelay->start();
 			actionFlag = true;
@@ -186,7 +185,6 @@ bool SetMasterVolumeMode::interpretKeyPress(ApplicationCallback* appc, int key) 
 			// Master volume up
 			app->playbackEngine.volumeUp();
 			app->displayState = app->subMode;
-			app->displayDelay->setTime(2000);
 			//if(!app->displayDelay->isActive()) 
 			app->displayDelay->start();
 			actionFlag = true;
@@ -496,6 +494,7 @@ void DisplayClock::tick() {
 // Display Delay class
 
 DisplayDelay::DisplayDelay(ApplicationCallback* a) {
+	setTime(2000);
     appc = a;
 }
 
