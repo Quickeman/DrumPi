@@ -2,10 +2,11 @@
 cmake_minimum_required(VERSION 3.12)
 
 # Project name and version
-project(DrumPi VERSION "0.1")
+project(DrumPi VERSION "0.2")
 
-configure_file(${PROJECT_SOURCE_DIR}/src/config.h.in 
-${PROJECT_SOURCE_DIR}/src/config.h)
+# Project name and version macros
+add_definitions(-DPROJECT_NAME="${CMAKE_PROJECT_NAME}")
+add_definitions(-DPROJECT_VERSION="${CMAKE_PROJECT_VERSION}")
 
 # Generate compile_commands.json for clangd
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
