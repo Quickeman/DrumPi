@@ -58,8 +58,6 @@ bool PerformanceMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 		case KEY_SEMICOLON:
 			// Trigger the drum sound
 			app->playbackEngine.trigger(interpretDrumKey(key));
-
-			//Display: Toggle respective drum square and level meter
 			break;
 	}
 
@@ -81,7 +79,6 @@ SequencerMode::SequencerMode() {
 	label = SEQUENCER_MODE;
 	currentdrum = interpretDrumKey(KEY_A);	//default drum A
 	currentpage = 0;	//default page 1 (beats 1-8)
-	//Display: Show tom 1 drum page 1 sequence
 }
 
 bool SequencerMode::interpretKeyPress(ApplicationCallback* appc, int key) {
@@ -99,8 +96,6 @@ bool SequencerMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 			currentdrum = interpretDrumKey(key);
 			// Trigger the drum sound
 			app->playbackEngine.trigger(currentdrum);
-			//Display: Toggle corresponding DP
-			//display currentpage for respective drum
 			break;
 		
 		case KEY_1:
@@ -121,7 +116,6 @@ bool SequencerMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 		case KEY_TAB:
 			currentpage++;
 			if (currentpage > 1) currentpage = 0;
-			// Display relevant beats for currentdrum
 			break;
 			
 		case KEY_SPACE:
@@ -134,7 +128,6 @@ bool SequencerMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 			} else {
 				app->seqClocker->start();
 			}
-			// Toggle play/pause sequence display
 			break;
 	}
 
@@ -143,9 +136,6 @@ bool SequencerMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 
 void SequencerMode::updateDisplay(ApplicationCallback* appc) {
 	Application* app = static_cast<Application*>(appc);
-
-	//std::vector<drumID_t> activeDrums;
-	//app->display.setPerformance(activeDrums, 0.0f, true);
 
 	std::vector<bool> activeDigits;
 	unsigned int step;
@@ -209,7 +199,6 @@ bool SetMasterVolumeMode::interpretKeyPress(ApplicationCallback* appc, int key) 
 			// Master volume down
 			app->playbackEngine.volumeDown();
 			app->displayState = app->subMode;
-			//if(!app->displayDelay->isActive()) 
 			app->displayDelay->start();
 			actionFlag = true;
 			break;
@@ -217,7 +206,6 @@ bool SetMasterVolumeMode::interpretKeyPress(ApplicationCallback* appc, int key) 
 			// Master volume up
 			app->playbackEngine.volumeUp();
 			app->displayState = app->subMode;
-			//if(!app->displayDelay->isActive()) 
 			app->displayDelay->start();
 			actionFlag = true;
 			break;
@@ -459,14 +447,12 @@ void Application::setState(stateLabel_t newstate) {
 			mode = &performancemode;
 			subMode = &setMasterVolumeMode;
 			displayState = mode;
-			//switch display to performance mode
 			break;
 		case SEQUENCER_MODE:
 			mode = &sequencermode;
 			subMode = &setMasterVolumeMode;
 			displayState = mode;
 			sequencermode.currentpage = 0;	//switch to default page
-			//switch display to sequencer mode
 			break;
 		case SET_TEMPO_MODE:
 			subMode = &settempomode;
