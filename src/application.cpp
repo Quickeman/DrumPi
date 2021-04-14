@@ -6,6 +6,30 @@
 
 using namespace drumpi;
 
+// DisplayClock class
+
+DisplayClock::DisplayClock(ApplicationCallback* a) {
+    setRate(33); //ms
+    appc = a;
+}
+
+void DisplayClock::tick() {
+	Application* app = static_cast<Application*>(appc);
+
+	app->displayState->updateDisplay(appc);
+}
+
+// Display Delay class
+
+DisplayDelay::DisplayDelay(ApplicationCallback* a) {
+	setTime(2000);
+    appc = a;
+}
+
+void DisplayDelay::trigger() {
+	Application* app = static_cast<Application*>(appc);
+	app->displayState = app->mode; // Reset to primary display mode after timeout
+}
 
 //States
 
@@ -225,6 +249,7 @@ void SetMasterVolumeMode::updateDisplay(ApplicationCallback* appc) {
 SetDrumVolumeMode::SetDrumVolumeMode() {
 	label = SET_DRUM_VOLUME_MODE;
 	drumselected = interpretDrumKey(KEY_A);	//default drum A
+	triggerDrums = true;
 }
 
 bool SetDrumVolumeMode::interpretKeyPress(ApplicationCallback *appc, int key) {
@@ -235,14 +260,14 @@ bool SetDrumVolumeMode::interpretKeyPress(ApplicationCallback *appc, int key) {
 			// Increase selected drum's volume
 			app->playbackEngine.volumeUp(drumselected);
 			// Trigger selected drum for user reference
-			app->playbackEngine.trigger(drumselected);
+			if (triggerDrums) app->playbackEngine.trigger(drumselected);
 			actionFlag = true;
 			break;
 		case KEY_COMMA:
 			// Decrease selected drum's volume
 			app->playbackEngine.volumeDown(drumselected);
 			// Trigger selected drum for user reference
-			app->playbackEngine.trigger(drumselected);
+			if (triggerDrums) app->playbackEngine.trigger(drumselected);
 			actionFlag = true;
 			break;
 		
@@ -259,6 +284,10 @@ bool SetDrumVolumeMode::interpretKeyPress(ApplicationCallback *appc, int key) {
 			// Trigger the drum sound
 			app->playbackEngine.trigger(drumselected);
 			actionFlag = true;
+			break;
+
+		case KEY_Z:
+			triggerDrums = !triggerDrums;
 			break;
 	}
 
@@ -467,30 +496,4 @@ void Application::setState(stateLabel_t newstate) {
 			displayState = subMode;
 			break;
 	}
-}
-
-
-// DisplayClock class
-
-DisplayClock::DisplayClock(ApplicationCallback* a) {
-    setRate(33); //ms
-    appc = a;
-}
-
-void DisplayClock::tick() {
-	Application* app = static_cast<Application*>(appc);
-
-	app->displayState->updateDisplay(appc);
-}
-
-// Display Delay class
-
-DisplayDelay::DisplayDelay(ApplicationCallback* a) {
-	setTime(2000);
-    appc = a;
-}
-
-void DisplayDelay::trigger() {
-	Application* app = static_cast<Application*>(appc);
-	app->displayState = app->mode; // Reset to primary display mode after timeout
 }

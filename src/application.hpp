@@ -184,6 +184,9 @@ public:
 private:
 	/*! Drum volume currently selected to be modified */
 	drumID_t drumselected;
+
+	/*! Whether to trigger the sounds on volume change. */
+	bool triggerDrums;
 };
 
 
