@@ -19,7 +19,7 @@
       <li><a href="#Installation">Installation</a>
         <ul>
           <li><a href="#Prerequisites">Prerequisites</a>
-          <li><a href="#DrumPi">DrumPi</a>
+          <li><a href="####DrumPi">DrumPi</a>
         </ul>
       <li><a href="#Startup">Startup</a>
       <li><a href="#Running-Tests">Running Tests</a>
@@ -139,7 +139,7 @@ V		Exit "Set Drum Volume" Mode
 BACKSPACE	Exit "Set Drum Volume" Mode
 ```
 Set Tempo Sub-Mode:
-``
+```
 .		Increase tempo
 ,		decrease tempo
 T		Exit "Set Tempo" sub-mode, return to Sequencer mode
