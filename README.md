@@ -45,9 +45,9 @@ Before downloading and installing DrumPi's software on your Raspberry Pi, perfor
 First, run the following in a terminal:
 ```
 sudo apt install git cmake libboost-test-dev libjack-jackd2-dev
-sudo adduser <username> input
-sudo adduser <username> audio
-sudo adduser <username> spi
+sudo adduser $(whoami) input
+sudo adduser $(whoami) audio
+sudo adduser $(whoami) spi
 ```
 Reboot system before continuing.    
 To enable the SPI interface, run the following in a terminal:
@@ -80,38 +80,66 @@ To run the suite of unit tests, enter:
 in a terminal from the DrumPi directory
 
 ## Usage
-Performance Mode:  
+When turned on, the DrumPi defaults to performance mode.
+
+Global Actions:
 ```
 KEY		ACTION
-A		Tom 1
-S		Tom 2
-D		Snare
-F		Kick
-J		Clap
-K		Hi-hat (closed)
-L		hi-hat (open)
-;		Cymbal
+M		Switch between performance and sequencer mode
+ESC		Exit program
 .		Increase master volume
 ,		Decrease master volume
 V		Switch to "Set Drum Volume" Mode
-BACKSPACE	Exit program
 ```
-Set Drum Volume Mode:
+Performance Mode:  
 ```
+KEY		ACTION
+A		Play drum 1
+S		Play drum 2
+D		Play drum 3
+F		Play drum 4
+J		Play drum 5
+K		Play drum 6
+L		Play drum 7
+;		Play drum 8
+```
+Sequencer Mode:
+```
+When entering sequencer mode, drum 1 and page 1 are displayed by default.
+
+KEY		ACTION
+A,S,D,F,J,K,L,;	Select drum
+1-8		Toggle whether drum sound plays for that beat
+		When page 1 is displayed, will toggle beats 1-8
+		When page 2 is displayed, will toggle beats 9-16
+TAB		Switch between page 1 and 2
+SPACE		Start/stop sequence
+T		Switch to "Set Tempo" mode		
+```
+Set Drum Volume Sub-Mode:
+```
+Can enter this mode from both Performance mode and Sequencer mode.
+
 KEY		ACTION
 .		Increase volume of selected drum
 ,		Decrease volume of selected drum
-A		Switch selected drum to Tom 1
-S		Switch selected drum to Tom 2
-D		Switch selected drum to Snare
-F		Switch selected drum to Kick
-J		Switch selected drum to Clap
-K		Switch selected drum to Hi-hat (closed)
-L		Switch selected drum to Hi-hat (open)
-;		Switch selected drum to Cymbal
+A		Switch selected drum to drum 1
+S		Switch selected drum to drum 2
+D		Switch selected drum to drum 3
+F		Switch selected drum to drum 4
+J		Switch selected drum to drum 5
+K		Switch selected drum to drum 6
+L		Switch selected drum to drum 7
+;		Switch selected drum to drum 8
 V		Exit "Set Drum Volume" Mode
-ESC		Exit "Set Drum Volume" Mode
-BACKSPACE	Exit program
+BACKSPACE	Exit "Set Drum Volume" Mode
+```
+Set Tempo Sub-Mode:
+``
+.		Increase tempo
+,		decrease tempo
+T		Exit "Set Tempo" sub-mode, return to Sequencer mode
+BACKSPACE	Exit "Set Tempo" sub-mode, return to Sequencer mode
 ```
 
 ## Stretch Goals
