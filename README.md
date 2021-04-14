@@ -16,8 +16,11 @@
     </ul>
   <li><a href="#Quick-Start-Guide">Quick Start Guide</a>
     <ul>
-      <li><a href="#Setup">Setup</a>
       <li><a href="#Installation">Installation</a>
+        <ul>
+          <li><a href="#Prerequisites">Prerequisites</a>
+          <li><a href="#DrumPi">DrumPi</a>
+        </ul>
       <li><a href="#Startup">Startup</a>
       <li><a href="#Running-Tests">Running Tests</a>
     </ul>
