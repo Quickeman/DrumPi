@@ -88,6 +88,7 @@ ESC		Exit program
 .		Increase master volume
 ,		Decrease master volume
 V		Switch to "Set Drum Volume" Mode
+B		Switch to "Drum Bank" Mode
 ```
 Performance Mode:  
 ```
@@ -129,15 +130,25 @@ J		Switch selected drum to drum 5
 K		Switch selected drum to drum 6
 L		Switch selected drum to drum 7
 ;		Switch selected drum to drum 8
-V		Exit "Set Drum Volume" Mode
-BACKSPACE	Exit "Set Drum Volume" Mode
+V		Exit "Set Drum Volume" sub-mode
+BACKSPACE	Exit "Set Drum Volume" sub-mode
 ```
 Set Tempo Sub-Mode:
 ```
+KEY		ACTION
 .		Increase tempo
 ,		decrease tempo
 T		Exit "Set Tempo" sub-mode, return to Sequencer mode
 BACKSPACE	Exit "Set Tempo" sub-mode, return to Sequencer mode
+```
+Drum Bank Mode:
+```
+KEY		ACTION
+.		Cycle up through drum banks
+,		Cycle down through drum banks
+B		Exit drum bank mode	
+BACKSPACE	Exit drum bank mode
+For more information about drum banks, see the README in the audio directory.
 ```
 
 ## Stretch Goals
