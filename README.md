@@ -87,8 +87,8 @@ M		Switch between performance and sequencer mode
 ESC		Exit program
 .		Increase master volume
 ,		Decrease master volume
-V		Switch to "Set Drum Volume" Mode
-B		Switch to "Drum Bank" Mode
+V		Switch to "Set Drum Volume" sub-mode
+B		Switch to "Drum Bank" sub-mode
 ```
 Performance Mode:  
 ```
@@ -113,11 +113,11 @@ A,S,D,F,J,K,L,;	Select drum
 		When page 2 is displayed, will toggle beats 9-16
 TAB		Switch between page 1 and 2
 SPACE		Start/stop sequence
-T		Switch to "Set Tempo" mode		
+T		Switch to "Set Tempo" sub-mode		
 ```
 Set Drum Volume Sub-Mode:
 ```
-Can enter this mode from both Performance mode and Sequencer mode.
+Can enter this mode from both performance mode and sequencer mode.
 
 KEY		ACTION
 .		Increase volume of selected drum
@@ -138,10 +138,10 @@ Set Tempo Sub-Mode:
 KEY		ACTION
 .		Increase tempo
 ,		decrease tempo
-T		Exit "Set Tempo" sub-mode, return to Sequencer mode
-BACKSPACE	Exit "Set Tempo" sub-mode, return to Sequencer mode
+T		Exit "Set Tempo" sub-mode, return to sequencer mode
+BACKSPACE	Exit "Set Tempo" sub-mode, return to sequencer mode
 ```
-Drum Bank Mode:
+Drum Bank Sub-Mode:
 ```
 KEY		ACTION
 .		Cycle up through drum banks
@@ -155,3 +155,4 @@ For more information about drum banks, see the README in the audio directory.
 - External clocking
 - Customisation of drum sounds by user
 - Ability for real-time DSP using Pd patches
+
