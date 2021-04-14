@@ -88,6 +88,18 @@ float PlaybackEngine::getVolume() {
     return masterVol;
 }
 
+sampleSourceStatus_t PlaybackEngine::loadBank(int bank, sampleSourceType_t type) {
+    sampleSourceStatus_t status, retStat;
+    retStat = SOURCE_READY;
+
+    for(int i = 0; i < NUM_DRUMS; i++) {
+        status = setSource((drumID_t)i, bank, type);
+        if (status != SOURCE_READY) retStat = status;
+    }
+
+    return retStat;
+}
+
 sampleSourceStatus_t PlaybackEngine::setSource(drumID_t drum, int bank, sampleSourceType_t type) {
     sampleSourceStatus_t status;
 

@@ -17,8 +17,13 @@ BOOST_AUTO_TEST_CASE(Open_Input_File) {
 
 BOOST_AUTO_TEST_CASE(application_callback) {
 	Application app;
+	app.setup();
+	
+	BOOST_CHECK(app.mode->label == PERFORMANCE_MODE);
+	BOOST_CHECK(app.subMode->label == SET_MASTER_VOLUME_MODE);
 	
 	app.kbdThread.kbdIn.callback->interpretKeyPress(KEY_V);
 	
-	BOOST_CHECK(app.currentstate->label == SET_DRUM_VOLUME_MODE);
+	BOOST_CHECK(app.mode->label == PERFORMANCE_MODE);
+	BOOST_CHECK(app.subMode->label == SET_DRUM_VOLUME_MODE);
 }

@@ -4,6 +4,7 @@
 #include <defs.hpp>
 #include <wiringPiSPI.h>
 #include <clock.hpp>
+#include <applicationcallback.hpp>
 #include <memory>
 
 namespace drumpi {
@@ -201,13 +202,13 @@ class Display: public Max7219 {
          * keyMapping[drumID] = key/digit
          */
         std::vector<unsigned int> keyMapping = {
-            3,  // Kick
-            2,  // Snare
-            4,  // Clap
-            5,  // HH Close
-            6,  // HH Open
-            0,  // Tom 1
-            1,  // Tom 2
+            0,  // Kick
+            1,  // Snare
+            2,  // Clap
+            3,  // HH Close
+            4,  // HH Open
+            5,  // Tom 1
+            6,  // Tom 2
             7,  // Cymbal
         };
 
@@ -240,6 +241,12 @@ class Display: public Max7219 {
          */
         void addLevel(float level);
 
+        /**
+         * Updates display to show current page with underscores
+         * @param page Page to display
+         */
+        void addPage(unsigned int page);
+
     public:
 
         Display(); /// Constructor
@@ -255,6 +262,15 @@ class Display: public Max7219 {
          * @param redraw If true, updates display
          */
         void setVal(unsigned int value, bool redraw);
+
+        /**
+         * Sets digits to display a drum volume and current drum
+         *
+         * @param value Numerical value to display
+         * @param currentDrum Current drum to display
+         * @param redraw If true, updates display
+         */
+        void setDrumVolume(unsigned int value, drumID_t currentDrum, bool redraw);
 
         /**
          * Sets the mapping of drums to keys
@@ -281,7 +297,7 @@ class Display: public Max7219 {
          * @param currentDrum Active drum for editing
          * @param redraw If true, updates display
          */
-        void setStopSeq(std::vector<bool> activeDrums, unsigned int page, unsigned int currentDrum, bool redraw);
+        void setStopSeq(std::vector<bool> activeDrums, unsigned int page, drumID_t currentDrum, bool redraw);
 
         /**
          * Updates performance mode display
@@ -297,24 +313,4 @@ class Display: public Max7219 {
          * */
         int getKeymapping(int index);
     };
-};
-
-/*! \ref Metronome derived class to clock a \ref Display. */
-class DisplayClock : public clock::Clock {
-    public:
-        /*! Constructor.
-        Sets the Display to be clocked.
-        \param s \ref Display object to be clocked. */
-        DisplayClock(Display* d);
-
-        /*! Override the tick method.
-        Clocks the \ref Display given to \ref setDisplay. */
-        void tick() override;
-    
-    private:
-        /*! Pointer to the `Display` object to be clocked. */
-        Display* display = nullptr;
-
-    };
-
-} // namespace drumpi
+}

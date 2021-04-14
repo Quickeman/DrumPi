@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Detect USB keyboard
+bash scripts/detect_keyboards.bash
+
+# Close any active JACK servers and start a new one
+bash scripts/start_jackd.bash
+
+# Run unit test suite
+make test
+
+# Close JACK server
+bash scripts/close_jackd.bash

@@ -61,9 +61,15 @@ class PlaybackEngine : public AudioCallback {
         \return current master volume multiplier. */
         float getVolume();
 
+        /*! Loads a bank of drums of a homogenous type.
+        \param bank ID of the bank of drums to load from.
+        \param type type of sources to load. */
+        sampleSourceStatus_t loadBank(int bank, sampleSourceType_t type);
+
         /*! Sets the source for the specified drum.
         \param drum ID of the drum to set the type for.
-        \param type type of source. */
+        \param bank ID of the bank of drums to load from.
+        \param type type of source to load. */
         sampleSourceStatus_t setSource(drumID_t drum, int bank, sampleSourceType_t type);
 
         /*! Returns the source status of the given drum.

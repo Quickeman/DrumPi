@@ -196,6 +196,19 @@ void Display::addLevel(float level) {
 
 }
 
+void Display::addPage(unsigned int page){
+    if(page > 0) {
+        for(int digit = 0; digit < 4; digit ++){
+            setDigit(digit, getDigit(digit) + bottomAddr, false);
+        }
+    }
+    else {
+        for(int digit = 4; digit < 8; digit ++){
+            setDigit(digit, getDigit(digit) + bottomAddr, false);
+        }
+    }
+}
+
 void Display::setVal(unsigned int value, bool redraw) {
     clear(false);
     // Separate value into individual digits
@@ -208,29 +221,34 @@ void Display::setVal(unsigned int value, bool redraw) {
     if (redraw) flush();
 }
 
+void Display::setDrumVolume(unsigned int value, drumID_t currentDrum, bool redraw) {
+    clear(false);
+    setVal(value, false);
+    unsigned int currentKey = keyMapping[currentDrum];
+    setDigit(getNumDigits() - currentKey-1, getDigit(getNumDigits()-currentKey-1) + dpAddr, false);
+    if(redraw) flush();
+}
+
 void Display::setKeymapping(std::vector<unsigned int> _keyMapping) {
     keyMapping = _keyMapping;
 }
 
 void Display::setPlaybackSeq(std::vector<bool> activeDrums, unsigned int stepNum, bool redraw) {
     clear(false);
-    unsigned int page = stepNum > getNumDigits();
+    unsigned int page = stepNum >= getNumDigits();
     setActiveDrums(activeDrums, page);
-    if(stepNum <= getNumDigits()) {
-        unsigned char addr = getNumDigits() -stepNum;
-        setDigit(addr, getDigit(addr) + bottomAddr, false);
-    }
-    else {
-        unsigned char addr = getNumDigits() - (stepNum%8);
-        setDigit(addr, getDigit(addr) + dpAddr, false);
-    }
+    unsigned char addr = getNumDigits() - (stepNum % 8) - 1; 
+    setDigit(addr, getDigit(addr) + dpAddr, false);
+    addPage(page);
     if (redraw) flush();
 }
 
-void Display::setStopSeq(std::vector<bool> activeDrums, unsigned int page, unsigned int currentDrum, bool redraw) {
+void Display::setStopSeq(std::vector<bool> activeDrums, unsigned int page, drumID_t currentDrum, bool redraw) {
     clear(false);
     setActiveDrums(activeDrums, page);
-    setDigit(getNumDigits() - currentDrum, getDigit(getNumDigits()-currentDrum) + dpAddr, false);
+    unsigned int currentKey = keyMapping[currentDrum];
+    setDigit(getNumDigits() - currentKey-1, getDigit(getNumDigits()-currentKey-1) + dpAddr, false);
+    addPage(page);
     if(redraw) flush();
 }
 
@@ -245,16 +263,4 @@ void Display::setPerformance(std::vector<drumID_t> activeDrums, float level, boo
 
 int Display::getKeymapping(int index){
     return keyMapping[index];
-}
-
-
-// DisplayClock class
-
-DisplayClock::DisplayClock(Display* d) {
-    setRate(33); //ms
-    display = d;
-}
-
-void DisplayClock::tick() {
-    display->flush();
 }
