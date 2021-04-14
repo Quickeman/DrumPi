@@ -225,6 +225,7 @@ void SetMasterVolumeMode::updateDisplay(ApplicationCallback* appc) {
 SetDrumVolumeMode::SetDrumVolumeMode() {
 	label = SET_DRUM_VOLUME_MODE;
 	drumselected = interpretDrumKey(KEY_A);	//default drum A
+	triggerDrums = true;
 }
 
 bool SetDrumVolumeMode::interpretKeyPress(ApplicationCallback *appc, int key) {
@@ -235,14 +236,14 @@ bool SetDrumVolumeMode::interpretKeyPress(ApplicationCallback *appc, int key) {
 			// Increase selected drum's volume
 			app->playbackEngine.volumeUp(drumselected);
 			// Trigger selected drum for user reference
-			app->playbackEngine.trigger(drumselected);
+			if (triggerDrums) app->playbackEngine.trigger(drumselected);
 			actionFlag = true;
 			break;
 		case KEY_COMMA:
 			// Decrease selected drum's volume
 			app->playbackEngine.volumeDown(drumselected);
 			// Trigger selected drum for user reference
-			app->playbackEngine.trigger(drumselected);
+			if (triggerDrums) app->playbackEngine.trigger(drumselected);
 			actionFlag = true;
 			break;
 		
@@ -259,6 +260,10 @@ bool SetDrumVolumeMode::interpretKeyPress(ApplicationCallback *appc, int key) {
 			// Trigger the drum sound
 			app->playbackEngine.trigger(drumselected);
 			actionFlag = true;
+			break;
+
+		case KEY_Z:
+			triggerDrums = !triggerDrums;
 			break;
 	}
 
