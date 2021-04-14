@@ -75,7 +75,7 @@ To run the suite of unit tests, enter:
 ```
 ./run_tests
 ```
-in a terminal from the DrumPi directory
+in a terminal from the DrumPi directory.
 
 ## Usage
 When turned on, the DrumPi defaults to performance mode.
@@ -130,11 +130,14 @@ J		Switch selected drum to drum 5
 K		Switch selected drum to drum 6
 L		Switch selected drum to drum 7
 ;		Switch selected drum to drum 8
+Z		Toggle whether the drum sound plays when increasing or decreasing the selected drum's volume
 V		Exit "Set Drum Volume" sub-mode
 BACKSPACE	Exit "Set Drum Volume" sub-mode
 ```
 Set Tempo Sub-Mode:
 ```
+Can only enter this mode from sequencer mode.
+
 KEY		ACTION
 .		Increase tempo
 ,		decrease tempo
@@ -143,12 +146,14 @@ BACKSPACE	Exit "Set Tempo" sub-mode, return to sequencer mode
 ```
 Drum Bank Sub-Mode:
 ```
+Can enter this mode from both performance mode and sequencer mode.  
+For more information about drum banks, see the README in the audio directory.  
+
 KEY		ACTION
 .		Cycle up through drum banks
 ,		Cycle down through drum banks
 B		Exit drum bank mode	
 BACKSPACE	Exit drum bank mode
-For more information about drum banks, see the README in the audio directory.
 ```
 
 ## Stretch Goals
