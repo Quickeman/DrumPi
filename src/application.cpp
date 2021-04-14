@@ -6,6 +6,30 @@
 
 using namespace drumpi;
 
+// DisplayClock class
+
+DisplayClock::DisplayClock(ApplicationCallback* a) {
+    setRate(33); //ms
+    appc = a;
+}
+
+void DisplayClock::tick() {
+	Application* app = static_cast<Application*>(appc);
+
+	app->displayState->updateDisplay(appc);
+}
+
+// Display Delay class
+
+DisplayDelay::DisplayDelay(ApplicationCallback* a) {
+	setTime(2000);
+    appc = a;
+}
+
+void DisplayDelay::trigger() {
+	Application* app = static_cast<Application*>(appc);
+	app->displayState = app->mode; // Reset to primary display mode after timeout
+}
 
 //States
 
@@ -467,30 +491,4 @@ void Application::setState(stateLabel_t newstate) {
 			displayState = subMode;
 			break;
 	}
-}
-
-
-// DisplayClock class
-
-DisplayClock::DisplayClock(ApplicationCallback* a) {
-    setRate(33); //ms
-    appc = a;
-}
-
-void DisplayClock::tick() {
-	Application* app = static_cast<Application*>(appc);
-
-	app->displayState->updateDisplay(appc);
-}
-
-// Display Delay class
-
-DisplayDelay::DisplayDelay(ApplicationCallback* a) {
-	setTime(2000);
-    appc = a;
-}
-
-void DisplayDelay::trigger() {
-	Application* app = static_cast<Application*>(appc);
-	app->displayState = app->mode; // Reset to primary display mode after timeout
 }
