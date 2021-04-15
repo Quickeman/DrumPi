@@ -5,7 +5,11 @@
 
 using namespace drumpi;
 
+/*! Wrapper for the signal handling lambda expression. */
 std::function<void(int)> shutdownHandler;
+
+/*! Global function that can be given as a \ref signal handler.
+Calls \ref shutdownHandler. */
 void signalHandler(int signal) { shutdownHandler(signal); }
 
 int main(int argc, char* argv[]){

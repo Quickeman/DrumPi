@@ -18,7 +18,7 @@ class SampleSource {
 
         /*! Returns a buffer of samples.
         \param nSamples number of samples to be returned.
-        \return sample buffer of length `nSamples`. */
+        \return sample buffer of length \ref nSamples. */
         virtual std::vector<sample_t> getSamples(int nSamples) = 0;
 
         /*! Resets the source to initial conditions. */
@@ -28,7 +28,6 @@ class SampleSource {
         virtual void updateStatus() = 0;
 
         /*! Returns the status of the source.
-        Sets status to `READY` if currently `FINISHED`.
         \return status code of source. */
         sampleSourceStatus_t getStatus();
 
@@ -44,7 +43,7 @@ class SampleSource {
 };
 
 
-/*! Specialised abstract class for file-based sample sources, e.g. wav files. */
+/*! Specialised abstract class for file-based sample sources, e.g. wave files. */
 class SampleSourceFile : public SampleSource {
     protected:
         /*! Loads the specified file.
@@ -60,12 +59,12 @@ class SampleSourceFile : public SampleSource {
 class AudioClip : public SampleSourceFile {
     public:
         /*! Class constructor.
-        \param filepath the file path of an audio file, e.g. "/home/pi/DrumPi/samples/kick.wav". */
+        \param filepath the absolute file path of an audio file. */
         AudioClip(std::string filepath);
 
         /*! Returns a buffer of samples.
         \param nSamples number of samples to be returned.
-        \return sample buffer of length `nSamples`. */
+        \return sample buffer of length \ref nSamples. */
         std::vector<sample_t> getSamples(int nSamples) override;
 
         /*! Halts playback and returns playhead to start of clip. */
@@ -74,8 +73,9 @@ class AudioClip : public SampleSourceFile {
         /*! Updates the status of the source. */
         void updateStatus() override;
 
-        /*! Like `reset()`, but completely re-loads the clip.
-        Not recommended for real-time use, only call to recover from errors. */
+        /*! Like \ref reset but the clip is completely re-loaded.
+        Not recommended for real-time use, but may be useful to recover from
+        errors. */
         void hardReset();
 
     private:
@@ -91,7 +91,7 @@ class AudioClip : public SampleSourceFile {
         /*! The number of samples of playback elapsed. */
         int playhead;
 
-        /*! Calculates the number of samples remaining for playback. */
+        /*! Calculates the number of samples remaining for output. */
         int samplesRemaining();
 };
 

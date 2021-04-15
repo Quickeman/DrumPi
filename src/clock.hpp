@@ -8,41 +8,45 @@
 namespace drumpi {
 namespace clock {
 
-/*! Converts BPM to ms. */
+/*! Converts BPM to ms.
+\param bpm BPM value to convert to ms.
+\return period of BPM in ms. */
 inline int bpmToMs(int bpm) {
     return 60000 / bpm;
 }
 
 
-/*! Trigger a single delayed action. */
+/*! Trigger a single delayed action.
+To use, create a class that inherits from this and override the \ref trigger
+method to set the functionality. */
 class Timer : public CppTimer {
     public:
         /*! Constructor. */
         Timer();
 
         /*! Destructor.
-        Deactivates the timer. */
+        Deactivates the \ref Timer. */
         ~Timer();
 
         /*! Set trigger time in ms.
-        \param ms desired trigger time, in ms. */
+        \param ms desired trigger time in ms. */
         void setTime(int ms);
 
         /*! Returns the trigger time in ms.
         \return trigger time in ms. */
         int getTime();
 
-        /*! Start the timer. */
+        /*! Start the \ref Timer. */
         void start();
 
-        /*! Cancels the timer. */
+        /*! Cancels the \ref Timer. */
         void stop();
 
-        /*! Checks if the `Timer` is active.
+        /*! Checks if the \ref Timer is active.
         \return `true` if active. */
         bool isActive();
 
-        /*! Callback method run when given time has passed.
+        /*! Callback method run when the time has passed.
         Override to add functionality. */
         virtual void trigger() = 0;
     
@@ -58,7 +62,9 @@ class Timer : public CppTimer {
 };
 
 
-/*! Trigger repeated actions. */
+/*! Trigger repeated actions.
+To use, create a class that inherits from this and override the \ref tick method
+to set the functionality. */
 class Clock : public CppTimer {
     public:
         /*! Constructor. */
@@ -69,7 +75,9 @@ class Clock : public CppTimer {
         ~Clock();
 
         /*! Set the clock rate.
-        \param ms desired clocking rate, in ms. */
+        The change takes effect on the next \ref tick, or can be forced by
+        calling \ref stop and then \ref start.
+        \param ms desired clocking rate in ms. */
         void setRate(int ms);
 
         /*! Returns the clock rate in ms.
@@ -77,13 +85,13 @@ class Clock : public CppTimer {
         int getRate();
 
         /*! Start the clock.
-        Default period is 1 second, change with setRate(). */
+        Default period is 1 second, change with \ref setRate. */
         void start();
 
         /*! Stop the clock. */
         void stop();
 
-        /*! Checks if the `Clock` is active.
+        /*! Checks if the \ref Clock is active.
         \return `true` if active. */
         bool isActive();
 
@@ -107,18 +115,22 @@ class Clock : public CppTimer {
 };
 
 
-/*! Metronome class, similar to Clock but can operate in BPM. */
+/*! Metronome class, similar to \ref Clock but can operate in BPM.
+To use, create a class that inherits from this and override the \ref tick method
+to set the functionality. */
 class Metronome : public Clock {
     public:
         /*! Contructor. */
         Metronome();
 
         /*! Sets the clock rate in BPM.
-        \param bpm desired clocking rate, in beats per minute (BPM). */
+        The change takes effect on the next \ref tick, or can be forced by
+        calling \ref stop and then \ref start.
+        \param bpm desired clocking rate in BPM. */
         void setRateBPM(int bpm);
 
         /*! Returns the clock rate in BPM.
-        \return clock rate in beats per minute (BPM). */
+        \return clock rate in BPM. */
         int getRateBPM();
     
     private:
