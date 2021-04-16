@@ -20,7 +20,7 @@ public:
 	/*! Method called when thread is started. */
 	void run();
 
-	/*! Instance of KeyboardInput class */
+	/*! Instance of \ref KeyboardInput class */
 	KeyboardInput kbdIn;
 };
 

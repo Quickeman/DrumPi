@@ -66,7 +66,9 @@ public:
 	/*! Virtual function to be overridden by derived class */
 	virtual void updateDisplay(ApplicationCallback* appc) = 0;
 	
-	/*! Interprets drum keys and returns a drum ID */
+	/*! Interprets drum keys and returns a drum ID
+	 * \param key Keypress detected by \ref KeyboardInput
+	 */
     drumID_t interpretDrumKey(int key);
 };
 
@@ -81,7 +83,7 @@ public:
 	 * \brief Method to perform action depending on key pressed.
 	 * 
 	 * Action performed is unique to performance mode.
-	 * @param appc Callback to the main application
+	 * @param appc Callback to the main \ref Application
 	 * @param key The keypress detected
 	 */
 	bool interpretKeyPress(ApplicationCallback* appc, int key) override;
@@ -101,7 +103,7 @@ public:
 	 * \brief Method to perform action depending on key pressed.
 	 * 
 	 * Action performed is unique to sequencer mode.
-	 * @param appc Callback to the main application
+	 * @param appc Callback to the main \ref Application
 	 * @param key The keypress detected
 	 */
 	bool interpretKeyPress(ApplicationCallback* appc, int key) override;
@@ -110,6 +112,7 @@ public:
 
 	/*! Drum currently being set in sequencer */
 	drumID_t currentdrum;
+	
 	/*!
 	 * \brief Page currently displayed on ZeroSeg.
 	 * 
@@ -129,7 +132,7 @@ public:
 	 * \brief Method to perform action depending on key pressed.
 	 * 
 	 * Action performed is unique to SetTempoMode.
-	 * @param appc Callback to the main application
+	 * @param appc Callback to the main \ref Application
 	 * @param key The keypress detected
 	 */
 	bool interpretKeyPress(ApplicationCallback* appc, int key) override;
@@ -155,7 +158,7 @@ public:
 	 * \brief Method to perform action depending on key pressed.
 	 * 
 	 * Action performed is unique to SetMasterVolumeMode.
-	 * @param appc Callback to the main application
+	 * @param appc Callback to the main \ref Application
 	 * @param key The keypress detected
 	 */
 	bool interpretKeyPress(ApplicationCallback* appc, int key) override;
@@ -174,7 +177,7 @@ public:
 	 * \brief Method to perform action depending on key pressed.
 	 * 
 	 * Action performed is unique to SetDrumVolumeMode.
-	 * @param appc Callback to the main application
+	 * @param appc Callback to the main \ref Application
 	 * @param key The keypress detected
 	 */
 	bool interpretKeyPress(ApplicationCallback* appc, int key) override;
@@ -200,7 +203,7 @@ public:
 	 * \brief Method to perform action depending on key pressed.
 	 * 
 	 * Action performed is unique to SetDrumBankMode.
-	 * @param appc Callback to the main application
+	 * @param appc Callback to the main \ref Application
 	 * @param key The keypress detected
 	 */
 	bool interpretKeyPress(ApplicationCallback* appc, int key) override;
@@ -232,7 +235,7 @@ public:
 	void run();
 	
 	/*! 
-	 * Method called by keyboard input when a keyboard event occurs.
+	 * Method called by \ref KeyboardInput when a keyboard event occurs.
 	 * 
 	 * @param key The keypress detected
 	 */
@@ -272,7 +275,7 @@ public:
 	State* displayState;
 
 
-	/*! Instance of KeyboardThread class */
+	/*! Instance of \ref KeyboardThread class */
 	KeyboardThread kbdThread;
 
 	/*! AudioEngine object. */

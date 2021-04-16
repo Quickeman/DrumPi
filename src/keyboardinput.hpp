@@ -22,9 +22,9 @@ class KeyboardInput {
 
 public:
 
-	/*! /brief Constructor.
+	/*! \brief Constructor.
 	 *
-	 * The constructor sets and opens the
+	 * The constructor detects and opens the
 	 * device file for the keyboard input device.
 	 */
     KeyboardInput();
@@ -33,22 +33,25 @@ public:
      * \brief Method to poll the keyboard input.
      *
      * This method monitors the keyboard device file
-     * with a polling loop and prints an alert
-     * to the terminal when a key is pressed.
+     * with a polling loop and calls the \ref Application object
+     * to interpret the key press and perform an action
+     * when a key press is detected.
      */
     void pollInput();
     
-    /*! Method to set the class called when a keyboard event occurs */
+    /*! 
+     * \brief Method to set the \ref Application object called when a keyboard event occurs.
+     * 
+     * \param app \ref Application object called by pollInput
+     * when a key press is detected.
+     * */
     void connectCallback(ApplicationCallback* app);
 
     /*! Returns file descriptor of the input device */
     int getFileDescriptor();
 
-    /*! Returns testFlag */
+    /*! Returns \ref testFlag */
     int getTestFlag();
-
-    /*! Returns the number of key presses detected whilst pollInput was running */
-    int getKeyPressCount();
 
     /*! Running flag used to end the input polling loop */
     int running;
@@ -69,12 +72,6 @@ private:
 
     /*! Flag to check pollInput has been called successfully */
     int testFlag;
-
-    /*! 
-     * Test variable to count number of key presses
-     * detected whilst pollInput is running
-     */
-    int keyPressCount;
 
 };
 
