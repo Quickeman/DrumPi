@@ -9,9 +9,9 @@
 
 <p align="center">
   <a href="https://www.facebook.com/DrumPiProject/">Facebook</a>
-  <b> | <\b>
+  <span> | </span>
   <a href="https://www.instagram.com/drumpiproject/">Instagram</a>
-  <b> | <\b>
+  <span> | </span>
   <a href="https://twitter.com/DrumPiProject">Twitter</a>
 </p>
 
