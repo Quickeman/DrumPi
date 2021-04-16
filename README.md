@@ -7,20 +7,12 @@
   <p align="center">A drum machine made for the Raspberry Pi</p>  
 </p>
 
-<div>
-  [![Contributors](https://img.shields.io/github/contributors/Quickeman/DrumPi.svg)](https://github.com/Quickeman/DrumPi/graphs/contributors)
-  [![Forks](https://img.shields.io/github/forks/Quickeman/DrumPi.svg)](https://github.com/Quickeman/DrumPi/network/members)
-  [![Stars](https://img.shields.io/github/stars/Quickeman/DrumPi.svg)](https://github.com/Quickeman/DrumPi/stargazers)
-  [![Issues](https://img.shields.io/github/issues/Quickeman/DrumPi.svg)](https://github.com/Quickeman/DrumPi/issues)
-  [![License](https://img.shields.io/github/license/Quickeman/DrumPi.svg)](https://github.com/Quickeman/DrumPi/blob/main/LICENSE)
-  [![Release](https://img.shields.io/github/v/release/Quickeman/DrumPi?include_prereleases.svg)](https://github.com/Quickeman/DrumPi/releases)
-</div>
-
-<div>
-  [![Facebook](https://www.facebook.com/DrumPiProject/)]
-  [![Instagram](https://www.instagram.com/drumpiproject/)]
-  [![Twitter](https://twitter.com/DrumPiProject)]
-<\div>
+[![Contributors](https://img.shields.io/github/contributors/Quickeman/DrumPi.svg)](https://github.com/Quickeman/DrumPi/graphs/contributors)
+[![Forks](https://img.shields.io/github/forks/Quickeman/DrumPi.svg)](https://github.com/Quickeman/DrumPi/network/members)
+[![Stars](https://img.shields.io/github/stars/Quickeman/DrumPi.svg)](https://github.com/Quickeman/DrumPi/stargazers)
+[![Issues](https://img.shields.io/github/issues/Quickeman/DrumPi.svg)](https://github.com/Quickeman/DrumPi/issues)
+[![License](https://img.shields.io/github/license/Quickeman/DrumPi.svg)](https://github.com/Quickeman/DrumPi/blob/main/LICENSE)
+[![Release](https://img.shields.io/github/v/release/Quickeman/DrumPi?include_prereleases.svg)](https://github.com/Quickeman/DrumPi/releases)
 
 ## Contents
 <ul>
