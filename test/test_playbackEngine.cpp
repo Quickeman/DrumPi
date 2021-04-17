@@ -28,9 +28,9 @@ BOOST_AUTO_TEST_CASE(volumes) {
         p.volumeDown();
         c--;
     }
-    BOOST_CHECK(p.getVolume(d1) == 1.f);
-    BOOST_CHECK(p.getVolume(d2) == 0.0f);
-    BOOST_CHECK(p.getVolume() == 0.f);
+    BOOST_CHECK(p.getVolume(d1) == 100);
+    BOOST_CHECK(p.getVolume(d2) == 0);
+    BOOST_CHECK(p.getVolume() == 0);
 }
 
 BOOST_AUTO_TEST_CASE(getsBuffer) {

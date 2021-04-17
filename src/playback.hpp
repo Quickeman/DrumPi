@@ -54,14 +54,14 @@ class PlaybackEngine : public AudioCallback {
         /*! Decrements the master output volume. */
         void volumeDown();
 
-        /*! Returns the current volume of the passed drum.
+        /*! Returns the current volume of the passed drum as a percentage.
         \param drum \ref drumID_t of the drum to query.
-        \return current volume multiplier of \ref drum. */
-        float getVolume(drumID_t drum);
+        \return current volume of \ref drum. */
+        int getVolume(drumID_t drum);
 
-        /*! Returns the current master volume.
-        \return current master volume multiplier. */
-        float getVolume();
+        /*! Returns the current master volume as a percentage.
+        \return current master volume. */
+        int getVolume();
 
         /*! Loads a bank of drums of a homogenous \ref sampleSourceType_t.
         \param bank ID of the bank of drums to load from.
@@ -94,17 +94,22 @@ class PlaybackEngine : public AudioCallback {
         /*! Switches to store whether each source is being played. */
         std::array<bool, NUM_DRUMS> isTriggered;
 
-        /*! Current master volume multiplier. */
-        float masterVol;
-        /*! Default master volume multiplier. */
-        static constexpr float masterVolDef = 0.75f;
-        /*! Current drum volume multipliers. */
-        std::array<float, NUM_DRUMS> volumes;
-        /*! Default drum volume multiplier. */
-        static constexpr float volumeDef = 0.75f;
+        /*! Current master volume as a percentage. */
+        int masterVol;
+        /*! Current drum volumes as percentages. */
+        std::array<int, NUM_DRUMS> volumes;
+
+        /*! Lookup table for exponential volume control.
+        Indexed as a percentage. */
+        std::array<float, 101> volumeTable;
+
+        /*! Default master volume. */
+        const int masterVolDef = 75;
+        /*! Default drum volume. */
+        const int volumeDef = 75;
 
         /*! Step size for volume increments and decrements. */
-        const float volumeStep = 0.05f;
+        const int volumeStep = 5;
 };
 
 } // namespace audio
