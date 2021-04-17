@@ -93,7 +93,7 @@ class Sequencer {
         void clear();
 
         /*! Resets the \ref Sequencer to initial conditions.
-        \param clearSteps whether to clear the \ref Sequence pattern. */
+        \param clearSteps whether to clear the \ref Sequencer pattern. */
         void reset(bool clearSteps = true);
 
         /*! Adds the specified drum to the specified step.
@@ -154,7 +154,7 @@ class SequencerClock : public clock::Metronome {
         /*! Constructor.
         Sets the \ref Sequencer to be clocked.
         \param s \ref Sequencer object to be clocked.
-        \param p \ref PlaybackEngine object for triggering the active drums. */
+        \param p \ref audio::PlaybackEngine object for triggering the active drums. */
         SequencerClock(std::shared_ptr<Sequencer> s, audio::PlaybackEngine& p);
 
         /*! Override the tick method.
@@ -165,7 +165,7 @@ class SequencerClock : public clock::Metronome {
         /*! Pointer to the \ref Sequencer object to be clocked. */
         std::shared_ptr<Sequencer> seq = nullptr;
 
-        /*! Pointer to the \ref PlaybackEngine used for triggering the active
+        /*! Pointer to the \ref audio::PlaybackEngine used for triggering the active
         drums. */
         audio::PlaybackEngine* pbe;
 };

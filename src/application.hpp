@@ -15,7 +15,7 @@
 
 namespace drumpi {
 	
-/*! \ref Metronome derived class to clock a \ref Display. */
+/*! \ref clock::Metronome derived class to clock a \ref Display. */
 class DisplayClock : public clock::Clock {
 public:
 	/*! Constructor.

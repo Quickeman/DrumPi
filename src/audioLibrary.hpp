@@ -19,7 +19,7 @@ class AudioLibrary {
         /*! Returns the absolute filepath for the given drum and type.
         \param drum \ref drumID_t of the drum to inspect the filepath of.
         \param bank ID of the bank of drums to load from.
-        \param type \ref sampleSourceType_t of source to inspect the filepath of.
+        \param type \ref audio::sampleSourceType_t of source to inspect the filepath of.
         \return absolute filepath of the relevant file. */
         std::string getFilepath(drumID_t drum, int bank, sampleSourceType_t type);
     

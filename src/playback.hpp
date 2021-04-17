@@ -41,14 +41,14 @@ class PlaybackEngine : public AudioCallback {
         std::vector<drumID_t> getActive();
 
         /*! Increments the playback volume for the passed drum.
-        \param drumID \ref drumID_t of the drum to be affected. */
+        \param drum \ref drumID_t of the drum to be affected. */
         void volumeUp(drumID_t drum);
 
         /*! Increments the master output volume. */
         void volumeUp();
 
         /*! Decrements the playback volume for the passed drum.
-        \param drumID \ref drumID_t of the drum to be affected. */
+        \param drum \ref drumID_t of the drum to be affected. */
         void volumeDown(drumID_t drum);
 
         /*! Decrements the master output volume. */
@@ -63,22 +63,22 @@ class PlaybackEngine : public AudioCallback {
         \return current master volume. */
         int getVolume();
 
-        /*! Loads a bank of drums of a homogenous \ref sampleSourceType_t.
+        /*! Loads a bank of drums of a homogenous \ref audio::sampleSourceType_t.
         \param bank ID of the bank of drums to load from.
-        \param type \ref sampleSourceType_t of sources to load. */
+        \param type \ref audio::sampleSourceType_t of sources to load. */
         sampleSourceStatus_t loadBank(int bank, sampleSourceType_t type);
 
         /*! Sets the source for the specified drum.
         \param drum \ref drumID_t of the drum to set the type for.
         \param bank ID of the bank of drums to load from.
-        \param type \ref sampleSourceType_t of source to load. */
+        \param type \ref audio::sampleSourceType_t of source to load. */
         sampleSourceStatus_t setSource(drumID_t drum, int bank, sampleSourceType_t type);
 
-        /*! Returns the source \ref sampleSourceStatus_t of the given drum.
+        /*! Returns the source \ref audio::sampleSourceStatus_t of the given drum.
         \return source status. */
         sampleSourceStatus_t getSourceStatus(drumID_t drum);
 
-        /*! Returns the source \ref sampleSourceType_t for the given drum. 
+        /*! Returns the source \ref audio::sampleSourceType_t for the given drum. 
         \return source type. */
         sampleSourceType_t getSourceType(drumID_t drum);
     
