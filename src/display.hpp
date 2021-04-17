@@ -59,7 +59,7 @@ class Max7219
          * @param scanLimit Scan Limit to be set. (default 0x7)
          * @param shutdown Shutdown mode to be set. (default 0x1)
          * @param displayTest Display test mode to be set. (default 0x0)
-         * @param numdigits Number of digits in display. (default 8)
+         * @param numDigits Number of digits in display. (default 8)
          */
         Max7219(unsigned char decodeMode = 0x0,
                 unsigned char intensity = 0x7,
