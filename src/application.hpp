@@ -20,11 +20,11 @@ class DisplayClock : public clock::Clock {
 public:
 	/*! Constructor.
 	Sets the Application to be clocked.
-	\param s \ref Application object to be clocked. */
+	\param a \ref Application object to update. */
 	DisplayClock(ApplicationCallback* a);
 
 	/*! Override the tick method.
-	Clocks the \ref Application given to \ref setApplication. */
+	Clocks the \ref Application. */
 	void tick() override;
 
 private:
@@ -39,11 +39,11 @@ class DisplayDelay : public clock::Timer {
 public:
 	/*! Constructor.
 	Sets the Application to be clocked.
-	\param s \ref Application object to be clocked. */
+	\param a \ref Application object to be clocked. */
 	DisplayDelay(ApplicationCallback* a);
 
 	/*! Override the tick method.
-	Clocks the \ref Application given to \ref setApplication. */
+	Clocks the \ref Application. */
 	void trigger() override;
 
 private:
