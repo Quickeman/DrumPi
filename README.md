@@ -11,8 +11,6 @@
   <a href="https://www.facebook.com/DrumPiProject/">Facebook</a>
   <span> | </span>
   <a href="https://www.instagram.com/drumpiproject/">Instagram</a>
-  <span> | </span>
-  <a href="https://twitter.com/DrumPiProject">Twitter</a>
 </p>
 
 <p align="center">

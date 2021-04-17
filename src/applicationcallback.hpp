@@ -10,8 +10,10 @@ namespace drumpi {
 /*! Abstract application callback class */
 class ApplicationCallback {
 public:
-    /*! Virtual functions to be overridden by derived class */
+    /*! Virtual function to be overridden by derived class */
     virtual void interpretKeyPress(int key) = 0;
+    
+    /*! Virtual function to be overridden by derived class */
     virtual void setState(stateLabel_t newstate) = 0;
     
     /*! running flag for the application */
