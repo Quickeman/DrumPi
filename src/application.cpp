@@ -71,6 +71,7 @@ PerformanceMode::PerformanceMode() {
 
 bool PerformanceMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 	Application* app = static_cast<Application*>(appc);
+	bool actionFlag = false;
 	switch (key) {
 		case KEY_A:
 		case KEY_S:
@@ -82,10 +83,11 @@ bool PerformanceMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 		case KEY_SEMICOLON:
 			// Trigger the drum sound
 			app->playbackEngine.trigger(interpretDrumKey(key));
+			actionFlag = true;
 			break;
 	}
 
-	return false;
+	return actionFlag;
 }
 
 void PerformanceMode::updateDisplay(ApplicationCallback* appc) {
@@ -107,6 +109,7 @@ SequencerMode::SequencerMode() {
 
 bool SequencerMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 	Application* app = static_cast<Application*>(appc);
+	bool actionFlag = false;
 	switch (key) {
 		case KEY_A:
 		case KEY_S:
@@ -120,6 +123,7 @@ bool SequencerMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 			currentdrum = interpretDrumKey(key);
 			// Trigger the drum sound
 			app->playbackEngine.trigger(currentdrum);
+			actionFlag = true;
 			break;
 		
 		case KEY_1:
@@ -135,11 +139,13 @@ bool SequencerMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 				currentdrum,
 				(key - KEY_1) + (currentpage * 8)
 			);
+			actionFlag = true;
 			break;
 		
 		case KEY_TAB:
 			currentpage++;
 			if (currentpage > 1) currentpage = 0;
+			actionFlag = true;
 			break;
 			
 		case KEY_SPACE:
@@ -152,10 +158,11 @@ bool SequencerMode::interpretKeyPress(ApplicationCallback* appc, int key) {
 			} else {
 				app->seqClocker->start();
 			}
+			actionFlag = true;
 			break;
 	}
 
-	return false;
+	return actionFlag;
 }
 
 void SequencerMode::updateDisplay(ApplicationCallback* appc) {
@@ -414,8 +421,13 @@ void Application::run() {
 }
 
 void Application::interpretKeyPress(int key) {
-	if (!subMode->interpretKeyPress(this, key)) {
-		mode->interpretKeyPress(this, key);
+	bool actionFlag;
+
+	actionFlag = subMode->interpretKeyPress(this, key);
+	
+	if (!actionFlag) {
+		actionFlag = mode->interpretKeyPress(this, key);
+		if (actionFlag) setState(mode->label);
 	}
 
 	// If any of the mode buttons, setState(selectedMode)
@@ -481,7 +493,6 @@ void Application::setState(stateLabel_t newstate) {
 			mode = &sequencermode;
 			subMode = &setMasterVolumeMode;
 			displayState = mode;
-			sequencermode.currentpage = 0;	//switch to default page
 			break;
 		case SET_TEMPO_MODE:
 			subMode = &settempomode;
