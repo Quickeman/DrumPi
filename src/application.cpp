@@ -483,6 +483,8 @@ void Application::interpretKeyPress(int key) {
 }
 
 void Application::setState(stateLabel_t newstate) {
+	// Stop display delay timer to prevent display mode switching
+	if(displayDelay->isActive()) displayDelay->stop(); 
 	switch (newstate) {
 		case PERFORMANCE_MODE:
 			mode = &performancemode;
