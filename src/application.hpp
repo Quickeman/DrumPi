@@ -141,10 +141,10 @@ public:
 
 private:
 	/*! Step size of the tempo inc/decrements. */
-	const int bpmStep = 20;
+	const int bpmStep = 8;
 
 	/*! Minimum BPM. */
-	const int minBPM = 28 + bpmStep;
+	const int minBPM = 38 + bpmStep;
 };
 
 
