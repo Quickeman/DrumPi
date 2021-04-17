@@ -1,9 +1,9 @@
 /**
  * @mainpage DrumPi
  * @version 1.0
- * @authors Stuart Ball     <2256694Q@student.gla.ac.uk>
+ * @authors Stuart Ball     <2260112B@student.gla.ac.uk>
  * @authors Murdo Graham    <2261517G@student.gla.ac.uk>
- * @authors Finn Quicke     <2260112B@student.gla.ac.uk>
+ * @authors Finn Quicke     <2256694Q@student.gla.ac.uk>
  * @date April 2021
  */
 #include "application.hpp"
