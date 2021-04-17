@@ -1,3 +1,11 @@
+/**
+ * @mainpage DrumPi
+ * @version 1.0
+ * @author Stuart Ball
+ * @author Murdo Graham
+ * @author Finn Quicke
+ * @date April 2021
+ */
 #include "application.hpp"
 
 #include <iostream>
