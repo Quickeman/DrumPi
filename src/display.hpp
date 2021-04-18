@@ -9,6 +9,10 @@
 
 namespace drumpi {
 
+/**
+ * Low level driver for the Max7219
+ * 7-segment display driver
+ */
 class Max7219
 {
     private:
@@ -30,7 +34,7 @@ class Max7219
 
         /** Display display test mode. */
         unsigned char displayTest;
-    
+
         /** Buffer to contain each digit's value. */
         std::vector<unsigned char> digitBuffer;
 
@@ -38,7 +42,7 @@ class Max7219
          * Low level method for writing a data buffer to SPI bus.
          * Should not be used by host application.
          * Instead use digit setters and flush commands.
-         * 
+         *
          * @param data Buffer containing bytes for writing.
          * @param len Length of bufer in bytes.
          */
@@ -174,6 +178,9 @@ class Max7219
 
 };
 
+/**
+ * High level DrumPi display driver
+ */
 class Display: public Max7219 {
 
     private:
@@ -282,7 +289,7 @@ class Display: public Max7219 {
         /**
          * Sets the mapping of drums to keys.
          * Ensuring that the correct digits are displayed.
-         * 
+         *
          * @param _keyMapping The given mapping to set.
          */
         void setKeymapping(std::vector<unsigned int> _keyMapping);
@@ -308,7 +315,7 @@ class Display: public Max7219 {
 
         /**
          * Updates performance mode display.
-         * 
+         *
          * @param activeDrums Vector containing drum IDs of all current drums.
          * @param level Audio level.
          * @param redraw If true, updates display.
