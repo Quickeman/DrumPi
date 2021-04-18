@@ -17,10 +17,11 @@ using namespace drumpi;
 /*! Wrapper for the signal handling lambda expression. */
 std::function<void(int)> shutdownHandler;
 
-/*! Global function that can be given as a \ref signal handler.
+/*! Global function that can be given as a signal handler.
 Calls \ref shutdownHandler. */
 void signalHandler(int signal) { shutdownHandler(signal); }
 
+/*! Main function of execution. */
 int main(int argc, char* argv[]){
 
     std::cout << std::endl << PROJECT_NAME << " v" << PROJECT_VERSION << std::endl;
