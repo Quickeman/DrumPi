@@ -52,10 +52,10 @@ DrumPi is a small, affordable, open-source drum machine, giving you all the perc
 - Standard USB keyboard control interface
 
 ### Hardware
-- Raspberry Pi (designed on RPI 4B)
-- ZeroSeg 8-digit 7-segment display
-- Standard USB keyboard
-- USB audio interface
+- [Raspberry Pi](https://thepihut.com/products/raspberry-pi-4-model-b)
+- [ZeroSeg](https://thepihut.com/products/zeroseg) 8-digit 7-segment display
+- Standard USB computer keyboard, including 60% keyboards
+- USB audio interface, such as [this](https://thepihut.com/products/usb-audio-adapter-works-with-raspberry-pi)
 
 ## Quick Start Guide
 ### Installation
