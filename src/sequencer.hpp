@@ -51,6 +51,7 @@ class _SequenceStep {
 };
 
 
+/*! Sequencer class for creating, manipulating and outputting a drum sequence. */
 class Sequencer {
     public:
         /*! Constructor.

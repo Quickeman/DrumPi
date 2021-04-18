@@ -18,7 +18,7 @@ class SampleSource {
 
         /*! Returns a buffer of samples.
         \param nSamples number of samples to be returned.
-        \return sample buffer of length \ref nSamples. */
+        \return a sample buffer of length nSamples. */
         virtual std::vector<sample_t> getSamples(int nSamples) = 0;
 
         /*! Resets the source to initial conditions. */
@@ -64,7 +64,7 @@ class AudioClip : public SampleSourceFile {
 
         /*! Returns a buffer of samples.
         \param nSamples number of samples to be returned.
-        \return sample buffer of length \ref nSamples. */
+        \return a sample buffer of length nSamples. */
         std::vector<sample_t> getSamples(int nSamples) override;
 
         /*! Halts playback and returns playhead to start of clip. */
