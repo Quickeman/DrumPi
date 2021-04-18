@@ -108,5 +108,4 @@ For instructions on how to use the DrumPi application, see the [User Manual](htt
 
 ## Stretch Goals
 - External clocking
-- Customisation of drum sounds by user
 - Ability for real-time DSP using Pd patches
