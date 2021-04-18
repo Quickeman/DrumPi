@@ -1,4 +1,3 @@
 <map id="drumpi::Max7219" name="drumpi::Max7219">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,141,32"/>
-<area shape="rect" id="node2" href="$classdrumpi_1_1Display.html" title=" " alt="" coords="11,80,136,107"/>
+<area shape="rect" id="node2" href="$classdrumpi_1_1Display.html" title="drumpi::Display" alt="" coords="10,80,123,107"/>
 </map>

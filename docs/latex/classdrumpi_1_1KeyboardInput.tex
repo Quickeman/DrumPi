@@ -1,59 +1,60 @@
-\hypertarget{classdrumpi_1_1KeyboardInput}{}\doxysection{drumpi\+::Keyboard\+Input Class Reference}
-\label{classdrumpi_1_1KeyboardInput}\index{drumpi::KeyboardInput@{drumpi::KeyboardInput}}
+\hypertarget{classdrumpi_1_1KeyboardInput}{}\section{drumpi\+:\+:Keyboard\+Input Class Reference}
+\label{classdrumpi_1_1KeyboardInput}\index{drumpi\+::\+Keyboard\+Input@{drumpi\+::\+Keyboard\+Input}}
 
 
 {\ttfamily \#include $<$keyboardinput.\+hpp$>$}
 
 
 
-Collaboration diagram for drumpi\+::Keyboard\+Input\+:\nopagebreak
+Collaboration diagram for drumpi\+:\+:Keyboard\+Input\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=234pt]{classdrumpi_1_1KeyboardInput__coll__graph}
+\includegraphics[width=218pt]{classdrumpi_1_1KeyboardInput__coll__graph}
 \end{center}
 \end{figure}
-\doxysubsection*{Public Member Functions}
+\subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classdrumpi_1_1KeyboardInput_a92d9c25232e73f2d9319c79df028cc69}{Keyboard\+Input}} ()
+\hyperlink{classdrumpi_1_1KeyboardInput_a92d9c25232e73f2d9319c79df028cc69}{Keyboard\+Input} ()
 \begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classdrumpi_1_1KeyboardInput_ac74a81a24054aa5e927e03b4ba7f8c9f}{poll\+Input}} ()
+void \hyperlink{classdrumpi_1_1KeyboardInput_ac74a81a24054aa5e927e03b4ba7f8c9f}{poll\+Input} ()
 \begin{DoxyCompactList}\small\item\em Polls the keyboard input for events. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classdrumpi_1_1KeyboardInput_acd7e27115fbb3b81bc3d1b771ef89ca8}{connect\+Callback}} (\mbox{\hyperlink{classdrumpi_1_1ApplicationCallback}{Application\+Callback}} $\ast$app)
-\begin{DoxyCompactList}\small\item\em Sets the \mbox{\hyperlink{classdrumpi_1_1Application}{Application}} object called when a keyboard event occurs. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{classdrumpi_1_1KeyboardInput_a9541bb7ef3f3c78c448e7b18aec1dbd7}{get\+File\+Descriptor}} ()
+void \hyperlink{classdrumpi_1_1KeyboardInput_acd7e27115fbb3b81bc3d1b771ef89ca8}{connect\+Callback} (\hyperlink{classdrumpi_1_1ApplicationCallback}{Application\+Callback} $\ast$app)
+\begin{DoxyCompactList}\small\item\em Sets the \hyperlink{classdrumpi_1_1Application}{Application} object called when a keyboard event occurs. \end{DoxyCompactList}\item 
+int \hyperlink{classdrumpi_1_1KeyboardInput_a9541bb7ef3f3c78c448e7b18aec1dbd7}{get\+File\+Descriptor} ()
 \item 
-int \mbox{\hyperlink{classdrumpi_1_1KeyboardInput_a657e489023c7fe835a53d7b24c1eec39}{get\+Test\+Flag}} ()
+int \hyperlink{classdrumpi_1_1KeyboardInput_a657e489023c7fe835a53d7b24c1eec39}{get\+Test\+Flag} ()
 \end{DoxyCompactItemize}
-\doxysubsection*{Public Attributes}
+\subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{classdrumpi_1_1KeyboardInput_a92b9933a95405da091d18b8b3116699b}{running}}
+int \hyperlink{classdrumpi_1_1KeyboardInput_a92b9933a95405da091d18b8b3116699b}{running}
 \item 
-\mbox{\hyperlink{classdrumpi_1_1ApplicationCallback}{Application\+Callback}} $\ast$ \mbox{\hyperlink{classdrumpi_1_1KeyboardInput_a7af8c85eed4c1997ae9b56ac5bf2a7e1}{callback}}
+\hyperlink{classdrumpi_1_1ApplicationCallback}{Application\+Callback} $\ast$ \hyperlink{classdrumpi_1_1KeyboardInput_a7af8c85eed4c1997ae9b56ac5bf2a7e1}{callback}
 \end{DoxyCompactItemize}
-\doxysubsection*{Private Attributes}
+\subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-struct input\+\_\+event \mbox{\hyperlink{classdrumpi_1_1KeyboardInput_a2b530250c3bb5d744611671e430e283d}{ev}}
+struct input\+\_\+event \hyperlink{classdrumpi_1_1KeyboardInput_a2b530250c3bb5d744611671e430e283d}{ev}
 \item 
-struct pollfd \mbox{\hyperlink{classdrumpi_1_1KeyboardInput_a94851cf204554afc60046d39a265c4e7}{fdset}} \mbox{[}1\mbox{]}
+struct pollfd \hyperlink{classdrumpi_1_1KeyboardInput_a94851cf204554afc60046d39a265c4e7}{fdset} \mbox{[}1\mbox{]}
 \item 
-int \mbox{\hyperlink{classdrumpi_1_1KeyboardInput_a098990e43175ae8a2ad64e6d3b487c83}{fd}}
+int \hyperlink{classdrumpi_1_1KeyboardInput_a098990e43175ae8a2ad64e6d3b487c83}{fd}
 \item 
-int \mbox{\hyperlink{classdrumpi_1_1KeyboardInput_a1817959cdce29597ad61ba635674bc6f}{test\+Flag}}
+int \hyperlink{classdrumpi_1_1KeyboardInput_a1817959cdce29597ad61ba635674bc6f}{test\+Flag}
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\subsection{Detailed Description}
 Class for monitoring a keyboard device file and detecting keyboard presses. 
 
-\doxysubsection{Constructor \& Destructor Documentation}
+\subsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classdrumpi_1_1KeyboardInput_a92d9c25232e73f2d9319c79df028cc69}\label{classdrumpi_1_1KeyboardInput_a92d9c25232e73f2d9319c79df028cc69}} 
-\index{drumpi::KeyboardInput@{drumpi::KeyboardInput}!KeyboardInput@{KeyboardInput}}
-\index{KeyboardInput@{KeyboardInput}!drumpi::KeyboardInput@{drumpi::KeyboardInput}}
-\doxysubsubsection{\texorpdfstring{KeyboardInput()}{KeyboardInput()}}
+\index{drumpi\+::\+Keyboard\+Input@{drumpi\+::\+Keyboard\+Input}!Keyboard\+Input@{Keyboard\+Input}}
+\index{Keyboard\+Input@{Keyboard\+Input}!drumpi\+::\+Keyboard\+Input@{drumpi\+::\+Keyboard\+Input}}
+\subsubsection{\texorpdfstring{Keyboard\+Input()}{KeyboardInput()}}
 {\footnotesize\ttfamily Keyboard\+Input\+::\+Keyboard\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
@@ -62,90 +63,90 @@ Constructor.
 
 The constructor detects and opens the device file for the keyboard input device. 
 
-\doxysubsection{Member Function Documentation}
+\subsection{Member Function Documentation}
 \mbox{\Hypertarget{classdrumpi_1_1KeyboardInput_acd7e27115fbb3b81bc3d1b771ef89ca8}\label{classdrumpi_1_1KeyboardInput_acd7e27115fbb3b81bc3d1b771ef89ca8}} 
-\index{drumpi::KeyboardInput@{drumpi::KeyboardInput}!connectCallback@{connectCallback}}
-\index{connectCallback@{connectCallback}!drumpi::KeyboardInput@{drumpi::KeyboardInput}}
-\doxysubsubsection{\texorpdfstring{connectCallback()}{connectCallback()}}
-{\footnotesize\ttfamily void Keyboard\+Input\+::connect\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdrumpi_1_1ApplicationCallback}{Application\+Callback}} $\ast$}]{app }\end{DoxyParamCaption})}
+\index{drumpi\+::\+Keyboard\+Input@{drumpi\+::\+Keyboard\+Input}!connect\+Callback@{connect\+Callback}}
+\index{connect\+Callback@{connect\+Callback}!drumpi\+::\+Keyboard\+Input@{drumpi\+::\+Keyboard\+Input}}
+\subsubsection{\texorpdfstring{connect\+Callback()}{connectCallback()}}
+{\footnotesize\ttfamily void Keyboard\+Input\+::connect\+Callback (\begin{DoxyParamCaption}\item[{\hyperlink{classdrumpi_1_1ApplicationCallback}{Application\+Callback} $\ast$}]{app }\end{DoxyParamCaption})}
 
 
 
-Sets the \mbox{\hyperlink{classdrumpi_1_1Application}{Application}} object called when a keyboard event occurs. 
+Sets the \hyperlink{classdrumpi_1_1Application}{Application} object called when a keyboard event occurs. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em app} & \mbox{\hyperlink{classdrumpi_1_1Application}{Application}} object called by poll\+Input when a key press is detected. \\
+{\em app} & \hyperlink{classdrumpi_1_1Application}{Application} object called by poll\+Input when a key press is detected. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classdrumpi_1_1KeyboardInput_a9541bb7ef3f3c78c448e7b18aec1dbd7}\label{classdrumpi_1_1KeyboardInput_a9541bb7ef3f3c78c448e7b18aec1dbd7}} 
-\index{drumpi::KeyboardInput@{drumpi::KeyboardInput}!getFileDescriptor@{getFileDescriptor}}
-\index{getFileDescriptor@{getFileDescriptor}!drumpi::KeyboardInput@{drumpi::KeyboardInput}}
-\doxysubsubsection{\texorpdfstring{getFileDescriptor()}{getFileDescriptor()}}
+\index{drumpi\+::\+Keyboard\+Input@{drumpi\+::\+Keyboard\+Input}!get\+File\+Descriptor@{get\+File\+Descriptor}}
+\index{get\+File\+Descriptor@{get\+File\+Descriptor}!drumpi\+::\+Keyboard\+Input@{drumpi\+::\+Keyboard\+Input}}
+\subsubsection{\texorpdfstring{get\+File\+Descriptor()}{getFileDescriptor()}}
 {\footnotesize\ttfamily int Keyboard\+Input\+::get\+File\+Descriptor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyReturn}{Returns}
-file descriptor \mbox{\hyperlink{classdrumpi_1_1KeyboardInput_a098990e43175ae8a2ad64e6d3b487c83}{fd}} of the input device. 
+file descriptor \hyperlink{classdrumpi_1_1KeyboardInput_a098990e43175ae8a2ad64e6d3b487c83}{fd} of the input device. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classdrumpi_1_1KeyboardInput_a657e489023c7fe835a53d7b24c1eec39}\label{classdrumpi_1_1KeyboardInput_a657e489023c7fe835a53d7b24c1eec39}} 
-\index{drumpi::KeyboardInput@{drumpi::KeyboardInput}!getTestFlag@{getTestFlag}}
-\index{getTestFlag@{getTestFlag}!drumpi::KeyboardInput@{drumpi::KeyboardInput}}
-\doxysubsubsection{\texorpdfstring{getTestFlag()}{getTestFlag()}}
+\index{drumpi\+::\+Keyboard\+Input@{drumpi\+::\+Keyboard\+Input}!get\+Test\+Flag@{get\+Test\+Flag}}
+\index{get\+Test\+Flag@{get\+Test\+Flag}!drumpi\+::\+Keyboard\+Input@{drumpi\+::\+Keyboard\+Input}}
+\subsubsection{\texorpdfstring{get\+Test\+Flag()}{getTestFlag()}}
 {\footnotesize\ttfamily int Keyboard\+Input\+::get\+Test\+Flag (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyReturn}{Returns}
-\mbox{\hyperlink{classdrumpi_1_1KeyboardInput_a1817959cdce29597ad61ba635674bc6f}{test\+Flag}}. 
+\hyperlink{classdrumpi_1_1KeyboardInput_a1817959cdce29597ad61ba635674bc6f}{test\+Flag}. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classdrumpi_1_1KeyboardInput_ac74a81a24054aa5e927e03b4ba7f8c9f}\label{classdrumpi_1_1KeyboardInput_ac74a81a24054aa5e927e03b4ba7f8c9f}} 
-\index{drumpi::KeyboardInput@{drumpi::KeyboardInput}!pollInput@{pollInput}}
-\index{pollInput@{pollInput}!drumpi::KeyboardInput@{drumpi::KeyboardInput}}
-\doxysubsubsection{\texorpdfstring{pollInput()}{pollInput()}}
+\index{drumpi\+::\+Keyboard\+Input@{drumpi\+::\+Keyboard\+Input}!poll\+Input@{poll\+Input}}
+\index{poll\+Input@{poll\+Input}!drumpi\+::\+Keyboard\+Input@{drumpi\+::\+Keyboard\+Input}}
+\subsubsection{\texorpdfstring{poll\+Input()}{pollInput()}}
 {\footnotesize\ttfamily void Keyboard\+Input\+::poll\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
 Polls the keyboard input for events. 
 
-This method monitors the keyboard device file with a polling loop and calls the \mbox{\hyperlink{classdrumpi_1_1Application}{Application}} object to interpret the key press and perform an action when a key press is detected. 
+This method monitors the keyboard device file with a polling loop and calls the \hyperlink{classdrumpi_1_1Application}{Application} object to interpret the key press and perform an action when a key press is detected. 
 
-\doxysubsection{Member Data Documentation}
+\subsection{Member Data Documentation}
 \mbox{\Hypertarget{classdrumpi_1_1KeyboardInput_a7af8c85eed4c1997ae9b56ac5bf2a7e1}\label{classdrumpi_1_1KeyboardInput_a7af8c85eed4c1997ae9b56ac5bf2a7e1}} 
-\index{drumpi::KeyboardInput@{drumpi::KeyboardInput}!callback@{callback}}
-\index{callback@{callback}!drumpi::KeyboardInput@{drumpi::KeyboardInput}}
-\doxysubsubsection{\texorpdfstring{callback}{callback}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classdrumpi_1_1ApplicationCallback}{Application\+Callback}}$\ast$ drumpi\+::\+Keyboard\+Input\+::callback}
+\index{drumpi\+::\+Keyboard\+Input@{drumpi\+::\+Keyboard\+Input}!callback@{callback}}
+\index{callback@{callback}!drumpi\+::\+Keyboard\+Input@{drumpi\+::\+Keyboard\+Input}}
+\subsubsection{\texorpdfstring{callback}{callback}}
+{\footnotesize\ttfamily \hyperlink{classdrumpi_1_1ApplicationCallback}{Application\+Callback}$\ast$ drumpi\+::\+Keyboard\+Input\+::callback}
 
-Callback class called by \mbox{\hyperlink{classdrumpi_1_1KeyboardInput}{Keyboard\+Input}} when a keyboard event occurs. \mbox{\Hypertarget{classdrumpi_1_1KeyboardInput_a2b530250c3bb5d744611671e430e283d}\label{classdrumpi_1_1KeyboardInput_a2b530250c3bb5d744611671e430e283d}} 
-\index{drumpi::KeyboardInput@{drumpi::KeyboardInput}!ev@{ev}}
-\index{ev@{ev}!drumpi::KeyboardInput@{drumpi::KeyboardInput}}
-\doxysubsubsection{\texorpdfstring{ev}{ev}}
+Callback class called by \hyperlink{classdrumpi_1_1KeyboardInput}{Keyboard\+Input} when a keyboard event occurs. \mbox{\Hypertarget{classdrumpi_1_1KeyboardInput_a2b530250c3bb5d744611671e430e283d}\label{classdrumpi_1_1KeyboardInput_a2b530250c3bb5d744611671e430e283d}} 
+\index{drumpi\+::\+Keyboard\+Input@{drumpi\+::\+Keyboard\+Input}!ev@{ev}}
+\index{ev@{ev}!drumpi\+::\+Keyboard\+Input@{drumpi\+::\+Keyboard\+Input}}
+\subsubsection{\texorpdfstring{ev}{ev}}
 {\footnotesize\ttfamily struct input\+\_\+event drumpi\+::\+Keyboard\+Input\+::ev\hspace{0.3cm}{\ttfamily [private]}}
 
 Event handler containing information about keyboard input events. \mbox{\Hypertarget{classdrumpi_1_1KeyboardInput_a098990e43175ae8a2ad64e6d3b487c83}\label{classdrumpi_1_1KeyboardInput_a098990e43175ae8a2ad64e6d3b487c83}} 
-\index{drumpi::KeyboardInput@{drumpi::KeyboardInput}!fd@{fd}}
-\index{fd@{fd}!drumpi::KeyboardInput@{drumpi::KeyboardInput}}
-\doxysubsubsection{\texorpdfstring{fd}{fd}}
+\index{drumpi\+::\+Keyboard\+Input@{drumpi\+::\+Keyboard\+Input}!fd@{fd}}
+\index{fd@{fd}!drumpi\+::\+Keyboard\+Input@{drumpi\+::\+Keyboard\+Input}}
+\subsubsection{\texorpdfstring{fd}{fd}}
 {\footnotesize\ttfamily int drumpi\+::\+Keyboard\+Input\+::fd\hspace{0.3cm}{\ttfamily [private]}}
 
 File descriptor for the keyboard device file. \mbox{\Hypertarget{classdrumpi_1_1KeyboardInput_a94851cf204554afc60046d39a265c4e7}\label{classdrumpi_1_1KeyboardInput_a94851cf204554afc60046d39a265c4e7}} 
-\index{drumpi::KeyboardInput@{drumpi::KeyboardInput}!fdset@{fdset}}
-\index{fdset@{fdset}!drumpi::KeyboardInput@{drumpi::KeyboardInput}}
-\doxysubsubsection{\texorpdfstring{fdset}{fdset}}
+\index{drumpi\+::\+Keyboard\+Input@{drumpi\+::\+Keyboard\+Input}!fdset@{fdset}}
+\index{fdset@{fdset}!drumpi\+::\+Keyboard\+Input@{drumpi\+::\+Keyboard\+Input}}
+\subsubsection{\texorpdfstring{fdset}{fdset}}
 {\footnotesize\ttfamily struct pollfd drumpi\+::\+Keyboard\+Input\+::fdset\mbox{[}1\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
 
 Array of pollfd structs checked by poll() system call. \mbox{\Hypertarget{classdrumpi_1_1KeyboardInput_a92b9933a95405da091d18b8b3116699b}\label{classdrumpi_1_1KeyboardInput_a92b9933a95405da091d18b8b3116699b}} 
-\index{drumpi::KeyboardInput@{drumpi::KeyboardInput}!running@{running}}
-\index{running@{running}!drumpi::KeyboardInput@{drumpi::KeyboardInput}}
-\doxysubsubsection{\texorpdfstring{running}{running}}
+\index{drumpi\+::\+Keyboard\+Input@{drumpi\+::\+Keyboard\+Input}!running@{running}}
+\index{running@{running}!drumpi\+::\+Keyboard\+Input@{drumpi\+::\+Keyboard\+Input}}
+\subsubsection{\texorpdfstring{running}{running}}
 {\footnotesize\ttfamily int drumpi\+::\+Keyboard\+Input\+::running}
 
 Running flag used to end the input polling loop. \mbox{\Hypertarget{classdrumpi_1_1KeyboardInput_a1817959cdce29597ad61ba635674bc6f}\label{classdrumpi_1_1KeyboardInput_a1817959cdce29597ad61ba635674bc6f}} 
-\index{drumpi::KeyboardInput@{drumpi::KeyboardInput}!testFlag@{testFlag}}
-\index{testFlag@{testFlag}!drumpi::KeyboardInput@{drumpi::KeyboardInput}}
-\doxysubsubsection{\texorpdfstring{testFlag}{testFlag}}
+\index{drumpi\+::\+Keyboard\+Input@{drumpi\+::\+Keyboard\+Input}!test\+Flag@{test\+Flag}}
+\index{test\+Flag@{test\+Flag}!drumpi\+::\+Keyboard\+Input@{drumpi\+::\+Keyboard\+Input}}
+\subsubsection{\texorpdfstring{test\+Flag}{testFlag}}
 {\footnotesize\ttfamily int drumpi\+::\+Keyboard\+Input\+::test\+Flag\hspace{0.3cm}{\ttfamily [private]}}
 
-Flag to check \mbox{\hyperlink{classdrumpi_1_1KeyboardInput_ac74a81a24054aa5e927e03b4ba7f8c9f}{poll\+Input}} has been called successfully. 
+Flag to check \hyperlink{classdrumpi_1_1KeyboardInput_ac74a81a24054aa5e927e03b4ba7f8c9f}{poll\+Input} has been called successfully. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

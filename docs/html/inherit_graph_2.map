@@ -1,4 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classdrumpi_1_1audio_1_1AudioCallback.html" title=" " alt="" coords="5,5,219,32"/>
-<area shape="rect" id="node2" href="$classdrumpi_1_1audio_1_1PlaybackEngine.html" title=" " alt="" coords="267,5,489,32"/>
+<area shape="rect" id="node1" href="$classdrumpi_1_1audio_1_1AudioCallback.html" title="drumpi::audio::AudioCallback" alt="" coords="5,5,197,32"/>
+<area shape="rect" id="node2" href="$classdrumpi_1_1audio_1_1PlaybackEngine.html" title="drumpi::audio::PlaybackEngine" alt="" coords="245,5,448,32"/>
 </map>

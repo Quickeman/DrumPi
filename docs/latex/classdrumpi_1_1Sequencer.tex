@@ -1,83 +1,84 @@
-\hypertarget{classdrumpi_1_1Sequencer}{}\doxysection{drumpi\+::Sequencer Class Reference}
-\label{classdrumpi_1_1Sequencer}\index{drumpi::Sequencer@{drumpi::Sequencer}}
+\hypertarget{classdrumpi_1_1Sequencer}{}\section{drumpi\+:\+:Sequencer Class Reference}
+\label{classdrumpi_1_1Sequencer}\index{drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}}
 
 
 {\ttfamily \#include $<$sequencer.\+hpp$>$}
 
 
 
-Collaboration diagram for drumpi\+::Sequencer\+:\nopagebreak
+Collaboration diagram for drumpi\+:\+:Sequencer\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=211pt]{classdrumpi_1_1Sequencer__coll__graph}
+\includegraphics[width=201pt]{classdrumpi_1_1Sequencer__coll__graph}
 \end{center}
 \end{figure}
-\doxysubsection*{Public Member Functions}
+\subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classdrumpi_1_1Sequencer_ae1c19c8eadf10ac7ef53fa9b8b9d36e9}{Sequencer}} (const int \mbox{\hyperlink{classdrumpi_1_1Sequencer_a0e4963cb16a4c6cbeb85838199c1bb8e}{num\+Steps}})
+\hyperlink{classdrumpi_1_1Sequencer_ae1c19c8eadf10ac7ef53fa9b8b9d36e9}{Sequencer} (const int \hyperlink{classdrumpi_1_1Sequencer_a0e4963cb16a4c6cbeb85838199c1bb8e}{num\+Steps})
 \item 
-void \mbox{\hyperlink{classdrumpi_1_1Sequencer_a86e0af4260c526be4646ce343830e6c4}{step}} (int n=1)
+void \hyperlink{classdrumpi_1_1Sequencer_a86e0af4260c526be4646ce343830e6c4}{step} (int n=1)
 \item 
-bool \mbox{\hyperlink{classdrumpi_1_1Sequencer_a9125b926864c998496a662b1fd8cd535}{is\+Active}} (\mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}} drum, int \mbox{\hyperlink{classdrumpi_1_1Sequencer_a86e0af4260c526be4646ce343830e6c4}{step}})
+bool \hyperlink{classdrumpi_1_1Sequencer_a9125b926864c998496a662b1fd8cd535}{is\+Active} (\hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t} drum, int \hyperlink{classdrumpi_1_1Sequencer_a86e0af4260c526be4646ce343830e6c4}{step})
 \item 
-bool \mbox{\hyperlink{classdrumpi_1_1Sequencer_a7af390c7241b0fc7ccdf17cd6f14171f}{is\+Active}} (\mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}} drum)
+bool \hyperlink{classdrumpi_1_1Sequencer_a7af390c7241b0fc7ccdf17cd6f14171f}{is\+Active} (\hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t} drum)
 \item 
-std\+::vector$<$ \mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}} $>$ \mbox{\hyperlink{classdrumpi_1_1Sequencer_a3a4981971243ac03ace9b57fc0a6c8c6}{get\+Active}} ()
+std\+::vector$<$ \hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t} $>$ \hyperlink{classdrumpi_1_1Sequencer_a3a4981971243ac03ace9b57fc0a6c8c6}{get\+Active} ()
 \item 
-std\+::vector$<$ bool $>$ \mbox{\hyperlink{classdrumpi_1_1Sequencer_a5cc5ed8f6fd51b88618766a16373b60d}{get\+Steps}} (\mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}} drum\+ID)
+std\+::vector$<$ bool $>$ \hyperlink{classdrumpi_1_1Sequencer_a5cc5ed8f6fd51b88618766a16373b60d}{get\+Steps} (\hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t} drum\+ID)
 \item 
-std\+::vector$<$ std\+::vector$<$ bool $>$ $>$ \mbox{\hyperlink{classdrumpi_1_1Sequencer_aa15ac653eaddea48cb4ccb8dadac9735}{get\+Sequence}} ()
+std\+::vector$<$ std\+::vector$<$ bool $>$ $>$ \hyperlink{classdrumpi_1_1Sequencer_aa15ac653eaddea48cb4ccb8dadac9735}{get\+Sequence} ()
 \item 
-int \mbox{\hyperlink{classdrumpi_1_1Sequencer_af327472b3452fa67511029daaee4ad1c}{get\+Step\+Num}} ()
+int \hyperlink{classdrumpi_1_1Sequencer_af327472b3452fa67511029daaee4ad1c}{get\+Step\+Num} ()
 \item 
-void \mbox{\hyperlink{classdrumpi_1_1Sequencer_a8b7b4faa1438aedb59370bb5ef44f571}{clear}} ()
+void \hyperlink{classdrumpi_1_1Sequencer_a8b7b4faa1438aedb59370bb5ef44f571}{clear} ()
 \item 
-void \mbox{\hyperlink{classdrumpi_1_1Sequencer_a033983bb65fa38a3e0f8732040a63eb1}{reset}} (bool clear\+Steps=true)
+void \hyperlink{classdrumpi_1_1Sequencer_a033983bb65fa38a3e0f8732040a63eb1}{reset} (bool clear\+Steps=true)
 \item 
-void \mbox{\hyperlink{classdrumpi_1_1Sequencer_abf7916305c8766c01b3dc0230012cf3d}{add}} (\mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}} drum, int \mbox{\hyperlink{classdrumpi_1_1Sequencer_a86e0af4260c526be4646ce343830e6c4}{step}})
+void \hyperlink{classdrumpi_1_1Sequencer_abf7916305c8766c01b3dc0230012cf3d}{add} (\hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t} drum, int \hyperlink{classdrumpi_1_1Sequencer_a86e0af4260c526be4646ce343830e6c4}{step})
 \item 
-void \mbox{\hyperlink{classdrumpi_1_1Sequencer_a65d14581132cc9ece12eca56a1696e27}{add}} (\mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}} drum)
+void \hyperlink{classdrumpi_1_1Sequencer_a65d14581132cc9ece12eca56a1696e27}{add} (\hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t} drum)
 \item 
-void \mbox{\hyperlink{classdrumpi_1_1Sequencer_a5b9b8acf415b43f72442f0a591054412}{remove}} (\mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}} drum, int \mbox{\hyperlink{classdrumpi_1_1Sequencer_a86e0af4260c526be4646ce343830e6c4}{step}})
+void \hyperlink{classdrumpi_1_1Sequencer_a5b9b8acf415b43f72442f0a591054412}{remove} (\hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t} drum, int \hyperlink{classdrumpi_1_1Sequencer_a86e0af4260c526be4646ce343830e6c4}{step})
 \item 
-void \mbox{\hyperlink{classdrumpi_1_1Sequencer_ad7fcb2041b2b68133def003eef420f99}{remove}} (\mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}} drum)
+void \hyperlink{classdrumpi_1_1Sequencer_ad7fcb2041b2b68133def003eef420f99}{remove} (\hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t} drum)
 \item 
-void \mbox{\hyperlink{classdrumpi_1_1Sequencer_a2d7b85fe97bd2714632bd65135868897}{toggle}} (\mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}} drum, int \mbox{\hyperlink{classdrumpi_1_1Sequencer_a86e0af4260c526be4646ce343830e6c4}{step}})
+void \hyperlink{classdrumpi_1_1Sequencer_a2d7b85fe97bd2714632bd65135868897}{toggle} (\hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t} drum, int \hyperlink{classdrumpi_1_1Sequencer_a86e0af4260c526be4646ce343830e6c4}{step})
 \item 
-void \mbox{\hyperlink{classdrumpi_1_1Sequencer_a7ca8d490e9eaf703c9f7e0594fa4090c}{toggle}} (\mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}} drum)
+void \hyperlink{classdrumpi_1_1Sequencer_a7ca8d490e9eaf703c9f7e0594fa4090c}{toggle} (\hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t} drum)
 \end{DoxyCompactItemize}
-\doxysubsection*{Private Member Functions}
+\subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{classdrumpi_1_1Sequencer_adf7a6603073c345b72805211f87d5d1c}{set\+Num\+Steps}} (int n)
+void \hyperlink{classdrumpi_1_1Sequencer_adf7a6603073c345b72805211f87d5d1c}{set\+Num\+Steps} (int n)
 \item 
-void \mbox{\hyperlink{classdrumpi_1_1Sequencer_a55a080037b948534ef6fab28ee3cf8e1}{\+\_\+update\+Step\+ID}} ()
+void \hyperlink{classdrumpi_1_1Sequencer_a55a080037b948534ef6fab28ee3cf8e1}{\+\_\+update\+Step\+ID} ()
 \item 
-void \mbox{\hyperlink{classdrumpi_1_1Sequencer_a3d07f2cafd5fc311aa05e049685756e4}{\+\_\+update\+Step\+Ptr}} ()
+void \hyperlink{classdrumpi_1_1Sequencer_a3d07f2cafd5fc311aa05e049685756e4}{\+\_\+update\+Step\+Ptr} ()
 \end{DoxyCompactItemize}
-\doxysubsection*{Private Attributes}
+\subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-std\+::vector$<$ \mbox{\hyperlink{classdrumpi_1_1__SequenceStep}{\+\_\+\+Sequence\+Step}} $>$ \mbox{\hyperlink{classdrumpi_1_1Sequencer_a756f8ef45e87ef2165d7e34752c9bf7e}{steps}}
+std\+::vector$<$ \hyperlink{classdrumpi_1_1__SequenceStep}{\+\_\+\+Sequence\+Step} $>$ \hyperlink{classdrumpi_1_1Sequencer_a756f8ef45e87ef2165d7e34752c9bf7e}{steps}
 \item 
-int \mbox{\hyperlink{classdrumpi_1_1Sequencer_a0e4963cb16a4c6cbeb85838199c1bb8e}{num\+Steps}}
+int \hyperlink{classdrumpi_1_1Sequencer_a0e4963cb16a4c6cbeb85838199c1bb8e}{num\+Steps}
 \item 
-int \mbox{\hyperlink{classdrumpi_1_1Sequencer_a259a1eb2adc67dc949c2cdb45358886d}{step\+Num}}
+int \hyperlink{classdrumpi_1_1Sequencer_a259a1eb2adc67dc949c2cdb45358886d}{step\+Num}
 \item 
-\mbox{\hyperlink{classdrumpi_1_1__SequenceStep}{\+\_\+\+Sequence\+Step}} $\ast$ \mbox{\hyperlink{classdrumpi_1_1Sequencer_a0bf12baf6bf923324df41f1ea784ba99}{current\+Step}}
+\hyperlink{classdrumpi_1_1__SequenceStep}{\+\_\+\+Sequence\+Step} $\ast$ \hyperlink{classdrumpi_1_1Sequencer_a0bf12baf6bf923324df41f1ea784ba99}{current\+Step}
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
-\mbox{\hyperlink{classdrumpi_1_1Sequencer}{Sequencer}} class for creating, manipulating and outputting a drum sequence. 
+\subsection{Detailed Description}
+\hyperlink{classdrumpi_1_1Sequencer}{Sequencer} class for creating, manipulating and outputting a drum sequence. 
 
-\doxysubsection{Constructor \& Destructor Documentation}
+\subsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classdrumpi_1_1Sequencer_ae1c19c8eadf10ac7ef53fa9b8b9d36e9}\label{classdrumpi_1_1Sequencer_ae1c19c8eadf10ac7ef53fa9b8b9d36e9}} 
-\index{drumpi::Sequencer@{drumpi::Sequencer}!Sequencer@{Sequencer}}
-\index{Sequencer@{Sequencer}!drumpi::Sequencer@{drumpi::Sequencer}}
-\doxysubsubsection{\texorpdfstring{Sequencer()}{Sequencer()}}
+\index{drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}!Sequencer@{Sequencer}}
+\index{Sequencer@{Sequencer}!drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}}
+\subsubsection{\texorpdfstring{Sequencer()}{Sequencer()}}
 {\footnotesize\ttfamily Sequencer\+::\+Sequencer (\begin{DoxyParamCaption}\item[{const int}]{num\+Steps }\end{DoxyParamCaption})}
 
 Constructor. 
@@ -87,153 +88,153 @@ Constructor.
 \end{DoxyParams}
 
 
-\doxysubsection{Member Function Documentation}
+\subsection{Member Function Documentation}
 \mbox{\Hypertarget{classdrumpi_1_1Sequencer_a55a080037b948534ef6fab28ee3cf8e1}\label{classdrumpi_1_1Sequencer_a55a080037b948534ef6fab28ee3cf8e1}} 
-\index{drumpi::Sequencer@{drumpi::Sequencer}!\_updateStepID@{\_updateStepID}}
-\index{\_updateStepID@{\_updateStepID}!drumpi::Sequencer@{drumpi::Sequencer}}
-\doxysubsubsection{\texorpdfstring{\_updateStepID()}{\_updateStepID()}}
+\index{drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}!\+\_\+update\+Step\+ID@{\+\_\+update\+Step\+ID}}
+\index{\+\_\+update\+Step\+ID@{\+\_\+update\+Step\+ID}!drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}}
+\subsubsection{\texorpdfstring{\+\_\+update\+Step\+I\+D()}{\_updateStepID()}}
 {\footnotesize\ttfamily void Sequencer\+::\+\_\+update\+Step\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 Call to update the active step ID. \mbox{\Hypertarget{classdrumpi_1_1Sequencer_a3d07f2cafd5fc311aa05e049685756e4}\label{classdrumpi_1_1Sequencer_a3d07f2cafd5fc311aa05e049685756e4}} 
-\index{drumpi::Sequencer@{drumpi::Sequencer}!\_updateStepPtr@{\_updateStepPtr}}
-\index{\_updateStepPtr@{\_updateStepPtr}!drumpi::Sequencer@{drumpi::Sequencer}}
-\doxysubsubsection{\texorpdfstring{\_updateStepPtr()}{\_updateStepPtr()}}
+\index{drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}!\+\_\+update\+Step\+Ptr@{\+\_\+update\+Step\+Ptr}}
+\index{\+\_\+update\+Step\+Ptr@{\+\_\+update\+Step\+Ptr}!drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}}
+\subsubsection{\texorpdfstring{\+\_\+update\+Step\+Ptr()}{\_updateStepPtr()}}
 {\footnotesize\ttfamily void Sequencer\+::\+\_\+update\+Step\+Ptr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-Call to update the active step pointer. Should be called after the active step ID is updated (see \mbox{\hyperlink{classdrumpi_1_1Sequencer_a55a080037b948534ef6fab28ee3cf8e1}{\+\_\+update\+Step\+ID}}). \mbox{\Hypertarget{classdrumpi_1_1Sequencer_a65d14581132cc9ece12eca56a1696e27}\label{classdrumpi_1_1Sequencer_a65d14581132cc9ece12eca56a1696e27}} 
-\index{drumpi::Sequencer@{drumpi::Sequencer}!add@{add}}
-\index{add@{add}!drumpi::Sequencer@{drumpi::Sequencer}}
-\doxysubsubsection{\texorpdfstring{add()}{add()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily void Sequencer\+::add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}}}]{drum }\end{DoxyParamCaption})}
-
-Adds the specified drum to the current step. 
-\begin{DoxyParams}{Parameters}
-{\em drum} & \mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}} of the drum to add. \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{classdrumpi_1_1Sequencer_abf7916305c8766c01b3dc0230012cf3d}\label{classdrumpi_1_1Sequencer_abf7916305c8766c01b3dc0230012cf3d}} 
-\index{drumpi::Sequencer@{drumpi::Sequencer}!add@{add}}
-\index{add@{add}!drumpi::Sequencer@{drumpi::Sequencer}}
-\doxysubsubsection{\texorpdfstring{add()}{add()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void Sequencer\+::add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}}}]{drum,  }\item[{int}]{step }\end{DoxyParamCaption})}
+Call to update the active step pointer. Should be called after the active step ID is updated (see \hyperlink{classdrumpi_1_1Sequencer_a55a080037b948534ef6fab28ee3cf8e1}{\+\_\+update\+Step\+ID}). \mbox{\Hypertarget{classdrumpi_1_1Sequencer_abf7916305c8766c01b3dc0230012cf3d}\label{classdrumpi_1_1Sequencer_abf7916305c8766c01b3dc0230012cf3d}} 
+\index{drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}!add@{add}}
+\index{add@{add}!drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}}
+\subsubsection{\texorpdfstring{add()}{add()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Sequencer\+::add (\begin{DoxyParamCaption}\item[{\hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t}}]{drum,  }\item[{int}]{step }\end{DoxyParamCaption})}
 
 Adds the specified drum to the specified step. 
 \begin{DoxyParams}{Parameters}
-{\em drum} & \mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}} of the drum to add. \\
+{\em drum} & \hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t} of the drum to add. \\
 \hline
 {\em step} & ID of the step to be modified. \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{classdrumpi_1_1Sequencer_a65d14581132cc9ece12eca56a1696e27}\label{classdrumpi_1_1Sequencer_a65d14581132cc9ece12eca56a1696e27}} 
+\index{drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}!add@{add}}
+\index{add@{add}!drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}}
+\subsubsection{\texorpdfstring{add()}{add()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Sequencer\+::add (\begin{DoxyParamCaption}\item[{\hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t}}]{drum }\end{DoxyParamCaption})}
+
+Adds the specified drum to the current step. 
+\begin{DoxyParams}{Parameters}
+{\em drum} & \hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t} of the drum to add. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classdrumpi_1_1Sequencer_a8b7b4faa1438aedb59370bb5ef44f571}\label{classdrumpi_1_1Sequencer_a8b7b4faa1438aedb59370bb5ef44f571}} 
-\index{drumpi::Sequencer@{drumpi::Sequencer}!clear@{clear}}
-\index{clear@{clear}!drumpi::Sequencer@{drumpi::Sequencer}}
-\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+\index{drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}!clear@{clear}}
+\index{clear@{clear}!drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
 {\footnotesize\ttfamily void Sequencer\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Clear the \mbox{\hyperlink{classdrumpi_1_1Sequencer}{Sequencer}} pattern. \mbox{\Hypertarget{classdrumpi_1_1Sequencer_a3a4981971243ac03ace9b57fc0a6c8c6}\label{classdrumpi_1_1Sequencer_a3a4981971243ac03ace9b57fc0a6c8c6}} 
-\index{drumpi::Sequencer@{drumpi::Sequencer}!getActive@{getActive}}
-\index{getActive@{getActive}!drumpi::Sequencer@{drumpi::Sequencer}}
-\doxysubsubsection{\texorpdfstring{getActive()}{getActive()}}
-{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}} $>$ Sequencer\+::get\+Active (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+Clear the \hyperlink{classdrumpi_1_1Sequencer}{Sequencer} pattern. \mbox{\Hypertarget{classdrumpi_1_1Sequencer_a3a4981971243ac03ace9b57fc0a6c8c6}\label{classdrumpi_1_1Sequencer_a3a4981971243ac03ace9b57fc0a6c8c6}} 
+\index{drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}!get\+Active@{get\+Active}}
+\index{get\+Active@{get\+Active}!drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}}
+\subsubsection{\texorpdfstring{get\+Active()}{getActive()}}
+{\footnotesize\ttfamily std\+::vector$<$ \hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t} $>$ Sequencer\+::get\+Active (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Returns the active drums\textquotesingle{} \mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}} for the current step. \begin{DoxyReturn}{Returns}
-a vector containing the \mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}} of the active drums. 
+Returns the active drums\textquotesingle{} \hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t} for the current step. \begin{DoxyReturn}{Returns}
+a vector containing the \hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t} of the active drums. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classdrumpi_1_1Sequencer_aa15ac653eaddea48cb4ccb8dadac9735}\label{classdrumpi_1_1Sequencer_aa15ac653eaddea48cb4ccb8dadac9735}} 
-\index{drumpi::Sequencer@{drumpi::Sequencer}!getSequence@{getSequence}}
-\index{getSequence@{getSequence}!drumpi::Sequencer@{drumpi::Sequencer}}
-\doxysubsubsection{\texorpdfstring{getSequence()}{getSequence()}}
+\index{drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}!get\+Sequence@{get\+Sequence}}
+\index{get\+Sequence@{get\+Sequence}!drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}}
+\subsubsection{\texorpdfstring{get\+Sequence()}{getSequence()}}
 {\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ bool $>$ $>$ Sequencer\+::get\+Sequence (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Returns the entire \mbox{\hyperlink{classdrumpi_1_1Sequencer}{Sequencer}} pattern. \begin{DoxyReturn}{Returns}
-a 2D vector of the \mbox{\hyperlink{classdrumpi_1_1Sequencer}{Sequencer}} pattern, indexed as \mbox{[}step\mbox{]}\mbox{[}drum\mbox{]}. 
+Returns the entire \hyperlink{classdrumpi_1_1Sequencer}{Sequencer} pattern. \begin{DoxyReturn}{Returns}
+a 2D vector of the \hyperlink{classdrumpi_1_1Sequencer}{Sequencer} pattern, indexed as \mbox{[}step\mbox{]}\mbox{[}drum\mbox{]}. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classdrumpi_1_1Sequencer_af327472b3452fa67511029daaee4ad1c}\label{classdrumpi_1_1Sequencer_af327472b3452fa67511029daaee4ad1c}} 
-\index{drumpi::Sequencer@{drumpi::Sequencer}!getStepNum@{getStepNum}}
-\index{getStepNum@{getStepNum}!drumpi::Sequencer@{drumpi::Sequencer}}
-\doxysubsubsection{\texorpdfstring{getStepNum()}{getStepNum()}}
+\index{drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}!get\+Step\+Num@{get\+Step\+Num}}
+\index{get\+Step\+Num@{get\+Step\+Num}!drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}}
+\subsubsection{\texorpdfstring{get\+Step\+Num()}{getStepNum()}}
 {\footnotesize\ttfamily int Sequencer\+::get\+Step\+Num (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 Get the current step number. \begin{DoxyReturn}{Returns}
 the current step number. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classdrumpi_1_1Sequencer_a5cc5ed8f6fd51b88618766a16373b60d}\label{classdrumpi_1_1Sequencer_a5cc5ed8f6fd51b88618766a16373b60d}} 
-\index{drumpi::Sequencer@{drumpi::Sequencer}!getSteps@{getSteps}}
-\index{getSteps@{getSteps}!drumpi::Sequencer@{drumpi::Sequencer}}
-\doxysubsubsection{\texorpdfstring{getSteps()}{getSteps()}}
-{\footnotesize\ttfamily std\+::vector$<$ bool $>$ Sequencer\+::get\+Steps (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}}}]{drum\+ID }\end{DoxyParamCaption})}
+\index{drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}!get\+Steps@{get\+Steps}}
+\index{get\+Steps@{get\+Steps}!drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}}
+\subsubsection{\texorpdfstring{get\+Steps()}{getSteps()}}
+{\footnotesize\ttfamily std\+::vector$<$ bool $>$ Sequencer\+::get\+Steps (\begin{DoxyParamCaption}\item[{\hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t}}]{drum\+ID }\end{DoxyParamCaption})}
 
 Returns a series of switches for the specified drum\textquotesingle{}s presence in each sequence step. 
 \begin{DoxyParams}{Parameters}
-{\em drum\+ID} & \mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}} of the drum to check. \\
+{\em drum\+ID} & \hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t} of the drum to check. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 a vector of {\ttfamily bool}s, {\ttfamily true} if the drum is active in that index\textquotesingle{} step. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classdrumpi_1_1Sequencer_a7af390c7241b0fc7ccdf17cd6f14171f}\label{classdrumpi_1_1Sequencer_a7af390c7241b0fc7ccdf17cd6f14171f}} 
-\index{drumpi::Sequencer@{drumpi::Sequencer}!isActive@{isActive}}
-\index{isActive@{isActive}!drumpi::Sequencer@{drumpi::Sequencer}}
-\doxysubsubsection{\texorpdfstring{isActive()}{isActive()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily bool Sequencer\+::is\+Active (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}}}]{drum }\end{DoxyParamCaption})}
-
-Returns {\ttfamily true} if the specified drum is active in the current step. 
-\begin{DoxyParams}{Parameters}
-{\em drum} & \mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}} of the drum to test. \\
-\hline
-\end{DoxyParams}
 \mbox{\Hypertarget{classdrumpi_1_1Sequencer_a9125b926864c998496a662b1fd8cd535}\label{classdrumpi_1_1Sequencer_a9125b926864c998496a662b1fd8cd535}} 
-\index{drumpi::Sequencer@{drumpi::Sequencer}!isActive@{isActive}}
-\index{isActive@{isActive}!drumpi::Sequencer@{drumpi::Sequencer}}
-\doxysubsubsection{\texorpdfstring{isActive()}{isActive()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily bool Sequencer\+::is\+Active (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}}}]{drum,  }\item[{int}]{step }\end{DoxyParamCaption})}
+\index{drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}!is\+Active@{is\+Active}}
+\index{is\+Active@{is\+Active}!drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}}
+\subsubsection{\texorpdfstring{is\+Active()}{isActive()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Sequencer\+::is\+Active (\begin{DoxyParamCaption}\item[{\hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t}}]{drum,  }\item[{int}]{step }\end{DoxyParamCaption})}
 
 Returns {\ttfamily true} if the specified drum is active in the specified step. 
 \begin{DoxyParams}{Parameters}
-{\em drum} & \mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}} of the drum to test. \\
+{\em drum} & \hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t} of the drum to test. \\
 \hline
 {\em step} & ID of the step to test. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classdrumpi_1_1Sequencer_ad7fcb2041b2b68133def003eef420f99}\label{classdrumpi_1_1Sequencer_ad7fcb2041b2b68133def003eef420f99}} 
-\index{drumpi::Sequencer@{drumpi::Sequencer}!remove@{remove}}
-\index{remove@{remove}!drumpi::Sequencer@{drumpi::Sequencer}}
-\doxysubsubsection{\texorpdfstring{remove()}{remove()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily void Sequencer\+::remove (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}}}]{drum }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{classdrumpi_1_1Sequencer_a7af390c7241b0fc7ccdf17cd6f14171f}\label{classdrumpi_1_1Sequencer_a7af390c7241b0fc7ccdf17cd6f14171f}} 
+\index{drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}!is\+Active@{is\+Active}}
+\index{is\+Active@{is\+Active}!drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}}
+\subsubsection{\texorpdfstring{is\+Active()}{isActive()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Sequencer\+::is\+Active (\begin{DoxyParamCaption}\item[{\hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t}}]{drum }\end{DoxyParamCaption})}
 
-Removes the specified drum from the current step. 
+Returns {\ttfamily true} if the specified drum is active in the current step. 
 \begin{DoxyParams}{Parameters}
-{\em drum} & \mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}} of the drum to remove. \\
+{\em drum} & \hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t} of the drum to test. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classdrumpi_1_1Sequencer_a5b9b8acf415b43f72442f0a591054412}\label{classdrumpi_1_1Sequencer_a5b9b8acf415b43f72442f0a591054412}} 
-\index{drumpi::Sequencer@{drumpi::Sequencer}!remove@{remove}}
-\index{remove@{remove}!drumpi::Sequencer@{drumpi::Sequencer}}
-\doxysubsubsection{\texorpdfstring{remove()}{remove()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void Sequencer\+::remove (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}}}]{drum,  }\item[{int}]{step }\end{DoxyParamCaption})}
+\index{drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}!remove@{remove}}
+\index{remove@{remove}!drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}}
+\subsubsection{\texorpdfstring{remove()}{remove()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Sequencer\+::remove (\begin{DoxyParamCaption}\item[{\hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t}}]{drum,  }\item[{int}]{step }\end{DoxyParamCaption})}
 
 Removes the specified drum from the specified step. 
 \begin{DoxyParams}{Parameters}
-{\em drum} & \mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}} of the drum to remove. \\
+{\em drum} & \hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t} of the drum to remove. \\
 \hline
 {\em step} & ID of the step to be modified. \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{classdrumpi_1_1Sequencer_ad7fcb2041b2b68133def003eef420f99}\label{classdrumpi_1_1Sequencer_ad7fcb2041b2b68133def003eef420f99}} 
+\index{drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}!remove@{remove}}
+\index{remove@{remove}!drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}}
+\subsubsection{\texorpdfstring{remove()}{remove()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Sequencer\+::remove (\begin{DoxyParamCaption}\item[{\hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t}}]{drum }\end{DoxyParamCaption})}
+
+Removes the specified drum from the current step. 
+\begin{DoxyParams}{Parameters}
+{\em drum} & \hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t} of the drum to remove. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classdrumpi_1_1Sequencer_a033983bb65fa38a3e0f8732040a63eb1}\label{classdrumpi_1_1Sequencer_a033983bb65fa38a3e0f8732040a63eb1}} 
-\index{drumpi::Sequencer@{drumpi::Sequencer}!reset@{reset}}
-\index{reset@{reset}!drumpi::Sequencer@{drumpi::Sequencer}}
-\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+\index{drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}!reset@{reset}}
+\index{reset@{reset}!drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}}
+\subsubsection{\texorpdfstring{reset()}{reset()}}
 {\footnotesize\ttfamily void Sequencer\+::reset (\begin{DoxyParamCaption}\item[{bool}]{clear\+Steps = {\ttfamily true} }\end{DoxyParamCaption})}
 
-Resets the \mbox{\hyperlink{classdrumpi_1_1Sequencer}{Sequencer}} to initial conditions. 
+Resets the \hyperlink{classdrumpi_1_1Sequencer}{Sequencer} to initial conditions. 
 \begin{DoxyParams}{Parameters}
-{\em clear\+Steps} & whether to clear the \mbox{\hyperlink{classdrumpi_1_1Sequencer}{Sequencer}} pattern. \\
+{\em clear\+Steps} & whether to clear the \hyperlink{classdrumpi_1_1Sequencer}{Sequencer} pattern. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classdrumpi_1_1Sequencer_adf7a6603073c345b72805211f87d5d1c}\label{classdrumpi_1_1Sequencer_adf7a6603073c345b72805211f87d5d1c}} 
-\index{drumpi::Sequencer@{drumpi::Sequencer}!setNumSteps@{setNumSteps}}
-\index{setNumSteps@{setNumSteps}!drumpi::Sequencer@{drumpi::Sequencer}}
-\doxysubsubsection{\texorpdfstring{setNumSteps()}{setNumSteps()}}
+\index{drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}!set\+Num\+Steps@{set\+Num\+Steps}}
+\index{set\+Num\+Steps@{set\+Num\+Steps}!drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}}
+\subsubsection{\texorpdfstring{set\+Num\+Steps()}{setNumSteps()}}
 {\footnotesize\ttfamily void Sequencer\+::set\+Num\+Steps (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 Sets the number of steps. Unstable for active use. 
@@ -242,68 +243,68 @@ Sets the number of steps. Unstable for active use.
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classdrumpi_1_1Sequencer_a86e0af4260c526be4646ce343830e6c4}\label{classdrumpi_1_1Sequencer_a86e0af4260c526be4646ce343830e6c4}} 
-\index{drumpi::Sequencer@{drumpi::Sequencer}!step@{step}}
-\index{step@{step}!drumpi::Sequencer@{drumpi::Sequencer}}
-\doxysubsubsection{\texorpdfstring{step()}{step()}}
+\index{drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}!step@{step}}
+\index{step@{step}!drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}}
+\subsubsection{\texorpdfstring{step()}{step()}}
 {\footnotesize\ttfamily void Sequencer\+::step (\begin{DoxyParamCaption}\item[{int}]{n = {\ttfamily 1} }\end{DoxyParamCaption})}
 
-Advance the \mbox{\hyperlink{classdrumpi_1_1Sequencer}{Sequencer}} by one step. 
+Advance the \hyperlink{classdrumpi_1_1Sequencer}{Sequencer} by one step. 
 \begin{DoxyParams}{Parameters}
 {\em n} & number of step(s) to advance by. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classdrumpi_1_1Sequencer_a7ca8d490e9eaf703c9f7e0594fa4090c}\label{classdrumpi_1_1Sequencer_a7ca8d490e9eaf703c9f7e0594fa4090c}} 
-\index{drumpi::Sequencer@{drumpi::Sequencer}!toggle@{toggle}}
-\index{toggle@{toggle}!drumpi::Sequencer@{drumpi::Sequencer}}
-\doxysubsubsection{\texorpdfstring{toggle()}{toggle()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily void Sequencer\+::toggle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}}}]{drum }\end{DoxyParamCaption})}
-
-Toggles the specified drum in the current step. 
-\begin{DoxyParams}{Parameters}
-{\em drum} & \mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}} of the drum to toggle. \\
-\hline
-\end{DoxyParams}
 \mbox{\Hypertarget{classdrumpi_1_1Sequencer_a2d7b85fe97bd2714632bd65135868897}\label{classdrumpi_1_1Sequencer_a2d7b85fe97bd2714632bd65135868897}} 
-\index{drumpi::Sequencer@{drumpi::Sequencer}!toggle@{toggle}}
-\index{toggle@{toggle}!drumpi::Sequencer@{drumpi::Sequencer}}
-\doxysubsubsection{\texorpdfstring{toggle()}{toggle()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void Sequencer\+::toggle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}}}]{drum,  }\item[{int}]{step }\end{DoxyParamCaption})}
+\index{drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}!toggle@{toggle}}
+\index{toggle@{toggle}!drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}}
+\subsubsection{\texorpdfstring{toggle()}{toggle()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Sequencer\+::toggle (\begin{DoxyParamCaption}\item[{\hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t}}]{drum,  }\item[{int}]{step }\end{DoxyParamCaption})}
 
 Toggles the specified drum in the specified step. 
 \begin{DoxyParams}{Parameters}
-{\em drum} & \mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}} of the drum to toggle. \\
+{\em drum} & \hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t} of the drum to toggle. \\
 \hline
 {\em step} & ID of the step to be modified. \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{classdrumpi_1_1Sequencer_a7ca8d490e9eaf703c9f7e0594fa4090c}\label{classdrumpi_1_1Sequencer_a7ca8d490e9eaf703c9f7e0594fa4090c}} 
+\index{drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}!toggle@{toggle}}
+\index{toggle@{toggle}!drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}}
+\subsubsection{\texorpdfstring{toggle()}{toggle()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Sequencer\+::toggle (\begin{DoxyParamCaption}\item[{\hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t}}]{drum }\end{DoxyParamCaption})}
+
+Toggles the specified drum in the current step. 
+\begin{DoxyParams}{Parameters}
+{\em drum} & \hyperlink{namespacedrumpi_a3897274035c1b939a604438abe648b1b}{drum\+I\+D\+\_\+t} of the drum to toggle. \\
+\hline
+\end{DoxyParams}
 
 
-\doxysubsection{Member Data Documentation}
+\subsection{Member Data Documentation}
 \mbox{\Hypertarget{classdrumpi_1_1Sequencer_a0bf12baf6bf923324df41f1ea784ba99}\label{classdrumpi_1_1Sequencer_a0bf12baf6bf923324df41f1ea784ba99}} 
-\index{drumpi::Sequencer@{drumpi::Sequencer}!currentStep@{currentStep}}
-\index{currentStep@{currentStep}!drumpi::Sequencer@{drumpi::Sequencer}}
-\doxysubsubsection{\texorpdfstring{currentStep}{currentStep}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classdrumpi_1_1__SequenceStep}{\+\_\+\+Sequence\+Step}}$\ast$ drumpi\+::\+Sequencer\+::current\+Step\hspace{0.3cm}{\ttfamily [private]}}
+\index{drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}!current\+Step@{current\+Step}}
+\index{current\+Step@{current\+Step}!drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}}
+\subsubsection{\texorpdfstring{current\+Step}{currentStep}}
+{\footnotesize\ttfamily \hyperlink{classdrumpi_1_1__SequenceStep}{\+\_\+\+Sequence\+Step}$\ast$ drumpi\+::\+Sequencer\+::current\+Step\hspace{0.3cm}{\ttfamily [private]}}
 
-Pointer to currently active \mbox{\hyperlink{classdrumpi_1_1__SequenceStep}{\+\_\+\+Sequence\+Step}} object. \mbox{\Hypertarget{classdrumpi_1_1Sequencer_a0e4963cb16a4c6cbeb85838199c1bb8e}\label{classdrumpi_1_1Sequencer_a0e4963cb16a4c6cbeb85838199c1bb8e}} 
-\index{drumpi::Sequencer@{drumpi::Sequencer}!numSteps@{numSteps}}
-\index{numSteps@{numSteps}!drumpi::Sequencer@{drumpi::Sequencer}}
-\doxysubsubsection{\texorpdfstring{numSteps}{numSteps}}
+Pointer to currently active \hyperlink{classdrumpi_1_1__SequenceStep}{\+\_\+\+Sequence\+Step} object. \mbox{\Hypertarget{classdrumpi_1_1Sequencer_a0e4963cb16a4c6cbeb85838199c1bb8e}\label{classdrumpi_1_1Sequencer_a0e4963cb16a4c6cbeb85838199c1bb8e}} 
+\index{drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}!num\+Steps@{num\+Steps}}
+\index{num\+Steps@{num\+Steps}!drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}}
+\subsubsection{\texorpdfstring{num\+Steps}{numSteps}}
 {\footnotesize\ttfamily int drumpi\+::\+Sequencer\+::num\+Steps\hspace{0.3cm}{\ttfamily [private]}}
 
 Number of steps in the sequence. \mbox{\Hypertarget{classdrumpi_1_1Sequencer_a259a1eb2adc67dc949c2cdb45358886d}\label{classdrumpi_1_1Sequencer_a259a1eb2adc67dc949c2cdb45358886d}} 
-\index{drumpi::Sequencer@{drumpi::Sequencer}!stepNum@{stepNum}}
-\index{stepNum@{stepNum}!drumpi::Sequencer@{drumpi::Sequencer}}
-\doxysubsubsection{\texorpdfstring{stepNum}{stepNum}}
+\index{drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}!step\+Num@{step\+Num}}
+\index{step\+Num@{step\+Num}!drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}}
+\subsubsection{\texorpdfstring{step\+Num}{stepNum}}
 {\footnotesize\ttfamily int drumpi\+::\+Sequencer\+::step\+Num\hspace{0.3cm}{\ttfamily [private]}}
 
-Index of the current step, e.\+g. in the \mbox{\hyperlink{classdrumpi_1_1Sequencer_a756f8ef45e87ef2165d7e34752c9bf7e}{steps}} vector. \mbox{\Hypertarget{classdrumpi_1_1Sequencer_a756f8ef45e87ef2165d7e34752c9bf7e}\label{classdrumpi_1_1Sequencer_a756f8ef45e87ef2165d7e34752c9bf7e}} 
-\index{drumpi::Sequencer@{drumpi::Sequencer}!steps@{steps}}
-\index{steps@{steps}!drumpi::Sequencer@{drumpi::Sequencer}}
-\doxysubsubsection{\texorpdfstring{steps}{steps}}
-{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classdrumpi_1_1__SequenceStep}{\+\_\+\+Sequence\+Step}}$>$ drumpi\+::\+Sequencer\+::steps\hspace{0.3cm}{\ttfamily [private]}}
+Index of the current step, e.\+g. in the \hyperlink{classdrumpi_1_1Sequencer_a756f8ef45e87ef2165d7e34752c9bf7e}{steps} vector. \mbox{\Hypertarget{classdrumpi_1_1Sequencer_a756f8ef45e87ef2165d7e34752c9bf7e}\label{classdrumpi_1_1Sequencer_a756f8ef45e87ef2165d7e34752c9bf7e}} 
+\index{drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}!steps@{steps}}
+\index{steps@{steps}!drumpi\+::\+Sequencer@{drumpi\+::\+Sequencer}}
+\subsubsection{\texorpdfstring{steps}{steps}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{classdrumpi_1_1__SequenceStep}{\+\_\+\+Sequence\+Step}$>$ drumpi\+::\+Sequencer\+::steps\hspace{0.3cm}{\ttfamily [private]}}
 
-Container for \mbox{\hyperlink{classdrumpi_1_1__SequenceStep}{\+\_\+\+Sequence\+Step}} objects. 
+Container for \hyperlink{classdrumpi_1_1__SequenceStep}{\+\_\+\+Sequence\+Step} objects. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

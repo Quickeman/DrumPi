@@ -1,4 +1,3 @@
 <map id="drumpi::SetDrumVolumeMode" name="drumpi::SetDrumVolumeMode">
-<area shape="rect" id="node1" title=" " alt="" coords="5,80,224,107"/>
-<area shape="rect" id="node2" href="$classdrumpi_1_1State.html" title=" " alt="" coords="59,5,170,32"/>
+<area shape="rect" id="node2" href="$classdrumpi_1_1State.html" title="drumpi::State" alt="" coords="54,5,154,32"/>
 </map>

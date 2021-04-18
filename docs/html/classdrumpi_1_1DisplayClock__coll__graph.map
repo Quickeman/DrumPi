@@ -1,6 +1,4 @@
 <map id="drumpi::DisplayClock" name="drumpi::DisplayClock">
-<area shape="rect" id="node1" title=" " alt="" coords="154,171,315,197"/>
-<area shape="rect" id="node2" href="$classdrumpi_1_1clock_1_1Clock.html" title=" " alt="" coords="5,81,160,108"/>
-<area shape="rect" id="node3" title=" " alt="" coords="40,5,125,32"/>
-<area shape="rect" id="node4" href="$classdrumpi_1_1ApplicationCallback.html" title=" " alt="" coords="184,81,389,108"/>
+<area shape="rect" id="node2" href="$classdrumpi_1_1clock_1_1Clock.html" title="drumpi::clock::Clock" alt="" coords="5,81,148,108"/>
+<area shape="rect" id="node4" href="$classdrumpi_1_1ApplicationCallback.html" title="drumpi::ApplicationCallback" alt="" coords="173,81,357,108"/>
 </map>

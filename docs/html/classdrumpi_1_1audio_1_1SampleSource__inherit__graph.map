@@ -1,5 +1,4 @@
 <map id="drumpi::audio::SampleSource" name="drumpi::audio::SampleSource">
-<area shape="rect" id="node1" title=" " alt="" coords="17,5,230,32"/>
-<area shape="rect" id="node2" href="$classdrumpi_1_1audio_1_1SampleSourceFile.html" title=" " alt="" coords="5,80,241,107"/>
-<area shape="rect" id="node3" href="$classdrumpi_1_1audio_1_1AudioClip.html" title=" " alt="" coords="32,155,215,181"/>
+<area shape="rect" id="node2" href="$classdrumpi_1_1audio_1_1SampleSourceFile.html" title="drumpi::audio::SampleSourceFile" alt="" coords="5,80,220,107"/>
+<area shape="rect" id="node3" href="$classdrumpi_1_1audio_1_1AudioClip.html" title="drumpi::audio::AudioClip" alt="" coords="31,155,195,181"/>
 </map>

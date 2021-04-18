@@ -1,4 +1,3 @@
 <map id="drumpi::SetDrumBankMode" name="drumpi::SetDrumBankMode">
-<area shape="rect" id="node1" title=" " alt="" coords="5,80,208,107"/>
-<area shape="rect" id="node2" href="$classdrumpi_1_1State.html" title=" " alt="" coords="51,5,162,32"/>
+<area shape="rect" id="node2" href="$classdrumpi_1_1State.html" title="drumpi::State" alt="" coords="47,5,147,32"/>
 </map>
