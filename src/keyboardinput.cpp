@@ -27,7 +27,6 @@ KeyboardInput::KeyboardInput() {
 	fd = open(kbdFilePath, O_RDONLY);
 	running = 0;
 	testFlag = 0;
-	keyPressCount = 0;
 	fdset[0].fd = fd;
 	fdset[0].events = POLLIN;
 }
@@ -35,7 +34,6 @@ KeyboardInput::KeyboardInput() {
 void KeyboardInput::pollInput() {
 	running = 1;
 	testFlag = 0;
-	//keyPressCount = 0;
 	while (running) {
 		testFlag = 1; 	//flag is only set to 1 if while loop starts
 
@@ -49,7 +47,6 @@ void KeyboardInput::pollInput() {
 				}
 				//printf("\n%d key pressed\n", ev.code);
 				callback->interpretKeyPress(ev.code);
-				//keyPressCount++;
 			}
 		}
 	}
@@ -65,8 +62,4 @@ int KeyboardInput::getFileDescriptor() {
 
 int KeyboardInput::getTestFlag() {
    	return testFlag;
-}
-
-int KeyboardInput::getKeyPressCount() {
-   	return keyPressCount;
 }

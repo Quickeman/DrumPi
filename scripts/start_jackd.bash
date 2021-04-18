@@ -1,13 +1,16 @@
 #!/bin/bash
 
-# Check for active jackd processes
-ps | grep jackd
-# If any are active, kill them
-if [ $? -eq 0 ]; then
-    # Close active jackd processes
-    killall -s SIGINT jackd
-    # Sleep to allow server time to close
-    sleep 1
+# Close active jackd processes
+killall -s SIGINT jackd
+# Sleep to allow server time to close
+sleep 1
+
+# Check a USB audio device is present
+cat /proc/asound/cards | grep USB > /dev/null
+# If none are, warn the user and abort the process
+if [ $? -ne 0 ]; then
+    echo "Could not find a USB audio device."
+    exit 1
 fi
 
 # Get ID of USB audio interface

@@ -7,6 +7,25 @@
   <p align="center">A drum machine made for the Raspberry Pi</p>  
 </p>
 
+<p align="center">
+  <a href="https://www.facebook.com/DrumPiProject/">Facebook</a>
+  <span> | </span>
+  <a href="https://www.instagram.com/drumpiproject/">Instagram</a>
+</p>
+
+<p align="center">
+    <a href="https://github.com/Quickeman/DrumPi/graphs/contributors" alt="Contributors">
+        <img src="https://img.shields.io/github/contributors/Quickeman/DrumPi.svg" /></a>
+    <a href="https://github.com/Quickeman/DrumPi/stargazers" alt="Stars">
+        <img src="https://img.shields.io/github/stars/Quickeman/DrumPi.svg" /></a>
+    <a href="https://github.com/Quickeman/DrumPi/issues" alt="Issues">
+        <img src="https://img.shields.io/github/issues/Quickeman/DrumPi.svg" /></a>
+    <a href="https://github.com/Quickeman/DrumPi/blob/main/LICENSE" alt="License">
+        <img src="https://img.shields.io/github/license/Quickeman/DrumPi.svg" /></a>
+    <a href="https://github.com/Quickeman/DrumPi/releases" alt="Tag">
+        <img src="https://img.shields.io/github/v/release/Quickeman/DrumPi.svg?color=blue&include_prereleases" alt="build status"></a>
+</p>
+
 ## Contents
 <ul>
   <li><a href="#About">About</a>
@@ -63,6 +82,8 @@ cd DrumPi
 ./install
 ```
 
+For more details, see the [Installation Guide](https://github.com/Quickeman/DrumPi/wiki/Installation-Guide).
+
 ### Startup
 To start the DrumPi, enter:
 ```
@@ -78,86 +99,10 @@ To run the suite of unit tests, enter:
 in a terminal from the DrumPi directory.
 
 ## Usage
-When turned on, the DrumPi defaults to performance mode.
 
-Global Actions:
-```
-KEY		ACTION
-M		Switch between performance and sequencer mode
-ESC		Exit program
-.		Increase master volume
-,		Decrease master volume
-V		Switch to "Set Drum Volume" sub-mode
-B		Switch to "Drum Bank" sub-mode
-```
-Performance Mode:  
-```
-KEY		ACTION
-A		Play drum 1
-S		Play drum 2
-D		Play drum 3
-F		Play drum 4
-J		Play drum 5
-K		Play drum 6
-L		Play drum 7
-;		Play drum 8
-```
-Sequencer Mode:
-```
-When entering sequencer mode, drum 1 and page 1 are displayed by default.
-
-KEY		ACTION
-A,S,D,F,J,K,L,;	Select drum
-1-8		Toggle whether drum sound plays for that beat
-		When page 1 is displayed, will toggle beats 1-8
-		When page 2 is displayed, will toggle beats 9-16
-TAB		Switch between page 1 and 2
-SPACE		Start/stop sequence
-T		Switch to "Set Tempo" sub-mode		
-```
-Set Drum Volume Sub-Mode:
-```
-Can enter this mode from both performance mode and sequencer mode.
-
-KEY		ACTION
-.		Increase volume of selected drum
-,		Decrease volume of selected drum
-A		Switch selected drum to drum 1
-S		Switch selected drum to drum 2
-D		Switch selected drum to drum 3
-F		Switch selected drum to drum 4
-J		Switch selected drum to drum 5
-K		Switch selected drum to drum 6
-L		Switch selected drum to drum 7
-;		Switch selected drum to drum 8
-Z		Toggle whether the drum sound plays when increasing or decreasing the selected drum's volume
-V		Exit "Set Drum Volume" sub-mode
-BACKSPACE	Exit "Set Drum Volume" sub-mode
-```
-Set Tempo Sub-Mode:
-```
-Can only enter this mode from sequencer mode.
-
-KEY		ACTION
-.		Increase tempo
-,		decrease tempo
-T		Exit "Set Tempo" sub-mode, return to sequencer mode
-BACKSPACE	Exit "Set Tempo" sub-mode, return to sequencer mode
-```
-Drum Bank Sub-Mode:
-```
-Can enter this mode from both performance mode and sequencer mode.  
-For more information about drum banks, see the README in the audio directory.  
-
-KEY		ACTION
-.		Cycle up through drum banks
-,		Cycle down through drum banks
-B		Exit drum bank mode	
-BACKSPACE	Exit drum bank mode
-```
+For instructions on how to use the DrumPi application, see the [User Manual](https://github.com/Quickeman/DrumPi/wiki/User-Manual).
 
 ## Stretch Goals
 - External clocking
 - Customisation of drum sounds by user
 - Ability for real-time DSP using Pd patches
-

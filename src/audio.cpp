@@ -13,7 +13,7 @@ JackClient::JackClient(std::string clientName, int nOutPorts, int nInPorts) {
     // Establish client name
     this->clientName = clientName;
 
-    // Open a client connection to the JACK server
+    // Open a client connection to the Jack server
     client = jack_client_open(
         clientName.data(),
         options,
@@ -70,7 +70,7 @@ audioError_t JackClient::start(AudioCallback& callback) {
     this->callback = &callback;
     jack_set_process_callback(client, JackClient::_process, this);
 
-    // Activate JACK client
+    // Activate Jack client
     int err = jack_activate(client);
     // Error handling
     if (err) {
@@ -148,7 +148,7 @@ int JackClient::_process(jack_nframes_t nFrames, void *arg) {
 }
 
 void JackClient::_shutdown(void *arg) {
-    // If JACK calls this, close the program.
+    // If Jack calls this, close the program.
     exit(1);
 }
 

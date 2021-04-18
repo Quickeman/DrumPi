@@ -1,0 +1,8 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node2" href="$classdrumpi_1_1clock_1_1Clock.html" title="drumpi::clock::Clock" alt="" coords="132,56,275,83"/>
+<area shape="rect" id="node6" href="$classdrumpi_1_1clock_1_1Timer.html" title="drumpi::clock::Timer" alt="" coords="133,107,274,133"/>
+<area shape="rect" id="node3" href="$classdrumpi_1_1clock_1_1Metronome.html" title="drumpi::clock::Metronome" alt="" coords="323,5,496,32"/>
+<area shape="rect" id="node5" href="$classdrumpi_1_1DisplayClock.html" title="drumpi::DisplayClock" alt="" coords="336,56,483,83"/>
+<area shape="rect" id="node4" href="$classdrumpi_1_1SequencerClock.html" title="drumpi::SequencerClock" alt="" coords="544,5,709,32"/>
+<area shape="rect" id="node7" href="$classdrumpi_1_1DisplayDelay.html" title="drumpi::DisplayDelay" alt="" coords="336,107,483,133"/>
+</map>

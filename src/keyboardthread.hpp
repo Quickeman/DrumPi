@@ -9,18 +9,18 @@
 namespace drumpi {
 
 /*!
- * Class inheriting from CppThread wrapper class
- * that creates a keyboard monitoring thread.
+ * This class inherits from the CppThread wrapper class
+ * and creates a keyboard monitoring thread.
  */
 class KeyboardThread : public CppThread {
 public:
-	/*! Method to close the thread.*/
+	/*! Closes the thread.*/
 	int stop();
 
-	/*! Method called when thread is started. */
+	/*! This method is called when the thread is started. */
 	void run();
 
-	/*! Instance of KeyboardInput class */
+	/*! Instance of \ref KeyboardInput class. */
 	KeyboardInput kbdIn;
 };
 

@@ -1,0 +1,9 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classdrumpi_1_1State.html" title="drumpi::State" alt="" coords="5,132,105,159"/>
+<area shape="rect" id="node2" href="$classdrumpi_1_1PerformanceMode.html" title="drumpi::PerformanceMode" alt="" coords="169,5,343,32"/>
+<area shape="rect" id="node3" href="$classdrumpi_1_1SequencerMode.html" title="drumpi::SequencerMode" alt="" coords="175,56,337,83"/>
+<area shape="rect" id="node4" href="$classdrumpi_1_1SetDrumBankMode.html" title="drumpi::SetDrumBankMode" alt="" coords="165,107,347,133"/>
+<area shape="rect" id="node5" href="$classdrumpi_1_1SetDrumVolumeMode.html" title="drumpi::SetDrumVolumeMode" alt="" coords="157,157,355,184"/>
+<area shape="rect" id="node6" href="$classdrumpi_1_1SetMasterVolumeMode.html" title="drumpi::SetMasterVolumeMode" alt="" coords="153,208,359,235"/>
+<area shape="rect" id="node7" href="$classdrumpi_1_1SetTempoMode.html" title="drumpi::SetTempoMode" alt="" coords="175,259,337,285"/>
+</map>

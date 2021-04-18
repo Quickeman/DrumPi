@@ -6,6 +6,13 @@ bash scripts/detect_keyboards.bash
 # Close any active JACK servers and start a new one
 bash scripts/start_jackd.bash
 
+# If the startup script fails with code 1, no USB audio device is connected
+if [ $? -eq 1 ]; then
+    echo "Please connect a USB audio device (such as a sound card) and try again."
+    trap -- SIGINT
+    exit 1
+fi
+
 # Run unit test suite
 make test
 

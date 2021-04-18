@@ -1,4 +1,5 @@
 #include "playback.hpp"
+#include "math.h"
 
 using namespace drumpi;
 using namespace audio;
@@ -9,6 +10,12 @@ PlaybackEngine::PlaybackEngine() {
     for (int i = 0; i < NUM_DRUMS; i++) {
         isTriggered[i] = false;
         volumes[i] = volumeDef;
+    }
+
+    // Calculate volume lookup table
+    for (int i = 0; i < volumeTable.size(); i++) {
+        float x = float(i) / 100.f;
+        volumeTable[i] = x * powf(10.f, x - 1.f);
     }
 }
 
@@ -27,8 +34,9 @@ std::vector<sample_t> PlaybackEngine::getSamples(int nSamples) {
 
             // Copy additively into object buffer
             // Take volumes into account at this stage
+            float vol = volumeTable[masterVol] * volumeTable[volumes[i]];
             for (int j = 0; j < nSamples; j++) {
-                buffer[j] += temp[j] * masterVol * volumes[i];
+                buffer[j] += temp[j] * vol;
             }
 
             // Check source status
@@ -61,30 +69,26 @@ std::vector<drumID_t> PlaybackEngine::getActive() {
 }
 
 void PlaybackEngine::volumeUp(drumID_t drum) {
-    if (volumes[drum] > 0.94f) volumes[drum] = 1.f;
-    if (volumes[drum] < 1.f) volumes[drum] += volumeStep;
+    volumes[drum] = std::min(volumes[drum] + volumeStep, 100);
 }
 
 void PlaybackEngine::volumeUp() {
-    if (masterVol > 0.94f) masterVol = 1.f;
-    if (masterVol < 1.f) masterVol += volumeStep;
+    masterVol = std::min(masterVol + volumeStep, 100);
 }
 
 void PlaybackEngine::volumeDown(drumID_t drum) {
-    if (volumes[drum] < 0.06f) volumes[drum] = 0.f;
-    if (volumes[drum] > 0.f) volumes[drum] -= volumeStep;
+    volumes[drum] = std::max(volumes[drum] - volumeStep, 0);
 }
 
 void PlaybackEngine::volumeDown() {
-    if (masterVol < 0.06f) masterVol = 0.f;
-    if (masterVol > 0.f) masterVol -= volumeStep;
+    masterVol = std::max(masterVol - volumeStep, 0);
 }
 
-float PlaybackEngine::getVolume(drumID_t drum) {
+int PlaybackEngine::getVolume(drumID_t drum) {
     return volumes[drum];
 }
 
-float PlaybackEngine::getVolume() {
+int PlaybackEngine::getVolume() {
     return masterVol;
 }
 

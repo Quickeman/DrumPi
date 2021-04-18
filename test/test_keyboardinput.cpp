@@ -15,6 +15,7 @@ BOOST_AUTO_TEST_CASE(Open_Input_File) {
 	BOOST_CHECK(kbd.getFileDescriptor() >= 0);
 }
 
+//Check the KeyboardInput class can call the Application interpretKeyPress method
 BOOST_AUTO_TEST_CASE(application_callback) {
 	Application app;
 	app.setup();

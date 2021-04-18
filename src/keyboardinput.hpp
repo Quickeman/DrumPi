@@ -17,64 +17,61 @@
 
 namespace drumpi {
 
-/*! Class for detecting keyboard presses */
+/*! Class for monitoring a keyboard device file and detecting keyboard presses. */
 class KeyboardInput {
 
 public:
 
-	/*! /brief Constructor.
+	/*! \brief Constructor.
 	 *
-	 * The constructor sets and opens the
+	 * The constructor detects and opens the
 	 * device file for the keyboard input device.
 	 */
     KeyboardInput();
 
     /*!
-     * \brief Method to poll the keyboard input.
+     * \brief Polls the keyboard input for events.
      *
      * This method monitors the keyboard device file
-     * with a polling loop and prints an alert
-     * to the terminal when a key is pressed.
+     * with a polling loop and calls the \ref Application object
+     * to interpret the key press and perform an action
+     * when a key press is detected.
      */
     void pollInput();
     
-    /*! Method to set the class called when a keyboard event occurs */
+    /*! 
+     * \brief Sets the \ref Application object called when a keyboard event occurs.
+     * 
+     * \param app \ref Application object called by pollInput
+     * when a key press is detected.
+     * */
     void connectCallback(ApplicationCallback* app);
 
-    /*! Returns file descriptor of the input device */
+    /*! \returns file descriptor \ref fd of the input device. */
     int getFileDescriptor();
 
-    /*! Returns testFlag */
+    /*! \returns \ref testFlag. */
     int getTestFlag();
 
-    /*! Returns the number of key presses detected whilst pollInput was running */
-    int getKeyPressCount();
-
-    /*! Running flag used to end the input polling loop */
+    /*! Running flag used to end the input polling loop. */
     int running;
 
-    /*! Callback class called by KeyboardInput when a keyboard event occurs */
+    /*! Callback class called by KeyboardInput when a keyboard event occurs. */
     ApplicationCallback* callback;
 
 private:
 
-    /*! Event handler containing information about keyboard input events */
+    /*! Event handler containing information about keyboard input events. */
     struct input_event ev;
 
-    /*! Array of pollfd structs checked by poll() system call */
+    /*! Array of pollfd structs checked by poll() system call. */
     struct pollfd fdset[1];
 
-    /*! File descriptor for the keyboard device file */
+    /*! File descriptor for the keyboard device file. */
     int fd;
 
-    /*! Flag to check pollInput has been called successfully */
+    /*! Flag to check \ref pollInput has been called successfully. */
     int testFlag;
-
-    /*! 
-     * Test variable to count number of key presses
-     * detected whilst pollInput is running
-     */
-    int keyPressCount;
 
 };
 

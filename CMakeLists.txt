@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.12)
 
 # Project name and version
-project(DrumPi VERSION "0.2")
+project(DrumPi VERSION "1.0")
 
 # Project name and version macros
 add_definitions(-DPROJECT_NAME="${CMAKE_PROJECT_NAME}")

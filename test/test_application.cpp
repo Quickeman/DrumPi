@@ -171,7 +171,7 @@ BOOST_AUTO_TEST_CASE(returning_to_sequencer_mode) {
 	//return to sequencer mode
 	app.interpretKeyPress(KEY_M);
 	//check sequencer mode variables are correct
-	BOOST_CHECK(app.sequencermode.currentpage == 0);
+	BOOST_CHECK(app.sequencermode.currentpage == 1);
 	BOOST_CHECK(app.sequencermode.currentdrum == testDrum);
 }
 

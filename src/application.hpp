@@ -15,16 +15,16 @@
 
 namespace drumpi {
 	
-/*! \ref Metronome derived class to clock a \ref Display. */
+/*! \ref clock::Metronome derived class to clock a \ref Display. */
 class DisplayClock : public clock::Clock {
 public:
 	/*! Constructor.
 	Sets the Application to be clocked.
-	\param s \ref Application object to be clocked. */
+	\param a \ref Application object to update. */
 	DisplayClock(ApplicationCallback* a);
 
 	/*! Override the tick method.
-	Clocks the \ref Application given to \ref setApplication. */
+	Clocks the \ref Application. */
 	void tick() override;
 
 private:
@@ -39,11 +39,11 @@ class DisplayDelay : public clock::Timer {
 public:
 	/*! Constructor.
 	Sets the Application to be clocked.
-	\param s \ref Application object to be clocked. */
+	\param a \ref Application object to be clocked. */
 	DisplayDelay(ApplicationCallback* a);
 
 	/*! Override the tick method.
-	Clocks the \ref Application given to \ref setApplication. */
+	Clocks the \ref Application. */
 	void trigger() override;
 
 private:
@@ -54,35 +54,39 @@ private:
 };
 
 
-/*! Abstract state class */
+/*! Abstract state class. */
 class State {
 public:
-	/*! Label describing state type */
+	/*! Label describing state type. */
 	stateLabel_t label;
 
-	/*! Virtual function to be overridden by derived class */
+	/*! Virtual function to be overridden by derived class. */
 	virtual bool interpretKeyPress(ApplicationCallback* appc, int key) = 0;
 	
-	/*! Virtual function to be overridden by derived class */
+	/*! Virtual function to be overridden by derived class. */
 	virtual void updateDisplay(ApplicationCallback* appc) = 0;
 	
-	/*! Interprets drum keys and returns a drum ID */
+	/*! Interprets drum keys and returns a drum ID.
+	 * \param key Keypress detected by \ref KeyboardInput class.
+	 */
     drumID_t interpretDrumKey(int key);
 };
 
 
-/*! Performance mode state */
+/*! Performance mode state. */
 class PerformanceMode : public State {
 public:
 	/*! Constructor */
 	PerformanceMode();
 
 	/*! 
-	 * \brief Method to perform action depending on key pressed.
+	 * \brief Performs an action depending on the key pressed.
 	 * 
-	 * Action performed is unique to performance mode.
-	 * @param appc Callback to the main application
-	 * @param key The keypress detected
+	 * This method is called by the \ref Application
+	 * when a keyboard event occurs and the application is in
+	 * performance mode.
+	 * @param appc Callback to the main \ref Application.
+	 * @param key The keypress detected.
 	 */
 	bool interpretKeyPress(ApplicationCallback* appc, int key) override;
 
@@ -91,46 +95,51 @@ public:
 };
 
 
-/*! Sequencer mode state */
+/*! Sequencer mode state. */
 class SequencerMode : public State {
 public:
 	/*! Constructor */
 	SequencerMode();
 
 	/*!
-	 * \brief Method to perform action depending on key pressed.
+	 * \brief Performs an action depending on the key pressed.
 	 * 
-	 * Action performed is unique to sequencer mode.
-	 * @param appc Callback to the main application
-	 * @param key The keypress detected
+	 * This method is called by the \ref Application
+	 * when a keyboard event occurs and the application is in
+	 * sequencer mode.
+	 * @param appc Callback to the main \ref Application.
+	 * @param key The keypress detected.
 	 */
 	bool interpretKeyPress(ApplicationCallback* appc, int key) override;
 
 	void updateDisplay(ApplicationCallback* appc) override;
 
-	/*! Drum currently being set in sequencer */
+	/*! Drum currently being set in sequencer. */
 	drumID_t currentdrum;
+	
 	/*!
 	 * \brief Page currently displayed on ZeroSeg.
 	 * 
-	 * Either page 1 (beats 1-8) or page 2 (beats 9-16)
+	 * Either page 1 (beats 1-8) or page 2 (beats 9-16).
 	 */
 	int currentpage;
 };
 
 
-/*! Set tempo in this state */
+/*! Set tempo in this state. */
 class SetTempoMode : public State {
 public:
 	/*! Constructor */
 	SetTempoMode();
 
 	/*!
-	 * \brief Method to perform action depending on key pressed.
+	 * \brief Performs an action depending on the key pressed.
 	 * 
-	 * Action performed is unique to SetTempoMode.
-	 * @param appc Callback to the main application
-	 * @param key The keypress detected
+	 * This method is called by the \ref Application
+	 * when a keyboard event occurs and the application is in
+	 * SetTempoMode.
+	 * @param appc Callback to the main \ref Application.
+	 * @param key The keypress detected.
 	 */
 	bool interpretKeyPress(ApplicationCallback* appc, int key) override;
 
@@ -138,25 +147,27 @@ public:
 
 private:
 	/*! Step size of the tempo inc/decrements. */
-	const int bpmStep = 20;
+	const int bpmStep = 8;
 
 	/*! Minimum BPM. */
-	const int minBPM = 28 + bpmStep;
+	const int minBPM = 38 + bpmStep;
 };
 
 
-/*! Set the master volume in this state (default) */
+/*! Set the master volume in this state (default). */
 class SetMasterVolumeMode : public State {
 public:
 	/*! Constructor. */
 	SetMasterVolumeMode();
 
 	/*!
-	 * \brief Method to perform action depending on key pressed.
+	 * \brief Performs an action depending on the key pressed.
 	 * 
-	 * Action performed is unique to SetMasterVolumeMode.
-	 * @param appc Callback to the main application
-	 * @param key The keypress detected
+	 * This method is called by the \ref Application
+	 * when the applicaton is in either performance or sequencer mode
+	 * and . or , are pressed.
+	 * @param appc Callback to the main \ref Application.
+	 * @param key The keypress detected.
 	 */
 	bool interpretKeyPress(ApplicationCallback* appc, int key) override;
 
@@ -164,25 +175,27 @@ public:
 };
 
 
-/*! Set individual drum volumes in this state */
+/*! Set individual drum volumes in this state. */
 class SetDrumVolumeMode : public State {
 public:
 	/*! Constructor */
 	SetDrumVolumeMode();
 
 	/*!
-	 * \brief Method to perform action depending on key pressed.
+	 * \brief Performs an action depending on the key pressed.
 	 * 
-	 * Action performed is unique to SetDrumVolumeMode.
-	 * @param appc Callback to the main application
-	 * @param key The keypress detected
+	 * This method is called by the \ref Application
+	 * when a keyboard event occurs and the application is in
+	 * SetDrumVolumeMode.
+	 * @param appc Callback to the main \ref Application.
+	 * @param key The keypress detected.
 	 */
 	bool interpretKeyPress(ApplicationCallback* appc, int key) override;
 
 	void updateDisplay(ApplicationCallback* appc) override;
 
 private:
-	/*! Drum volume currently selected to be modified */
+	/*! Drum volume currently selected to be modified. */
 	drumID_t drumselected;
 
 	/*! Whether to trigger the sounds on volume change. */
@@ -197,11 +210,13 @@ public:
 	SetDrumBankMode();
 
 	/*!
-	 * \brief Method to perform action depending on key pressed.
+	 * \brief Performs an action depending on the key pressed.
 	 * 
-	 * Action performed is unique to SetDrumBankMode.
-	 * @param appc Callback to the main application
-	 * @param key The keypress detected
+	 * This method is called by the \ref Application
+	 * when a keyboard event occurs and the application is in
+	 * SetDrumBankMode.
+	 * @param appc Callback to the main \ref Application.
+	 * @param key The keypress detected.
 	 */
 	bool interpretKeyPress(ApplicationCallback* appc, int key) override;
 
@@ -218,53 +233,70 @@ private:
 };
 
 
-/*! Main application */
+/*! 
+ * \brief Main application.
+ * 
+ * This is the main application for the DrumPi program.
+ * Its \ref setup and \ref run methods are called when the application
+ * is started.
+ */
 class Application : public ApplicationCallback {
 public:
 	
 	/*! Constructor */
 	Application();
 
-	/*! Method to set up the application */
+	/*! \brief Sets up the application. 
+	 * 
+	 * This method is called on startup to perform various set up tasks,
+	 * including connecting the \ref Application to the \ref KeyboardInput
+	 * as a callback, resetting the sequencer and display,
+	 * and loading the drum sample bank.
+	 */
 	void setup();
 
-	/*! Method to run the application */
+	/*! \brief Runs the application.
+	 * 
+	 * This method is called on startup after setup has been
+	 * performed, starting the audio engine, the display refresh clock,
+	 * and creating the keyboard thread.
+	 */
 	void run();
 	
 	/*! 
-	 * Method called by keyboard input when a keyboard event occurs.
+	 * This method is called by \ref KeyboardInput when a keyboard event occurs.
 	 * 
-	 * @param key The keypress detected
+	 * @param key The keypress detected.
 	 */
 	void interpretKeyPress(int key) override;
 
-	/*! Method to change the current state */
+	/*! Changes the current state. */
 	void setState(stateLabel_t newstate) override;
 
 
-	/*! Instance of PerformanceMode state */
+	/*! Instance of \ref PerformanceMode state. */
 	PerformanceMode performancemode;
 
-	/*! Instance of SequencerMode state */
+	/*! Instance of \ref SequencerMode state. */
 	SequencerMode sequencermode;
 
-	/*! Pointer to current mode instance */
+	/*! Pointer to the current mode instance. */
 	State* mode;
 	
 
-	/*! Instance of SetMasterVolumeMode state. */
+	/*! Instance of \ref SetMasterVolumeMode state. */
 	SetMasterVolumeMode setMasterVolumeMode;
 
-	/*! Instance of SetTempoMode state */
+	/*! Instance of \ref SetTempoMode state. */
 	SetTempoMode settempomode;
 
-	/*! Instance of SetDrumVolumeMode state */
+	/*! Instance of \ref SetDrumVolumeMode state. */
 	SetDrumVolumeMode setdrumvolumemode;
 
-	/*! Instance of SetDrumBankMode state. */
+	/*! Instance of \ref SetDrumBankMode state. */
 	SetDrumBankMode setDrumBankMode;
 
-	/*! Pointer to current sub-mode instance */
+	/*! Pointer to the current sub-mode instance. */
 	State* subMode;
 
 
@@ -272,7 +304,7 @@ public:
 	State* displayState;
 
 
-	/*! Instance of KeyboardThread class */
+	/*! Instance of \ref KeyboardThread class. */
 	KeyboardThread kbdThread;
 
 	/*! AudioEngine object. */

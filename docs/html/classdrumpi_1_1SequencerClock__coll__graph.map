@@ -1,0 +1,7 @@
+<map id="drumpi::SequencerClock" name="drumpi::SequencerClock">
+<area shape="rect" id="node2" href="$classdrumpi_1_1clock_1_1Metronome.html" title="drumpi::clock::Metronome" alt="" coords="5,171,179,197"/>
+<area shape="rect" id="node3" href="$classdrumpi_1_1clock_1_1Clock.html" title="drumpi::clock::Clock" alt="" coords="21,81,163,108"/>
+<area shape="rect" id="node5" href="$classdrumpi_1_1audio_1_1PlaybackEngine.html" title="drumpi::audio::PlaybackEngine" alt="" coords="203,171,405,197"/>
+<area shape="rect" id="node6" href="$classdrumpi_1_1audio_1_1AudioCallback.html" title="drumpi::audio::AudioCallback" alt="" coords="197,81,389,108"/>
+<area shape="rect" id="node7" href="$classdrumpi_1_1audio_1_1AudioLibrary.html" title="drumpi::audio::AudioLibrary" alt="" coords="414,81,594,108"/>
+</map>
