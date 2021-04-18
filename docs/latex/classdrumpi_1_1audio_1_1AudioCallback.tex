@@ -1,0 +1,49 @@
+\hypertarget{classdrumpi_1_1audio_1_1AudioCallback}{}\doxysection{drumpi\+::audio\+::Audio\+Callback Class Reference}
+\label{classdrumpi_1_1audio_1_1AudioCallback}\index{drumpi::audio::AudioCallback@{drumpi::audio::AudioCallback}}
+
+
+{\ttfamily \#include $<$audio.\+hpp$>$}
+
+
+
+Inheritance diagram for drumpi\+::audio\+::Audio\+Callback\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{classdrumpi_1_1audio_1_1AudioCallback__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{namespacedrumpi_1_1audio_aca0bdc9164f87b72057e284442abab6e}{sample\+\_\+t}} $>$ \mbox{\hyperlink{classdrumpi_1_1audio_1_1AudioCallback_a9f53a830e6fd3d8eecf6f6ebb27314cd}{get\+Samples}} (int n\+Samples)=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract sample retieval callback class. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1audio_1_1AudioCallback_a9f53a830e6fd3d8eecf6f6ebb27314cd}\label{classdrumpi_1_1audio_1_1AudioCallback_a9f53a830e6fd3d8eecf6f6ebb27314cd}} 
+\index{drumpi::audio::AudioCallback@{drumpi::audio::AudioCallback}!getSamples@{getSamples}}
+\index{getSamples@{getSamples}!drumpi::audio::AudioCallback@{drumpi::audio::AudioCallback}}
+\doxysubsubsection{\texorpdfstring{getSamples()}{getSamples()}}
+{\footnotesize\ttfamily virtual std\+::vector$<$\mbox{\hyperlink{namespacedrumpi_1_1audio_aca0bdc9164f87b72057e284442abab6e}{sample\+\_\+t}}$>$ drumpi\+::audio\+::\+Audio\+Callback\+::get\+Samples (\begin{DoxyParamCaption}\item[{int}]{n\+Samples }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Called by a \mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient}{Jack\+Client}} object when samples are requested by Jack. 
+\begin{DoxyParams}{Parameters}
+{\em n\+Samples} & the number of samples requested. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a vector of samples, of type \mbox{\hyperlink{namespacedrumpi_1_1audio_aca0bdc9164f87b72057e284442abab6e}{sample\+\_\+t}} ({\ttfamily float}) 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classdrumpi_1_1audio_1_1PlaybackEngine_a16f4d8c36323b3b580475cd5fc4421c2}{drumpi\+::audio\+::\+Playback\+Engine}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/audio.\+hpp\end{DoxyCompactItemize}

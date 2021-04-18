@@ -1,0 +1,154 @@
+\hypertarget{classdrumpi_1_1clock_1_1Timer}{}\doxysection{drumpi\+::clock\+::Timer Class Reference}
+\label{classdrumpi_1_1clock_1_1Timer}\index{drumpi::clock::Timer@{drumpi::clock::Timer}}
+
+
+{\ttfamily \#include $<$clock.\+hpp$>$}
+
+
+
+Inheritance diagram for drumpi\+::clock\+::Timer\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{classdrumpi_1_1clock_1_1Timer__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for drumpi\+::clock\+::Timer\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{classdrumpi_1_1clock_1_1Timer__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdrumpi_1_1clock_1_1Timer_a5f16e8da27d2a5a5242dead46de05d97}{Timer}} ()
+\item 
+\mbox{\hyperlink{classdrumpi_1_1clock_1_1Timer_a14fa469c4c295c5fa6e66a4ad1092146}{$\sim$\+Timer}} ()
+\item 
+void \mbox{\hyperlink{classdrumpi_1_1clock_1_1Timer_a0a079d37a70001bfd23754d091db555d}{set\+Time}} (int ms)
+\item 
+int \mbox{\hyperlink{classdrumpi_1_1clock_1_1Timer_a5f9d0c70ff7666713743f5ee2180b9b4}{get\+Time}} ()
+\item 
+void \mbox{\hyperlink{classdrumpi_1_1clock_1_1Timer_a3a8b5272198d029779dc9302a54305a8}{start}} ()
+\item 
+void \mbox{\hyperlink{classdrumpi_1_1clock_1_1Timer_a63f0eb44b27402196590a03781515dba}{stop}} ()
+\item 
+bool \mbox{\hyperlink{classdrumpi_1_1clock_1_1Timer_ae675038252bdd55e0d42a92535025ee1}{is\+Active}} ()
+\item 
+virtual void \mbox{\hyperlink{classdrumpi_1_1clock_1_1Timer_aeed4c4e653b98280354e0b970f8df68b}{trigger}} ()=0
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classdrumpi_1_1clock_1_1Timer_ab7328c35aba7b6887eea4bb6f90c5659}{timer\+Event}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classdrumpi_1_1clock_1_1Timer_a34ceb43c3f8fa2fd42f73aefb133497b}{time}}
+\item 
+bool \mbox{\hyperlink{classdrumpi_1_1clock_1_1Timer_a6a750b89a375a5f73f2d28ac951c0d24}{active}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Trigger a single delayed action. To use, create a class that inherits from this and override the \mbox{\hyperlink{classdrumpi_1_1clock_1_1Timer_aeed4c4e653b98280354e0b970f8df68b}{trigger}} method to set the functionality. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1clock_1_1Timer_a5f16e8da27d2a5a5242dead46de05d97}\label{classdrumpi_1_1clock_1_1Timer_a5f16e8da27d2a5a5242dead46de05d97}} 
+\index{drumpi::clock::Timer@{drumpi::clock::Timer}!Timer@{Timer}}
+\index{Timer@{Timer}!drumpi::clock::Timer@{drumpi::clock::Timer}}
+\doxysubsubsection{\texorpdfstring{Timer()}{Timer()}}
+{\footnotesize\ttfamily Timer\+::\+Timer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructor. \mbox{\Hypertarget{classdrumpi_1_1clock_1_1Timer_a14fa469c4c295c5fa6e66a4ad1092146}\label{classdrumpi_1_1clock_1_1Timer_a14fa469c4c295c5fa6e66a4ad1092146}} 
+\index{drumpi::clock::Timer@{drumpi::clock::Timer}!````~Timer@{$\sim$Timer}}
+\index{````~Timer@{$\sim$Timer}!drumpi::clock::Timer@{drumpi::clock::Timer}}
+\doxysubsubsection{\texorpdfstring{$\sim$Timer()}{~Timer()}}
+{\footnotesize\ttfamily Timer\+::$\sim$\+Timer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Destructor. Deactivates the \mbox{\hyperlink{classdrumpi_1_1clock_1_1Timer}{Timer}}. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1clock_1_1Timer_a5f9d0c70ff7666713743f5ee2180b9b4}\label{classdrumpi_1_1clock_1_1Timer_a5f9d0c70ff7666713743f5ee2180b9b4}} 
+\index{drumpi::clock::Timer@{drumpi::clock::Timer}!getTime@{getTime}}
+\index{getTime@{getTime}!drumpi::clock::Timer@{drumpi::clock::Timer}}
+\doxysubsubsection{\texorpdfstring{getTime()}{getTime()}}
+{\footnotesize\ttfamily int Timer\+::get\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the trigger time in ms. \begin{DoxyReturn}{Returns}
+trigger time in ms. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdrumpi_1_1clock_1_1Timer_ae675038252bdd55e0d42a92535025ee1}\label{classdrumpi_1_1clock_1_1Timer_ae675038252bdd55e0d42a92535025ee1}} 
+\index{drumpi::clock::Timer@{drumpi::clock::Timer}!isActive@{isActive}}
+\index{isActive@{isActive}!drumpi::clock::Timer@{drumpi::clock::Timer}}
+\doxysubsubsection{\texorpdfstring{isActive()}{isActive()}}
+{\footnotesize\ttfamily bool Timer\+::is\+Active (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Checks if the \mbox{\hyperlink{classdrumpi_1_1clock_1_1Timer}{Timer}} is active. \begin{DoxyReturn}{Returns}
+{\ttfamily true} if active. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdrumpi_1_1clock_1_1Timer_a0a079d37a70001bfd23754d091db555d}\label{classdrumpi_1_1clock_1_1Timer_a0a079d37a70001bfd23754d091db555d}} 
+\index{drumpi::clock::Timer@{drumpi::clock::Timer}!setTime@{setTime}}
+\index{setTime@{setTime}!drumpi::clock::Timer@{drumpi::clock::Timer}}
+\doxysubsubsection{\texorpdfstring{setTime()}{setTime()}}
+{\footnotesize\ttfamily void Timer\+::set\+Time (\begin{DoxyParamCaption}\item[{int}]{ms }\end{DoxyParamCaption})}
+
+Set trigger time in ms. 
+\begin{DoxyParams}{Parameters}
+{\em ms} & desired trigger time in ms. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdrumpi_1_1clock_1_1Timer_a3a8b5272198d029779dc9302a54305a8}\label{classdrumpi_1_1clock_1_1Timer_a3a8b5272198d029779dc9302a54305a8}} 
+\index{drumpi::clock::Timer@{drumpi::clock::Timer}!start@{start}}
+\index{start@{start}!drumpi::clock::Timer@{drumpi::clock::Timer}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void Timer\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Start the \mbox{\hyperlink{classdrumpi_1_1clock_1_1Timer}{Timer}}. \mbox{\Hypertarget{classdrumpi_1_1clock_1_1Timer_a63f0eb44b27402196590a03781515dba}\label{classdrumpi_1_1clock_1_1Timer_a63f0eb44b27402196590a03781515dba}} 
+\index{drumpi::clock::Timer@{drumpi::clock::Timer}!stop@{stop}}
+\index{stop@{stop}!drumpi::clock::Timer@{drumpi::clock::Timer}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily void Timer\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Cancels the \mbox{\hyperlink{classdrumpi_1_1clock_1_1Timer}{Timer}}. \mbox{\Hypertarget{classdrumpi_1_1clock_1_1Timer_ab7328c35aba7b6887eea4bb6f90c5659}\label{classdrumpi_1_1clock_1_1Timer_ab7328c35aba7b6887eea4bb6f90c5659}} 
+\index{drumpi::clock::Timer@{drumpi::clock::Timer}!timerEvent@{timerEvent}}
+\index{timerEvent@{timerEvent}!drumpi::clock::Timer@{drumpi::clock::Timer}}
+\doxysubsubsection{\texorpdfstring{timerEvent()}{timerEvent()}}
+{\footnotesize\ttfamily void Timer\+::timer\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}}
+
+Override event method to call \mbox{\hyperlink{classdrumpi_1_1clock_1_1Timer_aeed4c4e653b98280354e0b970f8df68b}{trigger()}}. \mbox{\Hypertarget{classdrumpi_1_1clock_1_1Timer_aeed4c4e653b98280354e0b970f8df68b}\label{classdrumpi_1_1clock_1_1Timer_aeed4c4e653b98280354e0b970f8df68b}} 
+\index{drumpi::clock::Timer@{drumpi::clock::Timer}!trigger@{trigger}}
+\index{trigger@{trigger}!drumpi::clock::Timer@{drumpi::clock::Timer}}
+\doxysubsubsection{\texorpdfstring{trigger()}{trigger()}}
+{\footnotesize\ttfamily virtual void drumpi\+::clock\+::\+Timer\+::trigger (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Callback method run when the time has passed. Override to add functionality. 
+
+Implemented in \mbox{\hyperlink{classdrumpi_1_1DisplayDelay_a1fb66a57fea2d6700a190c961e556aa4}{drumpi\+::\+Display\+Delay}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1clock_1_1Timer_a6a750b89a375a5f73f2d28ac951c0d24}\label{classdrumpi_1_1clock_1_1Timer_a6a750b89a375a5f73f2d28ac951c0d24}} 
+\index{drumpi::clock::Timer@{drumpi::clock::Timer}!active@{active}}
+\index{active@{active}!drumpi::clock::Timer@{drumpi::clock::Timer}}
+\doxysubsubsection{\texorpdfstring{active}{active}}
+{\footnotesize\ttfamily bool drumpi\+::clock\+::\+Timer\+::active\hspace{0.3cm}{\ttfamily [private]}}
+
+Active flag. \mbox{\Hypertarget{classdrumpi_1_1clock_1_1Timer_a34ceb43c3f8fa2fd42f73aefb133497b}\label{classdrumpi_1_1clock_1_1Timer_a34ceb43c3f8fa2fd42f73aefb133497b}} 
+\index{drumpi::clock::Timer@{drumpi::clock::Timer}!time@{time}}
+\index{time@{time}!drumpi::clock::Timer@{drumpi::clock::Timer}}
+\doxysubsubsection{\texorpdfstring{time}{time}}
+{\footnotesize\ttfamily int drumpi\+::clock\+::\+Timer\+::time\hspace{0.3cm}{\ttfamily [private]}}
+
+Trigger time in ms. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/clock.\+hpp\item 
+src/clock.\+cpp\end{DoxyCompactItemize}

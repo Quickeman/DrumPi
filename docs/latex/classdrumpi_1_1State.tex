@@ -1,0 +1,81 @@
+\hypertarget{classdrumpi_1_1State}{}\doxysection{drumpi\+::State Class Reference}
+\label{classdrumpi_1_1State}\index{drumpi::State@{drumpi::State}}
+
+
+{\ttfamily \#include $<$application.\+hpp$>$}
+
+
+
+Inheritance diagram for drumpi\+::State\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdrumpi_1_1State__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{classdrumpi_1_1State_aaa6205d85513b3f717c126e0717e1dbd}{interpret\+Key\+Press}} (\mbox{\hyperlink{classdrumpi_1_1ApplicationCallback}{Application\+Callback}} $\ast$appc, int key)=0
+\item 
+virtual void \mbox{\hyperlink{classdrumpi_1_1State_a400c5fc605ddec1e4fe18c361bf38ef2}{update\+Display}} (\mbox{\hyperlink{classdrumpi_1_1ApplicationCallback}{Application\+Callback}} $\ast$appc)=0
+\item 
+\mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}} \mbox{\hyperlink{classdrumpi_1_1State_a39b749a9049a4810935459c82aa42e6d}{interpret\+Drum\+Key}} (int key)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacedrumpi_ae7f2b32a0392a4c469ce4dc84a64e845}{state\+Label\+\_\+t}} \mbox{\hyperlink{classdrumpi_1_1State_a6ddcdfba0e31dfb5182a7eaa6563f527}{label}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract state class. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1State_a39b749a9049a4810935459c82aa42e6d}\label{classdrumpi_1_1State_a39b749a9049a4810935459c82aa42e6d}} 
+\index{drumpi::State@{drumpi::State}!interpretDrumKey@{interpretDrumKey}}
+\index{interpretDrumKey@{interpretDrumKey}!drumpi::State@{drumpi::State}}
+\doxysubsubsection{\texorpdfstring{interpretDrumKey()}{interpretDrumKey()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}} State\+::interpret\+Drum\+Key (\begin{DoxyParamCaption}\item[{int}]{key }\end{DoxyParamCaption})}
+
+Interprets drum keys and returns a drum ID. 
+\begin{DoxyParams}{Parameters}
+{\em key} & Keypress detected by \mbox{\hyperlink{classdrumpi_1_1KeyboardInput}{Keyboard\+Input}} class. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdrumpi_1_1State_aaa6205d85513b3f717c126e0717e1dbd}\label{classdrumpi_1_1State_aaa6205d85513b3f717c126e0717e1dbd}} 
+\index{drumpi::State@{drumpi::State}!interpretKeyPress@{interpretKeyPress}}
+\index{interpretKeyPress@{interpretKeyPress}!drumpi::State@{drumpi::State}}
+\doxysubsubsection{\texorpdfstring{interpretKeyPress()}{interpretKeyPress()}}
+{\footnotesize\ttfamily virtual bool drumpi\+::\+State\+::interpret\+Key\+Press (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdrumpi_1_1ApplicationCallback}{Application\+Callback}} $\ast$}]{appc,  }\item[{int}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Virtual function to be overridden by derived class. 
+
+Implemented in \mbox{\hyperlink{classdrumpi_1_1SetDrumBankMode_a9b63a16aa08551a743c3751fa385c83b}{drumpi\+::\+Set\+Drum\+Bank\+Mode}}, \mbox{\hyperlink{classdrumpi_1_1SetDrumVolumeMode_a6b0029ed8934700699658f3b85a67639}{drumpi\+::\+Set\+Drum\+Volume\+Mode}}, \mbox{\hyperlink{classdrumpi_1_1SetMasterVolumeMode_a18b5f4d0181ea1fbfd958afc473e240f}{drumpi\+::\+Set\+Master\+Volume\+Mode}}, \mbox{\hyperlink{classdrumpi_1_1SetTempoMode_a659f307caf23a57e3319ff6c510d41bf}{drumpi\+::\+Set\+Tempo\+Mode}}, \mbox{\hyperlink{classdrumpi_1_1SequencerMode_aaa5dea1ffd66792ba62afae00820ffc6}{drumpi\+::\+Sequencer\+Mode}}, and \mbox{\hyperlink{classdrumpi_1_1PerformanceMode_a37c7c2eed9185a2211e389eebfd60262}{drumpi\+::\+Performance\+Mode}}.
+
+\mbox{\Hypertarget{classdrumpi_1_1State_a400c5fc605ddec1e4fe18c361bf38ef2}\label{classdrumpi_1_1State_a400c5fc605ddec1e4fe18c361bf38ef2}} 
+\index{drumpi::State@{drumpi::State}!updateDisplay@{updateDisplay}}
+\index{updateDisplay@{updateDisplay}!drumpi::State@{drumpi::State}}
+\doxysubsubsection{\texorpdfstring{updateDisplay()}{updateDisplay()}}
+{\footnotesize\ttfamily virtual void drumpi\+::\+State\+::update\+Display (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdrumpi_1_1ApplicationCallback}{Application\+Callback}} $\ast$}]{appc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Virtual function to be overridden by derived class. 
+
+Implemented in \mbox{\hyperlink{classdrumpi_1_1SetDrumBankMode_ae2f14f230923c5e0c19c780c59328822}{drumpi\+::\+Set\+Drum\+Bank\+Mode}}, \mbox{\hyperlink{classdrumpi_1_1SetDrumVolumeMode_aee11645a25952da9cf8cbddf995f7b96}{drumpi\+::\+Set\+Drum\+Volume\+Mode}}, \mbox{\hyperlink{classdrumpi_1_1SetMasterVolumeMode_ad8637f24eb5a7c11d829b8d41a9c46f2}{drumpi\+::\+Set\+Master\+Volume\+Mode}}, \mbox{\hyperlink{classdrumpi_1_1SetTempoMode_a965294425ec5abfccd8e3cbb9f1dbc3d}{drumpi\+::\+Set\+Tempo\+Mode}}, \mbox{\hyperlink{classdrumpi_1_1SequencerMode_a0308bc9641daff4f48d74f9d2493d123}{drumpi\+::\+Sequencer\+Mode}}, and \mbox{\hyperlink{classdrumpi_1_1PerformanceMode_afc7bfd820bb21e4003ffe9ef189fa290}{drumpi\+::\+Performance\+Mode}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1State_a6ddcdfba0e31dfb5182a7eaa6563f527}\label{classdrumpi_1_1State_a6ddcdfba0e31dfb5182a7eaa6563f527}} 
+\index{drumpi::State@{drumpi::State}!label@{label}}
+\index{label@{label}!drumpi::State@{drumpi::State}}
+\doxysubsubsection{\texorpdfstring{label}{label}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacedrumpi_ae7f2b32a0392a4c469ce4dc84a64e845}{state\+Label\+\_\+t}} drumpi\+::\+State\+::label}
+
+Label describing state type. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/application.\+hpp\item 
+src/application.\+cpp\end{DoxyCompactItemize}

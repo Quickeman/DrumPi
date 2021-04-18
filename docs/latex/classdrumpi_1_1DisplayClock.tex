@@ -1,0 +1,82 @@
+\hypertarget{classdrumpi_1_1DisplayClock}{}\doxysection{drumpi\+::Display\+Clock Class Reference}
+\label{classdrumpi_1_1DisplayClock}\index{drumpi::DisplayClock@{drumpi::DisplayClock}}
+
+
+{\ttfamily \#include $<$application.\+hpp$>$}
+
+
+
+Inheritance diagram for drumpi\+::Display\+Clock\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=201pt]{classdrumpi_1_1DisplayClock__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for drumpi\+::Display\+Clock\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdrumpi_1_1DisplayClock__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdrumpi_1_1DisplayClock_a16708f6b73c6253107d1db24cf7396dc}{Display\+Clock}} (\mbox{\hyperlink{classdrumpi_1_1ApplicationCallback}{Application\+Callback}} $\ast$a)
+\item 
+void \mbox{\hyperlink{classdrumpi_1_1DisplayClock_ae44b216f4788398ab3d67da7141fa88f}{tick}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdrumpi_1_1ApplicationCallback}{Application\+Callback}} $\ast$ \mbox{\hyperlink{classdrumpi_1_1DisplayClock_a85d58654905b372a83fa258ab2d5a1b0}{appc}} = nullptr
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classdrumpi_1_1clock_1_1Metronome}{clock\+::\+Metronome}} derived class to clock a \mbox{\hyperlink{classdrumpi_1_1Display}{Display}}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1DisplayClock_a16708f6b73c6253107d1db24cf7396dc}\label{classdrumpi_1_1DisplayClock_a16708f6b73c6253107d1db24cf7396dc}} 
+\index{drumpi::DisplayClock@{drumpi::DisplayClock}!DisplayClock@{DisplayClock}}
+\index{DisplayClock@{DisplayClock}!drumpi::DisplayClock@{drumpi::DisplayClock}}
+\doxysubsubsection{\texorpdfstring{DisplayClock()}{DisplayClock()}}
+{\footnotesize\ttfamily Display\+Clock\+::\+Display\+Clock (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdrumpi_1_1ApplicationCallback}{Application\+Callback}} $\ast$}]{a }\end{DoxyParamCaption})}
+
+Constructor. Sets the \mbox{\hyperlink{classdrumpi_1_1Application}{Application}} to be clocked. 
+\begin{DoxyParams}{Parameters}
+{\em a} & \mbox{\hyperlink{classdrumpi_1_1Application}{Application}} object to update. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1DisplayClock_ae44b216f4788398ab3d67da7141fa88f}\label{classdrumpi_1_1DisplayClock_ae44b216f4788398ab3d67da7141fa88f}} 
+\index{drumpi::DisplayClock@{drumpi::DisplayClock}!tick@{tick}}
+\index{tick@{tick}!drumpi::DisplayClock@{drumpi::DisplayClock}}
+\doxysubsubsection{\texorpdfstring{tick()}{tick()}}
+{\footnotesize\ttfamily void Display\+Clock\+::tick (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Override the tick method. Clocks the \mbox{\hyperlink{classdrumpi_1_1Application}{Application}}. 
+
+Implements \mbox{\hyperlink{classdrumpi_1_1clock_1_1Clock_ade9259c06e6b90bbd92e155a2506d3a1}{drumpi\+::clock\+::\+Clock}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1DisplayClock_a85d58654905b372a83fa258ab2d5a1b0}\label{classdrumpi_1_1DisplayClock_a85d58654905b372a83fa258ab2d5a1b0}} 
+\index{drumpi::DisplayClock@{drumpi::DisplayClock}!appc@{appc}}
+\index{appc@{appc}!drumpi::DisplayClock@{drumpi::DisplayClock}}
+\doxysubsubsection{\texorpdfstring{appc}{appc}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classdrumpi_1_1ApplicationCallback}{Application\+Callback}}$\ast$ drumpi\+::\+Display\+Clock\+::appc = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+Pointer to the {\ttfamily \mbox{\hyperlink{classdrumpi_1_1Application}{Application}}} object to be clocked. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/application.\+hpp\item 
+src/application.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,108 @@
+\hypertarget{classdrumpi_1_1SetTempoMode}{}\doxysection{drumpi\+::Set\+Tempo\+Mode Class Reference}
+\label{classdrumpi_1_1SetTempoMode}\index{drumpi::SetTempoMode@{drumpi::SetTempoMode}}
+
+
+{\ttfamily \#include $<$application.\+hpp$>$}
+
+
+
+Inheritance diagram for drumpi\+::Set\+Tempo\+Mode\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{classdrumpi_1_1SetTempoMode__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for drumpi\+::Set\+Tempo\+Mode\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{classdrumpi_1_1SetTempoMode__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdrumpi_1_1SetTempoMode_a2ddc51d8297abf394d91b3cb77d746d2}{Set\+Tempo\+Mode}} ()
+\item 
+bool \mbox{\hyperlink{classdrumpi_1_1SetTempoMode_a659f307caf23a57e3319ff6c510d41bf}{interpret\+Key\+Press}} (\mbox{\hyperlink{classdrumpi_1_1ApplicationCallback}{Application\+Callback}} $\ast$appc, int key) override
+\begin{DoxyCompactList}\small\item\em Performs an action depending on the key pressed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classdrumpi_1_1SetTempoMode_a965294425ec5abfccd8e3cbb9f1dbc3d}{update\+Display}} (\mbox{\hyperlink{classdrumpi_1_1ApplicationCallback}{Application\+Callback}} $\ast$appc) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const int \mbox{\hyperlink{classdrumpi_1_1SetTempoMode_acfb74b197bfd795f732b6d9684848af0}{bpm\+Step}} = 8
+\item 
+const int \mbox{\hyperlink{classdrumpi_1_1SetTempoMode_ad63e356af339b7673cc8af6f7c0adac0}{min\+B\+PM}} = 38 + \mbox{\hyperlink{classdrumpi_1_1SetTempoMode_acfb74b197bfd795f732b6d9684848af0}{bpm\+Step}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Set tempo in this state. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1SetTempoMode_a2ddc51d8297abf394d91b3cb77d746d2}\label{classdrumpi_1_1SetTempoMode_a2ddc51d8297abf394d91b3cb77d746d2}} 
+\index{drumpi::SetTempoMode@{drumpi::SetTempoMode}!SetTempoMode@{SetTempoMode}}
+\index{SetTempoMode@{SetTempoMode}!drumpi::SetTempoMode@{drumpi::SetTempoMode}}
+\doxysubsubsection{\texorpdfstring{SetTempoMode()}{SetTempoMode()}}
+{\footnotesize\ttfamily Set\+Tempo\+Mode\+::\+Set\+Tempo\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructor 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1SetTempoMode_a659f307caf23a57e3319ff6c510d41bf}\label{classdrumpi_1_1SetTempoMode_a659f307caf23a57e3319ff6c510d41bf}} 
+\index{drumpi::SetTempoMode@{drumpi::SetTempoMode}!interpretKeyPress@{interpretKeyPress}}
+\index{interpretKeyPress@{interpretKeyPress}!drumpi::SetTempoMode@{drumpi::SetTempoMode}}
+\doxysubsubsection{\texorpdfstring{interpretKeyPress()}{interpretKeyPress()}}
+{\footnotesize\ttfamily bool Set\+Tempo\+Mode\+::interpret\+Key\+Press (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdrumpi_1_1ApplicationCallback}{Application\+Callback}} $\ast$}]{appc,  }\item[{int}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Performs an action depending on the key pressed. 
+
+This method is called by the \mbox{\hyperlink{classdrumpi_1_1Application}{Application}} when a keyboard event occurs and the application is in \mbox{\hyperlink{classdrumpi_1_1SetTempoMode}{Set\+Tempo\+Mode}}. 
+\begin{DoxyParams}{Parameters}
+{\em appc} & Callback to the main \mbox{\hyperlink{classdrumpi_1_1Application}{Application}}. \\
+\hline
+{\em key} & The keypress detected. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classdrumpi_1_1State_aaa6205d85513b3f717c126e0717e1dbd}{drumpi\+::\+State}}.
+
+\mbox{\Hypertarget{classdrumpi_1_1SetTempoMode_a965294425ec5abfccd8e3cbb9f1dbc3d}\label{classdrumpi_1_1SetTempoMode_a965294425ec5abfccd8e3cbb9f1dbc3d}} 
+\index{drumpi::SetTempoMode@{drumpi::SetTempoMode}!updateDisplay@{updateDisplay}}
+\index{updateDisplay@{updateDisplay}!drumpi::SetTempoMode@{drumpi::SetTempoMode}}
+\doxysubsubsection{\texorpdfstring{updateDisplay()}{updateDisplay()}}
+{\footnotesize\ttfamily void Set\+Tempo\+Mode\+::update\+Display (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdrumpi_1_1ApplicationCallback}{Application\+Callback}} $\ast$}]{appc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Virtual function to be overridden by derived class. 
+
+Implements \mbox{\hyperlink{classdrumpi_1_1State_a400c5fc605ddec1e4fe18c361bf38ef2}{drumpi\+::\+State}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1SetTempoMode_acfb74b197bfd795f732b6d9684848af0}\label{classdrumpi_1_1SetTempoMode_acfb74b197bfd795f732b6d9684848af0}} 
+\index{drumpi::SetTempoMode@{drumpi::SetTempoMode}!bpmStep@{bpmStep}}
+\index{bpmStep@{bpmStep}!drumpi::SetTempoMode@{drumpi::SetTempoMode}}
+\doxysubsubsection{\texorpdfstring{bpmStep}{bpmStep}}
+{\footnotesize\ttfamily const int drumpi\+::\+Set\+Tempo\+Mode\+::bpm\+Step = 8\hspace{0.3cm}{\ttfamily [private]}}
+
+Step size of the tempo inc/decrements. \mbox{\Hypertarget{classdrumpi_1_1SetTempoMode_ad63e356af339b7673cc8af6f7c0adac0}\label{classdrumpi_1_1SetTempoMode_ad63e356af339b7673cc8af6f7c0adac0}} 
+\index{drumpi::SetTempoMode@{drumpi::SetTempoMode}!minBPM@{minBPM}}
+\index{minBPM@{minBPM}!drumpi::SetTempoMode@{drumpi::SetTempoMode}}
+\doxysubsubsection{\texorpdfstring{minBPM}{minBPM}}
+{\footnotesize\ttfamily const int drumpi\+::\+Set\+Tempo\+Mode\+::min\+B\+PM = 38 + \mbox{\hyperlink{classdrumpi_1_1SetTempoMode_acfb74b197bfd795f732b6d9684848af0}{bpm\+Step}}\hspace{0.3cm}{\ttfamily [private]}}
+
+Minimum B\+PM. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/application.\+hpp\item 
+src/application.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,68 @@
+\hypertarget{classdrumpi_1_1ApplicationCallback}{}\doxysection{drumpi\+::Application\+Callback Class Reference}
+\label{classdrumpi_1_1ApplicationCallback}\index{drumpi::ApplicationCallback@{drumpi::ApplicationCallback}}
+
+
+{\ttfamily \#include $<$applicationcallback.\+hpp$>$}
+
+
+
+Inheritance diagram for drumpi\+::Application\+Callback\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{classdrumpi_1_1ApplicationCallback__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classdrumpi_1_1ApplicationCallback_ab3f7606af20b435e8d2db240155c02d1}{interpret\+Key\+Press}} (int key)=0
+\item 
+virtual void \mbox{\hyperlink{classdrumpi_1_1ApplicationCallback_a009f5eb3ef1d4d3ee339ba3d1c6c52cf}{set\+State}} (\mbox{\hyperlink{namespacedrumpi_ae7f2b32a0392a4c469ce4dc84a64e845}{state\+Label\+\_\+t}} newstate)=0
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classdrumpi_1_1ApplicationCallback_a2de8dc466288bf85770cf58422eecc1c}{running}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract application callback class. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1ApplicationCallback_ab3f7606af20b435e8d2db240155c02d1}\label{classdrumpi_1_1ApplicationCallback_ab3f7606af20b435e8d2db240155c02d1}} 
+\index{drumpi::ApplicationCallback@{drumpi::ApplicationCallback}!interpretKeyPress@{interpretKeyPress}}
+\index{interpretKeyPress@{interpretKeyPress}!drumpi::ApplicationCallback@{drumpi::ApplicationCallback}}
+\doxysubsubsection{\texorpdfstring{interpretKeyPress()}{interpretKeyPress()}}
+{\footnotesize\ttfamily virtual void drumpi\+::\+Application\+Callback\+::interpret\+Key\+Press (\begin{DoxyParamCaption}\item[{int}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Virtual function to be overridden by derived class. 
+
+Implemented in \mbox{\hyperlink{classdrumpi_1_1Application_af9f0221f37ccb5e324599554ac5ceadf}{drumpi\+::\+Application}}.
+
+\mbox{\Hypertarget{classdrumpi_1_1ApplicationCallback_a009f5eb3ef1d4d3ee339ba3d1c6c52cf}\label{classdrumpi_1_1ApplicationCallback_a009f5eb3ef1d4d3ee339ba3d1c6c52cf}} 
+\index{drumpi::ApplicationCallback@{drumpi::ApplicationCallback}!setState@{setState}}
+\index{setState@{setState}!drumpi::ApplicationCallback@{drumpi::ApplicationCallback}}
+\doxysubsubsection{\texorpdfstring{setState()}{setState()}}
+{\footnotesize\ttfamily virtual void drumpi\+::\+Application\+Callback\+::set\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacedrumpi_ae7f2b32a0392a4c469ce4dc84a64e845}{state\+Label\+\_\+t}}}]{newstate }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Virtual function to be overridden by derived class. 
+
+Implemented in \mbox{\hyperlink{classdrumpi_1_1Application_a39fcfaf7262d03c0c6824edcd552de4f}{drumpi\+::\+Application}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1ApplicationCallback_a2de8dc466288bf85770cf58422eecc1c}\label{classdrumpi_1_1ApplicationCallback_a2de8dc466288bf85770cf58422eecc1c}} 
+\index{drumpi::ApplicationCallback@{drumpi::ApplicationCallback}!running@{running}}
+\index{running@{running}!drumpi::ApplicationCallback@{drumpi::ApplicationCallback}}
+\doxysubsubsection{\texorpdfstring{running}{running}}
+{\footnotesize\ttfamily bool drumpi\+::\+Application\+Callback\+::running}
+
+Running flag for the application. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/applicationcallback.\+hpp\end{DoxyCompactItemize}

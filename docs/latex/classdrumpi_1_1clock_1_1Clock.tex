@@ -1,0 +1,165 @@
+\hypertarget{classdrumpi_1_1clock_1_1Clock}{}\doxysection{drumpi\+::clock\+::Clock Class Reference}
+\label{classdrumpi_1_1clock_1_1Clock}\index{drumpi::clock::Clock@{drumpi::clock::Clock}}
+
+
+{\ttfamily \#include $<$clock.\+hpp$>$}
+
+
+
+Inheritance diagram for drumpi\+::clock\+::Clock\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdrumpi_1_1clock_1_1Clock__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for drumpi\+::clock\+::Clock\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{classdrumpi_1_1clock_1_1Clock__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdrumpi_1_1clock_1_1Clock_adbc370eb6b5f8d01645cf440188160a8}{Clock}} ()
+\item 
+\mbox{\hyperlink{classdrumpi_1_1clock_1_1Clock_afc976ce68fa85e15cc06f9ed47bddb7c}{$\sim$\+Clock}} ()
+\item 
+void \mbox{\hyperlink{classdrumpi_1_1clock_1_1Clock_aa9727786f11c753730901fee28cde1ea}{set\+Rate}} (int ms)
+\item 
+int \mbox{\hyperlink{classdrumpi_1_1clock_1_1Clock_a329b705dad4e8949df7dde09d74b096f}{get\+Rate}} ()
+\item 
+void \mbox{\hyperlink{classdrumpi_1_1clock_1_1Clock_a8a050959dcff11c85d695989e9099a8c}{start}} ()
+\item 
+void \mbox{\hyperlink{classdrumpi_1_1clock_1_1Clock_a0b77c3e7f33eb7ae0f018e469d96a250}{stop}} ()
+\item 
+bool \mbox{\hyperlink{classdrumpi_1_1clock_1_1Clock_a7ea74e7a255c6b426b238982a9e0f349}{is\+Active}} ()
+\item 
+virtual void \mbox{\hyperlink{classdrumpi_1_1clock_1_1Clock_ade9259c06e6b90bbd92e155a2506d3a1}{tick}} ()=0
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classdrumpi_1_1clock_1_1Clock_a2aa2272f59486b414cedf1345bcf8ea1}{rate\+Change\+Flag}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classdrumpi_1_1clock_1_1Clock_a2ff18f1fc7761649a9183676b57d543f}{timer\+Event}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classdrumpi_1_1clock_1_1Clock_a1ee7e7ba3f9f481c1b9cc9dd72d0e5a9}{rate}}
+\item 
+bool \mbox{\hyperlink{classdrumpi_1_1clock_1_1Clock_a4ffd1ce8a9bbc4b2fd082f345d81376b}{active}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Trigger repeated actions. To use, create a class that inherits from this and override the \mbox{\hyperlink{classdrumpi_1_1clock_1_1Clock_ade9259c06e6b90bbd92e155a2506d3a1}{tick}} method to set the functionality. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1clock_1_1Clock_adbc370eb6b5f8d01645cf440188160a8}\label{classdrumpi_1_1clock_1_1Clock_adbc370eb6b5f8d01645cf440188160a8}} 
+\index{drumpi::clock::Clock@{drumpi::clock::Clock}!Clock@{Clock}}
+\index{Clock@{Clock}!drumpi::clock::Clock@{drumpi::clock::Clock}}
+\doxysubsubsection{\texorpdfstring{Clock()}{Clock()}}
+{\footnotesize\ttfamily Clock\+::\+Clock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructor. \mbox{\Hypertarget{classdrumpi_1_1clock_1_1Clock_afc976ce68fa85e15cc06f9ed47bddb7c}\label{classdrumpi_1_1clock_1_1Clock_afc976ce68fa85e15cc06f9ed47bddb7c}} 
+\index{drumpi::clock::Clock@{drumpi::clock::Clock}!````~Clock@{$\sim$Clock}}
+\index{````~Clock@{$\sim$Clock}!drumpi::clock::Clock@{drumpi::clock::Clock}}
+\doxysubsubsection{\texorpdfstring{$\sim$Clock()}{~Clock()}}
+{\footnotesize\ttfamily Clock\+::$\sim$\+Clock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Destructor. Deactivates the clock. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1clock_1_1Clock_a329b705dad4e8949df7dde09d74b096f}\label{classdrumpi_1_1clock_1_1Clock_a329b705dad4e8949df7dde09d74b096f}} 
+\index{drumpi::clock::Clock@{drumpi::clock::Clock}!getRate@{getRate}}
+\index{getRate@{getRate}!drumpi::clock::Clock@{drumpi::clock::Clock}}
+\doxysubsubsection{\texorpdfstring{getRate()}{getRate()}}
+{\footnotesize\ttfamily int Clock\+::get\+Rate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the clock rate in ms. \begin{DoxyReturn}{Returns}
+clock rate in ms. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdrumpi_1_1clock_1_1Clock_a7ea74e7a255c6b426b238982a9e0f349}\label{classdrumpi_1_1clock_1_1Clock_a7ea74e7a255c6b426b238982a9e0f349}} 
+\index{drumpi::clock::Clock@{drumpi::clock::Clock}!isActive@{isActive}}
+\index{isActive@{isActive}!drumpi::clock::Clock@{drumpi::clock::Clock}}
+\doxysubsubsection{\texorpdfstring{isActive()}{isActive()}}
+{\footnotesize\ttfamily bool Clock\+::is\+Active (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Checks if the \mbox{\hyperlink{classdrumpi_1_1clock_1_1Clock}{Clock}} is active. \begin{DoxyReturn}{Returns}
+{\ttfamily true} if active. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdrumpi_1_1clock_1_1Clock_aa9727786f11c753730901fee28cde1ea}\label{classdrumpi_1_1clock_1_1Clock_aa9727786f11c753730901fee28cde1ea}} 
+\index{drumpi::clock::Clock@{drumpi::clock::Clock}!setRate@{setRate}}
+\index{setRate@{setRate}!drumpi::clock::Clock@{drumpi::clock::Clock}}
+\doxysubsubsection{\texorpdfstring{setRate()}{setRate()}}
+{\footnotesize\ttfamily void Clock\+::set\+Rate (\begin{DoxyParamCaption}\item[{int}]{ms }\end{DoxyParamCaption})}
+
+Set the clock rate. The change takes effect on the next \mbox{\hyperlink{classdrumpi_1_1clock_1_1Clock_ade9259c06e6b90bbd92e155a2506d3a1}{tick}}, or can be forced by calling \mbox{\hyperlink{classdrumpi_1_1clock_1_1Clock_a0b77c3e7f33eb7ae0f018e469d96a250}{stop}} and then \mbox{\hyperlink{classdrumpi_1_1clock_1_1Clock_a8a050959dcff11c85d695989e9099a8c}{start}}. 
+\begin{DoxyParams}{Parameters}
+{\em ms} & desired clocking rate in ms. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdrumpi_1_1clock_1_1Clock_a8a050959dcff11c85d695989e9099a8c}\label{classdrumpi_1_1clock_1_1Clock_a8a050959dcff11c85d695989e9099a8c}} 
+\index{drumpi::clock::Clock@{drumpi::clock::Clock}!start@{start}}
+\index{start@{start}!drumpi::clock::Clock@{drumpi::clock::Clock}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void Clock\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Start the clock. Default period is 1 second, change with \mbox{\hyperlink{classdrumpi_1_1clock_1_1Clock_aa9727786f11c753730901fee28cde1ea}{set\+Rate}}. \mbox{\Hypertarget{classdrumpi_1_1clock_1_1Clock_a0b77c3e7f33eb7ae0f018e469d96a250}\label{classdrumpi_1_1clock_1_1Clock_a0b77c3e7f33eb7ae0f018e469d96a250}} 
+\index{drumpi::clock::Clock@{drumpi::clock::Clock}!stop@{stop}}
+\index{stop@{stop}!drumpi::clock::Clock@{drumpi::clock::Clock}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily void Clock\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Stop the clock. \mbox{\Hypertarget{classdrumpi_1_1clock_1_1Clock_ade9259c06e6b90bbd92e155a2506d3a1}\label{classdrumpi_1_1clock_1_1Clock_ade9259c06e6b90bbd92e155a2506d3a1}} 
+\index{drumpi::clock::Clock@{drumpi::clock::Clock}!tick@{tick}}
+\index{tick@{tick}!drumpi::clock::Clock@{drumpi::clock::Clock}}
+\doxysubsubsection{\texorpdfstring{tick()}{tick()}}
+{\footnotesize\ttfamily virtual void drumpi\+::clock\+::\+Clock\+::tick (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Callback method run on each clock pulse. Override to add functionality. 
+
+Implemented in \mbox{\hyperlink{classdrumpi_1_1SequencerClock_ac75142ddc2ee0dcd3c52d13e44b0d85f}{drumpi\+::\+Sequencer\+Clock}}, and \mbox{\hyperlink{classdrumpi_1_1DisplayClock_ae44b216f4788398ab3d67da7141fa88f}{drumpi\+::\+Display\+Clock}}.
+
+\mbox{\Hypertarget{classdrumpi_1_1clock_1_1Clock_a2ff18f1fc7761649a9183676b57d543f}\label{classdrumpi_1_1clock_1_1Clock_a2ff18f1fc7761649a9183676b57d543f}} 
+\index{drumpi::clock::Clock@{drumpi::clock::Clock}!timerEvent@{timerEvent}}
+\index{timerEvent@{timerEvent}!drumpi::clock::Clock@{drumpi::clock::Clock}}
+\doxysubsubsection{\texorpdfstring{timerEvent()}{timerEvent()}}
+{\footnotesize\ttfamily void Clock\+::timer\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}}
+
+Override event method to call \mbox{\hyperlink{classdrumpi_1_1clock_1_1Clock_ade9259c06e6b90bbd92e155a2506d3a1}{tick()}}. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1clock_1_1Clock_a4ffd1ce8a9bbc4b2fd082f345d81376b}\label{classdrumpi_1_1clock_1_1Clock_a4ffd1ce8a9bbc4b2fd082f345d81376b}} 
+\index{drumpi::clock::Clock@{drumpi::clock::Clock}!active@{active}}
+\index{active@{active}!drumpi::clock::Clock@{drumpi::clock::Clock}}
+\doxysubsubsection{\texorpdfstring{active}{active}}
+{\footnotesize\ttfamily bool drumpi\+::clock\+::\+Clock\+::active\hspace{0.3cm}{\ttfamily [private]}}
+
+Active flag. \mbox{\Hypertarget{classdrumpi_1_1clock_1_1Clock_a1ee7e7ba3f9f481c1b9cc9dd72d0e5a9}\label{classdrumpi_1_1clock_1_1Clock_a1ee7e7ba3f9f481c1b9cc9dd72d0e5a9}} 
+\index{drumpi::clock::Clock@{drumpi::clock::Clock}!rate@{rate}}
+\index{rate@{rate}!drumpi::clock::Clock@{drumpi::clock::Clock}}
+\doxysubsubsection{\texorpdfstring{rate}{rate}}
+{\footnotesize\ttfamily int drumpi\+::clock\+::\+Clock\+::rate\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\hyperlink{classdrumpi_1_1clock_1_1Clock}{Clock}} rate in ms. \mbox{\Hypertarget{classdrumpi_1_1clock_1_1Clock_a2aa2272f59486b414cedf1345bcf8ea1}\label{classdrumpi_1_1clock_1_1Clock_a2aa2272f59486b414cedf1345bcf8ea1}} 
+\index{drumpi::clock::Clock@{drumpi::clock::Clock}!rateChangeFlag@{rateChangeFlag}}
+\index{rateChangeFlag@{rateChangeFlag}!drumpi::clock::Clock@{drumpi::clock::Clock}}
+\doxysubsubsection{\texorpdfstring{rateChangeFlag}{rateChangeFlag}}
+{\footnotesize\ttfamily bool drumpi\+::clock\+::\+Clock\+::rate\+Change\+Flag\hspace{0.3cm}{\ttfamily [protected]}}
+
+Flag for the clocking rate being changed. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/clock.\+hpp\item 
+src/clock.\+cpp\end{DoxyCompactItemize}

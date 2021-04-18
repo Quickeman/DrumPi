@@ -1,0 +1,89 @@
+\hypertarget{classdrumpi_1_1clock_1_1Metronome}{}\doxysection{drumpi\+::clock\+::Metronome Class Reference}
+\label{classdrumpi_1_1clock_1_1Metronome}\index{drumpi::clock::Metronome@{drumpi::clock::Metronome}}
+
+
+{\ttfamily \#include $<$clock.\+hpp$>$}
+
+
+
+Inheritance diagram for drumpi\+::clock\+::Metronome\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{classdrumpi_1_1clock_1_1Metronome__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for drumpi\+::clock\+::Metronome\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{classdrumpi_1_1clock_1_1Metronome__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdrumpi_1_1clock_1_1Metronome_acc6e0b5140c79326682ec62eb879bf37}{Metronome}} ()
+\item 
+void \mbox{\hyperlink{classdrumpi_1_1clock_1_1Metronome_a831ff1dbeabee49fb64e468f4ecddaf0}{set\+Rate\+B\+PM}} (int \mbox{\hyperlink{classdrumpi_1_1clock_1_1Metronome_a5319099afdc9537cc8472233e5fbb0cc}{bpm}})
+\item 
+int \mbox{\hyperlink{classdrumpi_1_1clock_1_1Metronome_acd480d4bfe6d10a1990f9cac7578f071}{get\+Rate\+B\+PM}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classdrumpi_1_1clock_1_1Metronome_a5319099afdc9537cc8472233e5fbb0cc}{bpm}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classdrumpi_1_1clock_1_1Metronome}{Metronome}} class, similar to \mbox{\hyperlink{classdrumpi_1_1clock_1_1Clock}{Clock}} but can operate in B\+PM. To use, create a class that inherits from this and override the \mbox{\hyperlink{classdrumpi_1_1clock_1_1Clock_ade9259c06e6b90bbd92e155a2506d3a1}{tick}} method to set the functionality. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1clock_1_1Metronome_acc6e0b5140c79326682ec62eb879bf37}\label{classdrumpi_1_1clock_1_1Metronome_acc6e0b5140c79326682ec62eb879bf37}} 
+\index{drumpi::clock::Metronome@{drumpi::clock::Metronome}!Metronome@{Metronome}}
+\index{Metronome@{Metronome}!drumpi::clock::Metronome@{drumpi::clock::Metronome}}
+\doxysubsubsection{\texorpdfstring{Metronome()}{Metronome()}}
+{\footnotesize\ttfamily Metronome\+::\+Metronome (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Contructor. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1clock_1_1Metronome_acd480d4bfe6d10a1990f9cac7578f071}\label{classdrumpi_1_1clock_1_1Metronome_acd480d4bfe6d10a1990f9cac7578f071}} 
+\index{drumpi::clock::Metronome@{drumpi::clock::Metronome}!getRateBPM@{getRateBPM}}
+\index{getRateBPM@{getRateBPM}!drumpi::clock::Metronome@{drumpi::clock::Metronome}}
+\doxysubsubsection{\texorpdfstring{getRateBPM()}{getRateBPM()}}
+{\footnotesize\ttfamily int Metronome\+::get\+Rate\+B\+PM (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the clock rate in B\+PM. \begin{DoxyReturn}{Returns}
+clock rate in B\+PM. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdrumpi_1_1clock_1_1Metronome_a831ff1dbeabee49fb64e468f4ecddaf0}\label{classdrumpi_1_1clock_1_1Metronome_a831ff1dbeabee49fb64e468f4ecddaf0}} 
+\index{drumpi::clock::Metronome@{drumpi::clock::Metronome}!setRateBPM@{setRateBPM}}
+\index{setRateBPM@{setRateBPM}!drumpi::clock::Metronome@{drumpi::clock::Metronome}}
+\doxysubsubsection{\texorpdfstring{setRateBPM()}{setRateBPM()}}
+{\footnotesize\ttfamily void Metronome\+::set\+Rate\+B\+PM (\begin{DoxyParamCaption}\item[{int}]{bpm }\end{DoxyParamCaption})}
+
+Sets the clock rate in B\+PM. The change takes effect on the next \mbox{\hyperlink{classdrumpi_1_1clock_1_1Clock_ade9259c06e6b90bbd92e155a2506d3a1}{tick}}, or can be forced by calling \mbox{\hyperlink{classdrumpi_1_1clock_1_1Clock_a0b77c3e7f33eb7ae0f018e469d96a250}{stop}} and then \mbox{\hyperlink{classdrumpi_1_1clock_1_1Clock_a8a050959dcff11c85d695989e9099a8c}{start}}. 
+\begin{DoxyParams}{Parameters}
+{\em bpm} & desired clocking rate in B\+PM. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1clock_1_1Metronome_a5319099afdc9537cc8472233e5fbb0cc}\label{classdrumpi_1_1clock_1_1Metronome_a5319099afdc9537cc8472233e5fbb0cc}} 
+\index{drumpi::clock::Metronome@{drumpi::clock::Metronome}!bpm@{bpm}}
+\index{bpm@{bpm}!drumpi::clock::Metronome@{drumpi::clock::Metronome}}
+\doxysubsubsection{\texorpdfstring{bpm}{bpm}}
+{\footnotesize\ttfamily int drumpi\+::clock\+::\+Metronome\+::bpm\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\hyperlink{classdrumpi_1_1clock_1_1Clock}{Clock}} rate in B\+PM. Stored to avoid quantisation issues from ms-\/to-\/\+B\+PM conversion. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/clock.\+hpp\item 
+src/clock.\+cpp\end{DoxyCompactItemize}

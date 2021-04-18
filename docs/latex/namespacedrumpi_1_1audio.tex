@@ -1,0 +1,182 @@
+\hypertarget{namespacedrumpi_1_1audio}{}\doxysection{drumpi\+::audio Namespace Reference}
+\label{namespacedrumpi_1_1audio}\index{drumpi::audio@{drumpi::audio}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classdrumpi_1_1audio_1_1AudioCallback}{Audio\+Callback}}
+\item 
+class \mbox{\hyperlink{classdrumpi_1_1audio_1_1AudioClip}{Audio\+Clip}}
+\item 
+class \mbox{\hyperlink{classdrumpi_1_1audio_1_1AudioLibrary}{Audio\+Library}}
+\item 
+class \mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient}{Jack\+Client}}
+\item 
+class \mbox{\hyperlink{classdrumpi_1_1audio_1_1PlaybackEngine}{Playback\+Engine}}
+\item 
+class \mbox{\hyperlink{classdrumpi_1_1audio_1_1SampleSource}{Sample\+Source}}
+\item 
+class \mbox{\hyperlink{classdrumpi_1_1audio_1_1SampleSourceFile}{Sample\+Source\+File}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef jack\+\_\+default\+\_\+audio\+\_\+sample\+\_\+t \mbox{\hyperlink{namespacedrumpi_1_1audio_aca0bdc9164f87b72057e284442abab6e}{sample\+\_\+t}}
+\item 
+typedef enum \mbox{\hyperlink{namespacedrumpi_1_1audio_a64dba7645afe63b0d4a44ef3daa16a8b}{drumpi\+::audio\+::\+\_\+\+Sample\+Source\+Types}} \mbox{\hyperlink{namespacedrumpi_1_1audio_a5a9629c737cfd95f4a804b4ab9c5b8de}{sample\+Source\+Type\+\_\+t}}
+\item 
+typedef enum \mbox{\hyperlink{namespacedrumpi_1_1audio_a015d8de4ce400e4c660b0a0173c98234}{drumpi\+::audio\+::\+\_\+\+Sample\+Source\+Status}} \mbox{\hyperlink{namespacedrumpi_1_1audio_a03ac23fe986c3982bba0e72007d892f4}{sample\+Source\+Status\+\_\+t}}
+\item 
+typedef enum \mbox{\hyperlink{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2f}{drumpi\+::audio\+::\+\_\+\+Audio\+Error}} \mbox{\hyperlink{namespacedrumpi_1_1audio_a63a65dfe49502f198a5a4ff3365ec438}{audio\+Error\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespacedrumpi_1_1audio_a64dba7645afe63b0d4a44ef3daa16a8b}{\+\_\+\+Sample\+Source\+Types}} \{ \mbox{\hyperlink{namespacedrumpi_1_1audio_a64dba7645afe63b0d4a44ef3daa16a8ba19f8e2682491ac90a5376c80de3e1982}{S\+O\+U\+R\+C\+E\+\_\+\+G\+E\+N\+E\+R\+A\+L\+I\+S\+ED}}, 
+\mbox{\hyperlink{namespacedrumpi_1_1audio_a64dba7645afe63b0d4a44ef3daa16a8ba32aeb961cf2e0cda1dcafb160b1fa3d3}{S\+O\+U\+R\+C\+E\+\_\+\+P\+R\+E\+G\+E\+N\+E\+R\+A\+T\+ED}}, 
+{\bfseries \+\_\+\+N\+U\+M\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+T\+Y\+P\+ES}
+ \}
+\item 
+enum \mbox{\hyperlink{namespacedrumpi_1_1audio_a015d8de4ce400e4c660b0a0173c98234}{\+\_\+\+Sample\+Source\+Status}} \{ \newline
+\mbox{\hyperlink{namespacedrumpi_1_1audio_a015d8de4ce400e4c660b0a0173c98234afba79f37a6b96c000fbf900bb6ec4b07}{S\+O\+U\+R\+C\+E\+\_\+\+L\+O\+A\+D\+I\+NG}}, 
+\mbox{\hyperlink{namespacedrumpi_1_1audio_a015d8de4ce400e4c660b0a0173c98234a2843f38afcbe2fa60e4aec5474dcc153}{S\+O\+U\+R\+C\+E\+\_\+\+R\+E\+A\+DY}}, 
+\mbox{\hyperlink{namespacedrumpi_1_1audio_a015d8de4ce400e4c660b0a0173c98234aaa77dc6c2cf267451bf9dddcf8f8b1b7}{S\+O\+U\+R\+C\+E\+\_\+\+A\+C\+T\+I\+VE}}, 
+\mbox{\hyperlink{namespacedrumpi_1_1audio_a015d8de4ce400e4c660b0a0173c98234a0fcf93ea5a3798d2b83cb6989b4fa4c6}{S\+O\+U\+R\+C\+E\+\_\+\+F\+I\+N\+I\+S\+H\+ED}}, 
+\newline
+\mbox{\hyperlink{namespacedrumpi_1_1audio_a015d8de4ce400e4c660b0a0173c98234aeacbd27860b2e11673f2d34dfe008bfd}{S\+O\+U\+R\+C\+E\+\_\+\+E\+R\+R\+OR}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2f}{\+\_\+\+Audio\+Error}} \{ \newline
+\mbox{\hyperlink{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fa862613743b5354dc75cfa084840a7c0c}{N\+O\+\_\+\+E\+R\+R\+OR}} = 0, 
+\mbox{\hyperlink{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fa5358603a025a4c233b88825bd39d1244}{C\+L\+I\+E\+N\+T\+\_\+\+O\+P\+E\+N\+\_\+\+F\+A\+I\+L\+ED}}, 
+\mbox{\hyperlink{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fa2a9bf541c04690c894bcbf7fe6e2b105}{C\+L\+I\+E\+N\+T\+\_\+\+A\+C\+T\+I\+V\+A\+T\+E\+\_\+\+F\+A\+I\+L\+ED}}, 
+\mbox{\hyperlink{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fac0a8641bb8a0e20d1519995579bde68f}{S\+E\+R\+V\+E\+R\+\_\+\+C\+O\+N\+N\+E\+C\+T\+\_\+\+F\+A\+I\+L\+ED}}, 
+\newline
+\mbox{\hyperlink{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fa4d00d14583b30f88c890a22754f0d42b}{N\+O\+\_\+\+P\+O\+R\+T\+S\+\_\+\+A\+V\+A\+I\+L\+A\+B\+LE}}, 
+\mbox{\hyperlink{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fa7948a95fdb3b37ab61a3a08d997faa1c}{N\+O\+\_\+\+P\+H\+Y\+S\+I\+C\+A\+L\+\_\+\+P\+O\+R\+TS}}, 
+\mbox{\hyperlink{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fa6a165910fffae742e18607e973d6d9f9}{P\+O\+R\+T\+\_\+\+C\+O\+N\+N\+E\+C\+T\+\_\+\+F\+A\+I\+L\+ED}}, 
+\mbox{\hyperlink{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fa6a3f96b4c397d009a5379e7308eba213}{C\+L\+I\+E\+N\+T\+\_\+\+D\+E\+A\+C\+T\+I\+V\+A\+T\+E\+\_\+\+E\+R\+R\+OR}}, 
+\newline
+\mbox{\hyperlink{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fa7e719a21972684efdb06dd52342b82c3}{C\+L\+I\+E\+N\+T\+\_\+\+C\+L\+O\+S\+E\+\_\+\+E\+R\+R\+OR}}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The namespace for audio system related items. 
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{namespacedrumpi_1_1audio_a63a65dfe49502f198a5a4ff3365ec438}\label{namespacedrumpi_1_1audio_a63a65dfe49502f198a5a4ff3365ec438}} 
+\index{drumpi::audio@{drumpi::audio}!audioError\_t@{audioError\_t}}
+\index{audioError\_t@{audioError\_t}!drumpi::audio@{drumpi::audio}}
+\doxysubsubsection{\texorpdfstring{audioError\_t}{audioError\_t}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2f}{drumpi\+::audio\+::\+\_\+\+Audio\+Error}} \mbox{\hyperlink{namespacedrumpi_1_1audio_a63a65dfe49502f198a5a4ff3365ec438}{drumpi\+::audio\+::audio\+Error\+\_\+t}}}
+
+Error codes for the audio engine system. \mbox{\Hypertarget{namespacedrumpi_1_1audio_aca0bdc9164f87b72057e284442abab6e}\label{namespacedrumpi_1_1audio_aca0bdc9164f87b72057e284442abab6e}} 
+\index{drumpi::audio@{drumpi::audio}!sample\_t@{sample\_t}}
+\index{sample\_t@{sample\_t}!drumpi::audio@{drumpi::audio}}
+\doxysubsubsection{\texorpdfstring{sample\_t}{sample\_t}}
+{\footnotesize\ttfamily typedef jack\+\_\+default\+\_\+audio\+\_\+sample\+\_\+t \mbox{\hyperlink{namespacedrumpi_1_1audio_aca0bdc9164f87b72057e284442abab6e}{drumpi\+::audio\+::sample\+\_\+t}}}
+
+Sample data format used by Jack ({\ttfamily float}). \mbox{\Hypertarget{namespacedrumpi_1_1audio_a03ac23fe986c3982bba0e72007d892f4}\label{namespacedrumpi_1_1audio_a03ac23fe986c3982bba0e72007d892f4}} 
+\index{drumpi::audio@{drumpi::audio}!sampleSourceStatus\_t@{sampleSourceStatus\_t}}
+\index{sampleSourceStatus\_t@{sampleSourceStatus\_t}!drumpi::audio@{drumpi::audio}}
+\doxysubsubsection{\texorpdfstring{sampleSourceStatus\_t}{sampleSourceStatus\_t}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{namespacedrumpi_1_1audio_a015d8de4ce400e4c660b0a0173c98234}{drumpi\+::audio\+::\+\_\+\+Sample\+Source\+Status}} \mbox{\hyperlink{namespacedrumpi_1_1audio_a03ac23fe986c3982bba0e72007d892f4}{drumpi\+::audio\+::sample\+Source\+Status\+\_\+t}}}
+
+Defines the status of a \mbox{\hyperlink{classdrumpi_1_1audio_1_1SampleSource}{Sample\+Source}} object. \mbox{\Hypertarget{namespacedrumpi_1_1audio_a5a9629c737cfd95f4a804b4ab9c5b8de}\label{namespacedrumpi_1_1audio_a5a9629c737cfd95f4a804b4ab9c5b8de}} 
+\index{drumpi::audio@{drumpi::audio}!sampleSourceType\_t@{sampleSourceType\_t}}
+\index{sampleSourceType\_t@{sampleSourceType\_t}!drumpi::audio@{drumpi::audio}}
+\doxysubsubsection{\texorpdfstring{sampleSourceType\_t}{sampleSourceType\_t}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{namespacedrumpi_1_1audio_a64dba7645afe63b0d4a44ef3daa16a8b}{drumpi\+::audio\+::\+\_\+\+Sample\+Source\+Types}} \mbox{\hyperlink{namespacedrumpi_1_1audio_a5a9629c737cfd95f4a804b4ab9c5b8de}{drumpi\+::audio\+::sample\+Source\+Type\+\_\+t}}}
+
+Identifies a type of sample source. 
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2f}\label{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2f}} 
+\index{drumpi::audio@{drumpi::audio}!\_AudioError@{\_AudioError}}
+\index{\_AudioError@{\_AudioError}!drumpi::audio@{drumpi::audio}}
+\doxysubsubsection{\texorpdfstring{\_AudioError}{\_AudioError}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2f}{drumpi\+::audio\+::\+\_\+\+Audio\+Error}}}
+
+Error codes for the audio engine system. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NO\_ERROR@{NO\_ERROR}!drumpi::audio@{drumpi::audio}}\index{drumpi::audio@{drumpi::audio}!NO\_ERROR@{NO\_ERROR}}}\mbox{\Hypertarget{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fa862613743b5354dc75cfa084840a7c0c}\label{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fa862613743b5354dc75cfa084840a7c0c}} 
+N\+O\+\_\+\+E\+R\+R\+OR&No error. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CLIENT\_OPEN\_FAILED@{CLIENT\_OPEN\_FAILED}!drumpi::audio@{drumpi::audio}}\index{drumpi::audio@{drumpi::audio}!CLIENT\_OPEN\_FAILED@{CLIENT\_OPEN\_FAILED}}}\mbox{\Hypertarget{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fa5358603a025a4c233b88825bd39d1244}\label{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fa5358603a025a4c233b88825bd39d1244}} 
+C\+L\+I\+E\+N\+T\+\_\+\+O\+P\+E\+N\+\_\+\+F\+A\+I\+L\+ED&The Jack client could not be opened. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CLIENT\_ACTIVATE\_FAILED@{CLIENT\_ACTIVATE\_FAILED}!drumpi::audio@{drumpi::audio}}\index{drumpi::audio@{drumpi::audio}!CLIENT\_ACTIVATE\_FAILED@{CLIENT\_ACTIVATE\_FAILED}}}\mbox{\Hypertarget{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fa2a9bf541c04690c894bcbf7fe6e2b105}\label{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fa2a9bf541c04690c894bcbf7fe6e2b105}} 
+C\+L\+I\+E\+N\+T\+\_\+\+A\+C\+T\+I\+V\+A\+T\+E\+\_\+\+F\+A\+I\+L\+ED&The Jack client could not be activated. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SERVER\_CONNECT\_FAILED@{SERVER\_CONNECT\_FAILED}!drumpi::audio@{drumpi::audio}}\index{drumpi::audio@{drumpi::audio}!SERVER\_CONNECT\_FAILED@{SERVER\_CONNECT\_FAILED}}}\mbox{\Hypertarget{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fac0a8641bb8a0e20d1519995579bde68f}\label{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fac0a8641bb8a0e20d1519995579bde68f}} 
+S\+E\+R\+V\+E\+R\+\_\+\+C\+O\+N\+N\+E\+C\+T\+\_\+\+F\+A\+I\+L\+ED&The Jack client could not connect to a server. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NO\_PORTS\_AVAILABLE@{NO\_PORTS\_AVAILABLE}!drumpi::audio@{drumpi::audio}}\index{drumpi::audio@{drumpi::audio}!NO\_PORTS\_AVAILABLE@{NO\_PORTS\_AVAILABLE}}}\mbox{\Hypertarget{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fa4d00d14583b30f88c890a22754f0d42b}\label{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fa4d00d14583b30f88c890a22754f0d42b}} 
+N\+O\+\_\+\+P\+O\+R\+T\+S\+\_\+\+A\+V\+A\+I\+L\+A\+B\+LE&No ports were available to the Jack client. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NO\_PHYSICAL\_PORTS@{NO\_PHYSICAL\_PORTS}!drumpi::audio@{drumpi::audio}}\index{drumpi::audio@{drumpi::audio}!NO\_PHYSICAL\_PORTS@{NO\_PHYSICAL\_PORTS}}}\mbox{\Hypertarget{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fa7948a95fdb3b37ab61a3a08d997faa1c}\label{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fa7948a95fdb3b37ab61a3a08d997faa1c}} 
+N\+O\+\_\+\+P\+H\+Y\+S\+I\+C\+A\+L\+\_\+\+P\+O\+R\+TS&There are no physical ports connected to the device. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PORT\_CONNECT\_FAILED@{PORT\_CONNECT\_FAILED}!drumpi::audio@{drumpi::audio}}\index{drumpi::audio@{drumpi::audio}!PORT\_CONNECT\_FAILED@{PORT\_CONNECT\_FAILED}}}\mbox{\Hypertarget{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fa6a165910fffae742e18607e973d6d9f9}\label{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fa6a165910fffae742e18607e973d6d9f9}} 
+P\+O\+R\+T\+\_\+\+C\+O\+N\+N\+E\+C\+T\+\_\+\+F\+A\+I\+L\+ED&Could not connect to a port. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CLIENT\_DEACTIVATE\_ERROR@{CLIENT\_DEACTIVATE\_ERROR}!drumpi::audio@{drumpi::audio}}\index{drumpi::audio@{drumpi::audio}!CLIENT\_DEACTIVATE\_ERROR@{CLIENT\_DEACTIVATE\_ERROR}}}\mbox{\Hypertarget{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fa6a3f96b4c397d009a5379e7308eba213}\label{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fa6a3f96b4c397d009a5379e7308eba213}} 
+C\+L\+I\+E\+N\+T\+\_\+\+D\+E\+A\+C\+T\+I\+V\+A\+T\+E\+\_\+\+E\+R\+R\+OR&The Jack client could not be deactivated. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CLIENT\_CLOSE\_ERROR@{CLIENT\_CLOSE\_ERROR}!drumpi::audio@{drumpi::audio}}\index{drumpi::audio@{drumpi::audio}!CLIENT\_CLOSE\_ERROR@{CLIENT\_CLOSE\_ERROR}}}\mbox{\Hypertarget{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fa7e719a21972684efdb06dd52342b82c3}\label{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fa7e719a21972684efdb06dd52342b82c3}} 
+C\+L\+I\+E\+N\+T\+\_\+\+C\+L\+O\+S\+E\+\_\+\+E\+R\+R\+OR&The Jack client could not be closed. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespacedrumpi_1_1audio_a015d8de4ce400e4c660b0a0173c98234}\label{namespacedrumpi_1_1audio_a015d8de4ce400e4c660b0a0173c98234}} 
+\index{drumpi::audio@{drumpi::audio}!\_SampleSourceStatus@{\_SampleSourceStatus}}
+\index{\_SampleSourceStatus@{\_SampleSourceStatus}!drumpi::audio@{drumpi::audio}}
+\doxysubsubsection{\texorpdfstring{\_SampleSourceStatus}{\_SampleSourceStatus}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacedrumpi_1_1audio_a015d8de4ce400e4c660b0a0173c98234}{drumpi\+::audio\+::\+\_\+\+Sample\+Source\+Status}}}
+
+Defines the status of a \mbox{\hyperlink{classdrumpi_1_1audio_1_1SampleSource}{Sample\+Source}} object. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SOURCE\_LOADING@{SOURCE\_LOADING}!drumpi::audio@{drumpi::audio}}\index{drumpi::audio@{drumpi::audio}!SOURCE\_LOADING@{SOURCE\_LOADING}}}\mbox{\Hypertarget{namespacedrumpi_1_1audio_a015d8de4ce400e4c660b0a0173c98234afba79f37a6b96c000fbf900bb6ec4b07}\label{namespacedrumpi_1_1audio_a015d8de4ce400e4c660b0a0173c98234afba79f37a6b96c000fbf900bb6ec4b07}} 
+S\+O\+U\+R\+C\+E\+\_\+\+L\+O\+A\+D\+I\+NG&The source is loading. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SOURCE\_READY@{SOURCE\_READY}!drumpi::audio@{drumpi::audio}}\index{drumpi::audio@{drumpi::audio}!SOURCE\_READY@{SOURCE\_READY}}}\mbox{\Hypertarget{namespacedrumpi_1_1audio_a015d8de4ce400e4c660b0a0173c98234a2843f38afcbe2fa60e4aec5474dcc153}\label{namespacedrumpi_1_1audio_a015d8de4ce400e4c660b0a0173c98234a2843f38afcbe2fa60e4aec5474dcc153}} 
+S\+O\+U\+R\+C\+E\+\_\+\+R\+E\+A\+DY&The source is idle and/or ready for output. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SOURCE\_ACTIVE@{SOURCE\_ACTIVE}!drumpi::audio@{drumpi::audio}}\index{drumpi::audio@{drumpi::audio}!SOURCE\_ACTIVE@{SOURCE\_ACTIVE}}}\mbox{\Hypertarget{namespacedrumpi_1_1audio_a015d8de4ce400e4c660b0a0173c98234aaa77dc6c2cf267451bf9dddcf8f8b1b7}\label{namespacedrumpi_1_1audio_a015d8de4ce400e4c660b0a0173c98234aaa77dc6c2cf267451bf9dddcf8f8b1b7}} 
+S\+O\+U\+R\+C\+E\+\_\+\+A\+C\+T\+I\+VE&The source is being output or otherwise active. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SOURCE\_FINISHED@{SOURCE\_FINISHED}!drumpi::audio@{drumpi::audio}}\index{drumpi::audio@{drumpi::audio}!SOURCE\_FINISHED@{SOURCE\_FINISHED}}}\mbox{\Hypertarget{namespacedrumpi_1_1audio_a015d8de4ce400e4c660b0a0173c98234a0fcf93ea5a3798d2b83cb6989b4fa4c6}\label{namespacedrumpi_1_1audio_a015d8de4ce400e4c660b0a0173c98234a0fcf93ea5a3798d2b83cb6989b4fa4c6}} 
+S\+O\+U\+R\+C\+E\+\_\+\+F\+I\+N\+I\+S\+H\+ED&The source has completed its output. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SOURCE\_ERROR@{SOURCE\_ERROR}!drumpi::audio@{drumpi::audio}}\index{drumpi::audio@{drumpi::audio}!SOURCE\_ERROR@{SOURCE\_ERROR}}}\mbox{\Hypertarget{namespacedrumpi_1_1audio_a015d8de4ce400e4c660b0a0173c98234aeacbd27860b2e11673f2d34dfe008bfd}\label{namespacedrumpi_1_1audio_a015d8de4ce400e4c660b0a0173c98234aeacbd27860b2e11673f2d34dfe008bfd}} 
+S\+O\+U\+R\+C\+E\+\_\+\+E\+R\+R\+OR&There was an error with the source. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespacedrumpi_1_1audio_a64dba7645afe63b0d4a44ef3daa16a8b}\label{namespacedrumpi_1_1audio_a64dba7645afe63b0d4a44ef3daa16a8b}} 
+\index{drumpi::audio@{drumpi::audio}!\_SampleSourceTypes@{\_SampleSourceTypes}}
+\index{\_SampleSourceTypes@{\_SampleSourceTypes}!drumpi::audio@{drumpi::audio}}
+\doxysubsubsection{\texorpdfstring{\_SampleSourceTypes}{\_SampleSourceTypes}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacedrumpi_1_1audio_a64dba7645afe63b0d4a44ef3daa16a8b}{drumpi\+::audio\+::\+\_\+\+Sample\+Source\+Types}}}
+
+Identifies a type of sample source. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SOURCE\_GENERALISED@{SOURCE\_GENERALISED}!drumpi::audio@{drumpi::audio}}\index{drumpi::audio@{drumpi::audio}!SOURCE\_GENERALISED@{SOURCE\_GENERALISED}}}\mbox{\Hypertarget{namespacedrumpi_1_1audio_a64dba7645afe63b0d4a44ef3daa16a8ba19f8e2682491ac90a5376c80de3e1982}\label{namespacedrumpi_1_1audio_a64dba7645afe63b0d4a44ef3daa16a8ba19f8e2682491ac90a5376c80de3e1982}} 
+S\+O\+U\+R\+C\+E\+\_\+\+G\+E\+N\+E\+R\+A\+L\+I\+S\+ED&An abstract source, undefined. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SOURCE\_PREGENERATED@{SOURCE\_PREGENERATED}!drumpi::audio@{drumpi::audio}}\index{drumpi::audio@{drumpi::audio}!SOURCE\_PREGENERATED@{SOURCE\_PREGENERATED}}}\mbox{\Hypertarget{namespacedrumpi_1_1audio_a64dba7645afe63b0d4a44ef3daa16a8ba32aeb961cf2e0cda1dcafb160b1fa3d3}\label{namespacedrumpi_1_1audio_a64dba7645afe63b0d4a44ef3daa16a8ba32aeb961cf2e0cda1dcafb160b1fa3d3}} 
+S\+O\+U\+R\+C\+E\+\_\+\+P\+R\+E\+G\+E\+N\+E\+R\+A\+T\+ED&A pregenerated wave file. \\
+\hline
+
+\end{DoxyEnumFields}

@@ -1,0 +1,90 @@
+\hypertarget{classdrumpi_1_1audio_1_1AudioLibrary}{}\doxysection{drumpi\+::audio\+::Audio\+Library Class Reference}
+\label{classdrumpi_1_1audio_1_1AudioLibrary}\index{drumpi::audio::AudioLibrary@{drumpi::audio::AudioLibrary}}
+
+
+{\ttfamily \#include $<$audio\+Library.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdrumpi_1_1audio_1_1AudioLibrary_a5cb11b64bbaaaa6ce88802b9bc755124}{Audio\+Library}} ()
+\item 
+std\+::string \mbox{\hyperlink{classdrumpi_1_1audio_1_1AudioLibrary_aee472542d978644160d578e0f9d51ded}{get\+Filepath}} (\mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}} drum, int bank, \mbox{\hyperlink{namespacedrumpi_1_1audio_a5a9629c737cfd95f4a804b4ab9c5b8de}{sample\+Source\+Type\+\_\+t}} type)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classdrumpi_1_1audio_1_1AudioLibrary_a442d0c17fa82121464f3b2108880f4d1}{audio\+Dir}}
+\item 
+std\+::string \mbox{\hyperlink{classdrumpi_1_1audio_1_1AudioLibrary_a2f61269a92b8961afe13a994290e273e}{bank\+Dir\+Pre}}
+\item 
+std\+::string \mbox{\hyperlink{classdrumpi_1_1audio_1_1AudioLibrary_a5ca1e85586737e053ff1278868b94878}{drum\+Name\+Pre}}
+\item 
+std\+::array$<$ std\+::string, N\+U\+M\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+T\+Y\+P\+ES $>$ \mbox{\hyperlink{classdrumpi_1_1audio_1_1AudioLibrary_a064522c821b6ec210166aa44c3003777}{extensions}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for storing and retrieving filepaths of audio sources. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1audio_1_1AudioLibrary_a5cb11b64bbaaaa6ce88802b9bc755124}\label{classdrumpi_1_1audio_1_1AudioLibrary_a5cb11b64bbaaaa6ce88802b9bc755124}} 
+\index{drumpi::audio::AudioLibrary@{drumpi::audio::AudioLibrary}!AudioLibrary@{AudioLibrary}}
+\index{AudioLibrary@{AudioLibrary}!drumpi::audio::AudioLibrary@{drumpi::audio::AudioLibrary}}
+\doxysubsubsection{\texorpdfstring{AudioLibrary()}{AudioLibrary()}}
+{\footnotesize\ttfamily Audio\+Library\+::\+Audio\+Library (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructor. Initialises members to correct values. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1audio_1_1AudioLibrary_aee472542d978644160d578e0f9d51ded}\label{classdrumpi_1_1audio_1_1AudioLibrary_aee472542d978644160d578e0f9d51ded}} 
+\index{drumpi::audio::AudioLibrary@{drumpi::audio::AudioLibrary}!getFilepath@{getFilepath}}
+\index{getFilepath@{getFilepath}!drumpi::audio::AudioLibrary@{drumpi::audio::AudioLibrary}}
+\doxysubsubsection{\texorpdfstring{getFilepath()}{getFilepath()}}
+{\footnotesize\ttfamily std\+::string Audio\+Library\+::get\+Filepath (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}}}]{drum,  }\item[{int}]{bank,  }\item[{\mbox{\hyperlink{namespacedrumpi_1_1audio_a5a9629c737cfd95f4a804b4ab9c5b8de}{sample\+Source\+Type\+\_\+t}}}]{type }\end{DoxyParamCaption})}
+
+Returns the absolute filepath for the given drum and type. 
+\begin{DoxyParams}{Parameters}
+{\em drum} & \mbox{\hyperlink{namespacedrumpi_ad560bde7b693769d2c5882437af094bf}{drum\+I\+D\+\_\+t}} of the drum to inspect the filepath of. \\
+\hline
+{\em bank} & ID of the bank of drums to load from. \\
+\hline
+{\em type} & \mbox{\hyperlink{namespacedrumpi_1_1audio_a5a9629c737cfd95f4a804b4ab9c5b8de}{sample\+Source\+Type\+\_\+t}} of source to inspect the filepath of. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+absolute filepath of the relevant file. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1audio_1_1AudioLibrary_a442d0c17fa82121464f3b2108880f4d1}\label{classdrumpi_1_1audio_1_1AudioLibrary_a442d0c17fa82121464f3b2108880f4d1}} 
+\index{drumpi::audio::AudioLibrary@{drumpi::audio::AudioLibrary}!audioDir@{audioDir}}
+\index{audioDir@{audioDir}!drumpi::audio::AudioLibrary@{drumpi::audio::AudioLibrary}}
+\doxysubsubsection{\texorpdfstring{audioDir}{audioDir}}
+{\footnotesize\ttfamily std\+::string drumpi\+::audio\+::\+Audio\+Library\+::audio\+Dir\hspace{0.3cm}{\ttfamily [private]}}
+
+Name of the audio directory. \mbox{\Hypertarget{classdrumpi_1_1audio_1_1AudioLibrary_a2f61269a92b8961afe13a994290e273e}\label{classdrumpi_1_1audio_1_1AudioLibrary_a2f61269a92b8961afe13a994290e273e}} 
+\index{drumpi::audio::AudioLibrary@{drumpi::audio::AudioLibrary}!bankDirPre@{bankDirPre}}
+\index{bankDirPre@{bankDirPre}!drumpi::audio::AudioLibrary@{drumpi::audio::AudioLibrary}}
+\doxysubsubsection{\texorpdfstring{bankDirPre}{bankDirPre}}
+{\footnotesize\ttfamily std\+::string drumpi\+::audio\+::\+Audio\+Library\+::bank\+Dir\+Pre\hspace{0.3cm}{\ttfamily [private]}}
+
+Prefix for the bank directory names. \mbox{\Hypertarget{classdrumpi_1_1audio_1_1AudioLibrary_a5ca1e85586737e053ff1278868b94878}\label{classdrumpi_1_1audio_1_1AudioLibrary_a5ca1e85586737e053ff1278868b94878}} 
+\index{drumpi::audio::AudioLibrary@{drumpi::audio::AudioLibrary}!drumNamePre@{drumNamePre}}
+\index{drumNamePre@{drumNamePre}!drumpi::audio::AudioLibrary@{drumpi::audio::AudioLibrary}}
+\doxysubsubsection{\texorpdfstring{drumNamePre}{drumNamePre}}
+{\footnotesize\ttfamily std\+::string drumpi\+::audio\+::\+Audio\+Library\+::drum\+Name\+Pre\hspace{0.3cm}{\ttfamily [private]}}
+
+Prefix for the files\textquotesingle{} names. \mbox{\Hypertarget{classdrumpi_1_1audio_1_1AudioLibrary_a064522c821b6ec210166aa44c3003777}\label{classdrumpi_1_1audio_1_1AudioLibrary_a064522c821b6ec210166aa44c3003777}} 
+\index{drumpi::audio::AudioLibrary@{drumpi::audio::AudioLibrary}!extensions@{extensions}}
+\index{extensions@{extensions}!drumpi::audio::AudioLibrary@{drumpi::audio::AudioLibrary}}
+\doxysubsubsection{\texorpdfstring{extensions}{extensions}}
+{\footnotesize\ttfamily std\+::array$<$std\+::string, N\+U\+M\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+T\+Y\+P\+ES$>$ drumpi\+::audio\+::\+Audio\+Library\+::extensions\hspace{0.3cm}{\ttfamily [private]}}
+
+Extensions for the types of audio sources. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/audio\+Library.\+hpp\item 
+src/audio\+Library.\+cpp\end{DoxyCompactItemize}

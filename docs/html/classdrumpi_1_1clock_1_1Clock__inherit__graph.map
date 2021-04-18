@@ -1,0 +1,7 @@
+<map id="drumpi::clock::Clock" name="drumpi::clock::Clock">
+<area shape="rect" id="node1" title=" " alt="" coords="125,80,279,107"/>
+<area shape="rect" id="node3" href="$classdrumpi_1_1clock_1_1Metronome.html" title=" " alt="" coords="5,155,199,181"/>
+<area shape="rect" id="node5" href="$classdrumpi_1_1DisplayClock.html" title=" " alt="" coords="223,155,384,181"/>
+<area shape="rect" id="node2" title=" " alt="" coords="159,5,245,32"/>
+<area shape="rect" id="node4" href="$classdrumpi_1_1SequencerClock.html" title=" " alt="" coords="12,229,192,256"/>
+</map>

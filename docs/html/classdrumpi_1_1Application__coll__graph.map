@@ -1,0 +1,19 @@
+<map id="drumpi::Application" name="drumpi::Application">
+<area shape="rect" id="node1" title="Main application." alt="" coords="1055,378,1204,405"/>
+<area shape="rect" id="node2" href="$classdrumpi_1_1ApplicationCallback.html" title=" " alt="" coords="5,82,211,109"/>
+<area shape="rect" id="node17" href="$classdrumpi_1_1KeyboardInput.html" title=" " alt="" coords="339,107,509,134"/>
+<area shape="rect" id="node3" href="$classdrumpi_1_1Display.html" title=" " alt="" coords="676,185,801,211"/>
+<area shape="rect" id="node4" href="$classdrumpi_1_1Max7219.html" title=" " alt="" coords="356,209,492,235"/>
+<area shape="rect" id="node5" href="$classdrumpi_1_1SetTempoMode.html" title=" " alt="" coords="651,327,827,354"/>
+<area shape="rect" id="node6" href="$classdrumpi_1_1State.html" title=" " alt="" coords="369,429,479,455"/>
+<area shape="rect" id="node7" href="$classdrumpi_1_1SetMasterVolumeMode.html" title=" " alt="" coords="625,378,852,405"/>
+<area shape="rect" id="node8" href="$classdrumpi_1_1PerformanceMode.html" title=" " alt="" coords="641,429,836,455"/>
+<area shape="rect" id="node9" href="$classdrumpi_1_1SetDrumBankMode.html" title=" " alt="" coords="637,479,840,506"/>
+<area shape="rect" id="node10" href="$classdrumpi_1_1SequencerMode.html" title=" " alt="" coords="649,530,829,557"/>
+<area shape="rect" id="node11" href="$classdrumpi_1_1SetDrumVolumeMode.html" title=" " alt="" coords="629,581,848,607"/>
+<area shape="rect" id="node12" href="$classdrumpi_1_1audio_1_1PlaybackEngine.html" title=" " alt="" coords="627,631,850,658"/>
+<area shape="rect" id="node13" href="$classdrumpi_1_1audio_1_1AudioCallback.html" title=" " alt="" coords="317,602,531,629"/>
+<area shape="rect" id="node14" href="$classdrumpi_1_1audio_1_1AudioLibrary.html" title=" " alt="" coords="323,653,525,679"/>
+<area shape="rect" id="node15" href="$classdrumpi_1_1KeyboardThread.html" title=" " alt="" coords="647,134,830,161"/>
+<area shape="rect" id="node16" title=" " alt="" coords="378,158,470,185"/>
+</map>

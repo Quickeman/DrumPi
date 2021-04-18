@@ -1,0 +1,277 @@
+\hypertarget{classdrumpi_1_1audio_1_1JackClient}{}\doxysection{drumpi\+::audio\+::Jack\+Client Class Reference}
+\label{classdrumpi_1_1audio_1_1JackClient}\index{drumpi::audio::JackClient@{drumpi::audio::JackClient}}
+
+
+{\ttfamily \#include $<$audio.\+hpp$>$}
+
+
+
+Collaboration diagram for drumpi\+::audio\+::Jack\+Client\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{classdrumpi_1_1audio_1_1JackClient__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient_ab4cf3d533282d89dc9e1be8a64e22676}{Jack\+Client}} (std\+::string \mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient_a8b43d4d05f5afaeb3104b0b7f325688c}{client\+Name}}, int n\+Out\+Ports=\mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient_a4041995639d6765bb34dbadf27f7c3ec}{Jack\+Client\+::def\+Num\+Out\+Ports}}, int n\+In\+Ports=\mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient_abffcd237af5b33cb60bc93f4c0af3efa}{Jack\+Client\+::def\+Num\+In\+Ports}})
+\item 
+\mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient_ad9866ad3521128ca3a967aa96922ea97}{$\sim$\+Jack\+Client}} ()
+\item 
+\mbox{\hyperlink{namespacedrumpi_1_1audio_a63a65dfe49502f198a5a4ff3365ec438}{audio\+Error\+\_\+t}} \mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient_ab76c081f0442dbe7ba23ab4715e11256}{start}} (\mbox{\hyperlink{classdrumpi_1_1audio_1_1AudioCallback}{Audio\+Callback}} \&\mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient_a607ea3c9f3b94f006db0abbf6382d6ac}{callback}})
+\item 
+\mbox{\hyperlink{namespacedrumpi_1_1audio_a63a65dfe49502f198a5a4ff3365ec438}{audio\+Error\+\_\+t}} \mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient_aa4e28932809e94d3ee9ec02e19dac26d}{stop}} (bool close\+Client=true)
+\item 
+bool \mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient_a3b27776cda219ea706e77e96138b4c4e}{is\+Open}} ()
+\item 
+bool \mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient_ab5c76d2572a326d063761b6d8ec4d279}{is\+Running}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient_a70029f7ae102eba6b9b6a3160141d622}{\+\_\+process}} (jack\+\_\+nframes\+\_\+t n\+Frames, void $\ast$arg)
+\item 
+static void \mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient_ab3ec8c68b5c4473cdd3c53dc8f51b7c1}{\+\_\+shutdown}} (void $\ast$arg)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient_abb2363379d125b17299d49def97c289d}{set\+Num\+Ports}} (int n\+Out\+Ports, int n\+In\+Ports)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdrumpi_1_1audio_1_1AudioCallback}{Audio\+Callback}} $\ast$ \mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient_a607ea3c9f3b94f006db0abbf6382d6ac}{callback}}
+\item 
+jack\+\_\+client\+\_\+t $\ast$ \mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient_a7c7d354192fdfd02dff7ba19db35b055}{client}}
+\item 
+std\+::string \mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient_a8b43d4d05f5afaeb3104b0b7f325688c}{client\+Name}}
+\item 
+std\+::vector$<$ jack\+\_\+port\+\_\+t $\ast$ $>$ \mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient_a0257d5ed9aa2ad4a9c25776fa474f31e}{out\+Ports}}
+\item 
+std\+::vector$<$ jack\+\_\+port\+\_\+t $\ast$ $>$ \mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient_ac04a03af355ac3c7dd117ba8173b8d7a}{in\+Ports}}
+\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient_ab90e744f9193a55d6543d117e9b6c00e}{ports}}
+\item 
+jack\+\_\+options\+\_\+t \mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient_ad2d5b25f8eceaad004f6f7058ec8e5b6}{options}} = Jack\+Null\+Option
+\item 
+jack\+\_\+status\+\_\+t \mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient_ae875ca9f70638eeb0ff80195634cb64b}{jack\+Status}}
+\item 
+\mbox{\hyperlink{namespacedrumpi_1_1audio_a63a65dfe49502f198a5a4ff3365ec438}{audio\+Error\+\_\+t}} \mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient_a2bb52401891e1f4b9b74a5f347834f31}{error\+Status}} = \mbox{\hyperlink{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fa862613743b5354dc75cfa084840a7c0c}{N\+O\+\_\+\+E\+R\+R\+OR}}
+\item 
+bool \mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient_a827cedc289fc71939b040d757d15c65e}{open}}
+\item 
+bool \mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient_a087d17af8f6e68f1f609f3c276019a8e}{running}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int \mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient_a4041995639d6765bb34dbadf27f7c3ec}{def\+Num\+Out\+Ports}} = 2
+\item 
+static const int \mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient_abffcd237af5b33cb60bc93f4c0af3efa}{def\+Num\+In\+Ports}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Audio engine class for interacting with the Jack server. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1audio_1_1JackClient_ab4cf3d533282d89dc9e1be8a64e22676}\label{classdrumpi_1_1audio_1_1JackClient_ab4cf3d533282d89dc9e1be8a64e22676}} 
+\index{drumpi::audio::JackClient@{drumpi::audio::JackClient}!JackClient@{JackClient}}
+\index{JackClient@{JackClient}!drumpi::audio::JackClient@{drumpi::audio::JackClient}}
+\doxysubsubsection{\texorpdfstring{JackClient()}{JackClient()}}
+{\footnotesize\ttfamily Jack\+Client\+::\+Jack\+Client (\begin{DoxyParamCaption}\item[{std\+::string}]{client\+Name,  }\item[{int}]{n\+Out\+Ports = {\ttfamily \mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient_a4041995639d6765bb34dbadf27f7c3ec}{Jack\+Client\+::def\+Num\+Out\+Ports}}},  }\item[{int}]{n\+In\+Ports = {\ttfamily \mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient_abffcd237af5b33cb60bc93f4c0af3efa}{Jack\+Client\+::def\+Num\+In\+Ports}}} }\end{DoxyParamCaption})}
+
+Constructor. Specifies parameters to Jack. 
+\begin{DoxyParams}{Parameters}
+{\em client\+Name} & requested client name in Jack. \\
+\hline
+{\em n\+Out\+Ports} & number of output ports. Default 2. \\
+\hline
+{\em n\+In\+Ports} & number of input ports. Default 0. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdrumpi_1_1audio_1_1JackClient_ad9866ad3521128ca3a967aa96922ea97}\label{classdrumpi_1_1audio_1_1JackClient_ad9866ad3521128ca3a967aa96922ea97}} 
+\index{drumpi::audio::JackClient@{drumpi::audio::JackClient}!````~JackClient@{$\sim$JackClient}}
+\index{````~JackClient@{$\sim$JackClient}!drumpi::audio::JackClient@{drumpi::audio::JackClient}}
+\doxysubsubsection{\texorpdfstring{$\sim$JackClient()}{~JackClient()}}
+{\footnotesize\ttfamily Jack\+Client\+::$\sim$\+Jack\+Client (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Destructor. Closes the Jack client. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1audio_1_1JackClient_a70029f7ae102eba6b9b6a3160141d622}\label{classdrumpi_1_1audio_1_1JackClient_a70029f7ae102eba6b9b6a3160141d622}} 
+\index{drumpi::audio::JackClient@{drumpi::audio::JackClient}!\_process@{\_process}}
+\index{\_process@{\_process}!drumpi::audio::JackClient@{drumpi::audio::JackClient}}
+\doxysubsubsection{\texorpdfstring{\_process()}{\_process()}}
+{\footnotesize\ttfamily int Jack\+Client\+::\+\_\+process (\begin{DoxyParamCaption}\item[{jack\+\_\+nframes\+\_\+t}]{n\+Frames,  }\item[{void $\ast$}]{arg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Read method to send output buffer to the Jack server. Called by Jack when samples are needed. 
+\begin{DoxyParams}{Parameters}
+{\em n\+Frames} & number of frames requested by Jack. \\
+\hline
+{\em arg} & pointer to the \mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient}{Jack\+Client}} ({\ttfamily this}) object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Jack error code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdrumpi_1_1audio_1_1JackClient_ab3ec8c68b5c4473cdd3c53dc8f51b7c1}\label{classdrumpi_1_1audio_1_1JackClient_ab3ec8c68b5c4473cdd3c53dc8f51b7c1}} 
+\index{drumpi::audio::JackClient@{drumpi::audio::JackClient}!\_shutdown@{\_shutdown}}
+\index{\_shutdown@{\_shutdown}!drumpi::audio::JackClient@{drumpi::audio::JackClient}}
+\doxysubsubsection{\texorpdfstring{\_shutdown()}{\_shutdown()}}
+{\footnotesize\ttfamily void Jack\+Client\+::\+\_\+shutdown (\begin{DoxyParamCaption}\item[{void $\ast$}]{arg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Shutdown method to exit the program should the Jack server shut down or disconnect the client. 
+\begin{DoxyParams}{Parameters}
+{\em arg} & 0. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdrumpi_1_1audio_1_1JackClient_a3b27776cda219ea706e77e96138b4c4e}\label{classdrumpi_1_1audio_1_1JackClient_a3b27776cda219ea706e77e96138b4c4e}} 
+\index{drumpi::audio::JackClient@{drumpi::audio::JackClient}!isOpen@{isOpen}}
+\index{isOpen@{isOpen}!drumpi::audio::JackClient@{drumpi::audio::JackClient}}
+\doxysubsubsection{\texorpdfstring{isOpen()}{isOpen()}}
+{\footnotesize\ttfamily bool Jack\+Client\+::is\+Open (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Check if the Jack client is open. \begin{DoxyReturn}{Returns}
+{\ttfamily true} if the client is open. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdrumpi_1_1audio_1_1JackClient_ab5c76d2572a326d063761b6d8ec4d279}\label{classdrumpi_1_1audio_1_1JackClient_ab5c76d2572a326d063761b6d8ec4d279}} 
+\index{drumpi::audio::JackClient@{drumpi::audio::JackClient}!isRunning@{isRunning}}
+\index{isRunning@{isRunning}!drumpi::audio::JackClient@{drumpi::audio::JackClient}}
+\doxysubsubsection{\texorpdfstring{isRunning()}{isRunning()}}
+{\footnotesize\ttfamily bool Jack\+Client\+::is\+Running (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Check if the Jack client is running. \begin{DoxyReturn}{Returns}
+{\ttfamily true} if the client is running. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdrumpi_1_1audio_1_1JackClient_abb2363379d125b17299d49def97c289d}\label{classdrumpi_1_1audio_1_1JackClient_abb2363379d125b17299d49def97c289d}} 
+\index{drumpi::audio::JackClient@{drumpi::audio::JackClient}!setNumPorts@{setNumPorts}}
+\index{setNumPorts@{setNumPorts}!drumpi::audio::JackClient@{drumpi::audio::JackClient}}
+\doxysubsubsection{\texorpdfstring{setNumPorts()}{setNumPorts()}}
+{\footnotesize\ttfamily void Jack\+Client\+::set\+Num\+Ports (\begin{DoxyParamCaption}\item[{int}]{n\+Out\+Ports,  }\item[{int}]{n\+In\+Ports }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Sets the number of Jack ports. 
+\begin{DoxyParams}{Parameters}
+{\em n\+Out\+Ports} & number of output ports. \\
+\hline
+{\em n\+In\+Ports} & number of input ports. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdrumpi_1_1audio_1_1JackClient_ab76c081f0442dbe7ba23ab4715e11256}\label{classdrumpi_1_1audio_1_1JackClient_ab76c081f0442dbe7ba23ab4715e11256}} 
+\index{drumpi::audio::JackClient@{drumpi::audio::JackClient}!start@{start}}
+\index{start@{start}!drumpi::audio::JackClient@{drumpi::audio::JackClient}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacedrumpi_1_1audio_a63a65dfe49502f198a5a4ff3365ec438}{audio\+Error\+\_\+t}} Jack\+Client\+::start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdrumpi_1_1audio_1_1AudioCallback}{Audio\+Callback}} \&}]{callback }\end{DoxyParamCaption})}
+
+Informs Jack that the program is ready to go. 
+\begin{DoxyParams}{Parameters}
+{\em callback} & \mbox{\hyperlink{classdrumpi_1_1audio_1_1AudioCallback}{Audio\+Callback}} object to fetch output samples from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdrumpi_1_1audio_1_1JackClient_aa4e28932809e94d3ee9ec02e19dac26d}\label{classdrumpi_1_1audio_1_1JackClient_aa4e28932809e94d3ee9ec02e19dac26d}} 
+\index{drumpi::audio::JackClient@{drumpi::audio::JackClient}!stop@{stop}}
+\index{stop@{stop}!drumpi::audio::JackClient@{drumpi::audio::JackClient}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacedrumpi_1_1audio_a63a65dfe49502f198a5a4ff3365ec438}{audio\+Error\+\_\+t}} Jack\+Client\+::stop (\begin{DoxyParamCaption}\item[{bool}]{close\+Client = {\ttfamily true} }\end{DoxyParamCaption})}
+
+Stops the Jack engine. 
+\begin{DoxyParams}{Parameters}
+{\em close\+Client} & whether to close the Jack client or just deactivate it. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1audio_1_1JackClient_a607ea3c9f3b94f006db0abbf6382d6ac}\label{classdrumpi_1_1audio_1_1JackClient_a607ea3c9f3b94f006db0abbf6382d6ac}} 
+\index{drumpi::audio::JackClient@{drumpi::audio::JackClient}!callback@{callback}}
+\index{callback@{callback}!drumpi::audio::JackClient@{drumpi::audio::JackClient}}
+\doxysubsubsection{\texorpdfstring{callback}{callback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classdrumpi_1_1audio_1_1AudioCallback}{Audio\+Callback}}$\ast$ drumpi\+::audio\+::\+Jack\+Client\+::callback\hspace{0.3cm}{\ttfamily [private]}}
+
+Pointer to the \mbox{\hyperlink{classdrumpi_1_1audio_1_1AudioCallback}{Audio\+Callback}} object that fetches output samples. \mbox{\Hypertarget{classdrumpi_1_1audio_1_1JackClient_a7c7d354192fdfd02dff7ba19db35b055}\label{classdrumpi_1_1audio_1_1JackClient_a7c7d354192fdfd02dff7ba19db35b055}} 
+\index{drumpi::audio::JackClient@{drumpi::audio::JackClient}!client@{client}}
+\index{client@{client}!drumpi::audio::JackClient@{drumpi::audio::JackClient}}
+\doxysubsubsection{\texorpdfstring{client}{client}}
+{\footnotesize\ttfamily jack\+\_\+client\+\_\+t$\ast$ drumpi\+::audio\+::\+Jack\+Client\+::client\hspace{0.3cm}{\ttfamily [private]}}
+
+Pointer to the Jack client. \mbox{\Hypertarget{classdrumpi_1_1audio_1_1JackClient_a8b43d4d05f5afaeb3104b0b7f325688c}\label{classdrumpi_1_1audio_1_1JackClient_a8b43d4d05f5afaeb3104b0b7f325688c}} 
+\index{drumpi::audio::JackClient@{drumpi::audio::JackClient}!clientName@{clientName}}
+\index{clientName@{clientName}!drumpi::audio::JackClient@{drumpi::audio::JackClient}}
+\doxysubsubsection{\texorpdfstring{clientName}{clientName}}
+{\footnotesize\ttfamily std\+::string drumpi\+::audio\+::\+Jack\+Client\+::client\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+Jack client name. \mbox{\Hypertarget{classdrumpi_1_1audio_1_1JackClient_abffcd237af5b33cb60bc93f4c0af3efa}\label{classdrumpi_1_1audio_1_1JackClient_abffcd237af5b33cb60bc93f4c0af3efa}} 
+\index{drumpi::audio::JackClient@{drumpi::audio::JackClient}!defNumInPorts@{defNumInPorts}}
+\index{defNumInPorts@{defNumInPorts}!drumpi::audio::JackClient@{drumpi::audio::JackClient}}
+\doxysubsubsection{\texorpdfstring{defNumInPorts}{defNumInPorts}}
+{\footnotesize\ttfamily const int drumpi\+::audio\+::\+Jack\+Client\+::def\+Num\+In\+Ports = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Default number of input ports. \mbox{\Hypertarget{classdrumpi_1_1audio_1_1JackClient_a4041995639d6765bb34dbadf27f7c3ec}\label{classdrumpi_1_1audio_1_1JackClient_a4041995639d6765bb34dbadf27f7c3ec}} 
+\index{drumpi::audio::JackClient@{drumpi::audio::JackClient}!defNumOutPorts@{defNumOutPorts}}
+\index{defNumOutPorts@{defNumOutPorts}!drumpi::audio::JackClient@{drumpi::audio::JackClient}}
+\doxysubsubsection{\texorpdfstring{defNumOutPorts}{defNumOutPorts}}
+{\footnotesize\ttfamily const int drumpi\+::audio\+::\+Jack\+Client\+::def\+Num\+Out\+Ports = 2\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Default number of output ports. \mbox{\Hypertarget{classdrumpi_1_1audio_1_1JackClient_a2bb52401891e1f4b9b74a5f347834f31}\label{classdrumpi_1_1audio_1_1JackClient_a2bb52401891e1f4b9b74a5f347834f31}} 
+\index{drumpi::audio::JackClient@{drumpi::audio::JackClient}!errorStatus@{errorStatus}}
+\index{errorStatus@{errorStatus}!drumpi::audio::JackClient@{drumpi::audio::JackClient}}
+\doxysubsubsection{\texorpdfstring{errorStatus}{errorStatus}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacedrumpi_1_1audio_a63a65dfe49502f198a5a4ff3365ec438}{audio\+Error\+\_\+t}} drumpi\+::audio\+::\+Jack\+Client\+::error\+Status = \mbox{\hyperlink{namespacedrumpi_1_1audio_af36111ce9632c39e5acb2c811f228e2fa862613743b5354dc75cfa084840a7c0c}{N\+O\+\_\+\+E\+R\+R\+OR}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\hyperlink{classdrumpi_1_1audio_1_1JackClient}{Jack\+Client}} error status. \mbox{\Hypertarget{classdrumpi_1_1audio_1_1JackClient_ac04a03af355ac3c7dd117ba8173b8d7a}\label{classdrumpi_1_1audio_1_1JackClient_ac04a03af355ac3c7dd117ba8173b8d7a}} 
+\index{drumpi::audio::JackClient@{drumpi::audio::JackClient}!inPorts@{inPorts}}
+\index{inPorts@{inPorts}!drumpi::audio::JackClient@{drumpi::audio::JackClient}}
+\doxysubsubsection{\texorpdfstring{inPorts}{inPorts}}
+{\footnotesize\ttfamily std\+::vector$<$jack\+\_\+port\+\_\+t$\ast$$>$ drumpi\+::audio\+::\+Jack\+Client\+::in\+Ports\hspace{0.3cm}{\ttfamily [private]}}
+
+Jack input ports. Not (yet) implemented. \mbox{\Hypertarget{classdrumpi_1_1audio_1_1JackClient_ae875ca9f70638eeb0ff80195634cb64b}\label{classdrumpi_1_1audio_1_1JackClient_ae875ca9f70638eeb0ff80195634cb64b}} 
+\index{drumpi::audio::JackClient@{drumpi::audio::JackClient}!jackStatus@{jackStatus}}
+\index{jackStatus@{jackStatus}!drumpi::audio::JackClient@{drumpi::audio::JackClient}}
+\doxysubsubsection{\texorpdfstring{jackStatus}{jackStatus}}
+{\footnotesize\ttfamily jack\+\_\+status\+\_\+t drumpi\+::audio\+::\+Jack\+Client\+::jack\+Status\hspace{0.3cm}{\ttfamily [private]}}
+
+Jack status. \mbox{\Hypertarget{classdrumpi_1_1audio_1_1JackClient_a827cedc289fc71939b040d757d15c65e}\label{classdrumpi_1_1audio_1_1JackClient_a827cedc289fc71939b040d757d15c65e}} 
+\index{drumpi::audio::JackClient@{drumpi::audio::JackClient}!open@{open}}
+\index{open@{open}!drumpi::audio::JackClient@{drumpi::audio::JackClient}}
+\doxysubsubsection{\texorpdfstring{open}{open}}
+{\footnotesize\ttfamily bool drumpi\+::audio\+::\+Jack\+Client\+::open\hspace{0.3cm}{\ttfamily [private]}}
+
+Jack client open status. \mbox{\Hypertarget{classdrumpi_1_1audio_1_1JackClient_ad2d5b25f8eceaad004f6f7058ec8e5b6}\label{classdrumpi_1_1audio_1_1JackClient_ad2d5b25f8eceaad004f6f7058ec8e5b6}} 
+\index{drumpi::audio::JackClient@{drumpi::audio::JackClient}!options@{options}}
+\index{options@{options}!drumpi::audio::JackClient@{drumpi::audio::JackClient}}
+\doxysubsubsection{\texorpdfstring{options}{options}}
+{\footnotesize\ttfamily jack\+\_\+options\+\_\+t drumpi\+::audio\+::\+Jack\+Client\+::options = Jack\+Null\+Option\hspace{0.3cm}{\ttfamily [private]}}
+
+Jack options. \mbox{\Hypertarget{classdrumpi_1_1audio_1_1JackClient_a0257d5ed9aa2ad4a9c25776fa474f31e}\label{classdrumpi_1_1audio_1_1JackClient_a0257d5ed9aa2ad4a9c25776fa474f31e}} 
+\index{drumpi::audio::JackClient@{drumpi::audio::JackClient}!outPorts@{outPorts}}
+\index{outPorts@{outPorts}!drumpi::audio::JackClient@{drumpi::audio::JackClient}}
+\doxysubsubsection{\texorpdfstring{outPorts}{outPorts}}
+{\footnotesize\ttfamily std\+::vector$<$jack\+\_\+port\+\_\+t$\ast$$>$ drumpi\+::audio\+::\+Jack\+Client\+::out\+Ports\hspace{0.3cm}{\ttfamily [private]}}
+
+Jack output ports. \mbox{\Hypertarget{classdrumpi_1_1audio_1_1JackClient_ab90e744f9193a55d6543d117e9b6c00e}\label{classdrumpi_1_1audio_1_1JackClient_ab90e744f9193a55d6543d117e9b6c00e}} 
+\index{drumpi::audio::JackClient@{drumpi::audio::JackClient}!ports@{ports}}
+\index{ports@{ports}!drumpi::audio::JackClient@{drumpi::audio::JackClient}}
+\doxysubsubsection{\texorpdfstring{ports}{ports}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ drumpi\+::audio\+::\+Jack\+Client\+::ports\hspace{0.3cm}{\ttfamily [private]}}
+
+Jack ports string. \mbox{\Hypertarget{classdrumpi_1_1audio_1_1JackClient_a087d17af8f6e68f1f609f3c276019a8e}\label{classdrumpi_1_1audio_1_1JackClient_a087d17af8f6e68f1f609f3c276019a8e}} 
+\index{drumpi::audio::JackClient@{drumpi::audio::JackClient}!running@{running}}
+\index{running@{running}!drumpi::audio::JackClient@{drumpi::audio::JackClient}}
+\doxysubsubsection{\texorpdfstring{running}{running}}
+{\footnotesize\ttfamily bool drumpi\+::audio\+::\+Jack\+Client\+::running\hspace{0.3cm}{\ttfamily [private]}}
+
+Jack client running status. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/audio.\+hpp\item 
+src/audio.\+cpp\end{DoxyCompactItemize}

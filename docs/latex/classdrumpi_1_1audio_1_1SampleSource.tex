@@ -1,0 +1,129 @@
+\hypertarget{classdrumpi_1_1audio_1_1SampleSource}{}\doxysection{drumpi\+::audio\+::Sample\+Source Class Reference}
+\label{classdrumpi_1_1audio_1_1SampleSource}\index{drumpi::audio::SampleSource@{drumpi::audio::SampleSource}}
+
+
+{\ttfamily \#include $<$sample\+Source.\+hpp$>$}
+
+
+
+Inheritance diagram for drumpi\+::audio\+::Sample\+Source\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{classdrumpi_1_1audio_1_1SampleSource__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdrumpi_1_1audio_1_1SampleSource_a8c83ab0aa33861c5f88783b3a818ffba}{Sample\+Source}} ()
+\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{namespacedrumpi_1_1audio_aca0bdc9164f87b72057e284442abab6e}{sample\+\_\+t}} $>$ \mbox{\hyperlink{classdrumpi_1_1audio_1_1SampleSource_ab3f12884325b818ebe088dec5daa15cd}{get\+Samples}} (int n\+Samples)=0
+\item 
+virtual void \mbox{\hyperlink{classdrumpi_1_1audio_1_1SampleSource_aa7b214c99ee55ceac758fdef44b0cd6d}{reset}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classdrumpi_1_1audio_1_1SampleSource_aff9beb7031bc5af424dccc525be5e9d3}{update\+Status}} ()=0
+\item 
+\mbox{\hyperlink{namespacedrumpi_1_1audio_a03ac23fe986c3982bba0e72007d892f4}{sample\+Source\+Status\+\_\+t}} \mbox{\hyperlink{classdrumpi_1_1audio_1_1SampleSource_a9fea9c824e15d891cbacbf4c5187c2aa}{get\+Status}} ()
+\item 
+\mbox{\hyperlink{namespacedrumpi_1_1audio_a5a9629c737cfd95f4a804b4ab9c5b8de}{sample\+Source\+Type\+\_\+t}} \mbox{\hyperlink{classdrumpi_1_1audio_1_1SampleSource_a83b000d9fe8335788f4ba876b13b4b66}{get\+Type}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacedrumpi_1_1audio_a03ac23fe986c3982bba0e72007d892f4}{sample\+Source\+Status\+\_\+t}} \mbox{\hyperlink{classdrumpi_1_1audio_1_1SampleSource_a0278ea1fe44e5c1c643d6c8549302f19}{status}}
+\item 
+\mbox{\hyperlink{namespacedrumpi_1_1audio_a5a9629c737cfd95f4a804b4ab9c5b8de}{sample\+Source\+Type\+\_\+t}} \mbox{\hyperlink{classdrumpi_1_1audio_1_1SampleSource_af3411ed42fcc880fb0a69d2dd80aac18}{type}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract class for sample retieval. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1audio_1_1SampleSource_a8c83ab0aa33861c5f88783b3a818ffba}\label{classdrumpi_1_1audio_1_1SampleSource_a8c83ab0aa33861c5f88783b3a818ffba}} 
+\index{drumpi::audio::SampleSource@{drumpi::audio::SampleSource}!SampleSource@{SampleSource}}
+\index{SampleSource@{SampleSource}!drumpi::audio::SampleSource@{drumpi::audio::SampleSource}}
+\doxysubsubsection{\texorpdfstring{SampleSource()}{SampleSource()}}
+{\footnotesize\ttfamily Sample\+Source\+::\+Sample\+Source (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructor. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1audio_1_1SampleSource_ab3f12884325b818ebe088dec5daa15cd}\label{classdrumpi_1_1audio_1_1SampleSource_ab3f12884325b818ebe088dec5daa15cd}} 
+\index{drumpi::audio::SampleSource@{drumpi::audio::SampleSource}!getSamples@{getSamples}}
+\index{getSamples@{getSamples}!drumpi::audio::SampleSource@{drumpi::audio::SampleSource}}
+\doxysubsubsection{\texorpdfstring{getSamples()}{getSamples()}}
+{\footnotesize\ttfamily virtual std\+::vector$<$\mbox{\hyperlink{namespacedrumpi_1_1audio_aca0bdc9164f87b72057e284442abab6e}{sample\+\_\+t}}$>$ drumpi\+::audio\+::\+Sample\+Source\+::get\+Samples (\begin{DoxyParamCaption}\item[{int}]{n\+Samples }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Returns a buffer of samples. 
+\begin{DoxyParams}{Parameters}
+{\em n\+Samples} & number of samples to be returned. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a sample buffer of length n\+Samples. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classdrumpi_1_1audio_1_1AudioClip_aad8e2b4282047c0fb884d4f93210c83b}{drumpi\+::audio\+::\+Audio\+Clip}}.
+
+\mbox{\Hypertarget{classdrumpi_1_1audio_1_1SampleSource_a9fea9c824e15d891cbacbf4c5187c2aa}\label{classdrumpi_1_1audio_1_1SampleSource_a9fea9c824e15d891cbacbf4c5187c2aa}} 
+\index{drumpi::audio::SampleSource@{drumpi::audio::SampleSource}!getStatus@{getStatus}}
+\index{getStatus@{getStatus}!drumpi::audio::SampleSource@{drumpi::audio::SampleSource}}
+\doxysubsubsection{\texorpdfstring{getStatus()}{getStatus()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacedrumpi_1_1audio_a03ac23fe986c3982bba0e72007d892f4}{sample\+Source\+Status\+\_\+t}} Sample\+Source\+::get\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the status of the source. \begin{DoxyReturn}{Returns}
+status code of source. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdrumpi_1_1audio_1_1SampleSource_a83b000d9fe8335788f4ba876b13b4b66}\label{classdrumpi_1_1audio_1_1SampleSource_a83b000d9fe8335788f4ba876b13b4b66}} 
+\index{drumpi::audio::SampleSource@{drumpi::audio::SampleSource}!getType@{getType}}
+\index{getType@{getType}!drumpi::audio::SampleSource@{drumpi::audio::SampleSource}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacedrumpi_1_1audio_a5a9629c737cfd95f4a804b4ab9c5b8de}{sample\+Source\+Type\+\_\+t}} Sample\+Source\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the type of source represented by the object. \begin{DoxyReturn}{Returns}
+type code of source 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdrumpi_1_1audio_1_1SampleSource_aa7b214c99ee55ceac758fdef44b0cd6d}\label{classdrumpi_1_1audio_1_1SampleSource_aa7b214c99ee55ceac758fdef44b0cd6d}} 
+\index{drumpi::audio::SampleSource@{drumpi::audio::SampleSource}!reset@{reset}}
+\index{reset@{reset}!drumpi::audio::SampleSource@{drumpi::audio::SampleSource}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily virtual void drumpi\+::audio\+::\+Sample\+Source\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Resets the source to initial conditions. 
+
+Implemented in \mbox{\hyperlink{classdrumpi_1_1audio_1_1AudioClip_ac870bf37050afae302754c4e4671d779}{drumpi\+::audio\+::\+Audio\+Clip}}.
+
+\mbox{\Hypertarget{classdrumpi_1_1audio_1_1SampleSource_aff9beb7031bc5af424dccc525be5e9d3}\label{classdrumpi_1_1audio_1_1SampleSource_aff9beb7031bc5af424dccc525be5e9d3}} 
+\index{drumpi::audio::SampleSource@{drumpi::audio::SampleSource}!updateStatus@{updateStatus}}
+\index{updateStatus@{updateStatus}!drumpi::audio::SampleSource@{drumpi::audio::SampleSource}}
+\doxysubsubsection{\texorpdfstring{updateStatus()}{updateStatus()}}
+{\footnotesize\ttfamily virtual void drumpi\+::audio\+::\+Sample\+Source\+::update\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Updates the status of the source. 
+
+Implemented in \mbox{\hyperlink{classdrumpi_1_1audio_1_1AudioClip_aeed08721b08d9443a769a99e717f5743}{drumpi\+::audio\+::\+Audio\+Clip}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1audio_1_1SampleSource_a0278ea1fe44e5c1c643d6c8549302f19}\label{classdrumpi_1_1audio_1_1SampleSource_a0278ea1fe44e5c1c643d6c8549302f19}} 
+\index{drumpi::audio::SampleSource@{drumpi::audio::SampleSource}!status@{status}}
+\index{status@{status}!drumpi::audio::SampleSource@{drumpi::audio::SampleSource}}
+\doxysubsubsection{\texorpdfstring{status}{status}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacedrumpi_1_1audio_a03ac23fe986c3982bba0e72007d892f4}{sample\+Source\+Status\+\_\+t}} drumpi\+::audio\+::\+Sample\+Source\+::status\hspace{0.3cm}{\ttfamily [protected]}}
+
+Status of the source. \mbox{\Hypertarget{classdrumpi_1_1audio_1_1SampleSource_af3411ed42fcc880fb0a69d2dd80aac18}\label{classdrumpi_1_1audio_1_1SampleSource_af3411ed42fcc880fb0a69d2dd80aac18}} 
+\index{drumpi::audio::SampleSource@{drumpi::audio::SampleSource}!type@{type}}
+\index{type@{type}!drumpi::audio::SampleSource@{drumpi::audio::SampleSource}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacedrumpi_1_1audio_a5a9629c737cfd95f4a804b4ab9c5b8de}{sample\+Source\+Type\+\_\+t}} drumpi\+::audio\+::\+Sample\+Source\+::type\hspace{0.3cm}{\ttfamily [protected]}}
+
+Type of source. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/sample\+Source.\+hpp\item 
+src/sample\+Source.\+cpp\end{DoxyCompactItemize}

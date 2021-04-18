@@ -1,0 +1,69 @@
+\hypertarget{classdrumpi_1_1KeyboardThread}{}\doxysection{drumpi\+::Keyboard\+Thread Class Reference}
+\label{classdrumpi_1_1KeyboardThread}\index{drumpi::KeyboardThread@{drumpi::KeyboardThread}}
+
+
+{\ttfamily \#include $<$keyboardthread.\+hpp$>$}
+
+
+
+Inheritance diagram for drumpi\+::Keyboard\+Thread\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{classdrumpi_1_1KeyboardThread__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for drumpi\+::Keyboard\+Thread\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{classdrumpi_1_1KeyboardThread__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classdrumpi_1_1KeyboardThread_a2e106118779a9a70aabf9c291c2f9a36}{stop}} ()
+\item 
+void \mbox{\hyperlink{classdrumpi_1_1KeyboardThread_a406ee901b3d40676ba070548b3ac7d12}{run}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdrumpi_1_1KeyboardInput}{Keyboard\+Input}} \mbox{\hyperlink{classdrumpi_1_1KeyboardThread_a2f248c78ba5f7bcd0f4db0fc3050ef4d}{kbd\+In}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class inherits from the Cpp\+Thread wrapper class and creates a keyboard monitoring thread. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1KeyboardThread_a406ee901b3d40676ba070548b3ac7d12}\label{classdrumpi_1_1KeyboardThread_a406ee901b3d40676ba070548b3ac7d12}} 
+\index{drumpi::KeyboardThread@{drumpi::KeyboardThread}!run@{run}}
+\index{run@{run}!drumpi::KeyboardThread@{drumpi::KeyboardThread}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Keyboard\+Thread\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This method is called when the thread is started. \mbox{\Hypertarget{classdrumpi_1_1KeyboardThread_a2e106118779a9a70aabf9c291c2f9a36}\label{classdrumpi_1_1KeyboardThread_a2e106118779a9a70aabf9c291c2f9a36}} 
+\index{drumpi::KeyboardThread@{drumpi::KeyboardThread}!stop@{stop}}
+\index{stop@{stop}!drumpi::KeyboardThread@{drumpi::KeyboardThread}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily int Keyboard\+Thread\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Closes the thread. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1KeyboardThread_a2f248c78ba5f7bcd0f4db0fc3050ef4d}\label{classdrumpi_1_1KeyboardThread_a2f248c78ba5f7bcd0f4db0fc3050ef4d}} 
+\index{drumpi::KeyboardThread@{drumpi::KeyboardThread}!kbdIn@{kbdIn}}
+\index{kbdIn@{kbdIn}!drumpi::KeyboardThread@{drumpi::KeyboardThread}}
+\doxysubsubsection{\texorpdfstring{kbdIn}{kbdIn}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classdrumpi_1_1KeyboardInput}{Keyboard\+Input}} drumpi\+::\+Keyboard\+Thread\+::kbd\+In}
+
+Instance of \mbox{\hyperlink{classdrumpi_1_1KeyboardInput}{Keyboard\+Input}} class. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/keyboardthread.\+hpp\item 
+src/keyboardthread.\+cpp\end{DoxyCompactItemize}

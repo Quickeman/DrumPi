@@ -1,0 +1,81 @@
+\hypertarget{classdrumpi_1_1DisplayDelay}{}\doxysection{drumpi\+::Display\+Delay Class Reference}
+\label{classdrumpi_1_1DisplayDelay}\index{drumpi::DisplayDelay@{drumpi::DisplayDelay}}
+
+
+{\ttfamily \#include $<$application.\+hpp$>$}
+
+
+
+Inheritance diagram for drumpi\+::Display\+Delay\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{classdrumpi_1_1DisplayDelay__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for drumpi\+::Display\+Delay\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdrumpi_1_1DisplayDelay__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdrumpi_1_1DisplayDelay_aefc2f9eeecfc90f2b03623104c457ed6}{Display\+Delay}} (\mbox{\hyperlink{classdrumpi_1_1ApplicationCallback}{Application\+Callback}} $\ast$a)
+\item 
+void \mbox{\hyperlink{classdrumpi_1_1DisplayDelay_a1fb66a57fea2d6700a190c961e556aa4}{trigger}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdrumpi_1_1ApplicationCallback}{Application\+Callback}} $\ast$ \mbox{\hyperlink{classdrumpi_1_1DisplayDelay_a1e0ae111b91375c8dd4de7310953728e}{appc}} = nullptr
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classdrumpi_1_1clock_1_1Timer_a5f16e8da27d2a5a5242dead46de05d97}{Timer}} derived class to clock master volume display timeout. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1DisplayDelay_aefc2f9eeecfc90f2b03623104c457ed6}\label{classdrumpi_1_1DisplayDelay_aefc2f9eeecfc90f2b03623104c457ed6}} 
+\index{drumpi::DisplayDelay@{drumpi::DisplayDelay}!DisplayDelay@{DisplayDelay}}
+\index{DisplayDelay@{DisplayDelay}!drumpi::DisplayDelay@{drumpi::DisplayDelay}}
+\doxysubsubsection{\texorpdfstring{DisplayDelay()}{DisplayDelay()}}
+{\footnotesize\ttfamily Display\+Delay\+::\+Display\+Delay (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdrumpi_1_1ApplicationCallback}{Application\+Callback}} $\ast$}]{a }\end{DoxyParamCaption})}
+
+Constructor. Sets the \mbox{\hyperlink{classdrumpi_1_1Application}{Application}} to be clocked. 
+\begin{DoxyParams}{Parameters}
+{\em a} & \mbox{\hyperlink{classdrumpi_1_1Application}{Application}} object to be clocked. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1DisplayDelay_a1fb66a57fea2d6700a190c961e556aa4}\label{classdrumpi_1_1DisplayDelay_a1fb66a57fea2d6700a190c961e556aa4}} 
+\index{drumpi::DisplayDelay@{drumpi::DisplayDelay}!trigger@{trigger}}
+\index{trigger@{trigger}!drumpi::DisplayDelay@{drumpi::DisplayDelay}}
+\doxysubsubsection{\texorpdfstring{trigger()}{trigger()}}
+{\footnotesize\ttfamily void Display\+Delay\+::trigger (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Override the tick method. Clocks the \mbox{\hyperlink{classdrumpi_1_1Application}{Application}}. 
+
+Implements \mbox{\hyperlink{classdrumpi_1_1clock_1_1Timer_aeed4c4e653b98280354e0b970f8df68b}{drumpi\+::clock\+::\+Timer}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classdrumpi_1_1DisplayDelay_a1e0ae111b91375c8dd4de7310953728e}\label{classdrumpi_1_1DisplayDelay_a1e0ae111b91375c8dd4de7310953728e}} 
+\index{drumpi::DisplayDelay@{drumpi::DisplayDelay}!appc@{appc}}
+\index{appc@{appc}!drumpi::DisplayDelay@{drumpi::DisplayDelay}}
+\doxysubsubsection{\texorpdfstring{appc}{appc}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classdrumpi_1_1ApplicationCallback}{Application\+Callback}}$\ast$ drumpi\+::\+Display\+Delay\+::appc = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+Pointer to the {\ttfamily \mbox{\hyperlink{classdrumpi_1_1Application}{Application}}} object to be clocked. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/application.\+hpp\item 
+src/application.\+cpp\end{DoxyCompactItemize}
