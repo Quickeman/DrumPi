@@ -23,7 +23,7 @@
     <a href="https://github.com/Quickeman/DrumPi/blob/main/LICENSE" alt="License">
         <img src="https://img.shields.io/github/license/Quickeman/DrumPi.svg" /></a>
     <a href="https://github.com/Quickeman/DrumPi/releases" alt="Tag">
-        <img src="https://img.shields.io/github/v/tag/Quickeman/DrumPi.svg" alt="build status"></a>
+        <img src="https://img.shields.io/github/v/release/Quickeman/DrumPi.svg?include_prereleases" alt="build status"></a>
 </p>
 
 ## Contents
