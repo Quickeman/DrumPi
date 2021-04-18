@@ -40,7 +40,7 @@
       <li><a href="#Running-Tests">Running Tests</a>
     </ul>
   <li><a href="#Usage">Usage</a>
-  <li><a href="#Documenation">Documentation</a>
+  <li><a href="#Documentation">Documentation</a>
   <li><a href="#Stretch-Goals">Stretch Goals</a>
 </ul>
 
