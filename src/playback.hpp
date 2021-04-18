@@ -56,29 +56,29 @@ class PlaybackEngine : public AudioCallback {
 
         /*! Returns the current volume of the passed drum as a percentage.
         \param drum \ref drumID_t of the drum to query.
-        \return current volume of \ref drum. */
+        \return current volume of drum. */
         int getVolume(drumID_t drum);
 
         /*! Returns the current master volume as a percentage.
         \return current master volume. */
         int getVolume();
 
-        /*! Loads a bank of drums of a homogenous \ref audio::sampleSourceType_t.
+        /*! Loads a bank of drums of a homogenous \ref sampleSourceType_t.
         \param bank ID of the bank of drums to load from.
-        \param type \ref audio::sampleSourceType_t of sources to load. */
+        \param type \ref sampleSourceType_t of sources to load. */
         sampleSourceStatus_t loadBank(int bank, sampleSourceType_t type);
 
         /*! Sets the source for the specified drum.
         \param drum \ref drumID_t of the drum to set the type for.
         \param bank ID of the bank of drums to load from.
-        \param type \ref audio::sampleSourceType_t of source to load. */
+        \param type \ref sampleSourceType_t of source to load. */
         sampleSourceStatus_t setSource(drumID_t drum, int bank, sampleSourceType_t type);
 
-        /*! Returns the source \ref audio::sampleSourceStatus_t of the given drum.
+        /*! Returns the source \ref sampleSourceStatus_t of the given drum.
         \return source status. */
         sampleSourceStatus_t getSourceStatus(drumID_t drum);
 
-        /*! Returns the source \ref audio::sampleSourceType_t for the given drum. 
+        /*! Returns the source \ref sampleSourceType_t for the given drum. 
         \return source type. */
         sampleSourceType_t getSourceType(drumID_t drum);
     

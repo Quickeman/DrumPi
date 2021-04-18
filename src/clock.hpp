@@ -6,6 +6,7 @@
 #include "CppTimer.h"
 
 namespace drumpi {
+/*! The namespace for timing related items. */
 namespace clock {
 
 /*! Converts BPM to ms.

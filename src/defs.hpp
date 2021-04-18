@@ -42,6 +42,7 @@ typedef enum _StateLabels {
     SET_DRUM_BANK_MODE
 } stateLabel_t;
 
+/*! The namespace for audio system related items. */
 namespace audio {
 
 /*! Sample data format used by Jack (`float`). */

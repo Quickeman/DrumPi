@@ -19,7 +19,7 @@ class AudioCallback {
         /*! Called by a \ref JackClient object when samples are requested by
         Jack.
         \param nSamples the number of samples requested.
-        \return a vector of samples, of type \ref audio::sample_t (`float`) */
+        \return a vector of samples, of type \ref sample_t (`float`) */
         virtual std::vector<sample_t> getSamples(int nSamples) = 0;
 };
 
