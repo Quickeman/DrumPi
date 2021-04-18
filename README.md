@@ -102,6 +102,10 @@ in a terminal from the DrumPi directory.
 
 For instructions on how to use the DrumPi application, see the [User Manual](https://github.com/Quickeman/DrumPi/wiki/User-Manual).
 
+## Documentation
+
+[DrumPi Documentation](https://quickeman.github.io/DrumPi/html/index.html)
+
 ## Stretch Goals
 - External clocking
 - Customisation of drum sounds by user
