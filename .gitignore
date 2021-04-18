@@ -57,3 +57,8 @@ compile_commands.json
 
 # Keyboard config file
 kbd-config.txt
+
+.ccls-cache
+
+doxyfile.bak
+
