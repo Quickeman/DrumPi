@@ -41,10 +41,10 @@ class Max7219
         /**
          * Low level method for writing a data buffer to SPI bus.
          * Should not be used by host application.
-         * Instead use digit setters and flush commands.
+         * Instead use \ref setDigit and \ref flush methods.
          *
          * @param data Buffer containing bytes for writing.
-         * @param len Length of bufer in bytes.
+         * @param len Length of buffer in bytes.
          */
         void write(unsigned char *data, unsigned int len);
 
@@ -80,7 +80,7 @@ class Max7219
         // SETTERS //
 
         /**
-         * Sets the value of a digit in the display.
+         * Sets a value in the \ref digitBuffer.
          *
          * @param digit Byte address of digit.
          * @param value Byte value to assign.
@@ -89,31 +89,31 @@ class Max7219
         void setDigit(unsigned char digit, unsigned char value, bool redraw);
 
         /**
-         * Sets the display decode mode.
+         * Sets the \ref decodeMode.
          * @param value Decode mode byte.
          */
         void setDecodeMode(unsigned char value);
 
         /**
-         * Sets display intensity.
+         * Sets the \ref intensity.
          * @param value Intensity value (1-15).
          */
         void setIntensity(unsigned char value);
 
         /**
-         * Sets display scan limit (number of digits).
+         * Sets the \ref scanLimit.
          * @param value Scan limit (0-7).
          */
         void setScanLimit(unsigned char value);
 
         /**
-         * Sets shutdown mode on/off.
+         * Sets the \ref shutdown mode.
          * @param value Shutdown mode (1/0).
          */
         void setShutdown(unsigned char value);
 
         /**
-         * Sets display test mode on/off.
+         * Sets the \ref displayTest mode.
          * @param value Display test mode (1/0).
          */
         void setDisplayTest(unsigned char value);
@@ -121,39 +121,39 @@ class Max7219
         // GETTERS //
 
         /**
-         * Gets a value of a specified digit.
+         * Gets a value of a digit in the \ref digitBuffer.
          * @param digit Byte address of digit.
          * @returns Current byte value of digit.
          */
         unsigned char getDigit(unsigned char digit);
 
         /**
-         * Gets the current decode mode.
-         * @returns Current decode mode.
+         * Gets the current \ref decodeMode.
+         * @returns Current \ref decodeMode.
          */
         unsigned char getDecodeMode();
 
         /**
-         * Gets the current intensity.
-         * @returns Current intensity.
+         * Gets the current \ref intensity.
+         * @returns Current \ref intensity.
          */
         unsigned char getIntensity();
 
         /**
-         * Gets the current scan limit.
-         * @returns Current scan limit.
+         * Gets the current \ref scanLimit.
+         * @returns Current \ref scanLimit.
          */
         unsigned char getScanLimit();
 
         /**
-         * Gets the current shutdown mode.
-         * @returns Current shutdown mode.
+         * Gets the current \ref shutdown mode.
+         * @returns Current \ref shutdown mode.
          */
         unsigned char getShutdown();
 
         /**
-         * Gets the current display test mode.
-         * @returns Current display test mode.
+         * Gets the current \ref displayTest mode.
+         * @returns Current \ref displayTest mode.
          */
         unsigned char getDisplayTest();
 
@@ -171,8 +171,8 @@ class Max7219
         void flush();
 
         /**
-         * Resets all digit values to 0
-         * @param redraw If true, writes updated values to display.
+         * Resets all digits in the \ref digitBuffer to 0.
+         * @param redraw If true, calls \ref flush to update display.
          */
         void clear(bool redraw);
 
@@ -226,23 +226,24 @@ class Display: public Max7219 {
             7,  // Cymbal
         };
 
-        /** Set a 3 digit decimal value.
+        /** Sets a 3 digit decimal value.
          * @param value 3 digit value to set.
          */
         void setThreeDigit(unsigned int value);
 
-        /** Set a 2 digit decimal value.
+        /** Sets a 2 digit decimal value.
          * @param value 2 digit value to set.
          */
         void setTwoDigit(unsigned int value);
 
-        /** Set a 1 digit decimal value.
+        /** Sets a 1 digit decimal value.
          * @param value 1 digit value to set.
          */
         void setOneDigit(unsigned int value);
 
         /**
-         * Sets digits to show active drums of a given sequence and page.
+         * Sets values in the \ref digitBuffer
+         * to show active drums for a given sequence and page.
          *
          * @param activeDrums Vector of bools representing sequence.
          * @param page 8 digit page to display.
@@ -250,13 +251,18 @@ class Display: public Max7219 {
         void setActiveDrums(std::vector<bool> activeDrums, unsigned int page);
 
         /**
-         * Updates display to show audio level between -1 and 1.
+         * Adds to values in \ref digitBuffer
+         * to show an audio level.
+         *
+         * Not implemented in V1.0.
          * @param level Audio level to display.
          */
         void addLevel(float level);
 
         /**
-         * Updates display to show current page with underscores.
+         * Adds to values in \ref digitBuffer
+         * to show the current page.
+         *
          * @param page Page to display.
          */
         void addPage(unsigned int page);
@@ -270,7 +276,8 @@ class Display: public Max7219 {
         // SETTERS //
 
         /**
-         * Sets digits to display a number up to 999.
+         * Sets values in \ref digitBuffer
+         * to display a number up to 999.
          *
          * @param value Numerical value to display.
          * @param redraw If true, updates display.
@@ -278,7 +285,8 @@ class Display: public Max7219 {
         void setVal(unsigned int value, bool redraw);
 
         /**
-         * Sets digits to display a drum volume and current drum.
+         * Sets values in \ref digitBuffer
+         * to display a drum volume and current drum.
          *
          * @param value Numerical value to display.
          * @param currentDrum Current drum to display.
@@ -290,12 +298,15 @@ class Display: public Max7219 {
          * Sets the mapping of drums to keys.
          * Ensuring that the correct digits are displayed.
          *
+         * Currently unused in v1.0.
+         *
          * @param _keyMapping The given mapping to set.
          */
         void setKeymapping(std::vector<unsigned int> _keyMapping);
 
         /**
-         * Updates display to show sequence in playback mode.
+         * Sets values in \ref digitBuffer
+         * to show sequence in playback mode.
          *
          * @param activeDrums Vector of bools representing sequence.
          * @param stepNum Current step in sequence.
@@ -304,7 +315,8 @@ class Display: public Max7219 {
         void setPlaybackSeq(std::vector<bool> activeDrums, unsigned int stepNum, bool redraw);
 
         /**
-         * Updates display to show sequence in stop mode.
+         * Sets values in \ref digitBuffer
+         * to show sequence in stop mode.
          *
          * @param activeDrums Vector of bools representing sequence.
          * @param page Current page to display.
@@ -314,13 +326,15 @@ class Display: public Max7219 {
         void setStopSeq(std::vector<bool> activeDrums, unsigned int page, drumID_t currentDrum, bool redraw);
 
         /**
-         * Updates performance mode display.
+         * Sets values in \ref digitBuffer
+         * to show performance display.
          *
-         * @param activeDrums Vector containing drum IDs of all current drums.
+         * @param activeDrums Vector containing \ref drumID_t of all current drums.
          * @param level Audio level.
          * @param redraw If true, updates display.
          */
         void setPerformance(std::vector<drumID_t> activeDrums, float level, bool redraw);
+
         /**
          * Returns a key mapping.
          * @param index DrumId to query.
