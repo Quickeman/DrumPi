@@ -24,7 +24,7 @@ BOOST_AUTO_TEST_CASE(volumes) {
 
     int v1 = p.getVolume(d1);
     int v2 = p.getVolume(d2);
-    int vm = p.getvolume();
+    int vm = p.getVolume();
 
     p.volumeDown(d1);
     p.volumeUp(d2);
