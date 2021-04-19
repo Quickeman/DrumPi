@@ -31,7 +31,7 @@ BOOST_AUTO_TEST_CASE(rateSetting) {
 
     c.setRate(r);
     
-    BOOST_CHECK_EQUAL(r, c.getRate());
+    BOOST_CHECK(c.getRate() == r);
 }
 
 BOOST_AUTO_TEST_CASE(counter) {
@@ -40,21 +40,21 @@ BOOST_AUTO_TEST_CASE(counter) {
     int r = 10; // rate = 10ms
     c.setRate(r);
 
-    BOOST_CHECK_EQUAL(0, c.i);
+    BOOST_CHECK(c.i == 0);
 
     BOOST_CHECK(!c.isActive());
     c.start();
     BOOST_CHECK(c.isActive());
 
-    BOOST_CHECK_EQUAL(1, c.i);
+    BOOST_CHECK(c.i == 1);
 
     std::this_thread::sleep_for(std::chrono::milliseconds(r + (r/10)));
 
-    BOOST_CHECK_EQUAL(2, c.i);
+    BOOST_CHECK(c.i == 2);
 
     std::this_thread::sleep_for(std::chrono::milliseconds(r + (r/10)));
 
-    BOOST_CHECK_EQUAL(3, c.i);
+    BOOST_CHECK(c.i == 3);
 }
 
 BOOST_AUTO_TEST_CASE(stopping) {
@@ -73,7 +73,7 @@ BOOST_AUTO_TEST_CASE(stopping) {
 
     std::this_thread::sleep_for(std::chrono::milliseconds((2*r) + (r / 2)));
 
-    BOOST_CHECK_EQUAL(val, c.i);
+    BOOST_CHECK(c.i == val);
 }
 
 BOOST_AUTO_TEST_CASE(activeRateSetting) {
@@ -86,17 +86,17 @@ BOOST_AUTO_TEST_CASE(activeRateSetting) {
 
     std::this_thread::sleep_for(std::chrono::milliseconds(r1 + (r1/2)));
 
-    BOOST_CHECK_EQUAL(2, c.i);
+    BOOST_CHECK(c.i == 2);
 
     c.setRate(r2);
 
-    BOOST_CHECK_EQUAL(2, c.i);
+    BOOST_CHECK(c.i == 2);
 
     std::this_thread::sleep_for(std::chrono::milliseconds((r1/2) + (r2/2)));
 
-    BOOST_CHECK_EQUAL(3, c.i);
+    BOOST_CHECK(c.i == 3);
 
     std::this_thread::sleep_for(std::chrono::milliseconds(r2*3));
 
-    BOOST_CHECK_EQUAL(6, c.i);
+    BOOST_CHECK(c.i == 6);
 }

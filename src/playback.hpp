@@ -64,6 +64,7 @@ class PlaybackEngine : public AudioCallback {
         int getVolume();
 
         /*! Loads a bank of drums of a homogenous \ref sampleSourceType_t.
+        Equivalent to calling \ref setSource for each drum with the given arguments.
         \param bank ID of the bank of drums to load from.
         \param type \ref sampleSourceType_t of sources to load. */
         sampleSourceStatus_t loadBank(int bank, sampleSourceType_t type);

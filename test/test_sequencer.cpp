@@ -22,14 +22,14 @@ BOOST_AUTO_TEST_CASE(stepping) {
 	// Test the stepping functionality
 	Sequencer seq(numSteps);
 
-	// Should be on step 0
+	// Should be on step -1 (not started)
 	BOOST_CHECK(seq.getStepNum() == -1);
 
-	// Advance by one, should be on step 1
+	// Advance by one, should be on step 0 (sequence started)
 	seq.step();
 	BOOST_CHECK(seq.getStepNum() == 0);
 
-	// Advance by 2, should be on step 3
+	// Advance by 2, should be on step 2
 	seq.step(2);
 	BOOST_CHECK(seq.getStepNum() == 2);
 
