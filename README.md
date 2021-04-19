@@ -47,7 +47,7 @@
 ## About
 DrumPi is a small, affordable, open-source drum machine, giving you all the percussive power you need in a pocket-sized package.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/tMC3NiNRklU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[Click here to see the launch video!](https://www.youtube.com/watch?v=tMC3NiNRklU)
 
 ### Functionality
 - 'Live Performance' and 'Sequencer' modes
