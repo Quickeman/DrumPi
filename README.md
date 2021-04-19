@@ -8,6 +8,8 @@
 </p>
 
 <p align="center">
+  <a href="https://www.youtube.com/channel/UCI2LH_wb6zuIEKh4uXsugzg">Youtube</a>
+  <span> | </span>
   <a href="https://www.facebook.com/DrumPiProject/">Facebook</a>
   <span> | </span>
   <a href="https://www.instagram.com/drumpiproject/">Instagram</a>
