@@ -97,7 +97,7 @@ BOOST_AUTO_TEST_CASE(reset) {
 
     v = c.getSamples(n);
 
-    BOOST_CHECK(c.getStatus() == SOURCE_ACTIVE)
+    BOOST_CHECK(c.getStatus() == SOURCE_ACTIVE);
 
     c.reset();
 

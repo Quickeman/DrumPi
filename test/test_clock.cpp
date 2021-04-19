@@ -48,11 +48,11 @@ BOOST_AUTO_TEST_CASE(counter) {
 
     BOOST_CHECK(c.i == 1);
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(r + (r/2)));
+    std::this_thread::sleep_for(std::chrono::milliseconds(r + (r/10)));
 
     BOOST_CHECK(c.i == 2);
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(r + (r/2)));
+    std::this_thread::sleep_for(std::chrono::milliseconds(r + (r/10)));
 
     BOOST_CHECK(c.i == 3);
 }
