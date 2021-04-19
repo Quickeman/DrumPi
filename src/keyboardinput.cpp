@@ -6,6 +6,7 @@
 #include <iostream>
 #include <fstream>
 #include "keyboardinput.hpp"
+//#include <sys/time.h>
 
 using namespace drumpi;
 
@@ -34,11 +35,14 @@ KeyboardInput::KeyboardInput() {
 void KeyboardInput::pollInput() {
 	running = 1;
 	testFlag = 0;
+	//long secs_used, microsecs_used;
+	//struct timeval start, stop;
 	while (running) {
 		testFlag = 1; 	//flag is only set to 1 if while loop starts
 
 		//poll() checks if an input event has occured
 		if (poll(fdset, 1, 0) == 1) {
+			//gettimeofday(&start, NULL);
 			read(fd, &ev, sizeof ev);
 			if (ev.type == EV_KEY && ev.value == 1) {
 				if (ev.code == KEY_ESC) {
@@ -47,6 +51,10 @@ void KeyboardInput::pollInput() {
 				}
 				//printf("\n%d key pressed\n", ev.code);
 				callback->interpretKeyPress(ev.code);
+				//gettimeofday(&stop, NULL);
+				//secs_used = (stop.tv_sec - start.tv_sec);
+				//microsecs_used = ((secs_used*1000000000.0) + stop.tv_usec) - (start.tv_usec);	// in microseconds
+				//printf("%ld\n", microsecs_used);	//print time taken between event detection and return of callback
 			}
 		}
 	}
