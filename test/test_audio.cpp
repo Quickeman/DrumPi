@@ -45,8 +45,12 @@ BOOST_AUTO_TEST_CASE(audioTest) {
     BOOST_CHECK(&e);
     BOOST_CHECK(&c);
 
+    BOOST_CHECK(e.isOpen());
+    BOOST_CHECK(!e.isRunning());
+
     err = e.start(c);
     BOOST_CHECK(!err);
+    BOOST_CHECK(e.isRunning());
 
     std::this_thread::sleep_for(std::chrono::seconds(1));
 
@@ -63,4 +67,6 @@ BOOST_AUTO_TEST_CASE(audioTest) {
 
     err = e.stop();
     BOOST_CHECK(!err);
+    BOOST_CHECK(!e.isRunning());
+    BOOST_CHECK(!e.isOpen());
 }

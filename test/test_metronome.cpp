@@ -23,9 +23,9 @@ BOOST_AUTO_TEST_CASE(constructors) {
 
 BOOST_AUTO_TEST_CASE(bpmToMsConversion) {
     // Test BPM -> ms conversion
-    BOOST_CHECK_EQUAL(500, bpmToMs(120));
-    BOOST_CHECK_EQUAL(1000, bpmToMs(60));
-    BOOST_CHECK_EQUAL(666, bpmToMs(90));
+    BOOST_CHECK(bpmToMs(120) == 500);
+    BOOST_CHECK(bpmToMs(60) == 1000);
+    BOOST_CHECK(bpmToMs(90) == 666);
 }
 
 BOOST_AUTO_TEST_CASE(setRateBpm) {
@@ -35,6 +35,6 @@ BOOST_AUTO_TEST_CASE(setRateBpm) {
     int ms = bpmToMs(bpm);
     m.setRateBPM(bpm);
 
-    BOOST_CHECK_EQUAL(bpm, m.getRateBPM());
-    BOOST_CHECK_EQUAL(ms, m.getRate());
+    BOOST_CHECK(m.getRateBPM() == bpm);
+    BOOST_CHECK(m.getRate() == ms);
 }

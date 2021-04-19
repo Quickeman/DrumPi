@@ -20,7 +20,21 @@ BOOST_AUTO_TEST_CASE(volumes) {
     PlaybackEngine p;
     drumID_t d1 = DRUM_1;
     drumID_t d2 = DRUM_2;
+    int vs = 5;
 
+    int v1 = p.getVolume(d1);
+    int v2 = p.getVolume(d2);
+    int vm = p.getvolume();
+
+    p.volumeDown(d1);
+    p.volumeUp(d2);
+    p.volumeUp();
+
+    BOOST_CHECK(p.getVolume(d1) == v1 - vs);
+    BOOST_CHECK(p.getVolume(d2) == v2 + vs);
+    BOOST_CHECK(p.getVolume() == vm + vs);
+
+    // Test limits
     int c = 22;
     while (c) {
         p.volumeUp(d1);
@@ -50,8 +64,12 @@ BOOST_AUTO_TEST_CASE(triggerSource) {
     PlaybackEngine p;
     int n = 64;
     drumID_t d = DRUM_1;
+    drumID_t dt = DRUM_2;
     std::vector<drumID_t> a;
     p.loadBank(1, SOURCE_PREGENERATED);
+
+    BOOST_CHECK(p.getSourceStatus(d) == SOURCE_READY);
+    BOOST_CHECK(p.getSourceStatus(dt) == SOURCE_READY);
 
     p.trigger(d);
     a = p.getActive();
